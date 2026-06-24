@@ -1,0 +1,31 @@
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[notes]]></title><description><![CDATA[Obsidian digital garden]]></description><link>http://github.com/dylang/node-rss</link><image><url>site-lib/media/favicon.png</url><title>notes</title><link/></image><generator>Webpage HTML Export plugin for Obsidian</generator><lastBuildDate>Wed, 24 Jun 2026 18:58:16 GMT</lastBuildDate><atom:link href="site-lib/rss.xml" rel="self" type="application/rss+xml"/><pubDate>Wed, 24 Jun 2026 18:58:15 GMT</pubDate><ttl>60</ttl><dc:creator/><item><title><![CDATA[Observer Intuition]]></title><description><![CDATA[See <a data-href="State Feedback" href="state-feedback.html" class="internal-link" target="_self" rel="noopener nofollow">State Feedback</a>The separation principle still holds when using an augmented-state observer that estimates disturbances.For a plantwith a constant disturbance modeldefine the augmented stateAn observer can estimate both plant states and disturbance:The closed-loop poles are the union of:
+Controller poles of the augmented system
+Observer poles of the augmented system
+The controller and observer may therefore still be designed independently.A key realization:The observer's job is estimation, not compensation.The observer estimatesbut does not apply any control action.Compensation occurs only when the controller uses that estimate:For example,The most important insight from the discussion:The observer is not trying to driveorInstead it is trying to driveto zero.The observer dynamics are fundamentally estimation-error dynamics.A perfect observer converges towhich is generally nonzero.SupposeandSubstituting:The plant no longer sees the full disturbance.It sees only the residual disturbanceIfthe disturbance disappears from the plant dynamics.This does not mean the observer has lost track of the disturbance.It means the disturbance has been perfectly compensated.Integral control introducesA disturbance observer introducesBoth are mechanisms for learning the steady-state bias required to reject a constant disturbance.Integral action learns it indirectly through accumulated tracking error.Disturbance estimation learns it directly through model mismatch.Both ultimately generate the control bias needed to satisfyBoth states can contribute a steady-state control bias:This can create the impression that there must be hidden dynamics.The important distinction:
+Similar purpose does not imply identical dynamics.
+Similar purpose does not imply zero dynamics.
+The integrator and disturbance estimate are generally driven by different signals:vs.Therefore they usually evolve differently.Only special choices of gains and structure would make them dynamically equivalent.The redundancy intuition is closer to pole-zero cancellation than to classical zero dynamics.If two controller states learn the same bias term and evolve identically, one state direction can become effectively invisible to the plant.This resembles:
+Non-minimal realizations
+Pole-zero cancellation
+Hidden internal modes
+However, this only occurs under special circumstances.In general, the states remain dynamically distinct.Plant states:Plant order = 2Observer states:Observer order = 3Total without integrator:Adding integral control:Using disturbance feedback instead of integral action:Thus disturbance feedback can reduce controller order by one state in this implementation.A major practical insight:The disturbance estimate is generated from observer innovation:If measurements are quantized, thencontains:
+True disturbances
+Model mismatch
+Quantization artifacts
+Thereforemay be highly active and noisy.Using disturbance feedback creates a direct path:Measurement noise
+→ Observer
+→ Disturbance estimate
+→ Control inputwhich can inject noise into the actuator.The integrator evolves according toAn integrator naturally accumulates persistent bias and tends to average out high-frequency quantization effects.Therefore:
+Disturbance feedback may react to quantization artifacts.
+Integral action primarily reacts to long-term offset.
+In systems where the disturbance state is being used by the observer to absorb measurement quantization or model mismatch, integral action may produce cleaner control behavior despite appearing theoretically redundant.A disturbance observer and an integrator both provide mechanisms for rejecting constant disturbances.The disturbance observer:
+Learns the disturbance explicitly.
+Can provide faster compensation.
+Can reduce controller order if an augmented observer already exists.
+May reintroduce measurement noise through the disturbance feedback path.
+Integral action:
+Learns the required compensation indirectly through accumulated error.
+Is highly robust to modeling errors.
+Naturally suppresses high-frequency measurement artifacts.
+Often produces cleaner behavior when disturbance estimates are noisy.
+For systems with significant quantization or observer-induced disturbance-estimate noise, integral action may be preferable even when a disturbance estimate is available.]]></description><link>observer-intuition.html</link><guid isPermaLink="false">Observer Intuition.md</guid><pubDate>Wed, 24 Jun 2026 18:47:11 GMT</pubDate></item><item><title><![CDATA[State Feedback]]></title><description><![CDATA[See <a data-href="Observer Intuition" href="observer-intuition.html" class="internal-link" target="_self" rel="noopener nofollow">Observer Intuition</a>]]></description><link>state-feedback.html</link><guid isPermaLink="false">State Feedback.md</guid><pubDate>Wed, 24 Jun 2026 18:47:00 GMT</pubDate></item></channel></rss>
