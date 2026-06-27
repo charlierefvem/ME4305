@@ -1,4 +1,8 @@
-See [[State Feedback]]
+---
+title: Observer Intuition
+---
+
+See [[state_feedback|State Feedback]]
 # Disturbance Observers vs Integral Action — Key Insights
 
 ## 1. Separation Principle with Augmented Disturbance States
