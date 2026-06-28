@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 432 288">
+  <defs>
+    <style>
+      .cls-1 {
+        stroke-linecap: round;
+        stroke-miterlimit: 10;
+      }
+
+      .cls-1, .cls-2, .cls-3, .cls-4 {
+        fill: none;
+        stroke: #231f20;
+      }
+
+      .cls-2 {
+        stroke-dasharray: .25 1;
+        stroke-width: .25px;
+      }
+
+      .cls-2, .cls-3, .cls-4 {
+        stroke-linejoin: round;
+      }
+
+      .cls-5, .cls-6, .cls-7, .cls-8 {
+        fill: #231f20;
+      }
+
+      .cls-9 {
+        fill: #fff;
+      }
+
+      .cls-3 {
+        stroke-width: .75px;
+      }
+
+      .cls-6 {
+        font-size: 14px;
+      }
+
+      .cls-6, .cls-7, .cls-8 {
+        font-family: ArialMT, Arial;
+      }
+
+      .cls-7 {
+        font-size: 9px;
+      }
+
+      .cls-8 {
+        font-size: 12px;
+      }
+
+      .cls-10 {
+        letter-spacing: -.04em;
+      }
+    </style>
+  </defs>
+  <rect class="cls-9" width="432" height="288"/>
+  <g>
+    <polyline class="cls-3" points="408.7 144 36 144 36 59.3"/>
+    <polygon class="cls-5" points="414 144 406.54 140.95 408.31 144 406.54 147.05 414 144"/>
+    <polygon class="cls-5" points="36 54 39.05 61.46 36 59.69 32.95 61.46 36 54"/>
+  </g>
+  <path class="cls-4" d="M396,108.26l-29.22,9.74c-13.2,4.4-40.2,8-60,8s-46.8-3.6-60-8l-60-20c-13.2-4.4-40.2-8-60-8s-46.8,3.6-60,8l-30,10"/>
+  <text class="cls-8" transform="translate(27 137.35) rotate(-90)"><tspan x="0" y="0">Crystal Output</tspan></text>
+  <text class="cls-8" transform="translate(387.78 162)"><tspan class="cls-10" x="0" y="0">T</tspan><tspan x="6.88" y="0">ime</tspan></text>
+  <g>
+    <polyline class="cls-3" points="408.7 252 36 252 36 167.3"/>
+    <polygon class="cls-5" points="414 252 406.54 248.95 408.31 252 406.54 255.05 414 252"/>
+    <polygon class="cls-5" points="36 162 39.05 169.46 36 167.69 32.95 169.46 36 162"/>
+  </g>
+  <polyline class="cls-4" points="396 198 396 252 378 252 378 198 360 198 360 252 342 252 342 198 324 198 324 252 306 252 306 198 288 198 288 252 270 252 270 198 252 198 252 252 234 252 234 198 216 198 216 252 198 252 198 198 180 198 180 252 162 252 162 198 144 198 144 252 126 252 126 198 108 198 108 252 90 252 90 198 72 198 72 252 54 252 54 198 36 198 36 252"/>
+  <text class="cls-8" transform="translate(27 237.13) rotate(-90)"><tspan x="0" y="0">PL</tspan><tspan class="cls-10" x="14.68" y="0">L</tspan><tspan x="20.91" y="0" xml:space="preserve"> Output</tspan></text>
+  <text class="cls-8" transform="translate(387.78 270)"><tspan class="cls-10" x="0" y="0">T</tspan><tspan x="6.88" y="0">ime</tspan></text>
+  <text class="cls-6" transform="translate(36 36)"><tspan x="0" y="0">Phase Locked Loop</tspan></text>
+  <g>
+    <line class="cls-1" x1="43.06" y1="72" x2="180" y2="72"/>
+    <polygon class="cls-5" points="36 72 45.95 76.07 43.59 72 45.95 67.94 36 72"/>
+  </g>
+  <g>
+    <line class="cls-1" x1="388.94" y1="72" x2="252" y2="72"/>
+    <polygon class="cls-5" points="396 72 386.05 67.93 388.41 72 386.05 76.06 396 72"/>
+  </g>
+  <text class="cls-7" transform="translate(182.18 75)"><tspan x="0" y="0">1 Cycle @ 8MHz</tspan></text>
+  <g>
+    <line class="cls-1" x1="43.06" y1="180" x2="171" y2="180"/>
+    <polygon class="cls-5" points="36 180 45.95 184.07 43.59 180 45.95 175.94 36 180"/>
+  </g>
+  <g>
+    <line class="cls-1" x1="388.94" y1="180" x2="261" y2="180"/>
+    <polygon class="cls-5" points="396 180 386.05 175.93 388.41 180 386.05 184.06 396 180"/>
+  </g>
+  <text class="cls-7" transform="translate(174.92 183)"><tspan x="0" y="0">10 Cycles @ 80MHz</tspan></text>
+  <line class="cls-2" x1="396" y1="72" x2="396" y2="108.26"/>
+  <line class="cls-2" x1="396" y1="180" x2="396" y2="198"/>
+</svg>

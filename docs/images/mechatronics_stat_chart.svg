@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 216 126">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+      }
+
+      .cls-2 {
+        fill: #808285;
+      }
+
+      .cls-3 {
+        fill: none;
+        stroke: #231f20;
+        stroke-linejoin: round;
+      }
+
+      .cls-4 {
+        letter-spacing: -.02em;
+      }
+
+      .cls-5 {
+        fill: #d1d3d4;
+      }
+
+      .cls-6 {
+        fill: #231f20;
+        font-family: ArialMT, Arial;
+        font-size: 12px;
+      }
+    </style>
+  </defs>
+  <rect class="cls-1" width="216" height="126"/>
+  <path class="cls-2" d="M135,54c4.95,4.95.9,17.1-9,27s-26.1,9.9-36,0-13.95-22.05-9-27,17.1-9,27-9,22.05,4.05,27,9Z"/>
+  <path class="cls-5" d="M117,36c-4.95-4.95-13.05-4.95-18,0s-.9,9,9,9,13.95-4.05,9-9Z"/>
+  <rect class="cls-3" x="82.54" y="37.54" width="50.91" height="50.91" transform="translate(-12.92 94.82) rotate(-45)"/>
+  <text class="cls-6" transform="translate(71.99 18)"><tspan x="0" y="0">Programming</tspan></text>
+  <text class="cls-6" transform="translate(68.43 117)"><tspan x="0" y="0">Control</tspan><tspan class="cls-4" x="38.68" y="0"> </tspan><tspan x="41.8" y="0">Theory</tspan></text>
+  <text class="cls-6" transform="translate(153 63)"><tspan x="0" y="0">Electronics</tspan></text>
+  <text class="cls-6" transform="translate(5.64 63)"><tspan x="0" y="0">Mechanics</tspan></text>
+</svg>
