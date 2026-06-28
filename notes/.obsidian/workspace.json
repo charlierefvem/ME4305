@@ -4,21 +4,57 @@
     "type": "split",
     "children": [
       {
-        "id": "b7906ba22134958e",
+        "id": "b2be21751e705067",
         "type": "tabs",
+        "dimension": 36.59747292418773,
         "children": [
           {
-            "id": "8f5f38ad81205b38",
+            "id": "b039f3183863a84b",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Lecture Notes/lecture_04_fsms_and_state_transition_diagrams.md",
+                "file": "Lecture Notes/lecture_fsms_and_state_transition_diagrams.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "lecture_04_fsms_and_state_transition_diagrams"
+              "title": "lecture_fsms_and_state_transition_diagrams"
+            }
+          }
+        ]
+      },
+      {
+        "id": "8de41cbd5c4a3a69",
+        "type": "tabs",
+        "dimension": 63.40252707581227,
+        "children": [
+          {
+            "id": "dd3c0fd83fc3b3d7",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Lecture Notes/lecture_serial_communication.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "lecture_serial_communication"
+            }
+          },
+          {
+            "id": "e1dde0d54fdaf420",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Lecture Notes/lecture_scheduler.md",
+                "mode": "source",
+                "source": true
+              },
+              "icon": "lucide-file",
+              "title": "lecture_scheduler"
             }
           }
         ]
@@ -53,7 +89,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "tag:#State",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -180,18 +216,27 @@
       "daily-notes:Open today's daily note": false,
       "templates:Insert template": false,
       "command-palette:Open command palette": false,
-      "bases:Create new base": false
+      "bases:Create new base": false,
+      "webpage-html-export:Export as HTML": false
     }
   },
-  "active": "8f5f38ad81205b38",
+  "active": "b039f3183863a84b",
   "lastOpenFiles": [
-    "Lecture Notes/lecture_03_lab_hardware_overview_and_toolchain.md",
-    "Lecture Notes/lecture_02_collections_and_file_io.md",
-    "Lecture Notes/lecture_01_philosophy_of_mechatronics_and_python_fundamentals.md",
-    "Insights/observer.md",
-    "Lecture Notes/lecture_04_fsms_and_state_transition_diagrams.md",
+    "Lecture Notes/lecture_scheduler.md",
+    "index.md",
     "References/Collections and File IO.md",
     "References/state_feedback.md",
-    "index.md"
+    "Insights/observer.md",
+    "Lecture Notes/lecture_python_fundamentals.md",
+    "Lecture Notes/lecture_philosophy_of_mechatronics.md",
+    "Lecture Notes/lecture_fsms_and_state_transition_diagrams.md",
+    "Lecture Notes/lecture_collections.md",
+    "Lecture Notes/lecture_file_io.md",
+    "Lecture Notes/lecture_serial_communication.md",
+    "Lecture Notes/lecture_hardware_overview.md",
+    "Images/mechatronics_stat_chart.svg",
+    "Images/round_robin_scheduling.md",
+    "Images/priority_scheduling.svg",
+    "Images/round_robin_scheduling.svg"
   ]
 }

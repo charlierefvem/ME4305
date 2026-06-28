@@ -1,82 +1,70 @@
 ---
-title: Lecture 1 - Philosophy of Mechatronics and Python Fundamentals
+title: Python Fundamentals
 type: lecture
 topics:
-- mechatronics
-- Python
-- whitespace
-- objects
-- lists
-- strings
-- loops
+  - Python
+  - whitespace
+  - objects
+  - lists
+  - strings
+  - loops
 tags:
-- mechatronics
-- python
-- programming-fundamentals
+  - python
+  - programming-fundamentals
+source: ME405-2262 Lecture 1
+status: draft
 ---
 
 # Motivation
 
-This course is about mechatronic systems, not just mechanical systems with electronics attached.
+Python is an extremely versatile high-level language. It is often a good choice for beginner programmers due to the ubiquity of the language; that is, skills learned in the context of firmware development will still lead to valuable and generally applicable growth.
 
-A useful working definition is:
+# About Python
 
-> We put the smarts in mechanical systems.
+## Python is an Interpreted Language
 
-The "smarts" come from the overlap between several areas:
+Python is an interpreted language, as opposed to a compiled language. That is, Python code is not compiled before going to the hardware. Instead, a secondary program called the Python interpreter, at execution, interprets Python code line by line. During execution, the interpreter internally translates portions of the program into forms that can be executed efficiently. These implementation details are handled automatically and are not something programmers normally need to think about.
 
-- mechanics
-- electronics
-- programming
-- control theory
-
-A successful mechatronic system requires all of these pieces to work together. In this course, Python is one of the main tools we will use to make that happen.
-
-> TODO: Consider adding a clean version of the four-area sketch from lecture:
-> mechanics, electronics, programming, and control theory.
-
-# Concepts
-
-## Python is an interpreted language
-
-Python is an interpreted language, as opposed to a compiled language.
-
-That is, Python code is not compiled directly before going to the hardware. The Python interpreter, at runtime, interprets Python code line by line and executes it.
-
-For the lab hardware, the rough idea is:
+For our lab hardware in ME 4305, the rough workflow is:
 
 ```text
-Python code that we write
+Python code that we write and store on the microcontroller as .py files
         ↓
-MicroPython interpreter
+MicroPython interpreter reads and compiles code at startup
         ↓
-compiled code running on the microcontroller
+Compiled code runs on the microcontroller
         ↓
-hardware behavior
+The hardware (hopefully) responds with the intended output behavior
 ```
 
-The MicroPython interpreter that runs on our lab hardware is itself a compiled program written in C and Assembly. Its job is to run the Python code that we write.
+The Micropython interpreter that runs on our lab hardware is itself a compiled program written mostly in C. Its job is to run the Python code that we write.
 
 ## Trivia
 
-- The Python interpreter that runs on your computer was originally written in C, though it now also includes some Python code.
+- The Python interpreter that runs on your computer, often referred to as CPython, was originally written in C, though it now also includes Python code.
 - The Python programming language is named after Monty Python, not the animal.
 
 ## Big picture Python basics
 
-In Python, whitespace matters.
+In Python, whitespace matters. Indentation is used for structuring code, including loops and conditionals. Use four spaces per indentation level, not tabs. In some cases, spaces and newlines have specific meaning as well.
 
-Indentation is used for structuring code, including loops and conditionals. Use four spaces per indentation level, not tabs.
+Python is fundamentally an object-oriented language. *Every* variable is an object of some kind. We will return to this idea later in the course when you are asked to write your own classes.
 
-In some cases, spaces and newlines have specific meaning as well.
+# Python Coding Examples
+The best way to learn programming of any kind is to program! The following examples illustrate many of the fundamentals of the Python language.
 
-Python is also fundamentally object oriented. Every variable is an object of some kind. We will return to this idea later in the course.
+In ME 4305 we will focus on two things while writing code:
+1) What is the Pythonic (most idiomatic) approach? That is, how can we write code that uses Python as it was designed and intended to be used.
+2) When should we deliberately violate or bend the idiomatic approach? Often in embedded programming the idiomatic approach, while easier to read an maintain, leads to poor performance on real hardware due to limited resources.
+While these two foci compete with one another, we will aim to develop intuition about the resources available so that we may choose the right approach for a given task.
 
-# Examples
+In the short-term, learning the absolute basics must come first.
 
 ## Example 1: `if` statements
 
-Python `if` statements do not use parentheses around the condition by default. The colon starts the indented block.
+Python `if` statements do not use parentheses around the condition because `if` is a keyword, not a function. Only add parentheses for clarification (grouping).
+
+For an `if` statement, the colon starts an indented block; all code within the statement must exist within this indented block; unindenting tells the interpreter that the block of code has ended.
 
 ```python
 x = 3
@@ -86,28 +74,33 @@ if x == 3:
 ```
 
 Important syntax details:
-
-- `==` checks whether two values are equal.
-- `:` starts the indented block.
-- The indented code is the part that runs only if the condition is true.
-- The indentation is not optional.
+* '=', the assignment operator, assigns values to an object.
+* `==`, the equality operator, checks whether two values are equal.
+* `:` starts the indented block.
+* The indented code is the part that runs only if the condition is true.
+* The indentation is *not* optional.
 
 ## Example 2: waiting for user input
 
-The `input()` function pauses the program and waits for the user to type something.
+The `input()` function pauses the program and waits for the user to type something. In most lab work you will need to write non-blocking code, however this function will remain useful in homework assignments.
 
 ```python
-my_input = input("Enter a number")
+my_input = input("Enter a number: ")
 my_num = float(my_input)
-
 print(my_num)
+```
+
+Output:
+```text
+Enter a number: 42
+42.0
 ```
 
 The value returned by `input()` is a string. If you want to treat the result as a number, convert it explicitly. In this example, `float()` converts the input text to a floating-point number.
 
 ## Example 3: working with lists
 
-A list can store multiple values.
+A list can store multiple items and each item may be any kind of Python object. In most cases lists should be used to store data of a uniform type, but not always.
 
 ```python
 my_list = []                  # create empty list
@@ -119,12 +112,19 @@ A list is an object, so it has methods that operate on the list.
 ```python
 my_list = [1, 2, "three"]
 
-my_list.append("four")        # append to end
+my_list.append("four")        # append a new item to the end of the list
 print(my_list)
 
-last_item = my_list.pop()     # remove and return last item
+last_item = my_list.pop()     # remove and return the last item
 print(last_item)
 print(my_list)
+```
+
+Output:
+```text
+[1, 2, 'three', 'four']
+four
+[1, 2, 'three']
 ```
 
 The method call
@@ -139,7 +139,7 @@ can be read as:
 object.method(argument)
 ```
 
-That is, call the `append()` method on the object `my_list`, and pass in the thing that should be appended.
+That is, call the `append()` method on the object `my_list`, and pass in the item that should be appended.
 
 ## Example 4: string concatenation
 
@@ -200,16 +200,15 @@ Output:
 ```
 
 In this example:
+* `my_num` is the name we give each item while iterating.
+* `my_list` is the iterable, or list-like object, being iterated through.
 
-- `my_num` is the name we give each item while iterating.
-- `my_list` is the iterable, or list-like object, being iterated through.
-
-Lists can also be indexed. For the example above:
+Lists can also be indexed both forward, in the traditional sense, and in reverse, using negative indices. For the example above:
 
 ```text
-index:    0   1   2   3   4
-value:    1   2   4   8   16
-reverse: -5  -4  -3  -2  -1
+index:    0  →  1  →  2  →  3  →  4
+value:    1     2     4     8     16
+reverse: -5  ← -4  ← -3  ← -2  ← -1
 ```
 
 ## Example 7: iterating with indices
@@ -283,7 +282,7 @@ for my_idx in range(len(my_list)):
 
 The expression `range(len(my_list))` produces indices from `0` through `N-1`, where `N` is the length of the list.
 
-This pattern is generally avoided when directly iterating through the list would work, but it can be useful when list items need to be modified inside the loop.
+This pattern is generally avoided when directly iterating through the list would work, but it can be useful when list items need to be modified inside the loop. Standard iteration provides read-only access to list items, so iterating through a range and indexing the list allows the list items to be mutated.
 
 ## Example 10: using `break`
 
@@ -399,20 +398,9 @@ The most important Python ideas introduced in this lecture were:
 - `break`
 - `continue`
 
-# Related Topics
-
-- [[Object-Oriented Programming]]
-- [[Finite State Machines]]
-- [[MicroPython]]
-- [[Real-Time Systems]]
-
 # Candidate Static Notes
 
 These are concepts from this lecture that may eventually deserve short reusable reference notes.
-
-- [[What is Mechatronics]]
-- [[Interpreted vs Compiled Languages]]
-- [[Python Whitespace]]
-- [[Python Lists]]
-- [[Python Loops]]
-- [[Python Objects]]
+* [[Mutability]]
+* [[Lists]]
+* [[Loops]]

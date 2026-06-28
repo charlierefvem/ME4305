@@ -10,7 +10,7 @@
     "postProcess": true,
     "displayProgress": true,
     "inlineHTML": false,
-    "exportPath": "",
+    "exportPath": "D:\\Repositories\\Sites\\ME4305\\build",
     "filesToExport": [],
     "useFallbackRenderer": false,
     "addBodyClasses": true,
