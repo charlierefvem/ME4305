@@ -3,92 +3,40 @@
   <defs>
     <style>
       .cls-1 {
-        letter-spacing: 0em;
-      }
-
-      .cls-2 {
-        letter-spacing: 0em;
-      }
-
-      .cls-3 {
         fill: #fff;
       }
 
-      .cls-4 {
+      .cls-2 {
         fill: #808285;
       }
 
-      .cls-5 {
+      .cls-3 {
         fill: none;
         stroke: #231f20;
         stroke-linejoin: round;
       }
 
-      .cls-6 {
+      .cls-4 {
         letter-spacing: -.02em;
       }
 
-      .cls-7 {
-        letter-spacing: 0em;
-      }
-
-      .cls-8 {
-        letter-spacing: .03em;
-      }
-
-      .cls-9 {
-        letter-spacing: 0em;
-      }
-
-      .cls-10 {
+      .cls-5 {
         fill: #d1d3d4;
       }
 
-      .cls-11 {
-        letter-spacing: -.04em;
-      }
-
-      .cls-12 {
-        letter-spacing: 0em;
-      }
-
-      .cls-13 {
+      .cls-6 {
         fill: #231f20;
-        font-family: MyriadPro-Regular, 'Myriad Pro';
+        font-family: ArialMT, Arial;
         font-size: 12px;
-      }
-
-      .cls-14 {
-        letter-spacing: 0em;
-      }
-
-      .cls-15 {
-        letter-spacing: -.01em;
-      }
-
-      .cls-16 {
-        letter-spacing: -.01em;
-      }
-
-      .cls-17 {
-        letter-spacing: 0em;
-      }
-
-      .cls-18 {
-        letter-spacing: 0em;
-      }
-
-      .cls-19 {
-        letter-spacing: .01em;
       }
     </style>
   </defs>
-  <rect class="cls-3" width="216" height="126"/>
-  <path class="cls-4" d="M135,54c4.95,4.95.9,17.1-9,27s-26.1,9.9-36,0-13.95-22.05-9-27,17.1-9,27-9,22.05,4.05,27,9Z"/>
-  <path class="cls-10" d="M117,36c-4.95-4.95-13.05-4.95-18,0s-.9,9,9,9,13.95-4.05,9-9Z"/>
-  <rect class="cls-5" x="82.54" y="37.54" width="50.91" height="50.91" transform="translate(-12.92 94.82) rotate(-45)"/>
-  <text class="cls-13" transform="translate(73.47 18)"><tspan class="cls-6" x="0" y="0">P</tspan><tspan class="cls-17" x="6.19" y="0">r</tspan><tspan x="10" y="0">o</tspan><tspan class="cls-1" x="16.58" y="0">g</tspan><tspan class="cls-2" x="23.22" y="0">r</tspan><tspan class="cls-12" x="27.08" y="0">amming</tspan></text>
-  <text class="cls-13" transform="translate(70.85 117)"><tspan class="cls-15" x="0" y="0">C</tspan><tspan x="6.83" y="0">o</tspan><tspan class="cls-18" x="13.42" y="0">n</tspan><tspan class="cls-12" x="20.03" y="0">t</tspan><tspan class="cls-16" x="24" y="0">r</tspan><tspan x="27.8" y="0">ol</tspan><tspan class="cls-11" x="37.22" y="0"> </tspan><tspan class="cls-14" x="39.28" y="0">T</tspan><tspan x="45.16" y="0">heo</tspan><tspan class="cls-8" x="64.42" y="0">r</tspan><tspan x="68.64" y="0">y</tspan></text>
-  <text class="cls-13" transform="translate(153 63)"><tspan x="0" y="0">Ele</tspan><tspan class="cls-19" x="14.75" y="0">c</tspan><tspan x="20.28" y="0">t</tspan><tspan class="cls-7" x="24.25" y="0">r</tspan><tspan x="28.06" y="0">onics</tspan></text>
-  <text class="cls-13" transform="translate(9.85 63)"><tspan class="cls-9" x="0" y="0">M</tspan><tspan x="9.72" y="0">echanics</tspan></text>
+  <rect class="cls-1" width="216" height="126"/>
+  <path class="cls-2" d="M135,54c4.95,4.95.9,17.1-9,27s-26.1,9.9-36,0-13.95-22.05-9-27,17.1-9,27-9,22.05,4.05,27,9Z"/>
+  <path class="cls-5" d="M117,36c-4.95-4.95-13.05-4.95-18,0s-.9,9,9,9,13.95-4.05,9-9Z"/>
+  <rect class="cls-3" x="82.54" y="37.54" width="50.91" height="50.91" transform="translate(-12.92 94.82) rotate(-45)"/>
+  <text class="cls-6" transform="translate(71.99 18)"><tspan x="0" y="0">Programming</tspan></text>
+  <text class="cls-6" transform="translate(68.43 117)"><tspan x="0" y="0">Control</tspan><tspan class="cls-4" x="38.68" y="0"> </tspan><tspan x="41.8" y="0">Theory</tspan></text>
+  <text class="cls-6" transform="translate(153 63)"><tspan x="0" y="0">Electronics</tspan></text>
+  <text class="cls-6" transform="translate(5.64 63)"><tspan x="0" y="0">Mechanics</tspan></text>
 </svg>

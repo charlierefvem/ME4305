@@ -14,12 +14,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Lecture Notes/lecture_fsms_and_state_transition_diagrams.md",
+                "file": "Lecture Notes/lecture_crystals_timers_and_counters.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "lecture_fsms_and_state_transition_diagrams"
+              "title": "lecture_crystals_timers_and_counters"
             }
           }
         ]
@@ -27,7 +27,7 @@
       {
         "id": "8de41cbd5c4a3a69",
         "type": "tabs",
-        "dimension": 63.40252707581227,
+        "dimension": 63.40252707581228,
         "children": [
           {
             "id": "dd3c0fd83fc3b3d7",
@@ -222,21 +222,29 @@
   },
   "active": "b039f3183863a84b",
   "lastOpenFiles": [
-    "Lecture Notes/lecture_scheduler.md",
-    "index.md",
     "References/Collections and File IO.md",
     "References/state_feedback.md",
     "Insights/observer.md",
+    "Lecture Notes/lecture_scheduler.md",
     "Lecture Notes/lecture_python_fundamentals.md",
     "Lecture Notes/lecture_philosophy_of_mechatronics.md",
-    "Lecture Notes/lecture_fsms_and_state_transition_diagrams.md",
     "Lecture Notes/lecture_collections.md",
     "Lecture Notes/lecture_file_io.md",
     "Lecture Notes/lecture_serial_communication.md",
     "Lecture Notes/lecture_hardware_overview.md",
-    "Images/mechatronics_stat_chart.svg",
-    "Images/round_robin_scheduling.md",
+    "index.md",
+    "Lecture Notes/lecture_fsms_and_state_transition_diagrams.md",
+    "Lecture Notes/lecture_crystals_timers_and_counters.md",
+    "Images/shoe_of_brian.png",
+    "Images/shoe_coms.png",
+    "Images/round_robin_scheduling.svg",
     "Images/priority_scheduling.svg",
-    "Images/round_robin_scheduling.svg"
+    "Images/prescaled_upcounting.svg",
+    "Images/phase_locked_loop.svg",
+    "Images/motor_frequency_response.svg",
+    "Images/mechatronics_stat_chart.svg",
+    "Images/left_aligned_pwm.svg",
+    "Images/basic_upcounting.svg",
+    "Images/round_robin_scheduling.md"
   ]
 }
