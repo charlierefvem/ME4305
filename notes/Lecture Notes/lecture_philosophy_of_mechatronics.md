@@ -36,3 +36,5 @@ Some engineers, like your instructor, consider programming to be less rewarding 
 A good mechatronics engineer should be able to wear many hats and communicate about each aspect of the design, but doesn't need to be *fluent* in each aspect.
 
 Throughout the course, remember that our goal is not to write elegant software, design beautiful mechanisms, or implement sophisticated controllers in isolation. The goal is to make the machine accomplish its intended task.
+
+In this course we will often begin with the engineering problem rather than the standard solution. By understanding the constraints and observations that motivated a technology, the resulting algorithms and hardware become easier to understand, remember, and adapt to new situations.
