@@ -19,6 +19,8 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Install pdf2svg
         run: |
@@ -35,6 +37,39 @@ jobs:
             exit 0
           fi
 
+          declare -A candidates=()
+
+          before="${{ github.event.before }}"
+          after="${{ github.sha }}"
+
+          if [ "$before" != "0000000000000000000000000000000000000000" ] && git cat-file -e "$before^{commit}" 2>/dev/null; then
+            while IFS= read -r -d '' changed; do
+              lower="${changed,,}"
+              if [[ "$lower" == figures/*.pdf ]] && [ -f "$changed" ]; then
+                candidates["$changed"]=1
+              fi
+            done < <(git diff --name-only -z --diff-filter=ACMR "$before" "$after" -- figures)
+          else
+            while IFS= read -r -d '' pdf; do
+              candidates["$pdf"]=1
+            done < <(find figures -type f -iname '*.pdf' -print0)
+          fi
+
+          # Self-heal if an SVG was deleted or never generated.
+          while IFS= read -r -d '' pdf; do
+            rel="${pdf#figures/}"
+            svg="notes/Images/${rel%.[Pp][Dd][Ff]}.svg"
+
+            if [ ! -f "$svg" ]; then
+              candidates["$pdf"]=1
+            fi
+          done < <(find figures -type f -iname '*.pdf' -print0)
+
+          if [ "${#candidates[@]}" -eq 0 ]; then
+            echo "No changed PDFs or missing SVGs found; nothing to convert."
+            exit 0
+          fi
+
           converted=()
 
           while IFS= read -r -d '' pdf; do
@@ -45,10 +80,10 @@ jobs:
             echo "Converting $pdf -> $svg"
             pdf2svg "$pdf" "$svg"
             converted+=("$svg")
-          done < <(find figures -type f \( -iname '*.pdf' \) -print0 | sort -z)
+          done < <(printf '%s\0' "${!candidates[@]}" | sort -z)
 
           if [ "${#converted[@]}" -eq 0 ]; then
-            echo "No PDF files found under figures; nothing to convert."
+            echo "No PDFs were converted."
             exit 0
           fi
 
