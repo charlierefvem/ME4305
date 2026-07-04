@@ -28,94 +28,33 @@ This case study covers:
 * Velocity-estimation techniques, including finite differences and moving averages.
 * An [[reference_disturbance_observer|augmented disturbance observer]] for estimating motor velocity from encoder measurements in the presence of quantization noise and an unknown disturbance in acceleration.
 
-# Discrete control
+# Discrete Control
 
 In this section, the basics of discrete controls are presented primarily in the context of a [[PI controller]]. Refer to [[reference_z_domain|Discrete Time Systems]] for background on discrete signals, the z-domain, and difference equations.
 
-## The PID controller in continuous time
+## PI Control
 
-Readers of this document should have passing familiarity with [[reference_PID|PID Controllers]] from study in this and other courses. For the remainder of this document, it will be assumed that the following standard form of the PID controller is well understood:
+Readers of this document should have passing familiarity with [[reference_PID|PID Controllers]] from study in this and other courses. For the remainder of this document, it will be assumed that the following standard form of a PI controller is well understood:
 $$
-\begin{aligned}
-u &= K_p\, e + K_i\, \int_0^t e\,\mathrm{d}\tau + K_d\,\frac{\mathrm{d}}{\mathrm{d}t}\,e,
-\end{aligned}
+u(t) = K_p\, e + K_i\, \int e\,\mathrm{d}\tau 
 $$
-where $u$ is the output of the controller, or equivalently the input to the system being controlled; $e = x_r - x$ is the system error, or difference between the reference setpoint $x_r$ and the control variable $x$; and $K_p$, $K_i$, and $K_d$ are the proportional, integral, and derivative gains.
+where $u$ is the output of the controller representing actuation effort. Derivative control is not used due to its limited utility in systems with significant measurement or quantization noise. 
 
-It will be assumed that $K_d = 0$ due to the limited utility of differential action in systems with non-negligible measurement or quantization noise. Therefore, the control law reduces to
+We approximate the integral using a rectangular update:
 $$
-\begin{aligned}
-u &= K_p\, e + K_i\, \int_0^t e\,\mathrm{d}\tau.
-\end{aligned}
+I_{k+1} = I_k + e_k.
 $$
 
-This control law is often represented by a transfer function:
-$$
-\begin{aligned}
-u(s) &= K_p\, e(s) + \frac{K_i}{s}\, e(s) \\
-\frac{u(s)}{e(s)} &= K_p + \frac{K_i}{s}.
-\end{aligned}
-$$
-
-### The discrete-time integrator
-
-The controller,
-$$
-C(s) = K_p + \frac{K_i}{s},
-$$
-can now be reinterpreted as a discrete-time transfer function by applying a [[reference_continuous_to_discrete|continuous-to-discrete conversion]], such as the bilinear transform. Alternatively, the PI controller can simply be reimplemented in discrete time by using Euler's method to approximate the integrator. Use of Euler's method here is equivalent to applying the forward-difference method for continuous-to-discrete conversion.
-
-To use Euler's method, start with
-$$
-\begin{aligned}
-\int_{t_0}^{t_1} e\, \mathrm{d}t \approx e(t_0)(t_1 - t_0),
-\end{aligned}
-$$
-for an error $e(t)$ treated as constant during the window of time between $t_0$ and $t_1$. 
-
-More generally,
-$$
-\begin{aligned}
-\int_{t_k}^{t_{k+1}} e\, \mathrm{d}t &\approx e(t_k)(t_{k+1} - t_k).
-\end{aligned}
-$$
-
-We can then define the integral error, $I$, at step $k+1$, as
-$$
-\begin{aligned}
-I_{k+1} - I_k &= \int_{t_k}^{t_{k+1}} e\, \mathrm{d}t, \\
-I_{k+1} &= I_k + e_k\,T_s.
-\end{aligned}
-$$
-
-### The PI controller in discrete time
-
-Using the discrete form of the integrator above, we can conclude that the controller output should be
+The control law is therefore
 $$
 \begin{aligned}
 u_k = K_p\,e_k + K_i\,I_k.
 \end{aligned}
 $$
 
-Together, the integrator update law
-$$
-\begin{aligned}
-I_{k+1} &= I_k + e_k\,T_s
-\end{aligned}
-$$
-and the controller output law
-$$
-\begin{aligned}
-u_k &= K_p\,e_k + K_i\,I_k
-\end{aligned}
-$$
-form a first-order state-space system, with the first equation being the state equation and the second equation being the output equation. In practice, the output $u_k$ is often constrained, or saturated, by actuator limitations, as is done in continuous-time controls.
+**Note**: in this convention the value of $K_i$ already accounts for the sample period, $T_s$.
 
-The next practical challenge is reliably measuring the control variable $x$. For the remainder of this document, the control variable will be assigned as
-$$
-x = \Omega,
-$$
-where $\Omega$ is the angular velocity of the DC motor.
+In firmware the actuation effort produced by the control law is saturated based on the available actuation limits. Anti-windup is also added in firmware using conditional-integration techniques. These nuances will be covered in greater detail at the end of this case study. For more information on anti-windup techniques see the pertinent section in [[reference_PID|PID Controllers]].
 
 ## Velocity estimation using encoders
 
@@ -125,25 +64,11 @@ In general, encoders provide information at insufficient update rates when opera
 
 ### Finite-difference approximation
 
-The simplest solution to numerical differentiation is the finite-difference method, which can be explained as the reverse of Euler's method, equivalent to the backward-difference method covered in [[reference_continuous_to_discrete|Continuous to Discrete Conversion]]. That is,
-$$
-\begin{aligned}
-\left. \frac{\mathrm{d}\theta}{\mathrm{d}t} \right|_{t=t_1} &\approx \frac{\theta(t_1) - \theta(t_0)}{t_1 - t_0}
-\end{aligned}
-$$
-for a displacement $\theta(t)$ assumed to vary linearly over the window of time between $t_0$ and $t_1$.
+The simplest solution to numerical differentiation is the finite-difference method, which can be explained as the reverse of Euler's method, equivalent to the backward-difference method covered in [[reference_continuous_to_discrete|Continuous to Discrete Conversion]]. 
 
-More generally,
+Applying this method to define the angular velocity, $\Omega$, gives
 $$
 \begin{aligned}
-\left. \frac{\mathrm{d}\theta}{\mathrm{d}t} \right|_{t=t_k} &\approx \frac{\theta(t_k) - \theta(t_{k-1})}{t_k - t_{k-1}}.
-\end{aligned}
-$$
-
-We can then define the angular velocity, $\Omega$, as
-$$
-\begin{aligned}
-\Omega_k &= \left. \frac{\mathrm{d}\theta}{\mathrm{d}t} \right|_{t=t_k}, \\
 \Omega_k &= \frac{\theta_k - \theta_{k-1}}{T_s}.
 \end{aligned}
 $$
@@ -154,7 +79,7 @@ The resolution problem can be seen by considering the example when
 $$
 \left|\Omega_k\,T_s\right| < \frac{2\pi}{CPR},
 $$
-where $CPR$ is is the encoder resolution in counters per revolution.
+where $CPR$ is the encoder resolution in counts per revolution.
 
 In this extreme case, the velocity is low enough that, for a sample period $T_s$, the quantization may cause no change to occur in displacement between samples. To handle speeds this low using a finite-difference approach, the sample time $T_s$ must increase, which may conflict with the intentions for controller design.
 
@@ -188,11 +113,11 @@ A more effective solution for the Romi hardware, covered in the next section, is
 
 # Motor Observer Design
 
-## Observer design and derivation
+## Observer-Based Velocity Estimation
 
 Both finite-difference and moving-average approaches estimate velocity using only encoder measurements. Neither method directly incorporates knowledge of the motor dynamics. An [[reference_observer_design|observer]] provides an alternative approach by combining a mathematical model of the motor with encoder measurements and knowledge of the applied voltage to estimate the system state. This method allows the observer to reject measurement noise while maintaining a responsive estimate of velocity.
 
-The purpose of this section is to provide a detailed and annotated derivation of the augmented disturbance observer planned for use in the later part of ME 4305. The observer model is intended to estimate the internal state of a simple first-order model of a PMDC motor with robustness against inaccuracies in the plant model, such as an incorrect back-EMF constant or an inaccurate time constant.
+The purpose of this section is to build the augmented disturbance-observer model used for the lab implementation. The observer model is intended to estimate the internal state of a simple first-order model of a PMDC motor with robustness against inaccuracies in the plant model, such as an incorrect back-EMF constant or an inaccurate time constant.
 
 ### The plant model
 
@@ -272,7 +197,7 @@ $$
 
 In the observer, however, we do not estimate $\Delta K_m$ directly. Instead, we estimate a slowly varying acceleration correction $d$ that can absorb motor-gain error, friction effects, battery variation, and other model mismatch over short time windows.
 
-The disturbance enters the velocity dynamics because uncertainty in $K_m$ , torque uncertainty, and time constant uncertainty all manifest as an unknown acceleration-producing inputs, meaning the disturbances directly affect the rate of change of the velocity and only indirectly affect the displacement. Therefore, the disturbance is introduced through the same channel as the motor actuation.
+The disturbance enters the velocity dynamics because uncertainty in $K_m$, torque uncertainty, and time constant uncertainty all manifest as an unknown acceleration-producing input, meaning the disturbances directly affect the rate of change of the velocity and only indirectly affect the displacement. Therefore, the disturbance is introduced through the same channel as the motor actuation.
 
 For constant input $u$, the disturbance $d$ should remain constant, and for changing input the disturbance is assumed to change slowly. Therefore, we can claim that
 $$
@@ -331,7 +256,6 @@ u
 $$
 
 Planning for observer design, we recognize that only the angular displacement $\theta$ can be measured directly. Therefore, we can conclude the state-space output is $y=\theta$, or more formally,
-
 $$
 \begin{aligned}
 \begin{bmatrix}
@@ -400,7 +324,7 @@ C\,A^2
 $$
 which has full rank for finite $\tau$. For the actual implementation, it is recommended to also check the discretized pair $(A_d,C_d)$, perhaps using MATLAB:
 
-``` MATLAB
+```matlab
 rank(obsv(Ad, Cd))
 ```
 
@@ -409,7 +333,6 @@ The observer will be a standard augmented disturbance observer, as covered in [[
 Augmenting before discretization is equivalent to assuming that the disturbance state is constant over each sample interval, just like the zero-order-hold assumption treats the motor command as constant over each sample interval.
 
 For implementation purposes, the observer is formulated directly in discrete time rather than designing a continuous-time observer and discretizing the resulting gain. We will use the zero-order hold method for discretization, leading to
-
 $$
 \begin{aligned}
 A_d &= \exp(A\,T_s), \\[4pt]
@@ -432,60 +355,32 @@ $$
 A_o = A_d - L\,C_d.
 $$
 
-We will do this by selecting time-domain performance criteria, then by determining continuous-time poles, and finally by discretizing the poles to allow pole placement for the discrete-time model.
-
-Rather than selecting observer poles directly, we specify desired error-dynamics performance in terms of settling time and maximum overshoot. These specifications are then converted into continuous-time pole locations.
-
-For 2% settling time, we have
+In this example, we choose a dominant second-order pair from settling-time and overshoot specifications, then add one additional real pole because the augmented observer has three states.  
+  
+The continuous-time observer poles are
 $$
 \begin{aligned}
-t_s = \frac{4}{\zeta\,\omega_n},
+s_{1,2} &= -\zeta\,\omega_n \pm i\,\omega_n\sqrt{1-\zeta^2}, \\
+s_3 &= -r\,\zeta\,\omega_n
 \end{aligned}
 $$
-and for maximum overshoot, described by a decimal number such as 0.1 for 10% overshoot, we have
-$$
-\begin{aligned}
-M_p = \exp\left(-\frac{\zeta\,\pi}{\sqrt{1-\zeta^2}}\right).
-\end{aligned}
-$$
+where $r$ is a pole-ratio that scales the third pole proportionately to the real part of the two second-order dominant poles.
 
-These equations can be solved simultaneously to find
-$$
-\begin{aligned}
-\zeta &= \sqrt{\frac{\log^2(M_p)}{\pi^2 + \log^2(M_p)}}, \\
-\omega_n &= \frac{4}{\zeta t_s}.
-\end{aligned}
-$$
-
-From here, we can produce complex-conjugate poles associated with a second-order continuous-time system:
-$$
-\begin{aligned}
-s_{1,2} = -\zeta\,\omega_n \pm i\,\omega_n\sqrt{1-\zeta^2},
-\end{aligned}
-$$
-and then augment the system by adding an additional pole based on $\omega_n$ and a pole ratio $r$ such that
-$$
-\begin{aligned}
-s_3 = -r\,\zeta\,\omega_n.
-\end{aligned}
-$$
-
-The additional real pole is required because inclusion of the disturbance state causes the model to be of order three instead of order two. The ratio $r$ determines how quickly the observer adapts to model mismatch relative to the dominant second-order error dynamics.
-
-The continuous-time poles $s_{1,2,3}$ can now be converted to discrete-time poles using
-
+The continuous-time poles $s_{1,2,3}$ are converted to discrete-time poles using
 $$
 \begin{aligned}
 z_i = \exp\left(s_i\,T_s\right) \quad \forall~ i \in \{1,2,3\}.
 \end{aligned}
 $$
 
-With the discrete-time poles $z_{1,2,3}$ determined, the transpose of the observer gain, $L^T$, can be determined by using pole placement on $A_d^T$ and $C_d^T$:
+The observer gain is then determined using pole placement on $A_d^T$ and $C_d^T$:
 $$
 \begin{aligned}
 L = \operatorname{place}\left(A_d^T, C_d^T, [z_1\;z_2\;z_3]\right)^T.
 \end{aligned}
 $$
+
+For a more detailed explanation of this procedure see pertinent sections of [[topic_state_feedback|Fundamentals of State Feedback]].
 
 With the observer gain determined, we can now produce the state-space matrix representation of the observer. This formulation allows the observer to be implemented directly as a discrete-time state-space system using standard simulation or embedded-control tools.
 
@@ -542,17 +437,17 @@ The implementation sequence obeys the following rules:
 - Equations avoid mixing present and future samples on the same side of an equation.
 - Circular equations are avoided.
 
-| Step | Operation                                                                        | Purpose                                                                                                                                                                                                                                    |
-| ---- | -------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| 1    | $\hat{\Omega}_k = \begin{bmatrix}1&0&0\end{bmatrix} \,\hat{\underline{x}}_k$     | Extracts the angular velocity for this sample, from the estimate predicted by the previous observer step.                                                                                                                                  |
-| 2    | $e_k = \Omega_r(t_k) - \hat{\Omega}_k$                                           | Computes the control error using the angular velocity estimate, and the reference velocity at the present sample.                                                                                                                          |
-| 3    | $u_{req,k} = K_p e_k + K_i I_k$                                                  | Computes the requested (pre-saturation) actuation effort at the present sample using the PI control law.                                                                                                                                   |
-| 4    | $u_k = \text{sat}_{[u_{\min},u_{\max}]} \left( u_{req,k} \right)$                | Compute the saturated actuation effort that is applied to the system, by clipping the requested actuation effort at the saturation limits for the actuator.                                                                                |
-| 5    | $r_k = u_{req,k}-u_k$                                                            | Computes the saturation residual: the difference between the pre- and post-saturation actuation efforts. This residual is zero when the integrator has not saturated and otherwise represents the degree to which saturation has occurred. |
-| 6    | $\gamma_k = \mathbb{1} \left[ r_k e_k \le 0 \right]$                             | Defines the conditional-integration gate using the indicator function written as $\mathbb{1}$.<br>    $\gamma_k=1$: the integrator is allowed to update.<br>    $\gamma_k=0$: the integrator is held constant.                             |
-| 7    | $I_{k+1} = I_k + \gamma_k\,T_s\, e_k$                                            | Updates the state of the integrator only when the permitted by =the conditional-integration gate. This handles the anti-windup needed to keep the integrator well behaved.                                                                 |
-| 8    | $\underline{w}_k = \begin{bmatrix} u_k \\ \theta_k \end{bmatrix}$                | Builds the vector of known information from the post-saturation actuation value and a new displacement measurement from the encoder.                                                                                                       |
-| 9    | $\hat{\underline{x}}_{k+1} = A_o\,\hat{\underline{x}}_k + B_o\, \underline{w}_k$ | Updates the observer estimate using the known-information vector.                                                                                                                                                                          |
+| Step | Operation                                                                        | Purpose                                                                                                                                                                                                                                                                   |
+| ---- | -------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1    | $\hat{\Omega}_k = \begin{bmatrix}1&0&0\end{bmatrix} \,\hat{\underline{x}}_k$     | Extracts the angular velocity for this sample, from the estimate predicted by the previous observer step.                                                                                                                                                                 |
+| 2    | $e_k = \Omega_r(t_k) - \hat{\Omega}_k$                                           | Computes the control error using the angular velocity estimate, and the reference velocity at the present sample.                                                                                                                                                         |
+| 3    | $u_{req,k} = K_p e_k + K_i I_k$                                                  | Computes the requested (pre-saturation) actuation effort at the present sample using the PI control law.                                                                                                                                                                  |
+| 4    | $u_k = \text{sat}_{[u_{\min},u_{\max}]} \left( u_{req,k} \right)$                | Computes the saturated actuation effort that is applied to the system, by clipping the requested actuation effort at the saturation limits for the actuator.                                                                                                              |
+| 5    | $r_k = u_{req,k}-u_k$                                                            | Computes the saturation residual: the difference between the pre- and post-saturation actuation efforts. This residual is zero when the requested command is within the actuator limits and otherwise represents how far the requested command was clipped by saturation. |
+| 6    | $\gamma_k = \mathbb{1} \left[ r_k e_k \le 0 \right]$                             | Defines the conditional-integration gate using the indicator function written as $\mathbb{1}$.<br>    $\gamma_k=1$: the integrator is allowed to update.<br>    $\gamma_k=0$: the integrator is held constant.                                                            |
+| 7    | $I_{k+1} = I_k + \gamma_k\, e_k$                                                 | Updates the state of the integrator only when permitted by the conditional-integration gate. This prevents the integrator from accumulating error when doing so would drive the actuator command farther into saturation.                                                 |
+| 8    | $\underline{w}_k = \begin{bmatrix} u_k \\ \theta_k \end{bmatrix}$                | Builds the vector of known information from the post-saturation actuation value and a new displacement measurement from the encoder.                                                                                                                                      |
+| 9    | $\hat{\underline{x}}_{k+1} = A_o\,\hat{\underline{x}}_k + B_o\, \underline{w}_k$ | Updates the observer estimate using the known-information vector.                                                                                                                                                                                                         |
 
 # Insights
 
