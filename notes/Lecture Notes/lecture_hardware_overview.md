@@ -1,14 +1,14 @@
 ---
 title: Hardware and Software Toolchain
-type: lecture
-topics:
-  - STM32 Nucleo
-  - Toolchain
+type: topic
 tags:
   - stm32
   - nucleo
   - micropython
-source: ME405-2262 Lecture 3
+source:
+  course: ME405
+  term: 2262
+  lecture: 3
 status: draft
 ---
 

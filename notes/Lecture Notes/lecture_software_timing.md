@@ -1,12 +1,13 @@
 ---
 title: Software Timing
-type: lecture
+type: topic
 tags:
   - python
   - micropython
-topics:
-  - Software Timing
-source: ME405-2262 Lecture 8
+source:
+  course: ME405
+  term: 2262
+  lecture: 8
 status: draft
 ---
 

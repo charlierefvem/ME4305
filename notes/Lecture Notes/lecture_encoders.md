@@ -1,13 +1,13 @@
 ---
 title: Encoders and Decoding Quadrature Output
-type: lecture
-topics:
-  - Quadrature Encoders
-  - Timers
+type: topic
 tags:
   - timers
   - encoders
-source: ME405-2262 Lecture 6
+source:
+  course: ME405
+  term: 2262
+  lecture: 6
 status: draft
 ---
 # Motivation

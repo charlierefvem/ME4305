@@ -1,11 +1,12 @@
 ---
 title: Philosophy of Mechatronics
-type: lecture
-topics:
-  - mechatronics
+type: topic
 tags:
   - mechatronics
-source: ME405-2262 Lecture 1
+source:
+  course: ME405
+  term: 2262
+  lecture: 1
 status: draft
 ---
 

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 342 153">
+  <defs>
+    <style>
+      .cls-1 {
+        letter-spacing: -.02em;
+      }
+
+      .cls-2, .cls-3 {
+        fill: #231f20;
+      }
+
+      .cls-4 {
+        fill: #fff;
+      }
+
+      .cls-5, .cls-6 {
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .cls-5, .cls-6, .cls-7 {
+        fill: none;
+        stroke: #231f20;
+      }
+
+      .cls-8 {
+        letter-spacing: -.06em;
+      }
+
+      .cls-9 {
+        letter-spacing: -.07em;
+      }
+
+      .cls-6 {
+        stroke-width: .5px;
+      }
+
+      .cls-10 {
+        letter-spacing: -.02em;
+      }
+
+      .cls-7 {
+        stroke-miterlimit: 10;
+      }
+
+      .cls-3 {
+        font-family: ArialMT, Arial;
+        font-size: 12px;
+      }
+    </style>
+  </defs>
+  <rect class="cls-4" width="342" height="153"/>
+  <text class="cls-3" transform="translate(234 90)"><tspan x="0" y="0">n</tspan><tspan class="cls-8" x="6.67" y="0">F</tspan><tspan x="13.34" y="0">AU</tspan><tspan class="cls-9" x="30.01" y="0">L</tspan><tspan class="cls-10" x="35.79" y="0">T</tspan></text>
+  <text class="cls-3" transform="translate(90.66 91.27)"><tspan x="0" y="0">P</tspan></text>
+  <text class="cls-3" transform="translate(98.67 95.26) scale(.58)"><tspan x="0" y="0">X</tspan><tspan class="cls-1" x="8" y="0">Y</tspan></text>
+  <text class="cls-3" transform="translate(179.67 58)"><tspan x="0" y="0">R</tspan></text>
+  <polyline class="cls-5" points="171 90 171 72 165 69 177 63 165 57 177 51 165 45 177 39 171 36 171 18"/>
+  <line class="cls-5" x1="162" y1="18" x2="180" y2="18"/>
+  <text class="cls-3" transform="translate(161.95 12)"><tspan x="0" y="0">V</tspan></text>
+  <text class="cls-3" transform="translate(169.95 16) scale(.58)"><tspan x="0" y="0">DD</tspan></text>
+  <line class="cls-7" x1="117" y1="90" x2="225" y2="90"/>
+  <rect class="cls-6" x="225" y="35.7" width="108" height="108"/>
+  <rect class="cls-6" x="9" y="35.7" width="108" height="108"/>
+  <text class="cls-3" transform="translate(227 33.7)"><tspan x="0" y="0">Motor Driver</tspan></text>
+  <text class="cls-3" transform="translate(11 34)"><tspan x="0" y="0">MCU</tspan></text>
+  <path class="cls-2" d="M171,91.88c2.41,0,2.42-3.75,0-3.75s-2.42,3.75,0,3.75h0Z"/>
+</svg>

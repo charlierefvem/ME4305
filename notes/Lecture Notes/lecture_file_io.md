@@ -1,13 +1,13 @@
 ---
 title: File I/O
-type: lecture
-topics:
-- Python
-- File I/O
+type: topic
 tags:
-- python
-- file-io
-source: ME405-2262 Lecture 2
+  - python
+  - file-io
+source:
+  course: ME405
+  term: 2262
+  lecture: 2
 status: draft
 ---
 

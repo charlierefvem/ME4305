@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 198 378">
+  <defs>
+    <style>
+      .cls-1 {
+        stroke-dasharray: 4;
+      }
+
+      .cls-1, .cls-2, .cls-3, .cls-4, .cls-5, .cls-6, .cls-7 {
+        fill: none;
+        stroke: #231f20;
+      }
+
+      .cls-1, .cls-2, .cls-4, .cls-5 {
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .cls-1, .cls-2, .cls-7 {
+        stroke-width: .75px;
+      }
+
+      .cls-8, .cls-9, .cls-10 {
+        fill: #231f20;
+      }
+
+      .cls-11 {
+        fill: #fff;
+      }
+
+      .cls-3 {
+        stroke-dasharray: 3.97 3.97;
+      }
+
+      .cls-3, .cls-6, .cls-7 {
+        stroke-miterlimit: 10;
+      }
+
+      .cls-5 {
+        stroke-dasharray: 1 2;
+        stroke-width: .5px;
+      }
+
+      .cls-9 {
+        text-decoration: underline;
+      }
+
+      .cls-9, .cls-10 {
+        font-family: ArialMT, Arial;
+        font-size: 10px;
+      }
+    </style>
+  </defs>
+  <rect class="cls-11" width="198" height="378"/>
+  <g>
+    <polyline class="cls-7" points="183.7 297 81 297 81 194.3"/>
+    <polygon class="cls-8" points="189 297 181.54 293.95 183.31 297 181.54 300.05 189 297"/>
+    <polygon class="cls-8" points="81 189 84.05 196.46 81 194.69 77.95 196.46 81 189"/>
+  </g>
+  <text class="cls-10" transform="translate(177.5 288)"><tspan x="0" y="0">y</tspan></text>
+  <text class="cls-10" transform="translate(87.5 198)"><tspan x="0" y="0">z</tspan></text>
+  <circle class="cls-3" cx="81" cy="297" r="72"/>
+  <g>
+    <line class="cls-6" x1="81" y1="297" x2="48.53" y2="240.76"/>
+    <polygon class="cls-8" points="45 234.65 53.5 241.23 48.79 241.22 46.45 245.29 45 234.65"/>
+  </g>
+  <g>
+    <path class="cls-6" d="M117,297c0-19.88-16.12-36-36-36-5.55,0-10.81,1.26-15.5,3.5"/>
+    <polygon class="cls-8" points="69.66 259.33 70.35 260.05 65.66 264.62 72.19 264.13 72.27 265.13 63 265.82 69.66 259.33"/>
+  </g>
+  <text class="cls-10" transform="translate(109.2 269.58)"><tspan x="0" y="0">θ</tspan></text>
+  <g>
+    <line class="cls-2" x1="81" y1="81" x2="153.32" y2="30.05"/>
+    <polygon class="cls-8" points="157.65 27 153.3 33.79 152.99 30.28 149.79 28.8 157.65 27"/>
+  </g>
+  <ellipse class="cls-1" cx="125.06" cy="112.04" rx="33.63" ry="23.77" transform="translate(-34.5 164.33) rotate(-60)"/>
+  <g>
+    <polyline class="cls-2" points="153.32 131.95 81 81 81 14.3"/>
+    <polygon class="cls-8" points="157.65 135 153.3 128.21 152.99 131.72 149.79 133.2 157.65 135"/>
+    <polygon class="cls-8" points="81 9 84.05 16.46 81 14.69 77.95 16.46 81 9"/>
+  </g>
+  <g>
+    <line class="cls-4" x1="81" y1="81" x2="143.67" y2="92.74"/>
+    <polygon class="cls-8" points="150.61 94.04 140.08 96.21 143.15 92.65 141.58 88.22 150.61 94.04"/>
+  </g>
+  <g>
+    <line class="cls-4" x1="95.31" y1="109.43" x2="81" y2="81"/>
+    <polygon class="cls-8" points="98.48 115.74 97.64 105.02 95.07 108.96 90.38 108.68 98.48 115.74"/>
+  </g>
+  <g>
+    <line class="cls-6" x1="81" y1="297" x2="145.94" y2="297"/>
+    <polygon class="cls-8" points="153 297 143.05 301.07 145.41 297 143.05 292.94 153 297"/>
+  </g>
+  <line class="cls-5" x1="150.61" y1="94.04" x2="125.06" y2="112.04"/>
+  <line class="cls-5" x1="98.48" y1="115.74" x2="125.06" y2="112.04"/>
+  <g>
+    <path class="cls-4" d="M115.22,112.38c.37-1.63,1.01-3.29,1.94-4.9,3.57-6.18,10-9.15,14.37-6.62,1.6.92,2.7,2.46,3.28,4.33"/>
+    <polygon class="cls-8" points="120.13 110.29 119.61 109.44 115.41 112.03 113.14 107.65 112.25 108.11 115.02 113.44 120.13 110.29"/>
+  </g>
+  <text class="cls-10" transform="translate(87.5 18)"><tspan x="0" y="0">z</tspan></text>
+  <text class="cls-10" transform="translate(141.5 27)"><tspan x="0" y="0">y</tspan></text>
+  <text class="cls-10" transform="translate(159.5 126)"><tspan x="0" y="0">x</tspan></text>
+  <text class="cls-9" transform="translate(152.39 92)"><tspan x="0" y="0">w</tspan></text>
+  <text class="cls-9" transform="translate(90.5 122)"><tspan x="0" y="0">v</tspan></text>
+  <text class="cls-10" transform="translate(119.69 98.37)"><tspan x="0" y="0">θ</tspan></text>
+  <text class="cls-9" transform="translate(140.39 288)"><tspan x="0" y="0">w</tspan></text>
+  <text class="cls-9" transform="translate(38.5 249)"><tspan x="0" y="0">v</tspan></text>
+</svg>

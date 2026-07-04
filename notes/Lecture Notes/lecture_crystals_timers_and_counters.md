@@ -1,15 +1,13 @@
 ---
 title: Crystals and Timers
-type: lecture
-topics:
-  - Crystal Oscillators
-  - PLL
-  - Timers
-  - PWM
+type: topic
 tags:
   - timers
   - pwm
-source: ME405-2262 Lecture 5
+source:
+  course: ME405
+  term: 2262
+  lecture: 5
 status: draft
 ---
 

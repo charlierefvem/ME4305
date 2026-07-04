@@ -1,11 +1,12 @@
 ---
 title: Serial Communication
-type: lecture
-topics:
-- MicroPython
+type: topic
 tags:
-- micropython
-source: ME405-2262 Lecture 3
+  - micropython
+source:
+  course: ME405
+  term: 2262
+  lecture: 3
 status: draft
 ---
 

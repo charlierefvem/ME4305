@@ -1,17 +1,13 @@
 ---
 title: Python Fundamentals
-type: lecture
-topics:
-  - Python
-  - whitespace
-  - objects
-  - lists
-  - strings
-  - loops
+type: topic
 tags:
   - python
   - programming-fundamentals
-source: ME405-2262 Lecture 1
+source:
+  course: ME405
+  term: 2262
+  lecture: 1
 status: draft
 ---
 

@@ -1,12 +1,13 @@
 ---
 title: Classes and Objects
-type: lecture
+type: topic
 tags:
   - python
   - classes
-topics:
-  - Object Oriented Programming
-source: ME405-2262 Lecture 7
+source:
+  course: ME405
+  term: 2262
+  lecture: 7
 status: draft
 ---
 

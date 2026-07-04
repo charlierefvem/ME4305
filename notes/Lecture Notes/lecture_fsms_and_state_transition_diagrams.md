@@ -1,14 +1,14 @@
 ---
 title: Finite State Machines and State Transition Diagrams
-type: lecture
-topics:
-  - Finite State Machines
-  - State Transition Diagrams
+type: topic
 tags:
   - fsm
   - state
   - transition
-source: ME405-2262 Lecture 4
+source:
+  course: ME405
+  term: 2262
+  lecture: 4
 status: draft
 ---
 # Motivation

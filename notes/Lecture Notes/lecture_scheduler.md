@@ -1,13 +1,13 @@
 ---
 title: Cooperative Multitasking and the Scheduler
-type: lecture
-topics:
-  - Cooperative Multitasking
-  - Scheduling
+type: topic
 tags:
   - scheduler
   - multitasking
-source: ME405-2262 Lecture 4
+source:
+  course: ME405
+  term: 2262
+  lecture: 4
 status: draft
 ---
 

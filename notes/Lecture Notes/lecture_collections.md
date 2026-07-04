@@ -1,13 +1,13 @@
 ---
 title: Collections
-type: lecture
-topics:
-  - Python
-  - Collections
+type: topic
 tags:
   - python
   - collections
-source: ME405-2262 Lecture 2
+source:
+  course: ME405
+  term: 2262
+  lecture: 2
 status: draft
 ---
 
