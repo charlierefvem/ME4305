@@ -166,5 +166,5 @@ Sign extension is the operation that preserves the value of a signed integer whe
 
 # See Also:
 * [[topic_collections|Collections]]
-* [[topic_introduction_to_imus|Introduction to IMUs]]
+* [[topic_inertial_measurement_units|Introduction to IMUs]]
 * [[reference_memoryviews|Buffers and memoryview Objects]]

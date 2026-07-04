@@ -1,3 +1,17 @@
+---
+title: Romi Observer
+type: case-study
+tags:
+  - case-study
+  - disturbance-observer
+  - observers
+  - state-estimation
+  - state-space
+source:
+  course: ME4305
+  term: 2266
+status: draft
+---
 
 ## Another nuance in observing Romi
 

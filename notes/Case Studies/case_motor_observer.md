@@ -2,7 +2,6 @@
 title: Practical Motor Control
 type: case-study
 tags:
-  - mechatronics
   - case-study
   - disturbance-observer
   - observers
@@ -12,10 +11,8 @@ tags:
   - pmdc-motor
   - state-space
 source:
-  course: ME 4305
-  term: June 2026
-  file: observer_case_study.tex
-  author: Charlie Refvem
+  course: ME4305
+  term: 2266
 status: draft
 ---
 
@@ -380,7 +377,7 @@ L = \operatorname{place}\left(A_d^T, C_d^T, [z_1\;z_2\;z_3]\right)^T.
 \end{aligned}
 $$
 
-For a more detailed explanation of this procedure see pertinent sections of [[topic_state_feedback|Fundamentals of State Feedback]].
+For a more detailed explanation of this procedure see pertinent sections of [[topic_intro_to_state_feedback|Fundamentals of State Feedback]].
 
 With the observer gain determined, we can now produce the state-space matrix representation of the observer. This formulation allows the observer to be implemented directly as a discrete-time state-space system using standard simulation or embedded-control tools.
 

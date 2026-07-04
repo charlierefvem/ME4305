@@ -1,3 +1,17 @@
+---
+title: State Feedback
+type: reference
+tags:
+  - discrete-control
+  - state-space
+source:
+  course: ME 4305
+  term: June 2026
+  file: observer_case_study.tex
+  author: Charlie Refvem
+status: draft
+---
+
 TODO:
 1) Error states for tracking
 2) Gentle intro to LQR with mention of optimality (optimal with respect to what? to J) and brief mention of fuel optimal, time optimal, etc. 

@@ -1,5 +1,5 @@
 ---
-title: Cooperative Multitasking and the Scheduler
+title: Priority Schedulers
 type: topic
 tags:
   - scheduler
@@ -139,8 +139,8 @@ A good designer should always monitor the output of the profiler and verify that
 -   Scheduling policy directly affects task latency and determinism.
 
 # See Also:
-* [[topic_scheduler|Cooperative Multitasking and the Scheduler]]
-* [[topic_using_the_scheduler|Using the Scheduler]]
+* [[topic_priority_schedulers|Cooperative Multitasking and the Scheduler]]
+* [[topic_scheduling_tasks|Using the Scheduler]]
 * [[topic_software_timing|Software Timing]]
 * [[topic_task_diagrams|Task Diagrams]]
 * [[topic_intro_to_generators|Introduction to Generator Functions]]

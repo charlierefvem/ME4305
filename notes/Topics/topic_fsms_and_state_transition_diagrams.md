@@ -172,5 +172,5 @@ if __name__ == '__main__':
 
 # See Also:
 * [[topic_task_diagrams|Task Diagrams]]
-* [[topic_scheduler|Cooperative Multitasking and the Scheduler]]
-* [[topic_using_the_scheduler|Using the Scheduler]]
+* [[topic_priority_schedulers|Cooperative Multitasking and the Scheduler]]
+* [[topic_scheduling_tasks|Using the Scheduler]]

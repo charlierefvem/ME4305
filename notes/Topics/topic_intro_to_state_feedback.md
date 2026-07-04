@@ -1,5 +1,5 @@
 ---
-title: Fundamentals of State Feedback
+title: Introduction to State Feedback
 type: topic
 tags:
   - controls
@@ -10,9 +10,9 @@ tags:
   - pmdc-motor
   - tracking-control
 source:
-    course: ME405
-    term: 2262
-    lecture: 17
+  course: ME405
+  term: 2262
+  lecture: 17
 status: draft
 ---
 

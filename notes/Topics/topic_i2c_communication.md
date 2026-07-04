@@ -1,5 +1,5 @@
 ---
-title: Introduction to I2C
+title: I2C Communication
 type: topic
 tags:
   - micropython

@@ -34,7 +34,7 @@ title: ME 405 Course Outline
             * [[topic_intro_to_generators|Introduction to Generator Functions]]
     * Lecture 9 - Task Diagrams and the Scheduler
         * Topics
-            * [[topic_scheduler|Cooperative Multitasking and the Scheduler]]
+            * [[topic_priority_schedulers|Cooperative Multitasking and the Scheduler]]
 * Module 2 - Real-Time Mechatronic Systems
     * Lecture 10 - Basics of Feedback Control
         * Reading
@@ -55,7 +55,7 @@ title: ME 405 Course Outline
             * [[topic_gpio|General Purpose IO (GPIO)]]
     * Lecture 14 - I2C Introduction
         * Topics
-            * [[topic_intro_to_i2c|Introduction to I2C]]
+            * [[topic_i2c_communication|Introduction to I2C]]
     * Lecture 15 - Review of Binary and Hexadecimal Numbers and Sign Extension
         * Reading
             * [[reference_bit_manipulation|Bit Manipulation Techniques]]
@@ -67,14 +67,14 @@ title: ME 405 Course Outline
             * [[reference_euler_angles|Euler Angles]]
             * [[reference_quaternions|Quaternions]]
         * Topics
-            * [[topic_introduction_to_imus|Introduction to IMUs]]
+            * [[topic_inertial_measurement_units|Introduction to IMUs]]
     * Lecture 17 - Planning for System Integration
         * Topics
             * \[\[Planning for System Integration\]\]
 * Module 3 - Autonmous Systems and Project Integration
     * Lecture 18 - State Feedback Fundamentals
         * Topics
-            * [[topic_state_feedback|Fundamentals of State Feedback]]
+            * [[topic_intro_to_state_feedback|Fundamentals of State Feedback]]
     * Lecture 19 - Discretization Techniques
         * Reading
             * [[reference_z_domain|Discrete Time Systems]]

@@ -1,5 +1,5 @@
 ---
-title: Using the Scheduler
+title: Scheduling Tasks
 type: lecture
 tags:
   - tasks

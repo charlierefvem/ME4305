@@ -1,5 +1,5 @@
 ---
-title: File I/O
+title: File Input and Output
 type: topic
 tags:
   - python

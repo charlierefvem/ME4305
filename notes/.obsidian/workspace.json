@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Topics/topic_virtual_com_ports.md",
+                "file": "Topics/topic_romi_modeling.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "topic_virtual_com_ports"
+              "title": "topic_romi_modeling"
             }
           }
         ]
@@ -78,7 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 405.5
+    "width": 449.5
   },
   "right": {
     "id": "43db80c1abec9147",
@@ -186,32 +186,35 @@
   },
   "active": "d00085b673c0d565",
   "lastOpenFiles": [
-    "Topics/topic_using_the_scheduler.md",
-    "Topics/topic_encoders.md",
-    "Topics/topic_hardware_overview.md",
+    "Images/romi_isometric_view_Artboard 1-01.svg",
+    "Topics/topic_virtual_com_ports.md",
+    "Case Studies/case_romi_observer.md",
+    "References/reference_state_feedback.md",
+    "Topics/topic_intro_to_state_feedback.md",
+    "Case Studies/case_motor_observer.md",
+    "Topics/topic_scheduling_tasks.md",
+    "Topics/topic_serial_communication.md",
+    "Topics/topic_fsms_and_state_transition_diagrams.md",
+    "Topics/topic_task_diagrams.md",
+    "Topics/topic_priority_schedulers.md",
+    "Topics/topic_i2c_communication.md",
+    "Topics/topic_inertial_measurement_units.md",
+    "Topics/topic_file_io.md",
+    "Topics/topic_romi_modeling.md",
+    "index.md",
+    "Topics/topic_review_of_signed_numbers.md",
+    "Topics/topic_software_timing.md",
+    "Topics/topic_philosophy_of_mechatronics.md",
+    "Topics/topic_python_fundamentals.md",
     "Topics/topic_intro_to_feedback_and_controls.md",
     "Topics/topic_intro_to_generators.md",
-    "Topics/topic_philosophy_of_mechatronics.md",
-    "Topics/topic_software_timing.md",
-    "References/reference_formatting_strings.md",
-    "References/reference_digital_filters.md",
-    "References/reference_z_domain.md",
-    "References/reference_switch_bounce.md",
-    "References/reference_observer_design.md",
-    "References/reference_quaternions.md",
-    "References/reference_state_feedback.md",
-    "References/reference_euler_angles.md",
-    "References/reference_matrix_exponential.md",
-    "References/reference_discrete_PID.md",
-    "References/reference_disturbance_observer.md",
-    "References/reference_continuous_to_discrete.md",
-    "References/reference_bit_manipulation.md",
-    "References/reference_PID.md",
-    "Topics/topic_intro_to_i2c.md",
-    "Case Studies/case_romi_observer.md",
-    "Topics/topic_file_io.md",
+    "Topics/topic_gpio.md",
+    "Topics/topic_hardware_overview.md",
+    "Topics/topic_collections.md",
     "Topics/topic_coop_user_io.md",
-    "Topics/topic_crystals_timers_and_counters.md",
+    "Images/romi_isometric_view.svg",
+    "Images/romi_isometric_view.jpeg",
+    "Images/romi_isometric_view.png",
     "Images/shoe_coms.svg",
     "figures",
     "Cooperative Character I",
@@ -222,11 +225,8 @@
     "Images/backward_difference.svg",
     "Images/forward_difference.svg",
     "Images/unit_disk_stability.svg",
-    "Images/left_half_plane_stability.svg",
     "Case Studies",
-    "Images/state_feedback_dominant_poles.svg",
     "Images/Unconfirmed 378910.crdownload",
-    "Images/switch_rc_diode_debounce.png",
     "New folder",
     "Untitled"
   ]

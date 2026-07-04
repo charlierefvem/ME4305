@@ -1,5 +1,5 @@
 ---
-title: Introduction to IMUs
+title: Inertial Measurement Units (IMUs)
 type: topic
 tags:
   - imu
@@ -151,6 +151,6 @@ IMUs are orientation sensors, not position sensors. The accelerometer is useful 
 A gyroscope provides excellent short-term rotation-rate information, but integration makes bias and drift accumulate over time. This is why IMU orientation estimates often combine gyroscope data with accelerometer and magnetometer data.
 
 # See Also:
-* [[topic_intro_to_i2c|Introduction to I2C]]
+* [[topic_i2c_communication|Introduction to I2C]]
 * [[reference_euler_angles|Euler Angles]]
 * [[reference_quaternions|Quaternions]]

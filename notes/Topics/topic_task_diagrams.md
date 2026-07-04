@@ -77,5 +77,5 @@ The diagram depicts three tasks and three shared data. The tables below describe
 
 # See Also:
 * [[topic_fsms_and_state_transition_diagrams|Finite State Machines and State Transition Diagrams]]
-* [[topic_scheduler|Cooperative Multitasking and the Scheduler]]
-* [[topic_using_the_scheduler|Using the Scheduler]]
+* [[topic_priority_schedulers|Cooperative Multitasking and the Scheduler]]
+* [[topic_scheduling_tasks|Using the Scheduler]]
