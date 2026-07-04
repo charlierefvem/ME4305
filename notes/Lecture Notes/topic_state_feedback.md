@@ -18,7 +18,7 @@ status: draft
 
 # Motivation
 
-In a previous lecture topic, the [[lecture_intro_to_feedback_and_controls|PID]] controller was presented along with several modifications to tailor the controller to a specific application. A PID controller is an example of a *classical* single-input-single-output (SISO) controller. Now, *modern* controls will be introduced through state-feedback, a multi-input-multi-output (MIMO) controller.
+In a previous lecture topic, the [[topic_intro_to_feedback_and_controls|PID]] controller was presented along with several modifications to tailor the controller to a specific application. A PID controller is an example of a *classical* single-input-single-output (SISO) controller. Now, *modern* controls will be introduced through state-feedback, a multi-input-multi-output (MIMO) controller.
 
 State-space models describe how the internal state of a system changes over time due to the system inputs. If those states can be measured or estimated, we can use them directly in the control law to determine the system inputs. This provides a much more flexible controller design method than only feeding back a single output variable.
 

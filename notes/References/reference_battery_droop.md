@@ -69,7 +69,7 @@ The block diagram above generalizes this method of compensation using an output 
 
 To measure the battery voltage safely, a voltage divider is necessary. The maximum raw battery voltage may be too high to read with a microcontroller's ADC, which often has an active range of 0V to 3.3V. To reduce the battery voltage to a safe range, a divider with a suitable ratio is required.
 
-![A voltage divider circuit built from an upper resistor R1 and a lower resistor R2.](images/resistor_divider.svg)
+![A voltage divider circuit built from an upper resistor R1 and a lower resistor R2.|700](images/resistor_divider.svg)
 
 ## Example 3
 
