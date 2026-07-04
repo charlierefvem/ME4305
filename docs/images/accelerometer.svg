@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 522 243">
+  <defs>
+    <style>
+      .cls-1, .cls-2, .cls-3 {
+        fill: #231f20;
+      }
+
+      .cls-4, .cls-5 {
+        fill: #fff;
+      }
+
+      .cls-5, .cls-6, .cls-7 {
+        stroke: #231f20;
+        stroke-miterlimit: 10;
+      }
+
+      .cls-6 {
+        stroke-linecap: round;
+        stroke-width: 2px;
+      }
+
+      .cls-6, .cls-7 {
+        fill: none;
+      }
+
+      .cls-2 {
+        font-size: 10px;
+      }
+
+      .cls-2, .cls-3 {
+        font-family: ArialMT, Arial;
+      }
+
+      .cls-3 {
+        font-size: 12px;
+      }
+    </style>
+  </defs>
+  <rect class="cls-4" width="522" height="243"/>
+  <rect class="cls-5" x="18" y="162" width="486" height="54"/>
+  <rect class="cls-5" x="72" y="18" width="432" height="54"/>
+  <line class="cls-7" x1="45" y1="162" x2="72" y2="72"/>
+  <line class="cls-7" x1="504" y1="72" x2="477" y2="162"/>
+  <line class="cls-6" x1="153" y1="162" x2="153" y2="90"/>
+  <line class="cls-6" x1="261" y1="162" x2="261" y2="90"/>
+  <line class="cls-6" x1="369" y1="162" x2="369" y2="90"/>
+  <line class="cls-6" x1="234" y1="72" x2="234" y2="144"/>
+  <line class="cls-6" x1="126" y1="72" x2="126" y2="144"/>
+  <line class="cls-6" x1="342" y1="72" x2="342" y2="144"/>
+  <g>
+    <line class="cls-7" x1="133.06" y1="117" x2="145.94" y2="117"/>
+    <polygon class="cls-1" points="126 117 135.95 121.07 133.59 117 135.95 112.94 126 117"/>
+    <polygon class="cls-1" points="153 117 143.05 121.07 145.41 117 143.05 112.94 153 117"/>
+  </g>
+  <g>
+    <line class="cls-7" x1="241.06" y1="117" x2="253.94" y2="117"/>
+    <polygon class="cls-1" points="234 117 243.95 121.07 241.59 117 243.95 112.94 234 117"/>
+    <polygon class="cls-1" points="261 117 251.05 121.07 253.41 117 251.05 112.94 261 117"/>
+  </g>
+  <g>
+    <line class="cls-7" x1="349.06" y1="117" x2="361.94" y2="117"/>
+    <polygon class="cls-1" points="342 117 351.95 121.07 349.59 117 351.95 112.94 342 117"/>
+    <polygon class="cls-1" points="369 117 359.05 121.07 361.41 117 359.05 112.94 369 117"/>
+  </g>
+  <line class="cls-7" x1="18" y1="225" x2="27" y2="216"/>
+  <line class="cls-7" x1="27" y1="225" x2="36" y2="216"/>
+  <line class="cls-7" x1="36" y1="225" x2="45" y2="216"/>
+  <line class="cls-7" x1="45" y1="225" x2="54" y2="216"/>
+  <line class="cls-7" x1="72" y1="216" x2="63" y2="225"/>
+  <line class="cls-7" x1="63" y1="216" x2="54" y2="225"/>
+  <line class="cls-7" x1="126" y1="225" x2="135" y2="216"/>
+  <line class="cls-7" x1="135" y1="225" x2="144" y2="216"/>
+  <line class="cls-7" x1="144" y1="225" x2="153" y2="216"/>
+  <line class="cls-7" x1="153" y1="225" x2="162" y2="216"/>
+  <line class="cls-7" x1="180" y1="216" x2="171" y2="225"/>
+  <line class="cls-7" x1="171" y1="216" x2="162" y2="225"/>
+  <line class="cls-7" x1="234" y1="225" x2="243" y2="216"/>
+  <line class="cls-7" x1="243" y1="225" x2="252" y2="216"/>
+  <line class="cls-7" x1="252" y1="225" x2="261" y2="216"/>
+  <line class="cls-7" x1="261" y1="225" x2="270" y2="216"/>
+  <line class="cls-7" x1="288" y1="216" x2="279" y2="225"/>
+  <line class="cls-7" x1="279" y1="216" x2="270" y2="225"/>
+  <line class="cls-7" x1="342" y1="225" x2="351" y2="216"/>
+  <line class="cls-7" x1="351" y1="225" x2="360" y2="216"/>
+  <line class="cls-7" x1="360" y1="225" x2="369" y2="216"/>
+  <line class="cls-7" x1="369" y1="225" x2="378" y2="216"/>
+  <line class="cls-7" x1="396" y1="216" x2="387" y2="225"/>
+  <line class="cls-7" x1="387" y1="216" x2="378" y2="225"/>
+  <line class="cls-7" x1="450" y1="225" x2="459" y2="216"/>
+  <line class="cls-7" x1="459" y1="225" x2="468" y2="216"/>
+  <line class="cls-7" x1="468" y1="225" x2="477" y2="216"/>
+  <line class="cls-7" x1="477" y1="225" x2="486" y2="216"/>
+  <line class="cls-7" x1="504" y1="216" x2="495" y2="225"/>
+  <line class="cls-7" x1="495" y1="216" x2="486" y2="225"/>
+  <g>
+    <line class="cls-7" x1="16.06" y1="45" x2="55.94" y2="45"/>
+    <polygon class="cls-1" points="9 45 18.95 49.07 16.59 45 18.95 40.94 9 45"/>
+    <polygon class="cls-1" points="63 45 53.05 49.07 55.41 45 53.05 40.94 63 45"/>
+  </g>
+  <text class="cls-3" transform="translate(21.67 36)"><tspan x="0" y="0">ACC.</tspan></text>
+  <line class="cls-7" x1="72" y1="225" x2="81" y2="216"/>
+  <line class="cls-7" x1="81" y1="225" x2="90" y2="216"/>
+  <line class="cls-7" x1="90" y1="225" x2="99" y2="216"/>
+  <line class="cls-7" x1="99" y1="225" x2="108" y2="216"/>
+  <line class="cls-7" x1="126" y1="216" x2="117" y2="225"/>
+  <line class="cls-7" x1="117" y1="216" x2="108" y2="225"/>
+  <line class="cls-7" x1="180" y1="225" x2="189" y2="216"/>
+  <line class="cls-7" x1="189" y1="225" x2="198" y2="216"/>
+  <line class="cls-7" x1="198" y1="225" x2="207" y2="216"/>
+  <line class="cls-7" x1="207" y1="225" x2="216" y2="216"/>
+  <line class="cls-7" x1="234" y1="216" x2="225" y2="225"/>
+  <line class="cls-7" x1="225" y1="216" x2="216" y2="225"/>
+  <line class="cls-7" x1="288" y1="225" x2="297" y2="216"/>
+  <line class="cls-7" x1="297" y1="225" x2="306" y2="216"/>
+  <line class="cls-7" x1="306" y1="225" x2="315" y2="216"/>
+  <line class="cls-7" x1="315" y1="225" x2="324" y2="216"/>
+  <line class="cls-7" x1="342" y1="216" x2="333" y2="225"/>
+  <line class="cls-7" x1="333" y1="216" x2="324" y2="225"/>
+  <line class="cls-7" x1="396" y1="225" x2="405" y2="216"/>
+  <line class="cls-7" x1="405" y1="225" x2="414" y2="216"/>
+  <line class="cls-7" x1="414" y1="225" x2="423" y2="216"/>
+  <line class="cls-7" x1="423" y1="225" x2="432" y2="216"/>
+  <line class="cls-7" x1="450" y1="216" x2="441" y2="225"/>
+  <line class="cls-7" x1="441" y1="216" x2="432" y2="225"/>
+  <text class="cls-3" transform="translate(195.64 45)"><tspan x="0" y="0">Moving Mass and Plates</tspan></text>
+  <text class="cls-3" transform="translate(196.96 189)"><tspan x="0" y="0">Stationary Mass and Plates</tspan></text>
+  <g>
+    <line class="cls-7" x1="160.06" y1="117" x2="226.94" y2="117"/>
+    <polygon class="cls-1" points="153 117 162.95 121.07 160.59 117 162.95 112.94 153 117"/>
+    <polygon class="cls-1" points="234 117 224.05 121.07 226.41 117 224.05 112.94 234 117"/>
+  </g>
+  <g>
+    <line class="cls-7" x1="268.06" y1="117" x2="334.94" y2="117"/>
+    <polygon class="cls-1" points="261 117 270.95 121.07 268.59 117 270.95 112.94 261 117"/>
+    <polygon class="cls-1" points="342 117 332.05 121.07 334.41 117 332.05 112.94 342 117"/>
+  </g>
+  <text class="cls-2" transform="translate(46.36 150.39) rotate(-73.3)"><tspan x="0" y="0">Restoring Spring</tspan></text>
+  <text class="cls-2" transform="translate(475.3 152.67) rotate(-73.3)"><tspan x="0" y="0">Restoring Spring</tspan></text>
+</svg>

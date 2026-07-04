@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 432 207">
+  <defs>
+    <style>
+      .cls-1 {
+        font-size: 6px;
+      }
+
+      .cls-1, .cls-2, .cls-3, .cls-4, .cls-5 {
+        fill: #231f20;
+      }
+
+      .cls-1, .cls-3, .cls-4, .cls-5 {
+        font-family: ArialMT, Arial;
+      }
+
+      .cls-6, .cls-7 {
+        fill: #fff;
+      }
+
+      .cls-8 {
+        stroke-width: .75px;
+      }
+
+      .cls-8, .cls-9, .cls-10, .cls-11 {
+        fill: none;
+      }
+
+      .cls-8, .cls-9, .cls-10, .cls-11, .cls-7 {
+        stroke: #231f20;
+        stroke-linejoin: round;
+      }
+
+      .cls-3 {
+        font-size: 14px;
+      }
+
+      .cls-9 {
+        stroke-width: .25px;
+      }
+
+      .cls-9, .cls-10, .cls-11, .cls-7 {
+        stroke-linecap: round;
+      }
+
+      .cls-10, .cls-11, .cls-7 {
+        stroke-width: .5px;
+      }
+
+      .cls-4 {
+        font-size: 9px;
+      }
+
+      .cls-11 {
+        stroke-dasharray: 4;
+      }
+
+      .cls-5 {
+        font-size: 12px;
+      }
+
+      .cls-12 {
+        letter-spacing: -.04em;
+      }
+    </style>
+  </defs>
+  <rect class="cls-6" width="432" height="207"/>
+  <g>
+    <polyline class="cls-8" points="408.7 171 36 171 36 104.3"/>
+    <polygon class="cls-2" points="414 171 406.54 167.95 408.31 171 406.54 174.05 414 171"/>
+    <polygon class="cls-2" points="36 99 39.05 106.46 36 104.69 32.95 106.46 36 99"/>
+  </g>
+  <text class="cls-5" transform="translate(387.78 189)"><tspan class="cls-12" x="0" y="0">T</tspan><tspan x="6.88" y="0">ime</tspan></text>
+  <path class="cls-8" d="M396,153c-21.6,0-28.8-18-36-36-21.6,0-28.8,18-36,36-21.6,0-28.8-18-36-36-21.6,0-28.8,18-36,36-21.6,0-28.8-18-36-36-21.6,0-28.8,18-36,36-21.6,0-28.8-18-36-36-21.6,0-28.8,18-36,36-21.6,0-28.8-18-36-36-21.6,0-28.8,18-36,36"/>
+  <line class="cls-11" x1="36" y1="135" x2="396" y2="135"/>
+  <text class="cls-5" transform="translate(27 173.35) rotate(-90)"><tspan x="0" y="0">Crystal Output</tspan></text>
+  <text class="cls-3" transform="translate(36 27)"><tspan x="0" y="0">Oscillator Output</tspan></text>
+  <rect class="cls-7" x="342" y="63" width="18" height="9"/>
+  <polyline class="cls-10" points="351 49.5 351 58.5 342 58.5 360 58.5"/>
+  <polyline class="cls-10" points="351 85.5 351 76.5 342 76.5 360 76.5"/>
+  <rect class="cls-9" x="369" y="40.5" width="27" height="54"/>
+  <polyline class="cls-10" points="378 60.75 378 49.5 333 49.5"/>
+  <line class="cls-10" x1="378" y1="69.75" x2="373.5" y2="60.75"/>
+  <line class="cls-10" x1="382.5" y1="60.75" x2="378" y2="69.75"/>
+  <line class="cls-10" x1="373.5" y1="60.75" x2="382.5" y2="60.75"/>
+  <polyline class="cls-10" points="378 74.25 378 85.5 333 85.5"/>
+  <circle class="cls-10" cx="378" cy="72" r="2.25"/>
+  <line class="cls-10" x1="333" y1="45" x2="333" y2="54"/>
+  <path class="cls-10" d="M328.5,45c2.25,2.25,2.25,6.75,0,9"/>
+  <line class="cls-10" x1="310.5" y1="49.5" x2="330.19" y2="49.5"/>
+  <line class="cls-10" x1="310.5" y1="45" x2="310.5" y2="54"/>
+  <line class="cls-10" x1="333" y1="81" x2="333" y2="90"/>
+  <path class="cls-10" d="M328.5,81c2.25,2.25,2.25,6.75,0,9"/>
+  <line class="cls-10" x1="310.5" y1="85.5" x2="330.19" y2="85.5"/>
+  <line class="cls-10" x1="310.5" y1="81" x2="310.5" y2="90"/>
+  <path class="cls-2" d="M351,50.75c1.61,0,1.61-2.5,0-2.5s-1.61,2.5,0,2.5h0Z"/>
+  <path class="cls-2" d="M351,86.75c1.61,0,1.61-2.5,0-2.5s-1.61,2.5,0,2.5h0Z"/>
+  <text class="cls-1" transform="translate(326.92 40.5)"><tspan x="0" y="0">C3</tspan></text>
+  <text class="cls-1" transform="translate(326.92 99)"><tspan x="0" y="0">C7</tspan></text>
+  <text class="cls-1" transform="translate(330.16 69.75)"><tspan x="0" y="0">X1</tspan></text>
+  <text class="cls-1" transform="translate(368.88 39.25)"><tspan x="0" y="0">U1</tspan></text>
+  <line class="cls-10" x1="308.25" y1="47.25" x2="308.25" y2="51.75"/>
+  <line class="cls-10" x1="308.25" y1="83.25" x2="308.25" y2="87.75"/>
+  <text class="cls-4" transform="translate(318.24 30)"><tspan x="0" y="0">Pierce Oscillator</tspan></text>
+  <rect class="cls-9" x="252" y="40.5" width="27" height="54"/>
+  <polyline class="cls-10" points="261 60.75 261 49.5 216 49.5"/>
+  <line class="cls-10" x1="261" y1="69.75" x2="256.5" y2="60.75"/>
+  <line class="cls-10" x1="265.5" y1="60.75" x2="261" y2="69.75"/>
+  <line class="cls-10" x1="256.5" y1="60.75" x2="265.5" y2="60.75"/>
+  <polyline class="cls-10" points="261 74.25 261 85.5 234 85.5"/>
+  <circle class="cls-10" cx="261" cy="72" r="2.25"/>
+  <line class="cls-10" x1="216" y1="45" x2="216" y2="54"/>
+  <path class="cls-10" d="M211.5,45c2.25,2.25,2.25,6.75,0,9"/>
+  <line class="cls-10" x1="193.5" y1="49.5" x2="213.19" y2="49.5"/>
+  <line class="cls-10" x1="193.5" y1="45" x2="193.5" y2="54"/>
+  <path class="cls-2" d="M234,50.75c1.61,0,1.61-2.5,0-2.5s-1.61,2.5,0,2.5h0Z"/>
+  <text class="cls-1" transform="translate(211.58 40.5)"><tspan x="0" y="0">C</tspan></text>
+  <text class="cls-1" transform="translate(251.88 39.25)"><tspan x="0" y="0">U</tspan></text>
+  <line class="cls-10" x1="191.25" y1="47.25" x2="191.25" y2="51.75"/>
+  <polyline class="cls-10" points="234 85.5 234 76.5 231 75 237 72 231 69 237 66 231 63 237 60 234 58.5 234 49.5"/>
+  <text class="cls-1" transform="translate(224.5 69.75)"><tspan x="0" y="0">R</tspan></text>
+  <text class="cls-4" transform="translate(207.5 30)"><tspan x="0" y="0">RC Oscillator</tspan></text>
+</svg>

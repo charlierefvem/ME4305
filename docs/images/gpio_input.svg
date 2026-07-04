@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 189 252">
+  <defs>
+    <style>
+      .cls-1, .cls-2 {
+        fill: #231f20;
+      }
+
+      .cls-3 {
+        fill: #fff;
+      }
+
+      .cls-4, .cls-5 {
+        fill: none;
+        stroke: #231f20;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .cls-5 {
+        stroke-width: .5px;
+      }
+
+      .cls-2 {
+        font-family: ArialMT, Arial;
+        font-size: 12px;
+      }
+    </style>
+  </defs>
+  <rect class="cls-3" width="189" height="252"/>
+  <g>
+    <line class="cls-4" x1="46.5" y1="129" x2="43.5" y2="123"/>
+    <line class="cls-4" x1="40.5" y1="129" x2="37.5" y2="123"/>
+    <line class="cls-4" x1="40.5" y1="129" x2="49.5" y2="129"/>
+    <line class="cls-4" x1="34.5" y1="123" x2="43.5" y2="123"/>
+  </g>
+  <circle class="cls-4" cx="147" cy="126" r="3"/>
+  <text class="cls-2" transform="translate(2 34)"><tspan x="0" y="0">MCU</tspan></text>
+  <polyline class="cls-5" points="0 36 126 36 126 216 0 216"/>
+  <line class="cls-4" y1="126" x2="18" y2="126"/>
+  <line class="cls-4" x1="54" y1="144" x2="18" y2="126"/>
+  <line class="cls-4" x1="18" y1="126" x2="54" y2="108"/>
+  <line class="cls-4" x1="54" y1="108" x2="54" y2="144"/>
+  <line class="cls-4" x1="54" y1="126" x2="90" y2="126"/>
+  <line class="cls-4" x1="90" y1="126" x2="144" y2="126"/>
+  <line class="cls-4" x1="90" y1="198" x2="90" y2="216"/>
+  <line class="cls-4" x1="90" y1="108" x2="90" y2="144"/>
+  <line class="cls-4" x1="90" y1="36" x2="90" y2="54"/>
+  <g>
+    <line class="cls-4" x1="90" y1="198" x2="90" y2="180"/>
+    <line class="cls-4" x1="90" y1="144" x2="90" y2="162"/>
+    <line class="cls-4" x1="81" y1="162" x2="99" y2="162"/>
+    <polygon class="cls-4" points="81 180 99 180 90 162 81 180"/>
+  </g>
+  <g>
+    <line class="cls-4" x1="90" y1="108" x2="90" y2="90"/>
+    <line class="cls-4" x1="90" y1="54" x2="90" y2="72"/>
+    <line class="cls-4" x1="81" y1="72" x2="99" y2="72"/>
+    <polygon class="cls-4" points="81 90 99 90 90 72 81 90"/>
+  </g>
+  <line class="cls-4" x1="81" y1="18" x2="99" y2="18"/>
+  <line class="cls-4" x1="81" y1="234" x2="99" y2="234"/>
+  <line class="cls-4" x1="90" y1="18" x2="90" y2="36"/>
+  <line class="cls-4" x1="90" y1="234" x2="90" y2="216"/>
+  <text class="cls-2" transform="translate(80.95 11)"><tspan x="0" y="0">V</tspan></text>
+  <text class="cls-2" transform="translate(88.95 15) scale(.58)"><tspan x="0" y="0">DD</tspan></text>
+  <text class="cls-2" transform="translate(76.67 246)"><tspan x="0" y="0">GND</tspan></text>
+  <path class="cls-1" d="M90,127.87c2.41,0,2.42-3.75,0-3.75s-2.42,3.75,0,3.75h0Z"/>
+  <text class="cls-2" transform="translate(153 126)"><tspan x="0" y="0">V</tspan></text>
+  <text class="cls-2" transform="translate(161 130) scale(.58)"><tspan x="0" y="0">GPIO</tspan></text>
+  <text class="cls-2" transform="translate(101 85)"><tspan x="0" y="0">D</tspan></text>
+  <text class="cls-2" transform="translate(109.67 89) scale(.58)"><tspan x="0" y="0">1</tspan></text>
+  <text class="cls-2" transform="translate(101 175)"><tspan x="0" y="0">D</tspan></text>
+  <text class="cls-2" transform="translate(109.67 179) scale(.58)"><tspan x="0" y="0">2</tspan></text>
+</svg>

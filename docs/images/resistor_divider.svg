@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 117 189">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+      }
+
+      .cls-2 {
+        fill: none;
+        stroke: #231f20;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .cls-3 {
+        fill: #231f20;
+        font-family: ArialMT, Arial;
+        font-size: 12px;
+      }
+    </style>
+  </defs>
+  <rect class="cls-1" width="117" height="189"/>
+  <polyline class="cls-2" points="36 171 36 153 30 150 42 144 30 138 42 132 30 126 42 120 36 117 36 99"/>
+  <polyline class="cls-2" points="36 99 36 81 30 78 42 72 30 66 42 60 30 54 42 48 36 45 36 27"/>
+  <line class="cls-2" x1="27" y1="27" x2="45" y2="27"/>
+  <line class="cls-2" x1="27" y1="171" x2="45" y2="171"/>
+  <line class="cls-2" x1="36" y1="99" x2="72" y2="99"/>
+  <circle class="cls-2" cx="75" cy="99" r="3"/>
+  <text class="cls-3" transform="translate(27.14 21)"><tspan x="0" y="0">V</tspan></text>
+  <text class="cls-3" transform="translate(35.14 25) scale(.58)"><tspan x="0" y="0">bat</tspan></text>
+  <text class="cls-3" transform="translate(22.67 182)"><tspan x="0" y="0">GND</tspan></text>
+  <text class="cls-3" transform="translate(14.44 63)"><tspan x="0" y="0">R</tspan></text>
+  <text class="cls-3" transform="translate(23.11 67) scale(.58)"><tspan x="0" y="0">1</tspan></text>
+  <text class="cls-3" transform="translate(14.44 135)"><tspan x="0" y="0">R</tspan></text>
+  <text class="cls-3" transform="translate(23.11 139) scale(.58)"><tspan x="0" y="0">2</tspan></text>
+  <text class="cls-3" transform="translate(87.61 99)"><tspan x="0" y="0">V</tspan></text>
+  <text class="cls-3" transform="translate(95.62 103) scale(.58)"><tspan x="0" y="0">ADC</tspan></text>
+</svg>

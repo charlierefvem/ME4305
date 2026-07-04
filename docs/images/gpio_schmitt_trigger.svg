@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 189 108">
+  <defs>
+    <style>
+      .cls-1 {
+        stroke-dasharray: 0 .5;
+        stroke-width: .25px;
+      }
+
+      .cls-1, .cls-2, .cls-3 {
+        fill: none;
+        stroke: #231f20;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .cls-4 {
+        font-size: 6px;
+      }
+
+      .cls-4, .cls-5, .cls-6 {
+        fill: #231f20;
+      }
+
+      .cls-4, .cls-6 {
+        font-family: ArialMT, Arial;
+      }
+
+      .cls-2 {
+        stroke-width: .75px;
+      }
+
+      .cls-7 {
+        fill: #fff;
+      }
+
+      .cls-6 {
+        font-size: 12px;
+      }
+    </style>
+  </defs>
+  <rect class="cls-7" width="189" height="108"/>
+  <text class="cls-6" transform="translate(15 75.7) rotate(-90)"><tspan x="0" y="0">Pin State</tspan></text>
+  <text class="cls-4" transform="translate(17 83)"><tspan x="0" y="0">LO</tspan></text>
+  <text class="cls-4" transform="translate(19 38)"><tspan x="0" y="0">HI</tspan></text>
+  <text class="cls-4" transform="translate(109.97 90)"><tspan x="0" y="0">⅔V</tspan></text>
+  <text class="cls-4" transform="translate(118.98 92) scale(.58)"><tspan x="0" y="0">DD</tspan></text>
+  <text class="cls-4" transform="translate(64.97 90)"><tspan x="0" y="0">⅓V</tspan></text>
+  <text class="cls-4" transform="translate(73.98 92) scale(.58)"><tspan x="0" y="0">DD</tspan></text>
+  <line class="cls-1" x1="72" y1="36" x2="27" y2="36"/>
+  <line class="cls-1" x1="72" y1="36" x2="72" y2="81"/>
+  <g>
+    <line class="cls-3" x1="81" y1="81" x2="99" y2="81"/>
+    <polygon class="cls-5" points="102.53 81 97.56 83.03 98.74 81 97.56 78.97 102.53 81"/>
+  </g>
+  <g>
+    <line class="cls-3" x1="63" y1="81" x2="81" y2="81"/>
+    <polygon class="cls-5" points="84.53 81 79.56 83.03 80.74 81 79.56 78.97 84.53 81"/>
+  </g>
+  <g>
+    <line class="cls-3" x1="45" y1="81" x2="63" y2="81"/>
+    <polygon class="cls-5" points="66.53 81 61.56 83.03 62.74 81 61.56 78.97 66.53 81"/>
+  </g>
+  <g>
+    <line class="cls-3" x1="126" y1="66" x2="135" y2="51"/>
+    <polygon class="cls-5" points="136.82 47.97 136 53.28 134.86 51.23 132.51 51.19 136.82 47.97"/>
+  </g>
+  <g>
+    <line class="cls-3" x1="117" y1="81" x2="126" y2="66"/>
+    <polygon class="cls-5" points="127.82 62.97 127 68.28 125.86 66.23 123.51 66.19 127.82 62.97"/>
+  </g>
+  <g>
+    <line class="cls-3" x1="63" y1="51" x2="54" y2="66"/>
+    <polygon class="cls-5" points="52.18 69.03 53 63.72 54.14 65.77 56.49 65.81 52.18 69.03"/>
+  </g>
+  <g>
+    <line class="cls-3" x1="72" y1="36" x2="63" y2="51"/>
+    <polygon class="cls-5" points="61.18 54.03 62 48.72 63.14 50.77 65.49 50.81 61.18 54.03"/>
+  </g>
+  <g>
+    <line class="cls-3" x1="108" y1="36" x2="90" y2="36"/>
+    <polygon class="cls-5" points="86.47 36 91.44 33.97 90.26 36 91.44 38.03 86.47 36"/>
+  </g>
+  <g>
+    <line class="cls-3" x1="126" y1="36" x2="108" y2="36"/>
+    <polygon class="cls-5" points="104.47 36 109.44 33.97 108.26 36 109.44 38.03 104.47 36"/>
+  </g>
+  <g>
+    <line class="cls-3" x1="144" y1="36" x2="126" y2="36"/>
+    <polygon class="cls-5" points="122.47 36 127.44 33.97 126.26 36 127.44 38.03 122.47 36"/>
+  </g>
+  <line class="cls-3" x1="45" y1="81" x2="72" y2="36"/>
+  <line class="cls-3" x1="72" y1="36" x2="162" y2="36"/>
+  <line class="cls-3" x1="144" y1="36" x2="117" y2="81"/>
+  <line class="cls-3" x1="27" y1="81" x2="117" y2="81"/>
+  <g>
+    <polyline class="cls-2" points="27 14.3 27 81 165.7 81"/>
+    <polygon class="cls-5" points="27 9 23.95 16.46 27 14.69 30.05 16.46 27 9"/>
+    <polygon class="cls-5" points="171 81 163.54 84.05 165.31 81 163.54 77.95 171 81"/>
+  </g>
+  <text class="cls-6" transform="translate(153 93)"><tspan x="0" y="0">V</tspan></text>
+  <text class="cls-6" transform="translate(161 97) scale(.58)"><tspan x="0" y="0">GPIO</tspan></text>
+</svg>

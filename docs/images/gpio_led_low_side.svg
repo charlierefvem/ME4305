@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 351 189">
+  <defs>
+    <style>
+      .cls-1 {
+        letter-spacing: -.02em;
+      }
+
+      .cls-2, .cls-3 {
+        fill: #231f20;
+      }
+
+      .cls-4 {
+        fill: #fff;
+      }
+
+      .cls-5, .cls-6 {
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .cls-5, .cls-6, .cls-7 {
+        fill: none;
+        stroke: #231f20;
+      }
+
+      .cls-6 {
+        stroke-width: .5px;
+      }
+
+      .cls-7 {
+        stroke-miterlimit: 10;
+      }
+
+      .cls-3 {
+        font-family: ArialMT, Arial;
+        font-size: 12px;
+      }
+    </style>
+  </defs>
+  <rect class="cls-4" width="351" height="189"/>
+  <line class="cls-5" x1="333" y1="18" x2="333" y2="36"/>
+  <line class="cls-5" x1="324" y1="18" x2="342" y2="18"/>
+  <text class="cls-3" transform="translate(323.95 12)"><tspan x="0" y="0">V</tspan></text>
+  <text class="cls-3" transform="translate(331.95 16) scale(.58)"><tspan x="0" y="0">DD</tspan></text>
+  <text class="cls-3" transform="translate(292.67 27)"><tspan x="0" y="0">R</tspan></text>
+  <polyline class="cls-5" points="333 36 315 36 312 42 306 30 300 42 294 30 288 42 282 30 279 36 261 36"/>
+  <text class="cls-3" transform="translate(166.33 81)"><tspan x="0" y="0">Q</tspan></text>
+  <text class="cls-3" transform="translate(229.67 18)"><tspan x="0" y="0">D</tspan></text>
+  <g>
+    <g>
+      <line class="cls-6" x1="237.03" y1="28.58" x2="234.42" y2="23.37"/>
+      <polygon class="cls-2" points="236.99 23.94 236.82 24.4 234.51 23.54 233.81 25.91 233.33 25.77 234.18 22.88 236.99 23.94"/>
+    </g>
+    <g>
+      <line class="cls-6" x1="231.34" y1="31.42" x2="228.73" y2="26.22"/>
+      <polygon class="cls-2" points="231.3 26.78 231.13 27.25 228.82 26.39 228.12 28.76 227.64 28.62 228.49 25.73 231.3 26.78"/>
+    </g>
+    <line class="cls-5" x1="261" y1="36" x2="243" y2="36"/>
+    <line class="cls-5" x1="207" y1="36" x2="225" y2="36"/>
+    <line class="cls-5" x1="225" y1="45" x2="225" y2="27"/>
+    <polygon class="cls-5" points="243 45 243 27 225 36 243 45"/>
+  </g>
+  <line class="cls-5" x1="207" y1="63" x2="207" y2="36"/>
+  <line class="cls-5" x1="207" y1="153" x2="207" y2="171"/>
+  <g>
+    <line class="cls-5" x1="180" y1="90" x2="180" y2="126"/>
+    <line class="cls-5" x1="189" y1="90" x2="189" y2="126"/>
+    <line class="cls-5" x1="189" y1="99" x2="207" y2="99"/>
+    <line class="cls-5" x1="207" y1="63" x2="207" y2="99"/>
+    <line class="cls-5" x1="189" y1="117" x2="207" y2="117"/>
+    <line class="cls-5" x1="207" y1="153" x2="207" y2="117"/>
+    <g>
+      <line class="cls-5" x1="144" y1="108" x2="178.92" y2="108"/>
+      <polygon class="cls-2" points="175.6 112.09 174.92 111.36 178.53 108 174.92 104.64 175.6 103.91 180 108 175.6 112.09"/>
+    </g>
+    <circle class="cls-5" cx="189" cy="108" r="27"/>
+  </g>
+  <text class="cls-3" transform="translate(90.66 109.57)"><tspan x="0" y="0">P</tspan></text>
+  <text class="cls-3" transform="translate(98.67 113.56) scale(.58)"><tspan x="0" y="0">X</tspan><tspan class="cls-1" x="8" y="0">Y</tspan></text>
+  <line class="cls-7" x1="117" y1="108" x2="144" y2="108"/>
+  <rect class="cls-6" x="9" y="54" width="108" height="108"/>
+  <text class="cls-3" transform="translate(11 52.3)"><tspan x="0" y="0">MCU</tspan></text>
+  <line class="cls-5" x1="216" y1="171" x2="198" y2="171"/>
+  <text class="cls-3" transform="translate(193.67 182)"><tspan x="0" y="0">GND</tspan></text>
+</svg>
