@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "8a8a834338c63582",
+        "id": "0796ddb22585e79f",
         "type": "tabs",
         "children": [
           {
-            "id": "5365506a5c43b02c",
+            "id": "d00085b673c0d565",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Topics/topic_intro_to_generators.md",
+                "file": "Topics/topic_virtual_com_ports.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "topic_intro_to_generators"
+              "title": "topic_virtual_com_ports"
             }
           }
         ]
@@ -184,34 +184,37 @@
       "webpage-html-export:Export as HTML": false
     }
   },
-  "active": "5365506a5c43b02c",
+  "active": "d00085b673c0d565",
   "lastOpenFiles": [
-    "Topics/topic_crystals_timers_and_counters.md",
-    "Topics/topic_coop_user_io.md",
-    "Topics/topic_classes_and_objects.md",
-    "Topics/topic_collections.md",
-    "Topics/topic_encoders.md",
-    "Topics/topic_formatting_strings.md",
-    "Topics/topic_gpio.md",
-    "Case Studies/case_motor_observer.md",
-    "Lecture Notes/topic_task_diagrams.md",
-    "Topics/topic_virtual_com_ports.md",
     "Topics/topic_using_the_scheduler.md",
-    "Topics/topic_task_diagrams.md",
-    "Topics/topic_state_feedback.md",
-    "Topics/topic_software_timing.md",
-    "Topics/topic_serial_communication.md",
-    "Topics/topic_scheduler.md",
-    "Topics/topic_review_of_signed_numbers.md",
-    "Topics/topic_python_fundamentals.md",
-    "Topics/topic_philosophy_of_mechatronics.md",
-    "Topics/topic_intro_to_i2c.md",
-    "Topics/topic_intro_to_generators.md",
-    "Topics/topic_intro_to_feedback_and_controls.md",
-    "Topics/topic_introduction_to_imus.md",
+    "Topics/topic_encoders.md",
     "Topics/topic_hardware_overview.md",
-    "Topics/topic_fsms_and_state_transition_diagrams.md",
+    "Topics/topic_intro_to_feedback_and_controls.md",
+    "Topics/topic_intro_to_generators.md",
+    "Topics/topic_philosophy_of_mechatronics.md",
+    "Topics/topic_software_timing.md",
+    "References/reference_formatting_strings.md",
+    "References/reference_digital_filters.md",
+    "References/reference_z_domain.md",
+    "References/reference_switch_bounce.md",
+    "References/reference_observer_design.md",
+    "References/reference_quaternions.md",
+    "References/reference_state_feedback.md",
+    "References/reference_euler_angles.md",
+    "References/reference_matrix_exponential.md",
+    "References/reference_discrete_PID.md",
+    "References/reference_disturbance_observer.md",
+    "References/reference_continuous_to_discrete.md",
+    "References/reference_bit_manipulation.md",
+    "References/reference_PID.md",
+    "Topics/topic_intro_to_i2c.md",
+    "Case Studies/case_romi_observer.md",
     "Topics/topic_file_io.md",
+    "Topics/topic_coop_user_io.md",
+    "Topics/topic_crystals_timers_and_counters.md",
+    "Images/shoe_coms.svg",
+    "figures",
+    "Cooperative Character I",
     "Topics",
     "Images/example_3rd_order_poles_discrete.svg",
     "Images/example_3rd_order_poles_continuous.svg",
@@ -224,7 +227,6 @@
     "Images/state_feedback_dominant_poles.svg",
     "Images/Unconfirmed 378910.crdownload",
     "Images/switch_rc_diode_debounce.png",
-    "Images/switch_rc_debounce.png",
     "New folder",
     "Untitled"
   ]

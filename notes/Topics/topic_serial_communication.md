@@ -19,7 +19,7 @@ At first the interfacing between your computer and the Nucleo can feel foreign a
 # Serial Communication
 
 The combination of the Nucleo L476RG and the Shoe of Brian exposes two independent USB connections:
-![A sketch showing that the two USB ports on the Shoe and Nucleo can be used independently.](shoe_coms.png)
+![A sketch showing that the two USB ports on the Shoe and Nucleo can be used independently.|700](shoe_coms.svg)
 
 ``` text
 PC
@@ -72,3 +72,8 @@ Many USB devices, including the ST-LINK and many Bluetooth devices, present them
 
 * Distinguish between UART, COM ports, and Virtual COM Ports.
 * Recognize that the board exposes two different USB communication paths.
+
+# See Also:
+* [[topic_hardware_overview|Hardware and Software Toolchain]]
+* [[topic_virtual_com_ports|Virtual Communication Ports]]
+* [[reference_memoryviews|Buffers and memoryview Objects]]

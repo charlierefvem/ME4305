@@ -75,10 +75,7 @@ Therefore,
 $$
 0b10110011 = -77
 $$
-
 when interpreted as an 8-bit signed integer.
-
-![Handwritten two's complement example converting 0b10110011 to decimal. The one's complement is written as 01001100 and the two's complement is written as 01001101. The set bits are labeled with weights 64, 8, 4, and 1, giving a magnitude of 77 and therefore a decimal value of -77. A second sketch shows the signed interpretation of 8-bit and 16-bit values, with 0x7F and 0x7FFF as maximum positive values, 0x80 and 0x8000 as minimum negative values, and 0xFF and 0xFFFF as -1.](figures/lecture15_twos_complement_example_and_range.png)
 
 ## Two's Complement Ranges
 
@@ -166,3 +163,8 @@ In this lecture, we reviewed signed numbers in binary and focused on how two's c
 Two's complement is not just a way of writing negative numbers. It is the convention that lets the same hardware addition circuits work for both positive and negative integers.
 
 Sign extension is the operation that preserves the value of a signed integer when increasing the number of bits used to represent it. For a positive value, this means extending with zeros. For a negative value, this means extending with ones.
+
+# See Also:
+* [[topic_collections|Collections]]
+* [[topic_introduction_to_imus|Introduction to IMUs]]
+* [[reference_memoryviews|Buffers and memoryview Objects]]

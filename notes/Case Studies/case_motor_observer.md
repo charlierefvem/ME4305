@@ -30,7 +30,7 @@ This case study covers:
 
 # Discrete Control
 
-In this section, the basics of discrete controls are presented primarily in the context of a [[PI controller]]. Refer to [[reference_z_domain|Discrete Time Systems]] for background on discrete signals, the z-domain, and difference equations.
+In this section, the basics of discrete controls are presented primarily in the context of a [[reference_discrete_PID|Discrete PI Implementation]]. Refer to [[reference_z_domain|Discrete Time Systems]] for background on discrete signals, the z-domain, and difference equations.
 
 ## PI Control
 

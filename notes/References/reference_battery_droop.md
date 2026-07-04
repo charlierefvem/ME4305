@@ -78,3 +78,7 @@ In this example a voltage divider will be designed to allow measurement of a bat
 To drop the voltage below 3.3V at full charge, a divider of approximately $\frac{1}{3}$ is required. To achieve such a divider ratio, two resistors are needed, with one being equal to or slightly higher than double the value of the other resistor.
 
 Additionally, the sum of the two resistor values should be large enough to mitigate significant current flow or risk draining the battery prematurely. Values of R1=10k and R2=4.7k will work nicely. The precise divider ratio of $$\frac{4.7\,k\Omega}{14.7\,k\Omega} \approx 0.32$$ will reduce the maximum voltage seen by the ADC to below 3.1V. Additionally, the steady-state current draw will only be $$\frac{9.6\,V}{14.7\,k\Omega} \approx 650 \mu A$$ which is assumed small compared to the draw from the rest of the system.
+
+# See Also:
+* [[reference_PID|PID Controllers]]
+* [[reference_discrete_PID|Discrete PI Implementation]]

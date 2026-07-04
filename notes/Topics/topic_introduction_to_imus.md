@@ -128,7 +128,7 @@ Quaternions represent an orientation using an axis and angle of rotation about t
 Read more about [[reference_quaternions|Quaternions]].
 # The BNO055 IMU
 
-The [[BNO055]] from Bosch is a 9 DOF IMU. It combines an accelerometer, gyroscope, and magnetometer in one sensor package.
+The \[\[BNO055\]\] from Bosch is a 9 DOF IMU. It combines an accelerometer, gyroscope, and magnetometer in one sensor package.
 
 The breakout board used in lab exposes power, ground, and I2C connections. The IMU chip itself is the small sensor IC on the board.
 
@@ -149,3 +149,8 @@ This lecture introduced IMUs as sensor packages used to estimate orientation. A 
 IMUs are orientation sensors, not position sensors. The accelerometer is useful for determining the gravity direction, but integrating accelerometer data to get position is usually not a reliable strategy in this context.
 
 A gyroscope provides excellent short-term rotation-rate information, but integration makes bias and drift accumulate over time. This is why IMU orientation estimates often combine gyroscope data with accelerometer and magnetometer data.
+
+# See Also:
+* [[topic_intro_to_i2c|Introduction to I2C]]
+* [[reference_euler_angles|Euler Angles]]
+* [[reference_quaternions|Quaternions]]

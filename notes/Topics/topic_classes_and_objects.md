@@ -293,3 +293,6 @@ Just as a free-body diagram, transfer function, electrical schematic, or state m
 
 # Candidate Static Notes
 * \[\[Exceptions\]\]
+
+# See Also:
+* [[topic_python_fundamentals|Python Fundamentals]]

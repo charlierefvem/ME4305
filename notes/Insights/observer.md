@@ -1,8 +1,7 @@
 ---
 title: Observer Intuition
+type: insight
 ---
-
-See [[state_feedback|State Feedback]]
 # Disturbance Observers vs Integral Action — Key Insights
 
 ## 1. Separation Principle with Augmented Disturbance States
@@ -377,3 +376,8 @@ Integral action:
 - Often produces cleaner behavior when disturbance estimates are noisy.
 
 For systems with significant quantization or observer-induced disturbance-estimate noise, integral action may be preferable even when a disturbance estimate is available.
+
+# See Also
+* [[reference_observer_design|Observer Design]]
+* [[reference_disturbance_observer|Disturbance Observer Design]]
+* [[case_motor_observer|Practical Motor Control]]

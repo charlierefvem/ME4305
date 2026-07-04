@@ -157,3 +157,6 @@ This example uses two techniques that we may have not covered yet:
 # Summary
 
 * Prefer `with` when opening files.
+
+# See Also:
+* [[topic_collections|Collections]]

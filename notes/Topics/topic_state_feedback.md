@@ -475,7 +475,7 @@ State-feedback is an approach with tradeoffs like any other tool. One tradeoff w
 
 Another limitation is the assumption that all states are accessible to use for feedback. The state of the system is generally a hidden internal property and sensors *may* exist to access some of these properties.
 
-In a future lecture topic on [[observers]] the concepts of observability and state estimation will be covered; these are the missing pieces needed to feed back the entire system state even when measurements are limited to a subset of the system state.
+In a future lecture topic on [[reference_observer_design|Observer Design]] the concepts of observability and state estimation will be covered; these are the missing pieces needed to feed back the entire system state even when measurements are limited to a subset of the system state.
 
 # Summary
 

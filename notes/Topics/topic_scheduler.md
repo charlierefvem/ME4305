@@ -16,7 +16,7 @@ status: draft
 Embedded firmware must be deterministic and robust. Throughout this course we will build firmware as a collection of cooperative tasks dispatched by a priority scheduler.
 
 > **Candidate static notes**
-> -  [[Scheduler Profiler]]
+> -  \[\[Scheduler Profiler\]\]
 
 ## Embedded Multitasking
 
@@ -137,3 +137,10 @@ A good designer should always monitor the output of the profiler and verify that
 -   ME 4305 uses cooperative multitasking.
 -   Tasks are dispatched by the scheduler.
 -   Scheduling policy directly affects task latency and determinism.
+
+# See Also:
+* [[topic_scheduler|Cooperative Multitasking and the Scheduler]]
+* [[topic_using_the_scheduler|Using the Scheduler]]
+* [[topic_software_timing|Software Timing]]
+* [[topic_task_diagrams|Task Diagrams]]
+* [[topic_intro_to_generators|Introduction to Generator Functions]]

@@ -169,3 +169,8 @@ if __name__ == '__main__':
 -   ME 4305 uses finite state machines to design and/or implement tasks.
 -   State transition diagrams communicate FSM behavior visually.
 -   Keep transition actions instantaneous.
+
+# See Also:
+* [[topic_task_diagrams|Task Diagrams]]
+* [[topic_scheduler|Cooperative Multitasking and the Scheduler]]
+* [[topic_using_the_scheduler|Using the Scheduler]]

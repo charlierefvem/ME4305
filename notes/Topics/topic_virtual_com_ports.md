@@ -2,12 +2,11 @@
 title: Virtual Communication Ports
 type: topic
 tags:
-    - micropython
-    - serial
-    - USB_VCP
-    - UART
-    - pyserial
-    - f-strings
+  - micropython
+  - serial
+  - USB_VCP
+  - UART
+  - pyserial
 source:
   course: ME405
   term: 2262
@@ -144,18 +143,16 @@ UTF-8 is used by default.
 
 Many serial APIs also accept normal Python strings directly when writing.
 
-# Candidate Static Notes
-
-* [[USB Virtual COM Ports]]
-* [[UART Communication]]
-* [[Character Encoding]]
-* [[Python Bytes vs Strings]]
-* [[Python f-Strings]]
-* [[Cooperative Character I/O]]
-
 # Summary
 
 * Use `pyb.USB_VCP` for most user communication.
 * UART is available for additional hardware interfaces.
 * Serial communication exchanges bytes rather than strings.
 * `encode()` and `decode()` convert between strings and bytes.
+
+# See Also:
+* [[topic_hardware_overview|Hardware and Software Toolchain]]
+* [[topic_serial_communication|Serial Communication]]
+* [[reference_formatting_strings|Formatting Strings]]
+* [[topic_coop_user_io|Cooperative User Input and Output]]
+* [[topic_collections|Collections]]

@@ -74,3 +74,8 @@ The diagram depicts three tasks and three shared data. The tables below describe
 * Use task diagrams during design.
 * Share standard Python objects when you don't need thread safety.
 * If you need thread safety use `share` objects for single values and `queue` objects for FIFO communication.
+
+# See Also:
+* [[topic_fsms_and_state_transition_diagrams|Finite State Machines and State Transition Diagrams]]
+* [[topic_scheduler|Cooperative Multitasking and the Scheduler]]
+* [[topic_using_the_scheduler|Using the Scheduler]]
