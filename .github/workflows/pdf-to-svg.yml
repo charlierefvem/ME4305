@@ -1,0 +1,89 @@
+name: Convert PDF figures to SVG
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - figures/**
+      - .github/workflows/pdf-to-svg.yml
+
+permissions:
+  contents: write
+
+jobs:
+  convert:
+    name: Convert PDF figures
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Install pdf2svg
+        run: |
+          sudo apt-get update
+          sudo apt-get install --yes pdf2svg
+
+      - name: Convert PDFs and validate SVGs
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          if [ ! -d figures ]; then
+            echo "No figures directory found; nothing to convert."
+            exit 0
+          fi
+
+          converted=()
+
+          while IFS= read -r -d '' pdf; do
+            rel="${pdf#figures/}"
+            svg="notes/Images/${rel%.[Pp][Dd][Ff]}.svg"
+
+            mkdir -p "$(dirname "$svg")"
+            echo "Converting $pdf -> $svg"
+            pdf2svg "$pdf" "$svg"
+            converted+=("$svg")
+          done < <(find figures -type f \( -iname '*.pdf' \) -print0 | sort -z)
+
+          if [ "${#converted[@]}" -eq 0 ]; then
+            echo "No PDF files found under figures; nothing to convert."
+            exit 0
+          fi
+
+          validation_failed=0
+
+          for svg in "${converted[@]}"; do
+            if grep -qi '<text' "$svg"; then
+              echo "::error file=$svg::Generated SVG still contains <text elements. Export the PDF with text outlined or flattened."
+              validation_failed=1
+            fi
+
+            if grep -qi 'font-family' "$svg"; then
+              echo "::error file=$svg::Generated SVG still contains font-family declarations. Export the PDF with text outlined or flattened."
+              validation_failed=1
+            fi
+          done
+
+          if [ "$validation_failed" -ne 0 ]; then
+            exit 1
+          fi
+
+      - name: Commit generated SVGs
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          find notes/Images -type f -name '*.svg' -print0 | xargs -0 --no-run-if-empty git add --
+
+          if git diff --cached --quiet; then
+            echo "No generated SVG changes to commit."
+            exit 0
+          fi
+
+          git commit -m "Generate SVG figures from PDFs [skip actions]"
+          git push
