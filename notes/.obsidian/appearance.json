@@ -2,6 +2,7 @@
   "baseFontSize": 19,
   "baseFontSizeAction": true,
   "enabledCssSnippets": [
-    "font_fix"
+    "font_fix",
+    "center_figures"
   ]
 }

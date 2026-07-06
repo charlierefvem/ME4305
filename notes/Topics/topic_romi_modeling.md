@@ -47,7 +47,9 @@ A secondary assumption is that the DC motors driving Romi's wheels behave like i
 
 Start by considering a side view of Romi. If each wheel is assumed to roll without slip, the velocity at the center of each wheel is related to that wheel's angular velocity by the wheel radius $r$.
 
-![An isometric view of the Romi robot chassis.|700](images/romi_isometric.svg)
+![An isometric view of the Romi robot chassis.](images/romi/isometric.svg)
+
+![An isometric view of the right wheel attached to the Romi robot.|700](images/romi/wheel.svg)
 
 The no-slip rolling relationships are
 
