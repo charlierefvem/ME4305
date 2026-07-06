@@ -22,9 +22,9 @@
                <rdf:li xml:lang="x-default">absolute_pwm</rdf:li>
             </rdf:Alt>
          </dc:title>
-         <xmp:MetadataDate>2026-07-05T09:30:28-07:00</xmp:MetadataDate>
-         <xmp:ModifyDate>2026-07-05T09:30:28-07:00</xmp:ModifyDate>
-         <xmp:CreateDate>2026-07-05T09:30:28-07:00</xmp:CreateDate>
+         <xmp:MetadataDate>2026-07-05T22:37:25-07:00</xmp:MetadataDate>
+         <xmp:ModifyDate>2026-07-05T22:37:25-07:00</xmp:ModifyDate>
+         <xmp:CreateDate>2026-07-05T22:37:25-07:00</xmp:CreateDate>
          <xmp:CreatorTool>Adobe Illustrator 30.6 (Windows)</xmp:CreatorTool>
          <xmp:Thumbnails>
             <rdf:Alt>
@@ -36,12 +36,12 @@
                </rdf:li>
             </rdf:Alt>
          </xmp:Thumbnails>
-         <xmpMM:InstanceID>uuid:ece587e9-917e-440f-b12f-28a477f9e636</xmpMM:InstanceID>
-         <xmpMM:DocumentID>xmp.did:197b2e1c-b5fd-ba45-ac73-1dafab5189cd</xmpMM:DocumentID>
+         <xmpMM:InstanceID>uuid:d81bd25e-8ce7-4091-b24a-8b20ca42cabc</xmpMM:InstanceID>
+         <xmpMM:DocumentID>xmp.did:0620fad2-9cd3-fa4f-b02f-723e3afeaaa5</xmpMM:DocumentID>
          <xmpMM:OriginalDocumentID>uuid:5D20892493BFDB11914A8590D31508C8</xmpMM:OriginalDocumentID>
          <xmpMM:RenditionClass>proof:pdf</xmpMM:RenditionClass>
          <xmpMM:DerivedFrom rdf:parseType="Resource">
-            <stRef:instanceID>uuid:ba4b70bf-7c78-4740-a75a-b713ab220136</stRef:instanceID>
+            <stRef:instanceID>uuid:4b0516d8-1de3-4dcd-a41a-a173e0e56602</stRef:instanceID>
             <stRef:documentID>xmp.did:d09ab417-ce91-034e-8075-bbe3a1038a58</stRef:documentID>
             <stRef:originalDocumentID>uuid:5D20892493BFDB11914A8590D31508C8</stRef:originalDocumentID>
             <stRef:renditionClass>proof:pdf</stRef:renditionClass>
@@ -57,8 +57,8 @@
                </rdf:li>
                <rdf:li rdf:parseType="Resource">
                   <stEvt:action>saved</stEvt:action>
-                  <stEvt:instanceID>xmp.iid:197b2e1c-b5fd-ba45-ac73-1dafab5189cd</stEvt:instanceID>
-                  <stEvt:when>2026-07-05T09:30:27-07:00</stEvt:when>
+                  <stEvt:instanceID>xmp.iid:0620fad2-9cd3-fa4f-b02f-723e3afeaaa5</stEvt:instanceID>
+                  <stEvt:when>2026-07-05T22:37:25-07:00</stEvt:when>
                   <stEvt:softwareAgent>Adobe Illustrator 30.6 (Windows)</stEvt:softwareAgent>
                   <stEvt:changed>/</stEvt:changed>
                </rdf:li>
@@ -78,15 +78,6 @@
          <xmpTPg:Fonts>
             <rdf:Bag>
                <rdf:li rdf:parseType="Resource">
-                  <stFnt:fontName>CMUSansSerif</stFnt:fontName>
-                  <stFnt:fontFamily>CMU Sans Serif</stFnt:fontFamily>
-                  <stFnt:fontFace>Medium</stFnt:fontFace>
-                  <stFnt:fontType>Open Type</stFnt:fontType>
-                  <stFnt:versionString>Version 0.7.0 </stFnt:versionString>
-                  <stFnt:composite>False</stFnt:composite>
-                  <stFnt:fontFileName>cmunss.ttf</stFnt:fontFileName>
-               </rdf:li>
-               <rdf:li rdf:parseType="Resource">
                   <stFnt:fontName>CMUSansSerif-Bold</stFnt:fontName>
                   <stFnt:fontFamily>CMU Sans Serif</stFnt:fontFamily>
                   <stFnt:fontFace>Bold</stFnt:fontFace>
@@ -103,6 +94,15 @@
                   <stFnt:versionString>Version 0.7.0 </stFnt:versionString>
                   <stFnt:composite>False</stFnt:composite>
                   <stFnt:fontFileName>cmunbmr.ttf</stFnt:fontFileName>
+               </rdf:li>
+               <rdf:li rdf:parseType="Resource">
+                  <stFnt:fontName>CMUSansSerif</stFnt:fontName>
+                  <stFnt:fontFamily>CMU Sans Serif</stFnt:fontFamily>
+                  <stFnt:fontFace>Medium</stFnt:fontFace>
+                  <stFnt:fontType>Open Type</stFnt:fontType>
+                  <stFnt:versionString>Version 0.7.0 </stFnt:versionString>
+                  <stFnt:composite>False</stFnt:composite>
+                  <stFnt:fontFileName>cmunss.ttf</stFnt:fontFileName>
                </rdf:li>
             </rdf:Bag>
          </xmpTPg:Fonts>
@@ -624,7 +624,7 @@
                                                                                                     
                            
 <?xpacket end="w"?>
-endstreamendobj3 0 obj<</Count 1/Kids[5 0 R]/Type/Pages>>endobj5 0 obj<</ArtBox[16.8359 13.752 630.0 337.552]/BleedBox[0.0 0.0 648.0 360.0]/Contents 6 0 R/CropBox[0.0 0.0 648.0 360.0]/LastModified(D:20260705093028-07'00')/MediaBox[0.0 0.0 648.0 360.0]/Parent 3 0 R/Resources<</ExtGState<</GS0 7 0 R>>>>/TrimBox[0.0 0.0 648.0 360.0]/Type/Page>>endobj6 0 obj<</Filter/FlateDecode/Length 9755>>stream
+endstreamendobj3 0 obj<</Count 1/Kids[5 0 R]/Type/Pages>>endobj5 0 obj<</ArtBox[16.8359 13.752 630.0 337.552]/BleedBox[0.0 0.0 648.0 360.0]/Contents 6 0 R/CropBox[0.0 0.0 648.0 360.0]/LastModified(D:20260705223725-07'00')/MediaBox[0.0 0.0 648.0 360.0]/Parent 3 0 R/Resources<</ExtGState<</GS0 7 0 R>>>>/TrimBox[0.0 0.0 648.0 360.0]/Type/Page>>endobj6 0 obj<</Filter/FlateDecode/Length 9755>>stream
 H‰lWMÎ,·ÜÏ)úÓ‘D‰”NuE0ğÏb^ ;÷RUT÷Ì3lÃŸ»FEDıñ(‡y9¼ÏãÉ?yüçøï£œí¸şûó·Ç?şùïrüö¿ÇG=
 ş­‡·~Fé»O‹Ñ×W~<cÎÓìx–ã}ƒæı´¶ò—u–ù7¿<5ıüC~$ì„#i\Aäıxå	‹0j.Î”…*Á(cÃ,Ì¯·l}?~üúø×O^­sázUJùö*Îîí0’6Ÿ¾ªtì•'—æßè´A•~XñºÔ³·Òš­êRÏ½”êŠ”!_¶–vÎÅu~ô–sÕ~´³ËJ0<×ÆiX£É~öÖôegƒ·Qs v6k7U«´ÍS;}ôFÍ‰c€‚8+L6ıgX?úY-øK°]Ïê¾•—aé€¿ëˆã[ëë1O)7òş)V‰Î8Œ¤„Ás|.Ÿ<26/V†Íc!oø8xå7L*gm¶! é§O#ÈM^G
 zêëÎµèÜÕq À¬ë ·5ó€¶¤d!›†À¢¥éèŠÀ’®	{	œ~„tĞçØ‚ÁTó’kr¸ƒğ˜×K0#ZÁnmßŸØ1â:Î#(¢¯wj[“Ç2;¥m¬H?£#†D˜AS‚³&‡Æµht’¡ğêˆ1‘à€I!AëŒ	 •ßl ¢p!ãìGâÀGFÈÇŒñg	-IİƒIá2hôÈ4’ò^X?Ğı2¡+âh#dÄ‘rÀyl´v"€:8ZhqÁ`G¨æ½Ø2ïr[êU4§\x‚šÎ§Ò
@@ -657,7 +657,7 @@ QÀ
 5
 ¸ßXQEX-“ÔßPĞÒoObÿkÃ49<¼Í'„Éª¶ÎŒÇ?ŸWµÑ¡EV†u¥F‘,t]SÂË†‹¥A×áñEóñ€­” ¦_
 Ö¡Ó¤ŞT3³©—@X–¥àòXÇøzCÚH ²+ß |İúÒ[»f[şœú<Ê—z%»øf¤Xr;“—j¯ªö¾#ò6ÚPÊeàDÏçï©F’(&¬dÒ¥É§ŸÏùĞ¾™>(4² •ƒ…Ÿæ—ŒŞîÚÕz½àĞuTQ(&m#[rÆej‰?3ŒMj¶4ª¦QÜpj`¥w…×Æ×Ñ,òûˆ´´„Üß®1È.PTUrÆ~ø}ªñ½]ÕĞ^@-‰X"İÓ+SÒñ½TFÅEq½(»H(šïU+ŸS³›şTev.ÄÔöÕæ+Á@F]%#;Q.\•Ç¬´‘+IğŒ&|÷9õ6;İìíğ³ò<ı¶ ãÁ/çGrHæÜ`éÅè<è÷ØĞ£ebÒsxœgˆ¼/LbŸ›]3ˆŞíšoXrdæ~_`Êº¿GG>Å…f”Ä¹³V8¤ûÛÂrİ¾˜úŠhU÷é¹`ö¼ó±±"ıÒóhCnÈsü"[({³$†<±ìˆ¿/fØW+ıœO#f}µä¹›På•Ïü{O­8Ğ¥ò`QÎÆ¥ø5—_ş× •©ÿÿÇ_   ÿÿ   ÿÿ JR‹õ
-endstreamendobj7 0 obj<</AIS false/BM/Normal/CA 1.0/OP false/OPM 0/SA true/SMask/None/Type/ExtGState/ca 1.0/op false>>endobj8 0 obj<</CreationDate(D:20260705093028-07'00')/Creator(Adobe Illustrator 30.6 \(Windows\))/ModDate(D:20260705093028-07'00')/Producer(Adobe PDF library 18.00)/Title(absolute_pwm)>>endobjxref
+endstreamendobj7 0 obj<</AIS false/BM/Normal/CA 1.0/OP false/OPM 0/SA true/SMask/None/Type/ExtGState/ca 1.0/op false>>endobj8 0 obj<</CreationDate(D:20260705223725-07'00')/Creator(Adobe Illustrator 30.6 \(Windows\))/ModDate(D:20260705223725-07'00')/Producer(Adobe PDF library 18.00)/Title(absolute_pwm)>>endobjxref
 0 9
 0000000000 65535 f
 0000000016 00000 n
@@ -669,7 +669,7 @@ endstreamendobj7 0 obj<</AIS false/BM/Normal/CA 1.0/OP false/OPM 0/SA true/SM
 0000053397 00000 n
 0000053509 00000 n
 trailer
-<</Size 9/Root 1 0 R/Info 8 0 R/ID[<354C0D04125C0E40926CBF3A815F9F3A><9822038380DE3A48BE743A61EA8782FE>]>>
+<</Size 9/Root 1 0 R/Info 8 0 R/ID[<F42BC6B9F5F32F409E8D327151E82405><04A6295BD3047247865FCE97F3935DFD>]>>
 startxref
 53698
 %%EOF

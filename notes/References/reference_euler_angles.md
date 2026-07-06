@@ -44,7 +44,7 @@ $$
 $$
 The rotation will be determined using projection in the $(x_1,y_1)$ plane.
 
-![Euler angle derivation for the ZYX convention as yaw by psi about global z1.|700](images/euler_angles_psi_rotation.svg)
+![Euler angle derivation for the ZYX convention as yaw by psi about global z1.](images/imu/euler_angle_psi_rotation.svg)
 
 From the diagram, the new basis vectors are
 $$

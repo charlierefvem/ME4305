@@ -28,7 +28,7 @@ Absolute encoders output a signal representing position with respect to an absol
 
 Many modern encoders output a PWM signal in which the duty cycle or on-time represents the angular displacement of the encoder. Some are physically bounded to a single rotation, but others allow continuous rotation, causing the PWM signal to reset once per rotation.
 
-![Graph showing PWM duty cycle varying approximately linearly with shaft angle from 0 to 360 degrees.|700](images/pwm_encoder.svg)
+![Graph showing PWM duty cycle varying approximately linearly with shaft angle from 0 to 360 degrees.](images/encoder/absolute_pwm.svg)
 
 ## Gray Code
 
@@ -47,7 +47,7 @@ The table below shows the 3-bit Gray code pattern associated with the Gray code 
 | 6     | 1     | 0     | 1     | `0b101` |
 | 7     | 1     | 0     | 0     | `0b100` |
 
-![Circular Gray-code encoder disk with eight angular sectors.|500](images/graycode_encoder.svg)
+![Circular Gray-code encoder disk with eight angular sectors.](images/encoder/gray_code_disk.svg)
 
 The following snippet of Python code shows how to convert between 3-bit Gray code and binary. Note that for larger Gray code disks the number of cumulative XOR operations will increase as well.
 ``` python
@@ -68,7 +68,8 @@ Many high-performance (high resolution) encoders use optics to produce edges. In
 * Transmissive encoders shine light, usually from an LED, through a spoked disk. As the disk rotates the spokes break the line of site between the LED and a pair of photodetectors. If the two detectors are placed carefully the resulting output will have the appropriate 90° phase shift.
 * Reflective encoders work on a very similar principle, but instead of having gaps in the encoder disk, there are reflective strips instead. This allows the LED and photodetectors to be on the same side of the disk, making the encoder more compact and easier to assemble.
 
-![Transmissive and reflective optical encoder examples.|700](images/optical_encoders.svg)
+![Transmissive optical encoder example.](images/encoder/optical_transmissive.svg)
+![Reflective optical encoder example.](images/encoder/optical_reflective.svg)
 
 ## Magnetic Quadrature Encoders
 
@@ -121,7 +122,7 @@ From this information, a lookup table, like the one shown below, can be used to 
 
 In this example a basic case of decoding will be covered for an encoder rotating with constant velocity.
 
-![Quadrature edge decoding waveform.|700](images/quadrature_decoding.svg)
+![Quadrature edge decoding waveform.](images/encoder/quadrature_decoding_simple.svg)
 
 Examine the figure above and notice the highlighted edge on Channel A. In this figure the horizontal axes represent time, so reading the waveforms left-to-right makes the edge of Channel A a *rising edge*. When this rising edge occurs, the opposite channel is low. Therefore, according to row two of the table above, the encoder is rotating in the forward direction and the count should go up by one unit.
 
@@ -139,7 +140,7 @@ The timer can also XOR the two channels to generate a square wave whose frequenc
 
 In this example a more complicated motion will be decoded in which the encoder changes direction.
 
-![Worked quadrature decoding example showing channel waveforms, XOR output, and accumulated count.|700](images/quadrature_decoding_practice.svg)
+![Worked quadrature decoding example showing channel waveforms, XOR output, and accumulated count.](images/encoder/quadrature_decoding_advanced.svg)
 
 There are four plots shown in the figure above:
 1) The first plot shows the quadrature waveform for Channel A. Notice that it no longer has a fixed frequency; instead each low and high portion is of different length.
@@ -160,7 +161,7 @@ The diagram below depicts an encoder that has been rotating with constant veloci
 
 One approach to detecting overflow is to frequently compute the change in count between updates and then use a rule to determine whether the change in count is correct, or off due to overflow.
 
-![Timer rollover compensation example illustrating overflow and underflow correction.|700](images/encoder_reload.svg)
+![Timer rollover compensation example illustrating overflow and underflow correction.](images/encoder/reload_algorithm.svg)
 
 In the example waveform in the figure above, overflow occurs between update #4 and update #5. The change in count *should* be a small positive change, as indicated by the black-colored $\Delta45$ but the computed value will actually be a larger negative change, as indicated by the $\Delta45$ shown in red.
 

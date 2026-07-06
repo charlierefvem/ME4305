@@ -19,7 +19,7 @@ At first the interfacing between your computer and the Nucleo can feel foreign a
 # Serial Communication
 
 The combination of the Nucleo L476RG and the Shoe of Brian exposes two independent USB connections:
-![A sketch showing that the two USB ports on the Shoe and Nucleo can be used independently.|700](shoe_coms.svg)
+![A sketch showing that the two USB ports on the Shoe and Nucleo can be used independently.](images/hardware_toolchain/hardware_toolchain.svg)
 
 ``` text
 PC

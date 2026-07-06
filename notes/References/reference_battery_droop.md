@@ -52,7 +52,7 @@ With this new gain included, the dynamic values of $V_{bat}$ cancel with each ot
 
 The block diagram below shows a simple modification to a standard feedback control loop that includes an additional gain in between the controller and the actuator. This gain can be used for unit conversion or, as previously mentioned, for compensating for a drooping battery.
 
-![A block diagram representation of a closed loop controller with an extra dynamic gain on the controller output.|700](images/ControlLoopDiagrams_Battery_Compensation.svg)
+![A block diagram representation of a closed loop controller with an extra dynamic gain on the controller output.](images/ControlLoopDiagrams_Battery_Compensation.svg)
 
 This output gain should generally remain outside of the controller itself. The controller should operate in physical units, while the output gain converts those units into whatever representation the actuator requires.
 ## Example 2
@@ -69,7 +69,7 @@ The block diagram above generalizes this method of compensation using an output 
 
 To measure the battery voltage safely, a voltage divider is necessary. The maximum raw battery voltage may be too high to read with a microcontroller's ADC, which often has an active range of 0V to 3.3V. To reduce the battery voltage to a safe range, a divider with a suitable ratio is required.
 
-![A voltage divider circuit built from an upper resistor R1 and a lower resistor R2.|700](images/resistor_divider.svg)
+![A voltage divider circuit built from an upper resistor R1 and a lower resistor R2.](images/battery/battery_divider.svg)
 
 ## Example 3
 

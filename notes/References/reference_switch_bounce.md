@@ -36,7 +36,7 @@ For a single switch:
 
 On many microcontrollers, the pull-up resistor can be configured internally, so an external resistor may not be required.
 
-![Active-low switch circuit. The circuit shows an MCU GPIO pin connected to a node with a pull-up resistor to VDD and a switch to ground.|700](images/gpio_active_low_switch.svg)
+![Active-low switch circuit. The circuit shows an MCU GPIO pin connected to a node with a pull-up resistor to VDD and a switch to ground.](images/gpio/active_low_switch.svg)
 
 # Reading Multiple Switches with Fewer GPIO Pins
 
@@ -61,7 +61,7 @@ It is possible to build a matrix of switches by arranging them into rows and col
 
 For a $4\times4$ array of switches, like the hexadecimal keypad shown below, the number of required GPIO reduces by half from 16 to 8.
 
-![A schematic snippet for a 4x4 switch matrix. Rows are labeled Y1 through Y4 and columns are labeled X1 through X4.|700](images/switch_matrix.svg)
+![A schematic snippet for a 4x4 switch matrix. Rows are labeled Y1 through Y4 and columns are labeled X1 through X4.](images/gpio/hexadecimal_keypad_matrix.svg)
 
 **Note**: the above schematic is simplified from how these types of matrices are typically constructed. As shown, the matrix will create false readings if multiple buttons are pressed simultaneously. More robust circuits add series diodes to each switch. By allowing current to flow only one way through each switch the false readings can be prevented.
 

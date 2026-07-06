@@ -78,7 +78,7 @@ A flowchart has different rules compared to a FSM: the entirety of the flowchart
 
 It will be left as an exercise for the reader to convert the flowchart into working firmware.
 
-![A detailed flowchart outlining an algorithm for multicharacter numeric data entry.|700](images/multichar_flowchart.svg)
+![A detailed flowchart outlining an algorithm for multicharacter numeric data entry.](images/coop_io/multichar_flowchart.svg)
 
 **Insight**: later in the course, this style of user interface will be used to automate a tuning and data collection interface that will eventually interact with a Python script running on a PC.
 # Summary

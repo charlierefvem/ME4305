@@ -27,7 +27,7 @@ In mechanical engineering courses, focus is usually spent on the s-domain, which
 
 For stable continuous-time systems, all poles, or roots of the characteristic polynomial, must be in the left half-plane. That is, the real part of $s$ must be negative. One way to understand this is to consider the exponential function $e^{st}$. For this function to decay over time as $t \to \infty$, the value of $s$ must be in the left half-plane, or more specifically, $\text{Re}(s) < 0$.
 
-![The s-domain stability diagram shows horizontal Re(s) and vertical Im(s) axes. The left half-plane is shaded and labeled "stable region," emphasizing that continuous-time poles must lie to the left of the imaginary axis for stable decay.|700](images/left_half_plane_stability.svg)
+![The s-domain stability diagram shows horizontal Re(s) and vertical Im(s) axes. The left half-plane is shaded and labeled "stable region," emphasizing that continuous-time poles must lie to the left of the imaginary axis for stable decay.](images/discrete_systems/stability_s_plane.svg)
 
 Discrete signals are more pertinent when measurements are sampled at a regular interval. Purely discrete-time models are usually described using difference equations rather than differential equations. For example, instead of
 $$
@@ -59,7 +59,7 @@ So the discrete-time stability condition that $z^k$ decays is equivalent to the 
 
 Rather than requiring poles to be in the left half-plane, a stable discrete-time system must have poles within the unit disk, or more specifically, $\lvert z \rvert < 1$. Poles on the boundary, such as the imaginary axis in continuous-time or the unit circle in discrete-time, are marginal cases rather than asymptotically stable cases.
 
-![The z-domain stability diagram shows a circle centered at the origin. The inside of the circle is shaded and labeled "stable region," emphasizing that discrete-time poles must lie inside the unit circle. The source drawing labels the axes similarly to the s-domain sketch.|700](images/unit_disk_stability.svg)
+![The z-domain stability diagram shows a circle centered at the origin. The inside of the circle is shaded and labeled "stable region," emphasizing that discrete-time poles must lie inside the unit circle. The source drawing labels the axes similarly to the s-domain sketch.](images/discrete_systems/stability_z_plane.svg)
 
 ## Unit delay and continuous-to-discrete transforms
 
@@ -179,7 +179,7 @@ $$
 
 The diagram below makes geometric sense of this definition for $y_k$.
 
-![The forward-difference diagram shows two sample points, (t_k, x_k) and (t_{k+1}, x_{k+1}), connected by a dashed line. A vertical arrow labels Delta x = x_{k+1} - x_k and a horizontal arrow labels Delta t = t_{k+1} - t_k = Ts. An annotation identifies y_k as the slope at step k.|700](images/forward_difference.svg)
+![The forward-difference diagram shows two sample points, (t_k, x_k) and (t_{k+1}, x_{k+1}), connected by a dashed line. A vertical arrow labels Delta x = x_{k+1} - x_k and a horizontal arrow labels Delta t = t_{k+1} - t_k = Ts. An annotation identifies y_k as the slope at step k.](images/discrete_systems/c2d_forward.svg)
 
 According to this transformation, the derivative is approximated by looking forward at the finite difference between the current sample and the next sample, hence the name forward finite difference.
 
@@ -219,7 +219,7 @@ $$
 
 The diagram below makes geometric sense of this definition for $y_{k+1}$.
 
-![The backward-difference diagram shows the same two sample points, (t_k, x_k) and (t_{k+1}, x_{k+1}). The finite difference still uses Delta x = x_{k+1} - x_k over Delta t = T, but the annotation identifies y_{k+1} as the slope at step k+1.|700](images/backward_difference.svg)
+![The backward-difference diagram shows the same two sample points, (t_k, x_k) and (t_{k+1}, x_{k+1}). The finite difference still uses Delta x = x_{k+1} - x_k over Delta t = T, but the annotation identifies y_{k+1} as the slope at step k+1.](images/discrete_systems/c2d_backward.svg)
 
 According to this transformation, the derivative is approximated by looking backward at the finite difference between the previous sample and the current sample, hence the name backward finite difference.
 
@@ -260,7 +260,7 @@ $$
 
 The diagram below makes geometric sense of this definition for $\frac{1}{2}(y_{k+1} + y_{k})$.
 
-![The trapezoidal-method diagram shows two sample points connected by a dashed line. The vertical change is labeled Delta x = x_{k+1} - x_k and the horizontal change is labeled Delta t = T. An annotation indicates that one-half times (y_{k+1} + y_k) is the average slope at steps k and k+1.|700](images/trapezoidal_method.svg)
+![The trapezoidal-method diagram shows two sample points connected by a dashed line. The vertical change is labeled Delta x = x_{k+1} - x_k and the horizontal change is labeled Delta t = T. An annotation indicates that one-half times (y_{k+1} + y_k) is the average slope at steps k and k+1.](images/discrete_systems/c2d_trapezoidal.svg)
 
 According to this transformation, the average of the derivative at the next sample and the current sample is approximated by looking at the finite difference between those two samples. This method is essentially the average of the forward and backward difference methods, which is equivalent to a trapezoidal difference method.
 

@@ -29,7 +29,7 @@ Consider the block diagram shown below; this diagram depicts a stand PID control
   
 - The error signal, $e$ is produced by the difference between the system setpoint, $r$, and the system output, as measured by the sensor, $\hat{x}$; that is, $e = r - \hat{x}$. This signal is what goes into the PID controller to determine the actuation value, $a$, requested from the actuator. For a complete PID controller, the feedback (control) law is $$a = K_p\, e + K_i\int e\, \text{d}t + K_d \frac{\text{d}}{\text{dt}}e.$$The control law is often represented as a transfer function as well; for a full PID the transfer function representation becomes $$C = K_p + \frac{K_i}{s} + K_d\,s$$ so that $a = C\,e$.
 
-![Block diagram representation of a PID control loop|700](images/ControlLoopDiagrams_Standard_PID.svg)
+![Block diagram representation of a PID control loop](images/ControlLoopDiagrams_Standard_PID.svg)
 
 Intuitive understanding of PID controllers comes from experience and practice working with them. Nonetheless, the table below is an attempt at summarizing the contribution of each of the three components of the PID.
 
@@ -53,7 +53,7 @@ Most importantly, the control law should never request more actuation effort tha
 
 A modified control loop with actuator saturation is shown in the diagram below. The saturation block limits the true actuation value $a^{\ast}$ to be between some fixed upper and lower limits even if the requested actuation value $a$ exceeds those limits.
 
-![A block diagram representation of a closed loop feedback controller with actuator saturation|700](images/ControlLoopDiagrams_Saturation.svg)
+![A block diagram representation of a closed loop feedback controller with actuator saturation](images/ControlLoopDiagrams_Saturation.svg)
 
 In battery-powered systems, the actuator limits may themselves change over time. For example, as the battery voltage decreases, the maximum achievable motor voltage decreases proportionally. Consequently, it is often preferable to compute saturation limits dynamically from the measured battery voltage rather than assuming fixed limits.
 
@@ -68,15 +68,15 @@ A common outcome of windup is prolonged or sustained overshoot. If the integrato
 
 The most common method of handling integrator windup is to "turn off" the integrator when the controller output is saturated. That is, as soon as the saturation takes place, the integrator should stop integrating the system error. This will keep the integrator value close to the threshold that just barely causes saturation.
 
-![A block diagram representation of a PI controller with anti-windup implemented using naive conditional integration.|700](images/ControlLoopDiagrams_Anti_Windup_Clamping.svg)
+![A block diagram representation of a PI controller with anti-windup implemented using naive conditional integration.](images/ControlLoopDiagrams_Anti_Windup_Clamping.svg)
 
 This method is not robust however, as it does not allow the integrator to wind back down when the error becomes negative unless the saturation is removed by the proportional term (or the derivative term if it is used). A more robust method uses slightly more complex logic to stop integrating. Using the robust method, the integrator is only switched off when the saturation occurs and the sign of the error matches the sign of the actuation value.
 
-![A block diagram representation of a PI controller with anti-windup implemented using robust conditional integration.|700](images/ControlLoopDiagrams_Anti_Windup_Advanced_Clamping.svg)
+![A block diagram representation of a PI controller with anti-windup implemented using robust conditional integration.](images/ControlLoopDiagrams_Anti_Windup_Advanced_Clamping.svg)
 
 Other anti-windup techniques use feedback to reduce the integrator value dynamically depending on the amount of saturation that is occurring.
 
-![A block diagram representation of a closed-loop PI controller with anti-windup implemented using feedback.|700](images/ControlLoopDiagrams_Anti_Windup_Feedback_Method.svg)
+![A block diagram representation of a closed-loop PI controller with anti-windup implemented using feedback.](images/ControlLoopDiagrams_Anti_Windup_Feedback_Method.svg)
 
 An important concept in anti-windup construction is that once the saturation disappears the anti-windup mechanism must also disappear so that it is invisible during linear operation.
 
@@ -92,7 +92,7 @@ $$
 
 It should be noted that, partially through intentional design, the system will not respond as quickly if set up as an IPD controller instead of a PID controller.
 
-![A block diagram representation of an IPD feedback controller.|700](images/ControlLoopDiagrams_IPD.svg)
+![A block diagram representation of an IPD feedback controller.](images/ControlLoopDiagrams_IPD.svg)
 
 **Insight**: IP and IPD controllers are used when the setpoint changes abruptly and actuator stress is a concern.
 
@@ -101,15 +101,17 @@ It should be noted that, partially through intentional design, the system will n
 Yet another example modification that improves performance is the addition of a feedforward controller in parallel with the feedback controller. An example control loop is shown below as a block diagram.
 
 The feedforward controller can be thought of as an open-loop controller with the objective of choosing an actuation value that, through the dynamics of the actuator and plant, cause the output to match the setpoint. In theory, an inverse model of the actuator and plant,
+
 $$
 \frac{1}{G_2 \, G_1},
-$$would act as a perfect feedforward controller as it would cancel out all dynamics between the setpoint and the output.
+$$
+would act as a perfect feedforward controller as it would cancel out all dynamics between the setpoint and the output.
 
 In practice, inverse plant models don't work due to mathematical and practical restrictions. Primarily, it is impossible to implement inverse plant models that result in improper systems, as indicated by transfer functions with higher-order numerators than denominators. Commonly, feed forward controllers use a simple proportional gain applied to the reference signal instead of a full inverse plant model, but it is also typical to combine a filter with the feedforward gain so that quickly changing setpoints don't affect the system right away.
 
 The feedback controller therefore only needs to work on the small error between the open-loop output and the setpoint. In this way a higher performing controller can be implemented because the feedback controller only needs to respond to the smaller fluctuations in the error and is not responsible for maintaining steady-state output.
 
-![A block diagram representation of a feedback controller with an additional feedforward path.|700](images/ControlLoopDiagrams_Feedforward.svg)
+![A block diagram representation of a feedback controller with an additional feedforward path.](images/ControlLoopDiagrams_Feedforward.svg)
 
 **Insight**: Feedforward is useful when the plant is reasonably predictable and the required steady-state effort is known.
 
@@ -118,12 +120,14 @@ The feedback controller therefore only needs to work on the small error between 
 It has been argued, above, that differentiation is often more problematic than helpful. The IPD controller mitigates this somewhat, by only differentiating the measured feedback signal instead of the system error, but noise in the measurement is still amplified through differentiation.
 
 One tactic exists to overcome this challenge, but it only applies to specific systems. Instead of feeding back data measured from one sensor and then differentiating that data to use with $K_p$, a PDF controller feeds back back an additional measurement of the rate of change. That is, instead of performing a numerical derivative, the dynamics of the plant perform the differentiation which is then measured directly. The control law is very similar to that of an IPD controller otherwise. The control law for this setup is 
+
 $$
 a = -K_p\, \hat{x} + K_i\int e\, \text{dt} - K_d\, \hat{v},
 $$
+
 where $\hat{v}$ represents a measurement of the derivative of $x$.
 
-![A block diagram representation of an PDF feedback controller.|700](images/ControlLoopDiagrams_PDF.svg)
+![A block diagram representation of an PDF feedback controller.](images/ControlLoopDiagrams_PDF.svg)
 
 Pseudo-derivative feedback is an early example of a broader design philosophy that uses more information about the system in addition to the output measurement. Rather than computing additional information numerically (such as a derivative), it is often preferable to measure that information directly whenever practical. Later in the course we will extend this idea further using state feedback and observers.
 

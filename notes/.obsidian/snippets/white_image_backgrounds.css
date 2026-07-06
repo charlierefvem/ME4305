@@ -1,0 +1,5 @@
+.theme-dark .markdown-rendered img,
+.markdown-source-view.mod-cm6 .cm-content .image-embed,
+.theme-dark .cm-embed-block img {
+    background-color: #ffffff !important;
+}

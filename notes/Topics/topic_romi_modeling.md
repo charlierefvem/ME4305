@@ -49,7 +49,7 @@ Start by considering a side view of Romi. If each wheel is assumed to roll witho
 
 ![An isometric view of the Romi robot chassis.](images/romi/isometric.svg)
 
-![An isometric view of the right wheel attached to the Romi robot.|700](images/romi/wheel.svg)
+![An isometric view of the right wheel attached to the Romi robot.](images/romi/wheel.svg)
 
 The no-slip rolling relationships are
 

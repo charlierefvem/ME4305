@@ -86,7 +86,7 @@ In this section you will see examples of cooperative round-robin and cooperative
 
 Round-robin scheduling dispatches each task sequentially in a repeating pattern.
 
-![Three timing diagrams comparing round-robin scheduling. The diagrams show how task periods and execution durations affect processor utilization and demonstrate how long-running tasks delay later executions.|700](images/round_robin_scheduling.svg)
+![Three timing diagrams comparing round-robin scheduling. The diagrams show how task periods and execution durations affect processor utilization and demonstrate how long-running tasks delay later executions.](round_robin_scheduling.svg)
 
 The lecture compares three cases with different task periods and execution times to illustrate how timing margin decreases as execution time increases.
 
@@ -94,7 +94,7 @@ The lecture compares three cases with different task periods and execution times
 
 Priority scheduling dispatches whichever ready task has the highest assigned priority.
 
-![Three timing diagrams comparing priority scheduling. The diagrams show higher-priority tasks executing with lower latency while lower-priority tasks are deferred when processor time is limited.|700](images/priority_scheduling.svg)
+![Three timing diagrams comparing priority scheduling. The diagrams show higher-priority tasks executing with lower latency while lower-priority tasks are deferred when processor time is limited.](images/multitasking/priority_scheduling.svg)
 
 Compared with round-robin scheduling, priority scheduling generally provides improved latency for critical tasks but introduces additional scheduling complexity.
 

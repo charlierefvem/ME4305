@@ -42,7 +42,7 @@ Several features define the protocol:
 * The physical layer uses open-drain outputs in a wired-or configuration so that many devices can cooperatively share the same `SDA` and `SCL` signals.
 * Typical pull-up values are in the range of 2.2k to 4.7k and vary depending on timing requirements.
 
-![I2C bus overview. Device 1 is the controller and connects to two shared communication lines labeled SCL and SDA. Device 2 and Device 3 are peripherals connected to the same SCL and SDA bus. Both lines are pulled up through resistors, illustrating the open-drain wired-or physical layer used by I2C.|700](images/i2c_physical_layer.svg)
+![I2C bus overview. Device 1 is the controller and connects to two shared communication lines labeled SCL and SDA. Device 2 and Device 3 are peripherals connected to the same SCL and SDA bus. Both lines are pulled up through resistors, illustrating the open-drain wired-or physical layer used by I2C.](images/iic/physical_layer.svg)
 
 ## Comparison to SPI
 
@@ -58,7 +58,7 @@ The controller normally generates the clock signal. Some peripherals can perform
 
 All data transfers begin when the controller performs a start condition on the bus.
 
-![Open-drain I2C physical layer. Two devices share the SDA and SCL lines. Each device contains switches or transistor-like outputs that can pull the line down to ground, while external pull-up resistors return the lines to 3.3 V when no device is pulling them low. This illustrates why no device actively drives a logic high on an I2C bus.|700](images/i2c_wired_or_physical_layer.svg)
+![Open-drain I2C physical layer. Two devices share the SDA and SCL lines. Each device contains switches or transistor-like outputs that can pull the line down to ground, while external pull-up resistors return the lines to 3.3 V when no device is pulling them low. This illustrates why no device actively drives a logic high on an I2C bus.](images/iic/physical_layer_wired_or.svg)
 
 # Device Addresses and the Read/Write Bit
 

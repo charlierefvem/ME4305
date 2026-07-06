@@ -1,8 +1,9 @@
 {
-  "baseFontSize": 19,
-  "baseFontSizeAction": true,
+  "baseFontSize": 16,
+  "baseFontSizeAction": false,
   "enabledCssSnippets": [
     "font_fix",
-    "center_figures"
+    "center_figures",
+    "white_image_backgrounds"
   ]
 }

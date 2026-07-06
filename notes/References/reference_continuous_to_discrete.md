@@ -67,7 +67,7 @@ $$
 
 These poles can be visualized on a pole map like shown below.
 
-![Continuous pole diagram. The location of each of the third order systems poles is shown as an x on a complex plane.|700](images/example_3rd_order_poles_continuous.svg)
+![Continuous pole diagram. The location of each of the third order systems poles is shown as an x on a complex plane.](discrete_systems/example_3o_poles_continuous.svg)
 
 Each of these can be converted to a discrete time pole with $z_n = e^{s_n\,T_s}$. For this example assume $T_s = 1[ms]=0.001[s]$.
 
@@ -82,7 +82,7 @@ $$
 
 These poles can also be visualized on a pole map like shown below.
 
-![Discrete pole diagram. The location of each of the third order systems poles is shown as an x on a complex plane.|700](images/example_3rd_order_poles_discrete.svg)
+![Discrete pole diagram. The location of each of the third order systems poles is shown as an x on a complex plane.](images/discrete_systems/example_3o_poles_discrete.svg)
 
 **Insight**: notice that the location of the continuous time poles relative to the imaginary axis visually resembles the location of the discrete time poles relative to the unit circle.
 

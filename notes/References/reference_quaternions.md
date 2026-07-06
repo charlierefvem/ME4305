@@ -108,11 +108,11 @@ The quaternion "sandwich" guarantees that for a pure vector $\underline{w}$, the
 
 ## Example 2
 
-As a simple example, rotate
+As a simple example, consider a vector lying in the $xy$-plane:
 $$
-\underline{w} = \alpha\, i + \beta\, j
+\underline{w} = \alpha\, i + \beta\, j.
 $$
-by angle $\theta$ about the $x$ axis. The rotation quaternion is
+To rotate $\underline{w}$ by angle $\theta$ about the $x$ axis, the rotation quaternion is
 $$
 q =
 \cos \frac{\theta}{2}
@@ -120,17 +120,17 @@ q =
 \sin \frac{\theta}{2} i.
 $$
 
-After applying the quaternion sandwich,
+After applying the quaternion "sandwich",
 
 $$
 q\,\underline{w}\,q^*
 =
-\alpha i + \beta\left(\cos\theta\,j + \sin\theta\,k\right).
+\alpha\, i + \beta\left(\cos\theta\,j + \sin\theta\,k\right).
 $$
 
 The $i$ component is unchanged because the rotation axis is the $x$ axis. The $j$ component rotates into a combination of $j$ and $k$.
 
-![The example rotates w equals alpha i plus beta j by angle theta about the x-axis. A quaternion q equals cos(theta/2) plus sin(theta/2) i is written. Diagrams shows the original vector w and the rotated vector v.|700](images/quaternion_rotation_example.svg)
+![The example rotates w equals alpha i plus beta j by angle theta about the x-axis. A quaternion q equals cos(theta/2) plus sin(theta/2) i is written. Diagrams shows the original vector w and the rotated vector v.|700](images/imu/quaternion_rotation.svg)
 
 # Insights
 

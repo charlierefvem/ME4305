@@ -53,7 +53,7 @@ A task diagram is a graph that represents individual tasks with nodes and data s
 
 In this example a task diagram is presented for a simple data collection scheme. The application is meant to wait for input from a button and then collection data from an ADC for 10 seconds at 100Hz before finally printing the data back to the user.
 
-![Task diagram showing an ADC task, user interface task, and interrupt button task communicating through shares.|700](images/simple_task_diagram.svg)
+![Task diagram showing an ADC task, user interface task, and interrupt button task communicating through shares.](images/multitasking/task_diagram.svg)
 
 The diagram depicts three tasks and three shared data. The tables below describe some of the design choices encoded in the task diagram.
 

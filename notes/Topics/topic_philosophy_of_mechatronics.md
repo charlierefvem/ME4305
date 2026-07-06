@@ -32,7 +32,7 @@ A successful mechatronic system requires all of these pieces to work together. I
 
 Some engineers, like your instructor, consider programming to be less rewarding than the more mechanical aspects; this is shown in the "stat chart" style diagram below as the dark grey bubble. Other engineers get a lot of satisfaction out of elegant code and clever algorithms; this is shown by the smaller light grey bubble.
 
-![A diagram in the style of a stat chart showing the four corners of mechatronics, mechanics, electronics, programming, and control theory.](mechatronics_stat_chart.svg)
+![A diagram in the style of a stat chart showing the four corners of mechatronics, mechanics, electronics, programming, and control theory.](images/philosophy/stat_chart.svg)
 
 A good mechatronics engineer should be able to wear many hats and communicate about each aspect of the design, but doesn't need to be *fluent* in each aspect.
 

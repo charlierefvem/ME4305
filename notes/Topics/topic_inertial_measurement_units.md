@@ -59,7 +59,7 @@ In an IMU, accelerometers are often used to measure the direction of "down" by m
 
 Digital accelerometers commonly use MEMS technology, short for **micro-electro-mechanical systems**. A simplified MEMS accelerometer can be understood as a small moving mass attached by a spring. As the mass deflects, the spacing between fixed and moving plates changes. The sensor measures this change in capacitance.
 
-![A diagram showing the internals of an accelerometer including a moving mass supported by a spring with moving plates and fixed plates forming variable capacitors; acceleration causes the moving mass and plates to deflect relative to the fixed plates.|700](images/accelerometer.svg)
+![A diagram showing the internals of an accelerometer including a moving mass supported by a spring with moving plates and fixed plates forming variable capacitors; acceleration causes the moving mass and plates to deflect relative to the fixed plates.](images/imu/accelerometer.svg)
 
 Reference video from the slide: https://www.youtube.com/watch?v=9X4frIQo7x0
 
@@ -94,7 +94,7 @@ However, magnetometers can work poorly in dynamic environments, especially if th
 
 Many magnetometers rely on the Hall Effect. In the Hall effect, current running through a conductor causes charge separation if a magnetic field is present.
 
-![A diagram showing a conductor connected to a battery with conventional current, a magnet near the conductor, and charge separation across the conductor labeled negative on one side and positive on the other.|700](images/hall_effect.svg)
+![A diagram showing a conductor connected to a battery with conventional current, a magnet near the conductor, and charge separation across the conductor labeled negative on one side and positive on the other.](images/imu/hall_effect.svg)
 
 ## Orientation Representations
 

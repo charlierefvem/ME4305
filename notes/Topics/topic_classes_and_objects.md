@@ -115,7 +115,7 @@ There are many techniques for laying out a class before jumping in to the implem
 
 In this example a class diagram is presented for an H-bridge motor driver with a simple phase and direction interface. The class, `MotorDriver`, will abstract away details like GPIO and PWM so that the caller may run simple commands like `left_motor.enable()` and `right_motor.set_effort(42)`.
 
-![Motor driver class diagram listing attributes and methods.|500](images/class_diagram.svg)
+![Motor driver class diagram listing attributes and methods.](images/oop/class_diagram.svg)
 **Note:** when designing a class spend a reasonable amount of time deliberating on a correct set of initializer parameters, attributes, and methods as these choices indirectly define the core structure of your implementation. In this example, exactly five parameters are needed to fully define the hardware interface between the microcontroller and the motor driver, but all five parameters don't need to be stored as attributes for the lifetime of the object. Instead, three of the parameters defining the PWM pin, timer, and channel, are combined into one timer channel attribute.
 
 # Implementing a Class
