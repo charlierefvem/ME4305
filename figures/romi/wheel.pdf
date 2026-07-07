@@ -1,45 +1,34 @@
 %PDF-1.3%‚„œ”
-1 0 obj<</Metadata 2 0 R/Pages 3 0 R/Type/Catalog>>endobj2 0 obj<</Length 26516/Subtype/XML/Type/Metadata>>stream
+1 0 obj<</Metadata 2 0 R/Pages 3 0 R/Type/Catalog>>endobj2 0 obj<</Length 25962/Subtype/XML/Type/Metadata>>stream
 <?xpacket begin="Ôªø" id="W5M0MpCehiHzreSzNTczkc9d"?>
 <x:xmpmeta xmlns:x="adobe:ns:meta/" x:xmptk="Adobe XMP Core 10.0-c000 1.000000, 0000/00/00-00:00:00        ">
    <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
       <rdf:Description rdf:about=""
             xmlns:xmpMM="http://ns.adobe.com/xap/1.0/mm/"
-            xmlns:stRef="http://ns.adobe.com/xap/1.0/sType/ResourceRef#"
             xmlns:stEvt="http://ns.adobe.com/xap/1.0/sType/ResourceEvent#"
             xmlns:stMfs="http://ns.adobe.com/xap/1.0/sType/ManifestItem#"
+            xmlns:stRef="http://ns.adobe.com/xap/1.0/sType/ResourceRef#"
             xmlns:dc="http://purl.org/dc/elements/1.1/"
             xmlns:xmp="http://ns.adobe.com/xap/1.0/"
             xmlns:xmpGImg="http://ns.adobe.com/xap/1.0/g/img/"
+            xmlns:aiThumbnail="http://ns.adobe/meta/ai/thumbnail"
             xmlns:xmpTPg="http://ns.adobe.com/xap/1.0/t/pg/"
             xmlns:stDim="http://ns.adobe.com/xap/1.0/sType/Dimensions#"
             xmlns:stFnt="http://ns.adobe.com/xap/1.0/sType/Font#"
             xmlns:xmpG="http://ns.adobe.com/xap/1.0/g/"
             xmlns:illustrator="http://ns.adobe.com/illustrator/1.0/"
             xmlns:pdf="http://ns.adobe.com/pdf/1.3/">
-         <xmpMM:DocumentID>xmp.did:deca5ef2-c8c4-e340-a9bd-1bf055f0adf8</xmpMM:DocumentID>
-         <xmpMM:InstanceID>uuid:62439e24-f88b-4381-8fdb-b62888a86fb7</xmpMM:InstanceID>
+         <xmpMM:DocumentID>xmp.did:0711e8aa-e213-d94b-83d2-4e6495d3bb19</xmpMM:DocumentID>
+         <xmpMM:InstanceID>uuid:2abd05c4-2500-4bf0-93a8-3298797fc072</xmpMM:InstanceID>
          <xmpMM:OriginalDocumentID>xmp.did:0711e8aa-e213-d94b-83d2-4e6495d3bb19</xmpMM:OriginalDocumentID>
          <xmpMM:RenditionClass>proof:pdf</xmpMM:RenditionClass>
-         <xmpMM:DerivedFrom rdf:parseType="Resource">
-            <stRef:instanceID>uuid:224030b1-a5a3-4e74-ac12-27d5033bfdc9</stRef:instanceID>
-            <stRef:documentID>xmp.did:0711e8aa-e213-d94b-83d2-4e6495d3bb19</stRef:documentID>
-            <stRef:originalDocumentID>xmp.did:0711e8aa-e213-d94b-83d2-4e6495d3bb19</stRef:originalDocumentID>
-            <stRef:renditionClass>proof:pdf</stRef:renditionClass>
-         </xmpMM:DerivedFrom>
+         <xmpMM:DerivedFrom rdf:parseType="Resource"/>
          <xmpMM:History>
             <rdf:Seq>
                <rdf:li rdf:parseType="Resource">
                   <stEvt:action>saved</stEvt:action>
                   <stEvt:instanceID>xmp.iid:0711e8aa-e213-d94b-83d2-4e6495d3bb19</stEvt:instanceID>
                   <stEvt:when>2026-07-04T10:35:05-07:00</stEvt:when>
-                  <stEvt:softwareAgent>Adobe Illustrator 30.6 (Windows)</stEvt:softwareAgent>
-                  <stEvt:changed>/</stEvt:changed>
-               </rdf:li>
-               <rdf:li rdf:parseType="Resource">
-                  <stEvt:action>saved</stEvt:action>
-                  <stEvt:instanceID>xmp.iid:deca5ef2-c8c4-e340-a9bd-1bf055f0adf8</stEvt:instanceID>
-                  <stEvt:when>2026-07-07T16:28:03-07:00</stEvt:when>
                   <stEvt:softwareAgent>Adobe Illustrator 30.6 (Windows)</stEvt:softwareAgent>
                   <stEvt:changed>/</stEvt:changed>
                </rdf:li>
@@ -176,16 +165,19 @@
             </rdf:Alt>
          </dc:title>
          <xmp:CreatorTool>Adobe Illustrator 30.6 (Windows)</xmp:CreatorTool>
-         <xmp:CreateDate>2026-07-07T16:28:05-07:00</xmp:CreateDate>
-         <xmp:MetadataDate>2026-07-07T16:28:05-07:00</xmp:MetadataDate>
-         <xmp:ModifyDate>2026-07-07T16:28:05-07:00</xmp:ModifyDate>
+         <xmp:CreateDate>2026-07-07T16:47:16-07:00</xmp:CreateDate>
+         <xmp:MetadataDate>2026-07-07T16:47:16-07:00</xmp:MetadataDate>
+         <xmp:ModifyDate>2026-07-07T16:47:16-07:00</xmp:ModifyDate>
          <xmp:Thumbnails>
             <rdf:Alt>
                <rdf:li rdf:parseType="Resource">
-                  <xmpGImg:width>64</xmpGImg:width>
-                  <xmpGImg:height>256</xmpGImg:height>
-                  <xmpGImg:format>JPEG</xmpGImg:format>
-                  <xmpGImg:image>/9j/4AAQSkZJRgABAgEAAAAAAAD/7QAsUGhvdG9zaG9wIDMuMAA4QklNA+0AAAAAABAAAAAAAAEA&#xA;AQAAAAAAAQAB/+4ADkFkb2JlAGTAAAAAAf/bAIQABgQEBAUEBgUFBgkGBQYJCwgGBggLDAoKCwoK&#xA;DBAMDAwMDAwQDA4PEA8ODBMTFBQTExwbGxscHx8fHx8fHx8fHwEHBwcNDA0YEBAYGhURFRofHx8f&#xA;Hx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8f/8AAEQgBAABAAwER&#xA;AAIRAQMRAf/EAaIAAAAHAQEBAQEAAAAAAAAAAAQFAwIGAQAHCAkKCwEAAgIDAQEBAQEAAAAAAAAA&#xA;AQACAwQFBgcICQoLEAACAQMDAgQCBgcDBAIGAnMBAgMRBAAFIRIxQVEGE2EicYEUMpGhBxWxQiPB&#xA;UtHhMxZi8CRygvElQzRTkqKyY3PCNUQnk6OzNhdUZHTD0uIIJoMJChgZhJRFRqS0VtNVKBry4/PE&#xA;1OT0ZXWFlaW1xdXl9WZ2hpamtsbW5vY3R1dnd4eXp7fH1+f3OEhYaHiImKi4yNjo+Ck5SVlpeYmZ&#xA;qbnJ2en5KjpKWmp6ipqqusra6voRAAICAQIDBQUEBQYECAMDbQEAAhEDBCESMUEFURNhIgZxgZEy&#xA;obHwFMHR4SNCFVJicvEzJDRDghaSUyWiY7LCB3PSNeJEgxdUkwgJChgZJjZFGidkdFU38qOzwygp&#xA;0+PzhJSktMTU5PRldYWVpbXF1eX1RlZmdoaWprbG1ub2R1dnd4eXp7fH1+f3OEhYaHiImKi4yNjo&#xA;+DlJWWl5iZmpucnZ6fkqOkpaanqKmqq6ytrq+v/aAAwDAQACEQMRAD8A9U4qhrnUtPtV5XFxHGC3&#xA;AVYVLfygdSd+mKqsFzBOvKJuQ7jcEfMGhGKoXV9QubSzmNhbC/1FU5W9j6npeoeg5ScX9Nf8ojFU&#xA;XA0rQxtMgjlKgyRq3IKxG4DUWtD3piqy8vbOyhE93MkEJdI/UkIVecriNFqe7OwAxVal/bmWWN3E&#xA;bRyiFeZ48mKK4C8gK/b7VxVEYqgNdtUutMlhaWWHlx4yQzS27hiwA/eQsrdT0rQ98VQ9tZwwDk6q&#xA;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&#xA;7FXYq7FXYq7FX//Z</xmpGImg:image>
+                  <rdf:value rdf:parseType="Resource">
+                     <xmpGImg:width>64</xmpGImg:width>
+                     <xmpGImg:height>256</xmpGImg:height>
+                     <xmpGImg:format>JPEG</xmpGImg:format>
+                     <xmpGImg:image>/9j/4AAQSkZJRgABAgEAAAAAAAD/7QAsUGhvdG9zaG9wIDMuMAA4QklNA+0AAAAAABAAAAAAAAEA&#xA;AQAAAAAAAQAB/+4ADkFkb2JlAGTAAAAAAf/bAIQABgQEBAUEBgUFBgkGBQYJCwgGBggLDAoKCwoK&#xA;DBAMDAwMDAwQDA4PEA8ODBMTFBQTExwbGxscHx8fHx8fHx8fHwEHBwcNDA0YEBAYGhURFRofHx8f&#xA;Hx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8f/8AAEQgBAABAAwER&#xA;AAIRAQMRAf/EAaIAAAAHAQEBAQEAAAAAAAAAAAQFAwIGAQAHCAkKCwEAAgIDAQEBAQEAAAAAAAAA&#xA;AQACAwQFBgcICQoLEAACAQMDAgQCBgcDBAIGAnMBAgMRBAAFIRIxQVEGE2EicYEUMpGhBxWxQiPB&#xA;UtHhMxZi8CRygvElQzRTkqKyY3PCNUQnk6OzNhdUZHTD0uIIJoMJChgZhJRFRqS0VtNVKBry4/PE&#xA;1OT0ZXWFlaW1xdXl9WZ2hpamtsbW5vY3R1dnd4eXp7fH1+f3OEhYaHiImKi4yNjo+Ck5SVlpeYmZ&#xA;qbnJ2en5KjpKWmp6ipqqusra6voRAAICAQIDBQUEBQYECAMDbQEAAhEDBCESMUEFURNhIgZxgZEy&#xA;obHwFMHR4SNCFVJicvEzJDRDghaSUyWiY7LCB3PSNeJEgxdUkwgJChgZJjZFGidkdFU38qOzwygp&#xA;0+PzhJSktMTU5PRldYWVpbXF1eX1RlZmdoaWprbG1ub2R1dnd4eXp7fH1+f3OEhYaHiImKi4yNjo&#xA;+DlJWWl5iZmpucnZ6fkqOkpaanqKmqq6ytrq+v/aAAwDAQACEQMRAD8A9U4qhrnUtPtV5XFxHGC3&#xA;AVYVLfygdSd+mKqsFzBOvKJuQ7jcEfMGhGKoXV9QubSzmNhbC/1FU5W9j6npeoeg5ScX9Nf8ojFU&#xA;XA0rQxtMgjlKgyRq3IKxG4DUWtD3piqy8vbOyhE93MkEJdI/UkIVecriNFqe7OwAxVal/bmWWN3E&#xA;bRyiFeZ48mKK4C8gK/b7VxVEYqgNdtUutMlhaWWHlx4yQzS27hiwA/eQsrdT0rQ98VQ9tZwwDk6q&#xA;7Al2lPX4jxJqamv0798VV7hEjUSRyspWvKhHPj1IHIEffiqnFqthAvFIpFDEtUipamxbkWJb54qi&#xA;F1ey4guzR1NKOrDf5gEYqpa5qltY6VNcyWz6hHtEbOARvJKZGCFFWRkRtjUgnpXFURb6dZW8zzRR&#xA;BZX6uSWIFAOK8ieK0QfCtBiqJxVLdcuTCtmAvP1bhUO9KAo+/Q13oMVc0qxyAuecfChB+Y2A6+H3&#xA;4qo3t5wlAjRmL7K4ag2NDxbcE9evTFUHLYL6fqghCv7w8j8NCtTvQDah6jFV4txcKfqScUBIaY8u&#xA;J26ovVvY7D3OKtiztrJBOhc3KjgbgsPUNRWh/Z48huOmKplpmoG5Vo5QFuI6cwOhH8wxVvWdZ0/R&#xA;tOk1HUXaO0iaNXeOOSZgZZFiT4Ildz8bjoNup2xVD6hPw1WBXLenw2Ck05M/7QHUHjiqzjbXkrNb&#xA;v9mgcEE/CfiFa06kbfxxVSMLRsxuCAq0LKQGaSgqQF/boWArTFVkkcTkFQaK3wKx5KTtGpPUE1BN&#xA;Wr7NiqYvLKjhY2DGjMaHY7fCNyfvxVL7uA3UqXLjcgcOrgruQQhqnyNK4q1DcqdTijtU9aaOqu9e&#xA;CBeBHF2FVqCvRQfliqbmwSWhvCLlgQyoy/u1KmoKoa7gioJqcVQ+rW6TNGNxL0Rq0BqQSBQirACo&#xA;B7Vp3xVRhjigiJ5iOQgFpOO7HYGvT6MVXy39lGGilPNBSi0LD5E79+2Kqa2SMFnSSkLH4ia8uJ9w&#xA;a71pv2OKqV1PbLLFZxk8njZmA3HEOiMDvttJsAKYqiHtY5EiRiVi3BoePLddiRU028fvxVfpkcEs&#xA;0s8Y4xxEQwoAAAqrsaDx51GKpliqH1G1ku7C4to5jbSzRskdyqo7ROwosiq4ZCUPxDkCMVQVppeo&#xA;WtpDE94b+ZYljuJpwsbSuFCtISilRypWnE/PpiqyDTZZbZJZrWOG4YUkh5ceNKj7UfJW+eKqg0u4&#xA;4FPWYLTiF9SooKeKfqxVbLo80rROXCvArhDXmW9Rgx5EqCN1FPl9GKr59Nvbi1aGS4WIlOKsi8t6&#xA;dTXj9w2xVU03RbXTp7ma3luG+tFS8U08ssSFK7xRyMyxcuVWCAA4qj8VdirsVdirsVdirsVdirsV&#xA;diqyWeKJeUjcR0Hv8hiqHGq2JNBJU+FD2/V9OKqI1/ThfWtg/qpd3gcwxmGRl+BeR5SorRLUV41f&#xA;4qGlaHFUxxV2KuxV2KuxVKoleeX63LH6kJqFQ9htQ0/z3xVXkEU86Iw/dINwwIHxA7fqpiqFaGRL&#xA;+JLaVU+IMjMDIOFR6sf2l+0qneux4kg0oVU4xV2KuxV2KrTKgkWIn42VmUb9FIB/4kMVSqK5ktoH&#xA;tz8Jh5Et/k9dhTcknsDiqlbaZBM4l1G1V7i94zSLKqM0b8KenUFh8CqAaGhO/c4qsTQtDm1KsdjA&#xA;0cNGclAQXB2p9P6sVTHRtD0jRLFbDSbWOzs1Z3WCIUXlIxZz9LGuKo7FXYq7FUHe2U8txHdWskUV&#xA;1FFLDHJLEZQBKUY7K8TU5RLUct8VS7WtF1a+a1aGe3R7dvVZ2WUc3HIICqSD4V5ctyfi32xVDNpH&#xA;nB2X1L2xYLWh9KckV7bynriqd6ZbXNvZpHcmMzCvIwqyqd9vtFj098VReKuxV2KuxV2KuxV2KuxV&#xA;2KuxV2KuxVAegkWtJJEBH9Yhla5Cqg9V0MKxs7U5kotVXelD8qKo/FXYq7FXYq7FXYq7FULJ/wAd&#xA;W3/4wT/8ThxVFYqsE8JmMAkUzqodoqjkFYkBivWhKnfFUFqPmHQNNnit9R1O0sp594YbieOJ3qaf&#xA;CrspO/hiq3SNUfUpr6WPg2nwTtbWsqGpkeD4Lhia7BZuUdKDdCdwRiqZYq7FXYqltxczLrkMS2ss&#xA;irbSMJlMQQlpEBUcnVqpwFainxCld6Kor6zN/wAskv3xf9VMVY9524RaFqGtrpjtqmk2dxc2Fzzj&#xA;idXiidlX1UcuEJ+0KEEfsnpir41GmeddetbrVr7UXe/u+VxqFxJIEInkkd3jIXiiII0NfshPs0+E&#xA;4q91/wCcZ9a1iU6xod1JPdjy+I45I+fExyTs6cWidl4/7zsQpqVqa02xV71DLJISGheKnQuUNflx&#xA;ZsVVMVdiqFk/46tv/wAYJ/8AicOKorFXEAggioOxB6UxV4prP/OOGmjXo73Q9ZfTbK5n5Ppc1ut1&#xA;AvFS/BP3kLen8OykmlTQ4qz78s/y10L8v/L7aTpfKWS4ma61C8cBWmncAEhRsiKoCog2AHc1Yqst&#xA;xV2KuxVB3XrpfQTxwPOixSo3AoCCzRkfbZP5Diq767c/8sE//BQf9VcVd9duf+WCf/goP+quKoS9&#xA;1No7mwSS1kjeadlhR5LZWkYQSMVQGUFmCqWoOwJ6A4qi/rtz/wAsE/8AwUH/AFVxV3125/5YJ/8A&#xA;goP+quKqc+pyQQyTy2UyRRKXkdmtwAqipJJlAFBiqJtbmO6tYbmP+7nRZE3B+FwGG6llPXscVVcV&#xA;dirsVaKqSCQCVNVJ7GlKj6DireKuxVxAYFWFQdiD0IxVwAAoNgOgxV2KuxV4l+ef/OQ0/kHXbHQN&#xA;EsI9R1V1S51ATqxjWCQsEjj4Ojeo3AmtCFHY12Veiflp+YWj+ffKsGvaZyT42t722cUaG5jA9SM0&#xA;JBHxBlNd1I77YqynFXYq7FXYq7FXYq8l/N/8hNK88avbeYLfU5tH1mNYbSWaONZo5IRIQpKFoiJF&#xA;9TZufQUpirNvy/8AIOheRvLkeh6OrGESPcXNxJT1Jp5Kc5X4hVqQoAAGwAGKskxV2KuxV2KuxV2K&#xA;oe+/uV7/AL2Hty/3avb/ADpiqIxV8h/mD/zkH+YFv+aWryaPwttL8u3T6cdOklnMVz9SmkUu6LIi&#xA;F5X5fZCnjxB5ca4q+qfK+uJr/lnSNdSE26atZW98sDHkYxcxLKELACpXnSuKpnirsVUrq6trSB7i&#xA;6lSCCPd5ZGCqKmm5O3XFW7e5t7mFZ7aVJoH3SWNg6MOmzCoOKqd9/cr/AMZYf+Tq4qiMVYDr35L/&#xA;AJX635qXWdU0GG41KYNPNJ6s8aySRtGAzwxusT/5XJfi71xVnqIqKEQBUUAKoFAAOgAxVvFXYq8L&#xA;/wCcsde81aX5X0eHSri4sdJvLmRdX1G1donTigMEbOrKQklXJHfiMVS3/nEzzF591Py9rkV9K+qa&#xA;VZ3MUemXd7PJTkVczJHKyTMwA9MlS3w198Ve6rFqsk6TXEcFIt4oUleisVKlixj+LYmmw698VRPP&#xA;UN/3EPan71vHf/deKugtWWZriZhJcMoSoFFRdiVQdaFtz3P0CiqIxV2KuxVD6hp2n6lZy2Oo2sV5&#xA;ZTjjNa3CLLE4rWjI4KsKjuMVdp2m6dptlFY6daw2VlACIbW3jWKJASSQqIFVdzXYYqiMVdirsVdi&#xA;rsVdirsVdirsVdirE9a/Nj8uND15dA1bX7Wz1YlA1tIx+Ay/ZEjgFI9t/jYUBBOxGKssxV2KuxV2&#xA;KuxVxIUEk0A3JPQDFWO67540DSPUS71Kys7hI/UWC7nSOVgysyEQk8+DCJzyNKBWPQHFXyl5s/Iz&#xA;8wtU866tfW2m299ZeYtRmmtdWaeNEiF1OWdghfnRfWA5BD06V2xV9deVNFfQvK2jaJJP9ak0uxtr&#xA;J7mnH1DbwrEZOJLU5ca0riqa4q7FXYq7FUHAfrrCdwPqqmtsK1506SntTun/AAXhRVA+ZdA0TV4o&#xA;o9QsYbu5JMdo8qBmjZtzIp6qUC8wQQajY1xVffaVFeQPpiTS20X1dohPA3CVSzIzHn/NsCa9a71x&#xA;V3lbQrjQtIj02fUrrVjCTwvb6Qy3LJQUEjk/ER40Fe+9SVU3xV2KuxVC31ZQloK/6RUSMvaJRV+v&#xA;jsm2/wAVe2KooAAUGwHQYqgoJPVla7pyLgpaJ/xWDu/egdhWv8vHviqvBGVkk35Gi828X3J/AjFV&#xA;bFXYq7FXYqh4jyu7iRjRIwsQBOwoObMN9q8wPo+WKqN5JLcstnDVFmBMsv7QiGzcR25fZBPzFaYq&#xA;i4oY4log+Z7mmKtQboXPWQlq+x+z/wALTFVTFXYq7FXYqgLWRDBJLIwFvG0krPWoYMxdW+QQg/7W&#xA;Kq9nG9GuJRxmnoSp6qg+wn0Dr/lE4qvnPKkI3MlQw8E/aP8ADFVXFXYq7FXYqxnzbqHnGxu7CbRx&#xA;px0ppUj1Nr31RKiOxXlEysse1VPx06cerCiqH1XWL+x8v2Mun2cN+yfV5bm2multOQkIYKkjI6l1&#xA;rz4njWgqQDiqbeW9Z1bUtNN3qelNpFw0rpFYvKJZSkZCln4qqrV+VOJYcaNy3oFU1jj4lnbeR/tH&#xA;2HQD2GKr8VdirsVdirwb/nLXXfO2l+W9GTQ557LRLueaPXL+2Zo5EPFPq8bOrKwRwZajoSoBPiql&#xA;n/OKX+IdVsNclv7ue50q0uLP9HajKitJO0ccqywGZw7mOKkTrHX4TSlKmqr6KSNV6dT1Y7k08Tiq&#xA;7FXYq7FXYq7FX//Z</xmpGImg:image>
+                  </rdf:value>
+                  <aiThumbnail:dummy>0</aiThumbnail:dummy>
                </rdf:li>
             </rdf:Alt>
          </xmp:Thumbnails>
@@ -199,47 +191,6 @@
          </xmpTPg:MaxPageSize>
          <xmpTPg:Fonts>
             <rdf:Bag>
-               <rdf:li rdf:parseType="Resource">
-                  <stFnt:fontName>JAAAAA+CMMI8</stFnt:fontName>
-                  <stFnt:fontFamily>JAAAAA+CMMI8</stFnt:fontFamily>
-                  <stFnt:fontType>Unknown</stFnt:fontType>
-                  <stFnt:versionString>Version 2.106;PS 2.000;hotconv 1.0.70;makeotf.lib2.5.58329</stFnt:versionString>
-                  <stFnt:composite>False</stFnt:composite>
-                  <stFnt:fontFileName>MyriadPro-Regular.otf</stFnt:fontFileName>
-               </rdf:li>
-               <rdf:li rdf:parseType="Resource">
-                  <stFnt:fontName>HAAAAA+CMR12</stFnt:fontName>
-                  <stFnt:fontFamily>HAAAAA+CMR12</stFnt:fontFamily>
-                  <stFnt:fontType>Unknown</stFnt:fontType>
-                  <stFnt:versionString>Version 2.106;PS 2.000;hotconv 1.0.70;makeotf.lib2.5.58329</stFnt:versionString>
-                  <stFnt:composite>False</stFnt:composite>
-                  <stFnt:fontFileName>MyriadPro-Regular.otf</stFnt:fontFileName>
-               </rdf:li>
-               <rdf:li rdf:parseType="Resource">
-                  <stFnt:fontName>LAAAAA+CMMI12</stFnt:fontName>
-                  <stFnt:fontFamily>LAAAAA+CMMI12</stFnt:fontFamily>
-                  <stFnt:fontType>Unknown</stFnt:fontType>
-                  <stFnt:versionString>Version 2.106;PS 2.000;hotconv 1.0.70;makeotf.lib2.5.58329</stFnt:versionString>
-                  <stFnt:composite>False</stFnt:composite>
-                  <stFnt:fontFileName>MyriadPro-Regular.otf</stFnt:fontFileName>
-               </rdf:li>
-               <rdf:li rdf:parseType="Resource">
-                  <stFnt:fontName>LAAAAA+CMR12</stFnt:fontName>
-                  <stFnt:fontFamily>LAAAAA+CMR12</stFnt:fontFamily>
-                  <stFnt:fontType>Unknown</stFnt:fontType>
-                  <stFnt:versionString>Version 2.106;PS 2.000;hotconv 1.0.70;makeotf.lib2.5.58329</stFnt:versionString>
-                  <stFnt:composite>False</stFnt:composite>
-                  <stFnt:fontFileName>MyriadPro-Regular.otf</stFnt:fontFileName>
-               </rdf:li>
-               <rdf:li rdf:parseType="Resource">
-                  <stFnt:fontName>CMUBright-Roman</stFnt:fontName>
-                  <stFnt:fontFamily>CMU Bright</stFnt:fontFamily>
-                  <stFnt:fontFace>Roman</stFnt:fontFace>
-                  <stFnt:fontType>Open Type</stFnt:fontType>
-                  <stFnt:versionString>Version 0.7.0 </stFnt:versionString>
-                  <stFnt:composite>False</stFnt:composite>
-                  <stFnt:fontFileName>cmunbmr.ttf</stFnt:fontFileName>
-               </rdf:li>
                <rdf:li rdf:parseType="Resource">
                   <stFnt:fontName>CMUSerif-Italic</stFnt:fontName>
                   <stFnt:fontFamily>CMU Serif</stFnt:fontFamily>
@@ -259,6 +210,47 @@
                   <stFnt:fontFileName>cmunrm.ttf</stFnt:fontFileName>
                </rdf:li>
                <rdf:li rdf:parseType="Resource">
+                  <stFnt:fontName>CMUBright-Roman</stFnt:fontName>
+                  <stFnt:fontFamily>CMU Bright</stFnt:fontFamily>
+                  <stFnt:fontFace>Roman</stFnt:fontFace>
+                  <stFnt:fontType>Open Type</stFnt:fontType>
+                  <stFnt:versionString>Version 0.7.0 </stFnt:versionString>
+                  <stFnt:composite>False</stFnt:composite>
+                  <stFnt:fontFileName>cmunbmr.ttf</stFnt:fontFileName>
+               </rdf:li>
+               <rdf:li rdf:parseType="Resource">
+                  <stFnt:fontName>LAAAAA+CMR12</stFnt:fontName>
+                  <stFnt:fontFamily>LAAAAA+CMR12</stFnt:fontFamily>
+                  <stFnt:fontType>Unknown</stFnt:fontType>
+                  <stFnt:versionString>Version 2.106;PS 2.000;hotconv 1.0.70;makeotf.lib2.5.58329</stFnt:versionString>
+                  <stFnt:composite>False</stFnt:composite>
+                  <stFnt:fontFileName>MyriadPro-Regular.otf</stFnt:fontFileName>
+               </rdf:li>
+               <rdf:li rdf:parseType="Resource">
+                  <stFnt:fontName>JAAAAA+CMR12</stFnt:fontName>
+                  <stFnt:fontFamily>JAAAAA+CMR12</stFnt:fontFamily>
+                  <stFnt:fontType>Unknown</stFnt:fontType>
+                  <stFnt:versionString>Version 2.106;PS 2.000;hotconv 1.0.70;makeotf.lib2.5.58329</stFnt:versionString>
+                  <stFnt:composite>False</stFnt:composite>
+                  <stFnt:fontFileName>MyriadPro-Regular.otf</stFnt:fontFileName>
+               </rdf:li>
+               <rdf:li rdf:parseType="Resource">
+                  <stFnt:fontName>LAAAAA+CMMI12</stFnt:fontName>
+                  <stFnt:fontFamily>LAAAAA+CMMI12</stFnt:fontFamily>
+                  <stFnt:fontType>Unknown</stFnt:fontType>
+                  <stFnt:versionString>Version 2.106;PS 2.000;hotconv 1.0.70;makeotf.lib2.5.58329</stFnt:versionString>
+                  <stFnt:composite>False</stFnt:composite>
+                  <stFnt:fontFileName>MyriadPro-Regular.otf</stFnt:fontFileName>
+               </rdf:li>
+               <rdf:li rdf:parseType="Resource">
+                  <stFnt:fontName>HAAAAA+CMR12</stFnt:fontName>
+                  <stFnt:fontFamily>HAAAAA+CMR12</stFnt:fontFamily>
+                  <stFnt:fontType>Unknown</stFnt:fontType>
+                  <stFnt:versionString>Version 2.106;PS 2.000;hotconv 1.0.70;makeotf.lib2.5.58329</stFnt:versionString>
+                  <stFnt:composite>False</stFnt:composite>
+                  <stFnt:fontFileName>MyriadPro-Regular.otf</stFnt:fontFileName>
+               </rdf:li>
+               <rdf:li rdf:parseType="Resource">
                   <stFnt:fontName>HAAAAA+CMMI12</stFnt:fontName>
                   <stFnt:fontFamily>HAAAAA+CMMI12</stFnt:fontFamily>
                   <stFnt:fontType>Unknown</stFnt:fontType>
@@ -275,8 +267,8 @@
                   <stFnt:fontFileName>MyriadPro-Regular.otf</stFnt:fontFileName>
                </rdf:li>
                <rdf:li rdf:parseType="Resource">
-                  <stFnt:fontName>JAAAAA+CMR12</stFnt:fontName>
-                  <stFnt:fontFamily>JAAAAA+CMR12</stFnt:fontFamily>
+                  <stFnt:fontName>JAAAAA+CMMI8</stFnt:fontName>
+                  <stFnt:fontFamily>JAAAAA+CMMI8</stFnt:fontFamily>
                   <stFnt:fontType>Unknown</stFnt:fontType>
                   <stFnt:versionString>Version 2.106;PS 2.000;hotconv 1.0.70;makeotf.lib2.5.58329</stFnt:versionString>
                   <stFnt:composite>False</stFnt:composite>
@@ -300,6 +292,7 @@
                </rdf:li>
             </rdf:Seq>
          </xmpTPg:SwatchGroups>
+         <illustrator:Type>Document</illustrator:Type>
          <illustrator:IsFileSavedViaInstantSave>True</illustrator:IsFileSavedViaInstantSave>
          <illustrator:CreatorSubTool>Adobe Illustrator</illustrator:CreatorSubTool>
          <pdf:Producer>Adobe PDF library 18.00</pdf:Producer>
@@ -328,7 +321,7 @@
                                                                                                     
                            
 <?xpacket end="w"?>
-endstreamendobj3 0 obj<</Count 1/Kids[5 0 R]/Type/Pages>>endobj5 0 obj<</ArtBox[32.02 26.5 334.28 261.159]/BleedBox[0.0 0.0 360.0 288.0]/Contents 6 0 R/CropBox[0.0 0.0 360.0 288.0]/LastModified(D:20260707162805-07'00')/MediaBox[0.0 0.0 360.0 288.0]/Parent 3 0 R/Resources<</ExtGState<</GS0 7 0 R>>>>/TrimBox[0.0 0.0 360.0 288.0]/Type/Page>>endobj6 0 obj<</Filter/FlateDecode/Length 11652>>stream
+endstreamendobj3 0 obj<</Count 1/Kids[5 0 R]/Type/Pages>>endobj5 0 obj<</ArtBox[32.02 26.5 334.28 261.159]/BleedBox[0.0 0.0 360.0 288.0]/Contents 6 0 R/CropBox[0.0 0.0 360.0 288.0]/LastModified(D:20260707164716-07'00')/MediaBox[0.0 0.0 360.0 288.0]/Parent 3 0 R/Resources<</ExtGState<</GS0 7 0 R>>>>/TrimBox[0.0 0.0 360.0 288.0]/Type/Page>>endobj6 0 obj<</Filter/FlateDecode/Length 11652>>stream
 HâîóKé$«D˜uä∫@Ö‚ˇ9◊Ç:¿@$#§ÓËôEfWvuëb0’ôÒswssÛ÷Í˜x˘˝˝ó€ﬂ~˙GºˇÚﬂ[o˜‹÷=óxËÁ˜›~æ˝vã˜<ÁΩtΩÂÅ∑ˇºˇÁCœ„~˝eßﬂÓÈ˘ó¥$ƒ±⁄=’‚˜oˇæÈã~mÖæ ˝Qg(+›)2y÷7ﬂnè‘Gc\>Ê‘oü˚ú/¢ÊüÉÛ„π˛Àﬁó3éãúo‚π8zÀüoø≈wéªö€√Íµ⁄‹[yµ_`Ô”WäÃÈÕÉÌÌ!∂À∑úJX5?∑9_ÊÓ¡˘ÒX˛eÁÀ	«5Œ7Ò\{µˆˇ7á4Sﬂ÷ñÙ›pƒ£∂0ö›Õ‰mıÀÉåm3Ùr˝òceéèmŒÒ6ˆﬂŒ’_væúp\„|èµ!≤	Á¥[◊g[[òy⁄ÿ‹¶.¿ÏŸﬂ<ÿXûÍÂc÷≠F~Ósæ8¨›ÉÛ„π˛Àﬁó3éãúo‚π¯«c;j»u≠mo/HŒÄãìk‹z1U£óø2µˆPRy~JA”ãsáÛÖ-=èÂ/?˜˜˘«0ûÀ~<¶£ÑTs;l,ı≥ç	Ä¿)å(4y|˘k+kh"∞ÛSÇÚ™œ=Œáï{ÒÒX˛≤Òsˇ„«ãx.¸ÒXˆä(}≥ír±≥Ú”e·!Ïúö<ø¸’≈y÷ÛÛSº0é=Œ€ŒcÒÒX˛≤Òsˇ„«ãx.¸·x¶!∏T`.z,ÈiÁ#Ü,î5Ü™Ìôë5PX¸¨Tk–˜“¥ôÔﬂ="°LÈ®Á±2¸≈Jù»	ÕõΩ2%Ü“¯‡m/áE1g•¨.¶»√ñ¥„ôÚ¶œ _„õAπ`<bàu9ˆÌH!´ÓUﬁ/ˆy◊A}_Œ`º4ì7Eïç‘]∫{6ŒxŒ‰ŒeÑºØ5∏g”lïô8Vh˙À•beÊƒ+SƒA¨ÄÈKì!#¨8tÕ	°ƒÌ≠h¡égZNﬁ†óNÇÖ˜â+d>î¶xéTPZàó2Ä2¬¿>õg◊–ôÓßÆÅ}ù£‘aT√9\∂ÒP¨È^g∞9h_)Îªé¬Ω∫ßˆjª»«0;dπj≈tPı…7Æ¥Éﬁù^ÄuàõâmL˜qHåÊøÃhÎ~…T–u‡c¡ï‹TÈØŸCÉ∫eÊcÙÌ∂ëgúja4,Ú	 \ªä≥¬éÓR5ˇFbŒN\	Ø0¨·ªfÄ∂ªJ{7Í*Âùœ©‡+¬·« cIÕsí‚âÈìÛ%©Ü0ÖF∑&∞Çë¡◊≤ƒÃ„È∏(JágO|fÈÖx2π68†sø“/¸ ¢Rùã≥®n⁄_1î>ïLu˚©õ˝Hè*ä&åMûJdV¢^JŸ>«CÑ∂·èñèY0,$¿VuπO*)‰bß±znùFìÖûlQ¢‚)ô§Qq°Ì‰S›ìË.sVó®JR´)c 9ß}5∞|p9›8FÓ´=.¥C∆<@ÃÛ∫Ñ'`≈Î∫Ws9W‹'Úõ—ËæïX¶ ∞tÔ §à√ÿ©`xÜÚ≠sqSnn\`Ã$ïDt)Êl‰ª)%Öå\“í†Pﬂ∆I@÷·<ãjºËËoL°£.≥~∞å å’Ó_î ¸:Õ0ŒHx)Lâ¯`ï·ì	ŒCNQËª…vÎÛò>§Ù.ÆgÂ¥)ôÄW‹íÖ%M”í?bÏ“¨#©ÜÕQ%L∑Œ‰Yû”1ù+Âil!ñ∏IÅíÍÙﬁ	åó}¢5^]ÇQ+¶√§&( ZCıﬁìÅÄ+∏Ï"3»+è[ïÇΩ¶EiI6»°Çbé ˛¨Lü>@`jÇ)ÿG)TÉó√Esõƒ;Úﬁ(q…Ö’#∏‰o≥◊ÅIÒ.˛Àéª8;‰PVÃF‡öxÅÙ,B%1™ÆõsæT„|ø˛~Æ∆DsF·à]«µ9P
 •Ω E∑˜ _%+	’õ»Ω¿Ôm^≤≈\h3ÎYÖ¿’ò0D„"Æ∫øÉ"⁄·¡‘®4–PÖ \7l( dˇ˙
 Ú®éPÀ“Ω`˛UQ$£\ÖîgUjÚ.æ÷Û∞§ 2ËuﬂbÓlåº/ƒ°ñ=∞B+ª¬)Ù•:TÔäRvVÅÖV¿“Â4†∫!mS[¡hY	;Ìí/ñ@ Nìtù}ÜÉ/≈Rh+Ä°,‰ºfÇ›Íÿta¨C9ï+e/∏Iëpπkê`û"Pw∑D™⁄≥kìU	µ&KÕ⁄¬D¸¥°‡“∑†éFµPòﬂ ¿¸V÷CﬂSIû`\tïÅK0äß37Çóâ3íâîíT»áX∑RX∂T„{w˙T"†‡HÆBÉ}èT^E√e8qJÔ√.1{r´≤Î}”I1:Õ"ä4âØj7ˇâ⁄≈∫§⁄‚áœ’U¶ìÅ9 övYÑìÖsKŸ-YÈ•jã%öÜÒK=^LJQQ±ŸﬂƒwFËÙP—£eù¡ù`aŸJ>x—Â;Z¨|øâD‰ÒÓ¢¯Î≈3.äáíÏóX>∫¢Må‚¯j∂;óuâVÊì-©&¸¡.Y»Wc°•Ê*•k”Irã"e‡¡D2‡| Äõg,ıõp≠~e<E1Õo,{ﬂÄR·ójç,ª"ÜP#eÌˇ]√,Ì∂ïø´‰'E
@@ -379,19 +372,19 @@ B¡m„D›	&«G“\AùsÖ=e=†è,ﬂÇ†%‹ﬁ±}ÕáÖ-TÊ3•k¥’>~π‚”çÿXÀA3uÜZ	¥˚˝àÕ˘Ÿ[$∞µ
 §±KP'ÇÿÎZõxé˘˙ŸrÆIEÔù6ÎN^1ÿ"&Aö>…∂e )ÊÌ~ﬁˆ⁄4E¥pÊS¯€ˆ™*™Œ:F∆CQá¡\p
 WdY°F¥⁄^9®g£ß´˚ﬁ/n‘«À}R~œÌõúŸ⁄É¢Íùµâ!! eç^RU™	í]Ω]£†<^Ω2Ugy√8"∂Ï'ƒ≈$wŒzM  =ÙÊ∆sÇ›f0»ˇc7o»Ä ¡πÏ˝-({Ö/t*˙•¯€°ªAã5ÍñpkÉ∆m®qcD„Ôç^6˛√UîA·œ–VŒñá-¬Z6B»ÖÈ˜Û¨Çç—ÁÑÒWFπÁÓï˝Hcó3˜„äΩı;ÉÀ≈ux≈ vfnµ`€)X6Ù1RGuÆqèóQ2µ%Â]	¢£)DB]|&≠eÂò,_¸ŒÌ∑ıj∏6∆‘»“—jl*UJ\ûﬁzœ1.ﬂKø3∞Û≈ﬁ=•—®é*≤—Ópéèì_qnØjñ–¬…£j77_T)Ã—‘Dó“∂¥’_˜•åÏRy&⁄/'\˘†ù∫0µfC‡ÉRÙIf§ZŸû_vô¥˛TPµ?^/†œtÕç≈9£∫Ÿ∑Ék„±À˚øsì,ò4Q>l—ô—¸•Ô.ÍúA≠ZFø∞¡ãºı;ÛŒ´ 	BÜ}≈∏#
 ˝ˇ«6I—awˆ¥7ulH”Ñ /~’ÇÉ›un–∂™“©|ˆ zŸ≥ò›ôµ“‡< ∂ß‹ôlBiñ()O—ˆ'fõ'F¥∆≥CÍÆÎΩ˘À\√ﬂ‡·¨»Â[éµ©F>ŸUè^÷†·Ù˜√·ÔSÓ>√zRNùËM;ÁòW•¨ú~Çõ∆ä|† ”çÇÆ¬“»)|m†:ÓíDNà…±é«HZE0ƒ=ÕÉø$;§M[Ú†‚‹[ÇﬁHõÍΩ…©ƒ\¥u©jöÙ:”—’Ûós∂pº`Ò'âπ!≈X	’ËÚÊä∞¯{‰…´d'ô¸Ì’«fﬂ   ˇˇ   ˇˇ :G&
-endstreamendobj7 0 obj<</AIS false/BM/Normal/CA 1.0/OP false/OPM 0/SA true/SMask/None/Type/ExtGState/ca 1.0/op false>>endobj8 0 obj<</CreationDate(D:20260707162805-07'00')/Creator(Adobe Illustrator 30.6 \(Windows\))/ModDate(D:20260707162805-07'00')/Producer(Adobe PDF library 18.00)/Title(wheel)>>endobjxref
+endstreamendobj7 0 obj<</AIS false/BM/Normal/CA 1.0/OP false/OPM 0/SA true/SMask/None/Type/ExtGState/ca 1.0/op false>>endobj8 0 obj<</CreationDate(D:20260707164716-07'00')/Creator(Adobe Illustrator 30.6 \(Windows\))/ModDate(D:20260707164716-07'00')/Producer(Adobe PDF library 18.00)/Title(wheel)>>endobjxref
 0 9
 0000000000 65535 f
 0000000016 00000 n
 0000000076 00000 n
-0000026670 00000 n
+0000026116 00000 n
 0000000000 00000 f
-0000026721 00000 n
-0000027007 00000 n
-0000038730 00000 n
-0000038842 00000 n
+0000026167 00000 n
+0000026453 00000 n
+0000038176 00000 n
+0000038288 00000 n
 trailer
-<</Size 9/Root 1 0 R/Info 8 0 R/ID[<9A828980446997468D7D555D818E94F0><AB4DFD98B83D5D48B5B38241F3A62F1F>]>>
+<</Size 9/Root 1 0 R/Info 8 0 R/ID[<D53687E08C4315488883775A89000E19><B86AFC59B26DFF4EB7C6C5F2BAFC1E0E>]>>
 startxref
-39024
+38470
 %%EOF
