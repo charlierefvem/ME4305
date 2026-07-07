@@ -15,7 +15,7 @@ term: 2262
 lecture: 18
 status: draft
 ---
-# Motivation
+## Motivation
 
 A standard observer, as derived in [[reference_observer_design|Observer Design]], only works well in practice for systems with an accurate mathematical model, with accurate model parameters, and without the presence of unmodeled disturbances.
 
@@ -37,7 +37,7 @@ Here, $\underline{d}_k$ is an unknown disturbance vector, and $E_d$ describes ho
 
 For example, a load torque disturbance may not directly affect position, but it may directly affect angular acceleration. The matrix $E_d$ encodes that physical relationship.
 
-# Effect on the nominal observer
+## Effect on the nominal observer
 
 The nominal observer has the form
 $$
@@ -134,7 +134,7 @@ $$
 
 This shows the limitation of the nominal observer. The observer error still has the designed dynamics $A_o = A_d-L\,C_d$, but the unknown disturbance continually forces the error dynamics.
 
-# Modeling the disturbance as an additional estimated state
+## Modeling the disturbance as an additional estimated state
 
 To estimate the disturbance, the observer needs a model for how the disturbance changes. A common simple assumption is that the disturbance is constant or slowly varying over the time scale of interest:
 $$
@@ -253,7 +253,7 @@ C_d & 0
 \end{bmatrix}.
 $$
 
-# Augmented observer
+## Augmented observer
 
 The disturbance observer is now just a standard observer applied to the augmented system:
 $$
@@ -313,7 +313,7 @@ $$
 A_a-L_a\,C_a.
 $$
 
-# Augmented observability
+## Augmented observability
 
 The augmented system must be observable. If the disturbance does not leave a distinguishable signature in the measured output, then no observer can reliably estimate it.
 
@@ -340,7 +340,7 @@ $$
 }
 $$
 
-# Useful output selections
+## Useful output selections
 
 The augmented observer internally estimates both the original plant state and the disturbance. The estimated plant state can be extracted using
 $$
@@ -362,7 +362,7 @@ $$
 \hat{\underline{x}}_{a,k}.
 $$
 
-# Continuous-time form
+## Continuous-time form
   
 The same idea can be written in continuous time as  
 $$

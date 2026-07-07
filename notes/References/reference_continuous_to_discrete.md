@@ -12,7 +12,7 @@ source:
 status: draft
 ---
 
-# Motivation
+## Motivation
 
 Physical systems operate continuously. Computing devices, like microcontrollers, that perform closed-loop control operate discretely, or only at certain discrete time intervals. Therefore, it is desirable to accurately simulate and control continuous systems using discrete means.
 
@@ -25,7 +25,7 @@ See [[reference_z_domain|Discrete Time Systems]] for background discrete-time sy
 Continuous-to-discrete conversion can mean several related things. Sometimes we convert desired pole locations. Sometimes we convert a transfer function into a difference equation. Sometimes we convert a continuous-time state-space model into a discrete-time state update. These are related ideas, but they are not the same calculation.
 
 For controllers and filters expressed as transfer functions, the bilinear transform is commonly used because it produces a rational discrete-time transfer function that is convenient to implement. For physical plants represented in state-space form, zero-order hold is often preferred because it matches how a digital controller actually applies actuator commands between updates.
-## Standard Procedure
+### Standard Procedure
 
 The standard approach for implementing a continuous model in firmware can be broken down into five steps:
 1) Develop a model in continuous time using the modeling techniques of your choosing.
@@ -33,7 +33,7 @@ The standard approach for implementing a continuous model in firmware can be bro
 3) Convert the system from continuous time to discrete time, or alternatively, extract the system dynamics in the form of pole locations and convert those to discrete time.
 4) Implement the resulting discrete time model in firmware as a difference equation.
 5) After conversion, the discrete-time poles and time response should still be verified, especially if the sample time is not much smaller than the fastest dynamics.
-# Pole Mapping
+## Pole Mapping
 
 Sometimes it is simplest to convert the *desired dynamics* of the system from a continuous-time representation to a discrete-time representation, rather than the system model. This allows a model to be developed directly in a discrete time representation, but utilize dynamics designed using continuous time performance metrics.
 
@@ -43,7 +43,7 @@ z_i = e^{s_i\,T_s}.
 $$
 
 The same pole-mapping idea will be used when choosing discrete-time observer poles from desired continuous-time error dynamics.
-## Example 1
+### Example 1
 
 This example shows how to convert the poles associated with a continuous-time system to poles associated with an equivalent discrete-time system.
 
@@ -86,7 +86,7 @@ These poles can also be visualized on a pole map like shown below.
 
 **Insight**: notice that the location of the continuous time poles relative to the imaginary axis visually resembles the location of the discrete time poles relative to the unit circle.
 
-# Transfer Functions
+## Transfer Functions
 
 To represent a transfer function in the z-domain we need to apply a conversion from the s-domain to the z-domain. This can be achieved a number of ways as covered in [[reference_z_domain|Discrete Time Systems]]. The most common method is the bilinear transform, also called the Tustin method or the trapezoidal method:
 $$
@@ -121,7 +121,7 @@ $$
 
 Here, $N_0$ through $N_n$ are the set of $n+1$ numerator coefficients and $D_0$ through $D_n$ are the set of $n+1$ denominator coefficients of the discrete-time transfer function. The numerator may have fewer meaningful terms than the denominator, but for implementation it is convenient to pad the numerator coefficients so both polynomials are written to order $n$. These two sets of parameters depend on the coefficients $a_0, \ldots, a_n$ and $b_0, \ldots, b_m$, from the continuous-time transfer function along with the sample time $T_s$.
 
-## Difference-equation form
+### Difference-equation form
 
 Now that the discrete-time transfer function has been determined, an appropriate difference equation can be found that will lead to implementation of the transfer function in code.
 
@@ -161,7 +161,7 @@ This direct implementation requires storing the previous outputs, $y_{k-1} \dots
 
 Any transfer function, even one with numerator dynamics, should only require $n$ state variables. With a bit more math, the dependency on $u_{k-1} \dots u_{k-n}$ can be eliminated.
 
-### Introducing an internal state variable
+#### Introducing an internal state variable
 
 Define a new variable $x(z)$ such that the numerator coefficients shape the final output:
 $$
@@ -193,7 +193,7 @@ $$
 
 This difference equation now only requires memory of $n$ previous internal values, which matches the order of the system. It no longer requires separate histories of both the input and output. More algebra is required to find the actual output.
 
-### Output equation
+#### Output equation
 
 Start again with the relationship between $y(z)$ and $w(z)$:
 $$
@@ -221,7 +221,7 @@ y_k
 + \left(N_n - \frac{N_0\,D_n}{D_0}\right)\,w_{k-n},\
 \quad \text{with}~N_j=0~\forall~j>m.
 $$
-### Discrete-time state-space form
+#### Discrete-time state-space form
 
 The preceding equations can be assembled into a discrete-time state-space representation of the system in standard $\underline{w}_{k+1} = A_f\,\underline{w}_{k}+B_f\,\underline{u}_{k}$ form:
 $$
@@ -280,7 +280,7 @@ $$
 It may be tempting to use NumPy to implement the state equation in matrix form, however due to the sparseness and predictable shape of the $A_f$ matrix it would be computationally wasteful. All rows of the $A_f$ matrix except for the bottom row are simply shifting back samples $w_k$ to $w_{k-1}$ to $w_{k-2}$, etc., and can be handled better using slice assignment operations or NumPy's `roll()` function.
 
 
-# State-space Systems
+## State-space Systems
 
 One strategy for continuous to discrete conversion that applies well to state-space systems is to solve the model explicitly, ahead of time, over a short window of time while assuming constant inputs. This assumption is referred to as the Zero-order hold. More elaborate methods assume the input changes linearly over the short window of time; this is referred to as the First-order hold. The first-order hold is more complicated and will not be considered here. The zero-order hold is an effective choice for a discretely implemented control loop because the actuation signal typically does remain constant during the time between each update.
 
@@ -300,7 +300,7 @@ while assuming that the input vector $\underline{u}$ remains constant between $T
 
 This solution can be found through various methods, including the Laplace transform and convolution. Instead, we will use methods covered in linear algebra to solve the system using the zero-input / zero-state decomposition.
 
-## Zero-input / zero-state decomposition
+### Zero-input / zero-state decomposition
 
 The total response of a linear system can be split into two pieces:
 1. The **zero-input response**  is due only to the initial condition.
@@ -308,7 +308,7 @@ The total response of a linear system can be split into two pieces:
 
 This decomposition gives a useful way to derive the discrete-time state update without repeatedly running a numerical ODE solver in firmware.
 
-### Matrix exponential
+#### Matrix exponential
 
 The matrix exponential appears naturally when solving linear systems of the form
 $$
@@ -322,7 +322,7 @@ $$
 
 The matrix exponential therefore plays the same role for systems of linear ODEs that the scalar exponential plays for first-order scalar ODEs.
 
-### Zero-input solution to linear systems
+#### Zero-input solution to linear systems
 
 To solve the zero-input problem, assume the input is zero:
 $$
@@ -343,7 +343,7 @@ $$
 \boxed{\underline{x}_{ZI} = e^{A\,t}\underline{x}_0.}
 $$
 
-### Zero-state solution to linear systems
+#### Zero-state solution to linear systems
 
 To solve the zero-state problem, assume
 $$
@@ -456,7 +456,7 @@ $$
 
 This is the form needed by firmware: each control-loop update computes the next state estimate or model state from the current state and the held input.
 
-## What if $A$ is singular?
+### What if $A$ is singular?
 
 There are some cases in which the preceding analysis fails. One such case is when the $A$ matrix is singular, or noninvertible. In that case it is impossible to compute
 $$
@@ -507,7 +507,7 @@ A_d = sys_d.A;
 B_d = sys_d.B;
 ```
 
-## Output Equations
+### Output Equations
 
 While the state equations require transformation of the $A$ and $B$ matrices to produce $A_d$ and $B_d$ matrices, the output equations remain valid. This is because the state equations involve dynamics while the output equations are merely algebraic. Therefore, 
 $$

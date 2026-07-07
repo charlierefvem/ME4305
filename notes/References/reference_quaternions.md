@@ -11,13 +11,13 @@ source:
   lecture: 16
 status: draft
 ---
-# Motivation
+## Motivation
 
 Quaternions are a type of four-dimensional number that extends the behavior of complex numbers from the plane to three dimensions. Quaternions are what motivates the cross product often used in rigid body mechanics and other areas of engineering.
 
 ![A plaque that reads "Here as he walked by on the 16th of October 1843 Sir William Rowan Hamilton in a flash of genius discovered the fundamental formula for quaternion multiplication i^2=j^2+k^2+ijk=-1 and cut it on a stone of this bridge.](images/hamilton_plaque.png)
 
-## Fundamentals
+### Fundamentals
 
 The fundamental law for quaternion multiplication is an extension of the definition of the complex unit to three dimensions.
 $$
@@ -63,7 +63,7 @@ $$
 $$
 which is similar to complex numbers.
 
-## Example 1
+### Example 1
 
 In this example a quaternion will be used to rotate a vector.
 
@@ -106,7 +106,7 @@ $$
 $$
 The quaternion "sandwich" guarantees that for a pure vector $\underline{w}$, the product $q\,\underline{w}\,q^*$ is also a pure vector, meaning that it has no real component.
 
-## Example 2
+### Example 2
 
 As a simple example, consider a vector lying in the $xy$-plane:
 $$
@@ -132,6 +132,6 @@ The $i$ component is unchanged because the rotation axis is the $x$ axis. The $j
 
 ![The example rotates w equals alpha i plus beta j by angle theta about the x-axis. A quaternion q equals cos(theta/2) plus sin(theta/2) i is written. Diagrams shows the original vector w and the rotated vector v.|700](images/imu/quaternion_rotation.svg)
 
-# Insights
+## Insights
 
 Quaternions are less visually intuitive at first, but they represent a 3D rotation as one axis and one angle. They are especially useful for orientation calculations because they avoid many of the bookkeeping problems associated with sequenced rotations.

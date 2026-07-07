@@ -11,13 +11,13 @@ source:
 status: draft
 ---
 
-# Motivation
+## Motivation
 
 Python is an extremely versatile high-level language. It is often a good choice for beginner programmers due to the ubiquity of the language; that is, skills learned in the context of firmware development will still lead to valuable and generally applicable growth.
 
-# About Python
+## About Python
 
-## Python is an Interpreted Language
+### Python is an Interpreted Language
 
 Python is an interpreted language, as opposed to a compiled language. That is, Python code is not compiled before going to the hardware. Instead, a secondary program called the Python interpreter, at execution, interprets Python code line by line. During execution, the interpreter internally translates portions of the program into forms that can be executed efficiently. These implementation details are handled automatically and are not something programmers normally need to think about.
 
@@ -35,18 +35,18 @@ The hardware (hopefully) responds with the intended output behavior
 
 The Micropython interpreter that runs on our lab hardware is itself a compiled program written mostly in C. Its job is to run the Python code that we write.
 
-## Trivia
+### Trivia
 
 - The Python interpreter that runs on your computer, often referred to as CPython, was originally written in C, though it now also includes Python code.
 - The Python programming language is named after Monty Python, not the animal.
 
-## Big picture Python basics
+### Big picture Python basics
 
 In Python, whitespace matters. Indentation is used for structuring code, including loops and conditionals. Use four spaces per indentation level, not tabs. In some cases, spaces and newlines have specific meaning as well.
 
 Python is fundamentally an object-oriented language. *Every* variable is an object of some kind. We will return to this idea later in the course when you are asked to write your own classes.
 
-# Python Coding Examples
+## Python Coding Examples
 The best way to learn programming of any kind is to program! The following examples illustrate many of the fundamentals of the Python language.
 
 In ME 4305 we will focus on two things while writing code:
@@ -56,7 +56,7 @@ While these two foci compete with one another, we will aim to develop intuition 
 
 In the short-term, learning the absolute basics must come first.
 
-## Example 1: `if` statements
+### Example 1: `if` statements
 
 Python `if` statements do not use parentheses around the condition because `if` is a keyword, not a function. Only add parentheses for clarification (grouping).
 
@@ -76,7 +76,7 @@ Important syntax details:
 * The indented code is the part that runs only if the condition is true.
 * The indentation is *not* optional.
 
-## Example 2: waiting for user input
+### Example 2: waiting for user input
 
 The `input()` function pauses the program and waits for the user to type something. In most lab work you will need to write non-blocking code, however this function will remain useful in homework assignments.
 
@@ -94,7 +94,7 @@ Enter a number: 42
 
 The value returned by `input()` is a string. If you want to treat the result as a number, convert it explicitly. In this example, `float()` converts the input text to a floating-point number.
 
-## Example 3: working with lists
+### Example 3: working with lists
 
 A list can store multiple items and each item may be any kind of Python object. In most cases lists should be used to store data of a uniform type, but not always.
 
@@ -137,7 +137,7 @@ object.method(argument)
 
 That is, call the `append()` method on the object `my_list`, and pass in the item that should be appended.
 
-## Example 4: string concatenation
+### Example 4: string concatenation
 
 The `+` operator can be used with numbers, but it can also be used with strings. In that case, it concatenates the strings.
 
@@ -156,7 +156,7 @@ catdog
 
 This is an example of an overloaded operator: the meaning of `+` depends on the types of the objects it is applied to.
 
-## Example 5: string joining
+### Example 5: string joining
 
 The `join()` method is often a cleaner way to combine strings from a list.
 
@@ -174,7 +174,7 @@ cat-dog
 
 In this example, the string `"-"` is inserted between each item in `my_list`.
 
-## Example 6: iterating through a list
+### Example 6: iterating through a list
 
 A Python `for` loop can iterate directly through the items in a list.
 
@@ -207,7 +207,7 @@ value:    1     2     4     8     16
 reverse: -5  ← -4  ← -3  ← -2  ← -1
 ```
 
-## Example 7: iterating with indices
+### Example 7: iterating with indices
 
 Sometimes we need both the index and the value. In that case, use `enumerate()`.
 
@@ -244,7 +244,7 @@ Output:
 [(0, 1), (1, 2), (2, 4)]
 ```
 
-## Example 8: iterating through a list in reverse
+### Example 8: iterating through a list in reverse
 
 The `reversed()` function lets us iterate through a list in reverse order.
 
@@ -265,7 +265,7 @@ Output:
 1
 ```
 
-## Example 9: using `range()`
+### Example 9: using `range()`
 
 The `range()` function is often used when an integer sequence is needed.
 
@@ -280,7 +280,7 @@ The expression `range(len(my_list))` produces indices from `0` through `N-1`, wh
 
 This pattern is generally avoided when directly iterating through the list would work, but it can be useful when list items need to be modified inside the loop. Standard iteration provides read-only access to list items, so iterating through a range and indexing the list allows the list items to be mutated.
 
-## Example 10: using `break`
+### Example 10: using `break`
 
 The `break` statement quits the entire loop early.
 
@@ -301,7 +301,7 @@ Output:
 
 The `break` statement exits the most local loop if loops are nested.
 
-## Example 11: using `continue`
+### Example 11: using `continue`
 
 The `continue` statement quits the present iteration and resumes looping with the next item.
 
@@ -322,15 +322,15 @@ Output:
 
 The loop still runs through the full range, but the `print()` statement is skipped when `my_num` is equal to `1`.
 
-# Insights
+## Insights
 
-## Indentation is syntax
+### Indentation is syntax
 
 In Python, indentation is not just style. It changes the meaning of the program.
 
 Use four spaces per indentation level. Avoid mixing tabs and spaces.
 
-## `==` is not `=`
+### `==` is not `=`
 
 Use `=` for assignment.
 
@@ -344,7 +344,7 @@ Use `==` for comparison.
 x == 3
 ```
 
-## Prefer direct iteration when possible
+### Prefer direct iteration when possible
 
 This is usually preferred:
 
@@ -362,7 +362,7 @@ for my_idx in range(len(my_list)):
 
 Use the index-based form when the index itself matters or when list items need to be modified inside the loop.
 
-## Methods belong to objects
+### Methods belong to objects
 
 The syntax
 
@@ -372,7 +372,7 @@ my_list.append("four")
 
 is an early example of object-oriented programming. The object is `my_list`; the method is `append()`.
 
-# Summary
+## Summary
 
 Mechatronics combines mechanics, electronics, programming, and control theory to put the "smarts" into mechanical systems.
 
@@ -394,7 +394,7 @@ The most important Python ideas introduced in this lecture were:
 - `break`
 - `continue`
 
-# See Also:
+## See Also:
 * [[topic_collections|Collections]]
 * [[topic_classes_and_objects|Classes and Objects]]
 * [[reference_mutability|Mutability]]

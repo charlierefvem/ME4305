@@ -13,11 +13,11 @@ source:
 status: draft
 ---
 
-# Motivation
+## Motivation
 
 This lecture introduces the software architecture used for the remainder of the course. Tasks are organized into layers, communicate through shares and queues, and are typically implemented as generator-based finite state machines.
 
-# Recommended Code Organization
+## Recommended Code Organization
 
 This lecture provides many of the final building blocks that you will use in lab the remainder of the quarter. To stay organized you should follow the file hierarchy below, which outlines the best way to structure your code fore maximum reusability. Notice that each layer is an abstraction of the layer beneath it.
 
@@ -29,14 +29,14 @@ This lecture provides many of the final building blocks that you will use in lab
 
 You will also take advantage of several libraries as your progress in lab, the most important being the scheduler, implemented in `cotask.py`.
 
-# Better Tasks with Generators
+## Better Tasks with Generators
 
 Generator functions are ideal for cooperative multitasking as they are built to yield CPU time to run other code cooperatively.
 * By default, you should plan each task to be implemented as a finite state machine. Simple tasks can be implemented using a FSM with only one state if needed.
 * Generators should run at most one iteration of the FSM and then `yield`. In future lectures we may discuss techniques for subdividing a state into multiple cooperative slices.
 * A task can be built from a single generator function but it is often useful to use a generator function implemented as a method so that the generator may call other methods with shared state.
 
-## Example 1
+### Example 1
 
 This preliminary example shows how to write a FSM based task using a generator. The example is meant to be run using CPython, so it does not utilize the scheduler, which only runs in MicroPython.
 
@@ -47,12 +47,12 @@ The task implements the same trivial finite state machine covered in a previous 
 ``` python
 import time
 
-# The states of the FSM
+## The states of the FSM
 S0_INIT = 0
 S1_RUN = 1
 S2_RUN_THRICE = 2
 
-# Task implemented as its own generator function
+## Task implemented as its own generator function
 def task_gen_fcn():
     
     # A variable to indicate what state the FSM is about to run
@@ -117,7 +117,7 @@ if __name__ == '__main__':
 
 **Run in your browser**: https://onlinegdb.com/111Py9AVi
 
-## Example 2
+### Example 2
 
 This next example extends Example 1 to create multiple tasks from the same generator function.
 
@@ -195,18 +195,18 @@ if __name__ == '__main__':
 
 **Run in your browser**: https://onlinegdb.com/mCsBP54UZ
 
-## Example 3
+### Example 3
 
 In this third example the code is refactored into two files. In `taskexample.py` a class is defined that implements the finite state machine and in `main.py` an object of the class is instantiated and the task is run.
 
 `taskexample.py`
 ``` python
-# The states of the FSM
+## The states of the FSM
 S0_INIT = 0
 S1_RUN = 1
 S2_RUN_THRICE = 2
 
-# Task implemented as a method of a task class
+## Task implemented as a method of a task class
 class TaskExample:
         
     def __init__(self, task_label):
@@ -293,7 +293,7 @@ if __name__ == '__main__':
 
 **Run in your browser**: https://onlinegdb.com/ZxapaDZ-D
 
-## Example 4
+### Example 4
 
 In this final example you will see how the code changes when using the scheduler; that is, Example 3 is adapted here to run within the scheduler. Note that the implementation of the task class is unchanged for this example.
 
@@ -327,7 +327,7 @@ if __name__ == '__main__':
     main()
 ```
 
-## Summary
+### Summary
 
 * Separate application logic from hardware drivers.
 * Use task diagrams during design.

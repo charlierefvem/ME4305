@@ -1,7 +1,7 @@
 ---
 title: ME 405 Course Outline
 ---
-# Lectures
+## Lectures
 
 * Module 1 - Hardware Interfaceing and Abstraction
     * Lecture 1 - Philosophy of Mechatronics and Python Fundamentals

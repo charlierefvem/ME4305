@@ -15,13 +15,13 @@ source:
 status: draft
 ---
 
-# Motivation
+## Motivation
 
 General-purpose input/output (GPIO) pins are the primary interface between a microcontroller and the outside world. Understanding how GPIO circuitry works is essential for safely interfacing switches, LEDs, sensors, and external electronics.
 
-# GPIO
+## GPIO
 
-## GPIO Logic Levels
+### GPIO Logic Levels
 
 General Purpose Input/Output (GPIO) refers to:
 * Setting an output pin **logic high**
@@ -34,7 +34,7 @@ Modern MCUs typically operate from **1.5–3.6 V**, with **3.3 V** now being the
 
 For practical purposes these both represent the digital logic supply voltage.
 
-## Push-Pull Outputs
+### Push-Pull Outputs
 
 The most common output configuration is called **push-pull** output and allows the MCU to actively drive the pin high (sourcing current) or low (sinking current). Push-pull outputs require two transistors in a configuration similar to a half-bridge.
 
@@ -46,7 +46,7 @@ Characteristics:
 * Always drives a defined logic state
 * Most common GPIO output mode
 
-## Open-Drain Outputs
+### Open-Drain Outputs
 
 An alternative style of output is the **open-drain** or **open-collector** output. The internal circuitry in the MCU disables the high-side transistor to configure the output in open-drain mode. In this configuration the pin can be actively driven low or allowed to float in a high-impedance (Hi-Z) state.
 
@@ -60,7 +60,7 @@ Open-drain outputs:
 Most modern MCUs allow GPIO pins to be configured as either push-pull or open-drain.
 
 **Insight**: Regardless of the output mode, a GPIO pin should be thought of as a switch rather than as a voltage source. The pin either connects the output to one of the supply rails or disconnects it; the external circuit determines how much current flows.
-## Tri-State Outputs
+### Tri-State Outputs
 
 A third output mode, technically not GPIO, but still relevant, is the **tri-state** output. Most MCUs do expose tri-state as a standard GPIO output mode, but instead use the mode in various alternate function modes. For example, the serial peripheral interface (SPI) requires tri-state configuration for some of the signals. A tri-state output may be actively driven high or low or may be left in a Hi-Z state.
 
@@ -74,7 +74,7 @@ A tri-state output has three possible states:
 Typical use:
 * Shared communication buses (for example SPI MISO), where only the selected peripheral actively drives the line while all others remain in Hi-Z.
 
-## Digital Inputs
+### Digital Inputs
 
 A general purpose input circuit consists of protection diodes and a Schmitt trigger. The protection diodes help clamp the input voltage between VDD and GND (within the diode's forward voltage) so that the internals of the MCU are protected from voltages that may cause damage. The Schmitt trigger is for glitch prevention and works by rejecting incomplete transitions between logic high and logic low.
 
@@ -84,14 +84,14 @@ Typical thresholds:
 * Logic HIGH is typically anything above ⅔ of VDD
 * Logic LOW is typically anything below ⅓ of VDD
 
-### Schmitt Trigger
+#### Schmitt Trigger
 
 A Schmitt trigger provides hysteresis for improved noise immunity.
 ![Graph showing Schmitt trigger behavior.](images/gpio/schmitt_trigger.svg)
 
 A Schmitt trigger prevents unwanted switching caused by noisy or slowly changing input voltages because small variations between ⅓ of VDD and ⅔ of VDD are ignored.
 
-## Example 1
+### Example 1
 
 In this example a microcontroller input pin is connected to a motor driver's open-drain output pin. To guarantee that the MCU input pin always has a defined state, there must be a pull-up resistor connected to the circuit. The pull up defines the idle state of the input pin to be high, allowing the motor driver to actively drive the pin low when a fault occurs.
 
@@ -99,7 +99,7 @@ In this example a microcontroller input pin is connected to a motor driver's ope
 
 ![Example input circuits illustrating a pull-up resistor configuration.](images/gpio/pull_up.svg)
 
-## Example 2
+### Example 2
 
 In this example a microcontroller output pin is connected to a motor driver's enable input pin. Typically a push-pull configuration would be used in this circumstance allowing the MCU to enable or disable the motor driver. A pull-down resistor is included for safety to make sure that the motor driver remains disabled in case the MCU fails to configure the pin in push-pull mode or in the case that the push-pull configuration occurs after startup.
 
@@ -108,12 +108,12 @@ In this example a microcontroller output pin is connected to a motor driver's en
 
 ![Example input circuits illustrating a pull-down resistor configuration.](images/gpio/pull_down.svg)
 
-## Example 3
+### Example 3
 
 In this example a **wired-or** configuration is shown for a circumstance similar to Example 1, but involving multiple motor drivers. A wired-or configuration is made up of multiple open-drain outputs and a single pull-up resistor. The idle state of the MCU input pin will be pulled high until any of the motor drivers may actively drive the line low. The microcontroller can then detect that motor driver 1 **or** motor driver 2 **or** motor driver 3 has triggered a fault, but not which one.
 
 ![Example input circuit illustrating a wired-or configuration with a pull-up resistor.](images/gpio/wired_or.svg)
-## Example 4
+### Example 4
 
 A microcontroller output pin can only source or sink up to a few milliamps. To drive loads that require more current, such as a high power LED, an external switch must be implemented. The two schematic snippets below show low-side and high-side switch configurations to drive an LED.
 
@@ -135,13 +135,13 @@ R & \ge 80[\ohm]
 $$
 A designer may then consider the typical standard values for a resistor and select an 82$\Omega$ resistor, or something larger if maximum current (brightness) is not required.
 
-## Example 5
+### Example 5
 
 The same high-side and low-side switches presented for the LEDs in Example 4 can be repurposed to drive other types of loads like motors or in the case of this example, a magnetic relay. Inductive loads, like motors and relays, require an additional diode, reverse-biased, in parallel with the inductive load. The diode allows recirculation of current when the switch is turned off so that the coil current can decay slowly, thereby protecting the transistor acting as a switch. Without the diode, the current will decay rapidly, causing a large voltage spike due to the inductance; recall that for an inductor $V_L = L \frac{d}{dt} i_L$ so for rapidly changed $i_L$ the voltage $V_L$ will be very large.
 
 ![GPIO driving an inductive load with appropriate flyback protection.](images/gpio/inductive.svg)
 
-## Example 6
+### Example 6
 
 This example shows two configurations, active-low and active-high, for interfacing a MCU input with a switch or button. The active-low configuration is named as such because the MCU pin will read low when the switch is pressed. In an active high configuration the switch being pressed will cause the MCU pin to read high.
 
@@ -151,7 +151,7 @@ This example shows two configurations, active-low and active-high, for interfaci
 
 ![Example button circuit in active high configuration.](images/gpio/active_high_switch.svg)
 
-# Insights
+## Insights
 * Push-pull outputs actively drive both logic states.
 * Open-drain outputs only actively drive low.
 * Multiple open-drain outputs can be connected in a wired-or setup.
@@ -161,10 +161,10 @@ This example shows two configurations, active-low and active-high, for interfaci
 * LEDs require current limiting resistors.
 * Inductive loads require flyback diodes.
 
-# Summary
+## Summary
 GPIO circuitry is considerably more sophisticated than simply connecting a processor pin directly to the outside world. Understanding the internal driver circuits, input conditioning, and protection features allows reliable interfacing with common electronic components and forms the foundation for later topics involving digital communication and robust embedded hardware design.
 
-# Candidate Static Notes
+## Candidate Static Notes
 * \[\[GPIO\]\]
 * \[\[Digital Logic Levels\]\]
 * \[\[Pull-up Resistors\]\]
@@ -174,5 +174,5 @@ GPIO circuitry is considerably more sophisticated than simply connecting a proce
 * \[\[Switch Bounce\]\]
 * \[\[Debouncing\]\]
 
-# See Also:
+## See Also:
 * [[topic_hardware_overview|Hardware and Software Toolchain]]

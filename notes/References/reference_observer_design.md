@@ -14,7 +14,7 @@ source:
 status: draft
 ---
 
-# Motivation
+## Motivation
 
 In state-feedback control, it is convenient to write control laws as though every internal state of the system is available for direct measurement. In practice, that is usually not true. Sensors normally provide only a limited set of system outputs.
 
@@ -31,7 +31,7 @@ $$
 
 **Note**: the derivation below will be done using a discrete-time formulation to better align the derived equations with the intended digital implementation on a microcontroller. Therefore it may be useful to review the [[reference_z_domain|z-domain]] and methods for [[reference_continuous_to_discrete|continuous-to-discrete conversion]].
 
-# Open-loop state-space model
+## Open-loop state-space model
 
 In a discrete-time representation, the dynamics for the open-loop system are governed by the following state and output equations:
 $$
@@ -45,7 +45,7 @@ $$
 \end{aligned}
 $$
 
-# Observability
+## Observability
 
 In [[reference_state_feedback|state-feedback]] design, the notion of controllability is fundamental. Observability is a similar property of a dynamic system, but with a slightly different definition.
 
@@ -68,7 +68,7 @@ The same idea applies in continuous time using $A$ and $C$.
 
 If the observability matrix has full column rank, meaning rank equal to the system order $n$, then the system is observable. If a system is observable it is possible to design an observer that reconstructs an estimate of the internal state of the system using limited information from the system output.
 
-# Observer equations
+## Observer equations
 
 In the open-loop state equations above, $\underline{x}$ is the state vector, $\underline{y}$ is the output vector, and $\underline{u}$ is the input vector. In the observer equations, $\hat{\underline{x}}$ is the estimated state vector, and $\hat{\underline{y}}$ is the estimated output vector.
 
@@ -175,7 +175,7 @@ $$
 
 The observer dynamics depend on the gain matrix $L$ which can be tuned by considering the error dynamics for the observer.
 
-# Error Dynamics
+## Error Dynamics
 
 Let the observer error be
 $$
@@ -271,7 +271,7 @@ This is a new homogeneous system that governs the observer error dynamics. In ot
 
 The clean cancellation above depends on the model and input being accurate. If the plant experiences an unknown input or disturbance, that disturbance appears in the error dynamics. One way to handle that case is to augment the state with a [[reference_disturbance_observer|Disturbance Observer Design]].
 
-# Observer Tuning via Traditional Pole Placement
+## Observer Tuning via Traditional Pole Placement
 
 The observer error dynamics are
 $$
@@ -320,6 +320,6 @@ Recall that for a discrete system stable poles are within the unit disk. See the
 
 The observer poles should be selected to be faster than any controller poles, so the state estimate converges quickly relative to the closed-loop response. In discrete time, “faster” generally means the observer poles are placed farther inside the unit disk, often closer to the origin than the dominant closed-loop controller poles. They should not be placed arbitrarily fast, because aggressive observer gains tend to amplify measurement noise and model mismatch.
 
-# Summary
+## Summary
 
 Observer design mirrors state-feedback design but focuses on estimation error dynamics instead of closed-loop system dynamics. In full-state feedback, the controller gain $K$ is chosen to shape the poles of $A_c = A_d-B_d\,K$. In observer design, the observer gain $L$ is chosen to shape the poles of $A_o = A_d-L\,C_d$.

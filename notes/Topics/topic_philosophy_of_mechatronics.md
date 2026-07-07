@@ -10,7 +10,7 @@ source:
 status: draft
 ---
 
-# Motivation
+## Motivation
 
 This course is about mechatronic systems, not just mechanical systems with electronics attached. A useful working definition we use at Cal Poly is:
 

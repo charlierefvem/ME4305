@@ -13,7 +13,7 @@ source:
 status: draft
 ---
 
-## Another nuance in observing Romi
+### Another nuance in observing Romi
 
 Recall Romi's output equations:
 
@@ -125,9 +125,9 @@ This is the practical constraint: the encoder positions and the yaw angle cannot
 
 > Technical Note (Instructor Review): The source phrasing describes the left nullspace as a space of nonzero $\underline{y}$ associated with $\underline{x}=\underline{0}$. Since $\underline{y}=C\underline{x}$ gives $\underline{y}=\underline{0}$ when $\underline{x}=\underline{0}$, this draft interprets the practical point as the output-consistency constraint $\underline{y}^T\underline{v}=0$ for every $\underline{y}$ in the column space of $C$.
 
-# Insights
+## Insights
 
-## Lab preparation outside the firmware
+### Lab preparation outside the firmware
 
 Outside of the firmware, probably using MATLAB, perform the following.
 
@@ -148,11 +148,11 @@ Outside of the firmware, probably using MATLAB, perform the following.
    using the observer gain.
 4. Either by hand, or with a discretization tool such as `c2d()`, transform the system matrices $A_O$ and $B_O$ from continuous time to discrete time to find $A_D$ and $B_D$.
 
-## Firmware implementation checklist
+### Firmware implementation checklist
 
 In the firmware, perform the following by embedding code into the task-based structure.
 
-### 1. Initialize encoders and heading consistently
+#### 1. Initialize encoders and heading consistently
 
 In one task, in an initialization state, make sure that the encoder values and heading values agree with one another. That is, do one of the following.
 
@@ -174,7 +174,7 @@ $$
 s_L = -\frac{w}{2}\psi.
 $$
 
-### 2. Concatenate the input and measurements
+#### 2. Concatenate the input and measurements
 
 As the tasks run, collect values associated with the system input and the system measurements, and compose a vector from them by concatenation:
 
@@ -196,7 +196,7 @@ s_R \\
 \end{bmatrix}.
 $$
 
-### 3. Run the observer update
+#### 3. Run the observer update
 
 As the tasks iterate, run the observer update equations:
 

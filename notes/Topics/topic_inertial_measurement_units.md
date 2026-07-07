@@ -16,7 +16,7 @@ source:
 status: draft
 ---
 
-# Motivation
+## Motivation
 
 An IMU is useful because it helps a robot estimate its orientation. This is especially important when a robot needs to understand how it is rotated relative to some inertial or world reference frame.
 
@@ -24,7 +24,7 @@ However, IMUs can be misleading if we treat them as position sensors. They do **
 
 This lecture introduces the sensors inside an IMU and then reviews two common ways of representing 3D orientation.
 
-# Inertial Measurement Units
+## Inertial Measurement Units
 
 IMU stands for **Inertial Measurement Unit**. An IMU measures orientation with respect to an inertial reference frame. Inertial reference frames are those that do not accelerate
 
@@ -47,7 +47,7 @@ IMU orientation data can appear in several forms:
 * Euler angles, such as yaw, pitch, and roll
 * Quaternions, which represent one rotation axis and one rotation angle
 
-## Accelerometers
+### Accelerometers
 
 An accelerometer measures linear acceleration:
 
@@ -63,7 +63,7 @@ Digital accelerometers commonly use MEMS technology, short for **micro-electro-m
 
 Reference video from the slide: https://www.youtube.com/watch?v=9X4frIQo7x0
 
-## Gyroscopes
+### Gyroscopes
 
 A gyroscope measures angular velocity:
 
@@ -81,7 +81,7 @@ $$
 $$
 where $\vec{\Omega}$ is the rotation rate and $\vec{v}$ is the velocity of the vibrating internal element.
 
-## Magnetometers
+### Magnetometers
 
 A magnetometer measures magnetic field strength:
 $$
@@ -96,7 +96,7 @@ Many magnetometers rely on the Hall Effect. In the Hall effect, current running 
 
 ![A diagram showing a conductor connected to a battery with conventional current, a magnet near the conductor, and charge separation across the conductor labeled negative on one side and positive on the other.](images/imu/hall_effect.svg)
 
-## Orientation Representations
+### Orientation Representations
 
 Recall that IMUs commonly produce 6 to 9 pieces of motion and field data:
 * Accelerometer: $a_x, a_y, a_z$
@@ -105,7 +105,7 @@ Recall that IMUs commonly produce 6 to 9 pieces of motion and field data:
 
 These data can be fused and converted into an orientation estimate. The orientation can then be represented using either Euler angles or quaternions.
 
-### Euler Angles
+#### Euler Angles
 
 Euler angles represent an orientation as three sequenced rotations. There are many possible conventions, including `ZYX`, `ZYZ`, `XYZ`, and others. In total, there are 24 possible ordered conventions.
 
@@ -121,12 +121,12 @@ In the notation used here:
 * $\beta$ is roll.
 
 Read more about [[reference_euler_angles|Euler Angles]].
-### Quaternions
+#### Quaternions
 
 Quaternions represent an orientation using an axis and angle of rotation about that axis encoded by four numbers split into one "real" part and 3 "imaginary" parts, $i$, $j$, and $k$. Quaternions act like a higher dimensional version of complex numbers. Unlike Euler angles, which are applied in a three step sequence, quaternions apply as a single operation.
 
 Read more about [[reference_quaternions|Quaternions]].
-# The BNO055 IMU
+## The BNO055 IMU
 
 The \[\[BNO055\]\] from Bosch is a 9 DOF IMU. It combines an accelerometer, gyroscope, and magnetometer in one sensor package.
 
@@ -142,7 +142,7 @@ Image sources from the slide:
 * Adafruit: https://learn.adafruit.com/assets/24585
 * Bosch BNO055 Quickstart Guide: https://www.bosch-sensortec.com/media/boschsensortec/downloads/application_notes_1/bst-bno055-an007.pdf
 
-# Summary
+## Summary
 
 This lecture introduced IMUs as sensor packages used to estimate orientation. A typical IMU combines accelerometer, gyroscope, and magnetometer data, and some packages also include a barometer. The accelerometer gives information about the gravity direction, the gyroscope measures angular velocity, and the magnetometer provides a compass-like reference to magnetic north.
 
@@ -150,7 +150,7 @@ IMUs are orientation sensors, not position sensors. The accelerometer is useful 
 
 A gyroscope provides excellent short-term rotation-rate information, but integration makes bias and drift accumulate over time. This is why IMU orientation estimates often combine gyroscope data with accelerometer and magnetometer data.
 
-# See Also:
+## See Also:
 * [[topic_i2c_communication|Introduction to I2C]]
 * [[reference_euler_angles|Euler Angles]]
 * [[reference_quaternions|Quaternions]]

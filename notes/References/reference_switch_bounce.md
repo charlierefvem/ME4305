@@ -14,7 +14,7 @@ source:
 status: draft
 ---
 
-# Motivation
+## Motivation
 
 Mechanical switches and buttons seem simple, but they create several practical issues in embedded systems. A switch connected to a GPIO pin needs a complete circuit, a known default logic state, and a strategy for handling non-ideal switching behavior.
 
@@ -24,7 +24,7 @@ To interface with an array of switches, the immediate design questions are:
 * How should the firmware avoid treating one physical button press as many separate events?
 The last question is the main focus of this reference note: **switch bounce** and **debouncing**.
 
-# Active-Low Button Circuits
+## Active-Low Button Circuits
 
 Recall that a common button circuit is the **active-low** configuration. In an active-low circuit, the GPIO pin is normally held high through a pull-up resistor. When the switch closes, the pin is connected to ground and the input reads low.
 
@@ -38,11 +38,11 @@ On many microcontrollers, the pull-up resistor can be configured internally, so 
 
 ![Active-low switch circuit. The circuit shows an MCU GPIO pin connected to a node with a pull-up resistor to VDD and a switch to ground.](images/gpio/active_low_switch.svg)
 
-# Reading Multiple Switches with Fewer GPIO Pins
+## Reading Multiple Switches with Fewer GPIO Pins
 
 Reading from an entire array of switches independently could require many GPIO pins. GPIO pins may or may not be a limited resource depending on the number pins available on your MCU and the utilization of the pins for other features. It is often desirable to reduce the number of pins needed to below the number of switches and several techniques exist for this with different benefits and drawbacks.
 
-## Wired-OR
+### Wired-OR
 
 Because the switch circuits are active-low, multiple switches can be combined using a **wired-OR** style connection. In positive logic this looks like an AND of the high-level signals, but in active-low logic any one switch can pull the shared line low.
 
@@ -53,11 +53,11 @@ Common groupings could include:
 * one input for each batch of switches
 * one input for the entire array of switches
 
-## Switch Matrices
+### Switch Matrices
 
 It is possible to build a matrix of switches by arranging them into rows and columns. Consider an $m \times n$ array of switches. To read from each switch individually, $m\cdot n$ GPIO pins would be required. In a matrix only $m+n$ GPIO pins would be required. Depending on the matrix size this could save a considerable number of GPIO pins. The tradeoff for the reduced GPIO usage is more complicated means of reading from the matrix. The MCU must scan rows and columns rather than simply check the state of each pin.
 
-### Example 1
+#### Example 1
 
 For a $4\times4$ array of switches, like the hexadecimal keypad shown below, the number of required GPIO reduces by half from 16 to 8.
 
@@ -65,11 +65,11 @@ For a $4\times4$ array of switches, like the hexadecimal keypad shown below, the
 
 **Note**: the above schematic is simplified from how these types of matrices are typically constructed. As shown, the matrix will create false readings if multiple buttons are pressed simultaneously. More robust circuits add series diodes to each switch. By allowing current to flow only one way through each switch the false readings can be prevented.
 
-## Shift Registers and Port Expanders
+### Shift Registers and Port Expanders
 
 Another technique for reading many switches with few GPIO pins is to use a device that converts parallel data into serial data. A parallel-in-serial-out shift register is the simplest device to do such a conversion. A port expander, connected with I2C or SPI to the MCU, would be a more modern example. Either of these devices can work in complement to the matrix configuration or can work directly with each switch.
 
-# Switch Bounce
+## Switch Bounce
 
 An ideal mechanical switch would change cleanly from off to on, and then cleanly from on back to off as shown in the waveform below.
 
@@ -83,11 +83,11 @@ The practical firmware problem is that one physical switch press may produce mul
 
 Image source: https://forum.digikey.com/t/switch-bounce-in-mechanical-switch-and-debounce-circuit/14231
 
-## Hardware Debouncing
+### Hardware Debouncing
 
 There are hardware-based approaches to switch debounce. The DigiKey article linked above gives several examples.
 
-### Simple RC Filter
+#### Simple RC Filter
 
 A simple RC debounce circuit uses a resistor-capacitor filter to slow the transition seen by the GPIO input.
 
@@ -102,7 +102,7 @@ $$
 \tau_{fall} = R_2\,C_1.
 $$
 
-### Modified RC Filter with Diode
+#### Modified RC Filter with Diode
 
 A modified hardware debounce circuit can add a diode so that the rise and fall times can be tuned independently.
 
@@ -117,7 +117,7 @@ $$
 \tau_{fall} = R_2\,C_1.
 $$
 
-## Software Debouncing
+### Software Debouncing
 
 In many cases, it is cheaper and sometimes simpler to debounce switch inputs in software instead of hardware. The problem is that each switch press can cause multiple rising and falling edges, and each edge may trigger an interrupt service routine.
 
@@ -130,7 +130,7 @@ A software debounce strategy is:
 In this approach, the ISR responds quickly to the first detected edge, but additional edges caused by bounce are ignored until the debounce interval has passed.
 
 The debounce interval should be chosen to be longer than the expected mechanical bounce time but shorter than the shortest intentional switch activation expected by the application. Choosing the debounce interval is an engineering tradeoff. The interval should be long enough to reject mechanical bounce but short enough that intentional switch transitions are not suppressed.
-### Example 2
+#### Example 2
 
 This example will illustrate one method for implementing debounce using a combination of a scheduled task and an interrupt service routine.
 
@@ -148,7 +148,7 @@ This example will illustrate one method for implementing debounce using a combin
         3) If needed, set a flag so that other code can re-enable IRQs later.
 3) A Scheduled Task for Re-Enabling IRQs
     1) A task should run at a regular debounce interval. Its job is to re-enable IRQs after the debounce period expires.
-#### Debounce Task
+##### Debounce Task
 
 The code block below shows a task that disables an external interrupt after a switch event, then re-enables it after the debounce interval has passed.
 
@@ -156,8 +156,8 @@ The code block below shows a task that disables an external interrupt after a sw
 from pyb import ExtInt, Pin, enable_irq, disable_irq
 from array import array
 
-# A task compatible with cotask.py that handles debounce for up to 16 switches
-# connected to different ExtInt ISR lines.
+## A task compatible with cotask.py that handles debounce for up to 16 switches
+## connected to different ExtInt ISR lines.
 class task_switch:
 
     # Create a task object using a defined set of switch pins and a queue
@@ -290,7 +290,7 @@ The critical section prevents an ISR from modifying the mask at the same time th
 
 **Note**: the code assumes that every `ISR_src` bit that becomes set corresponds to a key in `self._callbacks`. This is consistent with the callback only setting bits from configured pins, but the loop still scans all 16 possible ISR lines.
 
-# Insights
+## Insights
 
 Mechanical switches produce digital-looking signals, but their transitions are not ideal. Without debouncing, one physical press can look like several presses to the firmware.
 
@@ -300,7 +300,7 @@ Interrupt-based debouncing is a good fit when the system should react quickly to
 
 For active-low switches, internal pull-ups and wired-OR grouping can reduce wiring and GPIO usage, but combining switches also reduces how much information the firmware receives about which exact switch was hit.
 
-# Candidate Static Notes
+## Candidate Static Notes
 * \[\[Interrupts\]\]
 * \[\[External Interrupts\]\]
 * \[\[Queues\]\]

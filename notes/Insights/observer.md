@@ -2,9 +2,9 @@
 title: Observer Intuition
 type: insight
 ---
-# Disturbance Observers vs Integral Action — Key Insights
+## Disturbance Observers vs Integral Action — Key Insights
 
-## 1. Separation Principle with Augmented Disturbance States
+### 1. Separation Principle with Augmented Disturbance States
 
 The separation principle still holds when using an augmented-state observer that estimates disturbances.
 
@@ -49,7 +49,7 @@ The controller and observer may therefore still be designed independently.
 
 ---
 
-## 2. The Observer Does Not Compensate Disturbances
+### 2. The Observer Does Not Compensate Disturbances
 
 A key realization:
 
@@ -77,7 +77,7 @@ $$
 
 ---
 
-## 3. The Important Quantity Is Estimation Error
+### 3. The Important Quantity Is Estimation Error
 
 The most important insight from the discussion:
 
@@ -113,7 +113,7 @@ which is generally nonzero.
 
 ---
 
-## 4. Why Disturbance Compensation Does Not Hide the Disturbance
+### 4. Why Disturbance Compensation Does Not Hide the Disturbance
 
 Suppose
 
@@ -171,7 +171,7 @@ It means the disturbance has been perfectly compensated.
 
 ---
 
-## 5. Integral Action and Disturbance Estimation Solve Similar Problems
+### 5. Integral Action and Disturbance Estimation Solve Similar Problems
 
 Integral control introduces
 
@@ -199,7 +199,7 @@ $$
 
 ---
 
-## 6. Why Integral Action and Disturbance Feedback Can Feel Redundant
+### 6. Why Integral Action and Disturbance Feedback Can Feel Redundant
 
 Both states can contribute a steady-state control bias:
 
@@ -232,7 +232,7 @@ Only special choices of gains and structure would make them dynamically equivale
 
 ---
 
-## 7. Connection to Pole-Zero Cancellation
+### 7. Connection to Pole-Zero Cancellation
 
 The redundancy intuition is closer to pole-zero cancellation than to classical zero dynamics.
 
@@ -250,7 +250,7 @@ In general, the states remain dynamically distinct.
 
 ---
 
-## 8. State Counting for the Motor Example
+### 8. State Counting for the Motor Example
 
 Plant states:
 
@@ -299,7 +299,7 @@ Thus disturbance feedback can reduce controller order by one state in this imple
 
 ---
 
-## 9. Why Integral Action May Still Be Better
+### 9. Why Integral Action May Still Be Better
 
 A major practical insight:
 
@@ -340,7 +340,7 @@ which can inject noise into the actuator.
 
 ---
 
-## 10. Integral Action Naturally Filters Quantization Effects
+### 10. Integral Action Naturally Filters Quantization Effects
 
 The integrator evolves according to
 
@@ -359,7 +359,7 @@ In systems where the disturbance state is being used by the observer to absorb m
 
 ---
 
-# Final Takeaway
+## Final Takeaway
 
 A disturbance observer and an integrator both provide mechanisms for rejecting constant disturbances.
 
@@ -377,7 +377,7 @@ Integral action:
 
 For systems with significant quantization or observer-induced disturbance-estimate noise, integral action may be preferable even when a disturbance estimate is available.
 
-# See Also
+## See Also
 * [[reference_observer_design|Observer Design]]
 * [[reference_disturbance_observer|Disturbance Observer Design]]
 * [[case_motor_observer|Practical Motor Control]]

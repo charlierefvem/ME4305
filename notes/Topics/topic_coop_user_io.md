@@ -10,19 +10,19 @@ source:
 status: draft
 ---
 
-# Motivation
+## Motivation
 
 A core principle of cooperative multitasking is to avoid blocking code. Printing long strings and waiting for user input are both examples of blocking code, and must be handled appropriately.
 
 Serial communication, and printing in general, should be implemented cooperatively within a single task run by the scheduler. Likewise, for character input, rather than blocking while waiting for characters, periodically check for new data and process complete commands when available.
 
-# Cooperative Character I/O
+## Cooperative Character I/O
 
-## Printing Characters
+### Printing Characters
 
 Printing or writing to a serial port is relatively slow, so large blocks of output should often be subdivided and printed incrementally, either one line at a time or a few lines at a time. A rule of thumb that tends to work well in MicroPython is to print no more than ~512 characters in one batch, as the outgoing serial buffer can usually keep up with 512 byte chunks.
 
-### Example 1
+#### Example 1
 
 In this example it will be assumed that data has been collected in a pair of lists, `times`, and `values`, that are of equal length. The contents of the example would likely be placed within a state of a "user interface" task.
 
@@ -39,7 +39,7 @@ elif state == DUMP_DATA_STATE:
 yield
 ```
 
-## Reading Characters
+### Reading Characters
 
 To cooperatively read characters, try to observe the following workflow:
 1. Check whether data is available.
@@ -49,7 +49,7 @@ To cooperatively read characters, try to observe the following workflow:
 5. Process the completed command.
 6. Return immediately to allow other scheduled tasks to execute.
 
-### Example 2
+#### Example 2
 
 In this example a task will wait for a single character input command (cooperatively) and only retrieve the command once a character is available, as indicated by the `.any()` method belonging to the serial port.
 
@@ -70,7 +70,7 @@ elif state == WAIT_FOR_CMD_STATE:
 yield
 ```
 
-### Example 3
+#### Example 3
 
 The preceding example shows a simple way to read single character commands in a user interface, however you will almost certainly also need to take in multicharacter entry for numeric values in your UI. The following algorithm, presented as a flowchart, is one approach that will run cooperatively. The algorithm accumulates characters until a carriage return or newline is received and then processes the batch of characters.
 
@@ -81,9 +81,9 @@ It will be left as an exercise for the reader to convert the flowchart into work
 ![A detailed flowchart outlining an algorithm for multicharacter numeric data entry.](images/coop_io/multichar_flowchart.svg)
 
 **Insight**: later in the course, this style of user interface will be used to automate a tuning and data collection interface that will eventually interact with a Python script running on a PC.
-# Summary
+## Summary
 
 Serial port interaction can be slow and therefore result in blocking code. Efforts should be made to write cooperative code instead of blocking code by polling for input before reading and by subdividing large blocks of output into multiple smaller chunks before printing.
 
-# See Also:
+## See Also:
 * [[reference_formatting_strings|Formatting Strings]]

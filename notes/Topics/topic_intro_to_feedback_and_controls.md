@@ -10,11 +10,11 @@ source:
 status: draft
 ---
 
-# Motivation
+## Motivation
 
 In ME 4305 you will need to write code that controls real hardware. Other courses in our curriculum will focus on the mathematical backend for control theory while this course will focus on the practical application of control theory and only dip into mathematical derivations as needed to support the practical theory.
 
-# Basics of Feedback Control
+## Basics of Feedback Control
 
 Before understanding specific controller topologies it is paramount to understand the basics of **feedback**. Some people, your instructor included, use feedback as a model for most of reality as a means of understanding the world.
 
@@ -22,7 +22,7 @@ Feedback is simply the process of measuring the output of a system and using tha
 
 An example of feedback is the hand-eye loop we use as people to interact with the world. Your brain uses feedback from your senses to enable articulate and precise motion of your body.
 
-# PI~~D~~ Controllers
+## PI~~D~~ Controllers
 
 The controller topology that has been used frequently for many decades is the PID controller. The PID amplifies error in a system's output to determine an input to the system that corrects the output error. A standard PID controller follows an explicit **control law** involving several parameters and gains:
 $$
@@ -48,21 +48,21 @@ PID control is often taught as if integral action and derivative action should a
 
 **Caution**: Most controllers *do not benefit from derivative action* due to noise. Differentiation causes amplification of high-frequency signals which often damages the performance of a controller.
 
-## Proportional Action
+### Proportional Action
 
 The proportional component drives the system until the measurement is close to the setpoint, but  steady-state error should be expected, with the amount depending on the type of the system and the value of $K_p$. Systems that require effort to maintain steady-state will have large steady-state error with proportional-only controllers. Too much proportional action (large $K_p$) can cause overshoot or oscillation before effectively reducing steady-state error.
 
-## Integral Action
+### Integral Action
 
 The integral component drives the system the last bit of the way toward the setpoint and holds it there, rejecting disturbances. Integral control is slow by nature due to the need to accumulate integrated error. Too much integral action can also cause overshoot or oscillation similar to an overly aggressive P controller. Integral control also has some side-effects like windup which will be covered in a different lecture.
 
-## Derivative Action
+### Derivative Action
 
 The derivative component allows more aggressive proportional and integral control with less overshoot because derivative action pushes back against proportional and integral control when the error is shrinking over time. That is, a well functioning derivative control will allow higher $K_p$ and $K_i$ gains without allowing overshoot.
 
 In practice, however, derivative control often causes amplification in noise since differentiation amplifies the high frequency content of a signal. This can be noticed intuitively by differentiating a simple sinusoidal signal: $\frac{d}{dt}\sin(\omega\,t)=\omega\cos(\omega\,t)$ so for large values of $\omega$ the amplitude increases.
 
-## Expectations
+### Expectations
 
 A controls engineer must be careful to maintain their expectations. A novice engineer will design a controller under the false assumption that the goal is to reduce system error to zero in the shortest time possible. A seasoned engineer will design a controller with the aim to achieve *suitable performance* as determined by the constrains acting on the system. Fortunately this philosophy aligns well with the philosophy of mechatronics outlined on day one of ME 4305:
 >The goal is to make the machine accomplish its intended task.
@@ -77,14 +77,14 @@ To validate your controller you should first come up with performance metrics: q
 * Total Fuel Cost
 * Mean Squared Actuator Effort
 
-## Implementing a Controller in Code
+### Implementing a Controller in Code
 
 For your code to be reusable the controllers should be agnostic with respect to sensors and actuators. That is, you should implement the controller parameterized by:
 * An arbitrary reference, $r$
 * An arbitrary measurement, $\hat{x}$
 * An arbitrary set of gains, $K_p$, $K_i$, etc.
 
-# Feedforward Control
+## Feedforward Control
 
 In most cases the typical PI or PID controller will achieve desired performance metrics, but some systems may be more challenging to tune than others. 
 
@@ -116,7 +116,7 @@ More complicated feedforward control schemes may use an inverse model of the pla
 
  However, in practice, this doesn't always work well; because physical systems are causal, inverse models of the systems become acausal and therefore impossible to implement. Methods do exist to overcome this difficulty, the simplest of which is to define a constant feedforward gain based only on the steady-state relationship between the actuator input and the plant output.
 
-# Cascaded Control
+## Cascaded Control
 
 A powerful technique used in industry is cascaded control. A cascaded controller is made by using several nested controllers each meant to control a different part of the actuator or plant. For example, an "inner loop" controller may be designed to control just the actuator, but not the plant, with the expectation that an "outer loop" controller commands the inner loop appropriately to control the plant. This controller structure does two things:
 * Most importantly, cascaded control loops can be tuned incrementally, instead of all at once.
@@ -125,7 +125,7 @@ A powerful technique used in industry is cascaded control. A cascaded controller
 * Saturation limits and additional controller features like feedforward can also be applied separately to the inner and outer loops.
 * Nesting controllers may increase the overall order of the controller which may in some cases lead to improved performance.
 
-## Example
+### Example
 
 In this example the classic "servo loop" is shown that is implemented in many motor control applications. In the diagram below, the actuators and plants are lumped together in pairs to declutter the diagram.
 1) Start by examining the inner loop, consisting of $C_1$, $G_1$, and $H_1$. This loop implements current control. That is, the controller, $C_1$, takes the error in commanded current, and outputs a voltage to the motor, $G_1$, which provides feedback on the current through the current sensor, $H_1$. This inner loop can be tuned on its own. After tuning, the entire inner loop can be collapsed to a single block, used in the tuning of the intermediate loop.
@@ -135,7 +135,7 @@ With this set up, each layer can be tuned individually for performance, and may 
 
 ![Servo motor cascaded control example showing current, velocity, and position loops.](images/ControlLoopDiagrams_Cascaded_Loops.svg)
 
-## Summary
+### Summary
 
 * Start with proportional control.
 * Add integral only as required.

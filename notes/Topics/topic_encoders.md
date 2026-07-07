@@ -10,27 +10,27 @@ source:
   lecture: 6
 status: draft
 ---
-# Motivation
+## Motivation
 
 Encoders convert position into electrical signals. Both rotary and linear encoders exist, but rotary encoders are considerably more common. You may have already worked with rotary encoders attached to motors in other courses.
 
-## Encoders, Tachometers, and Resolvers
+### Encoders, Tachometers, and Resolvers
 
 Encoders encode position or displacement and include direction information. Tachometers measure speed only. Resolvers generally output analog position signals, often sine/cosine pairs and are primarily used in motor control.
 
 Incremental encoders are the most common because they are inexpensive and easy to interface. Absolute encoders are preferable when absolute position is required immediately after startup.
 
-# Absolute Encoders
+## Absolute Encoders
 
 Absolute encoders output a signal representing position with respect to an absolute datum.
 
-## PWM Output
+### PWM Output
 
 Many modern encoders output a PWM signal in which the duty cycle or on-time represents the angular displacement of the encoder. Some are physically bounded to a single rotation, but others allow continuous rotation, causing the PWM signal to reset once per rotation.
 
 ![Graph showing PWM duty cycle varying approximately linearly with shaft angle from 0 to 360 degrees.](images/encoder/absolute_pwm.svg)
 
-## Gray Code
+### Gray Code
 
 While less popular in modern applications, the Gray code encoder is a classic example of an absolute encoder. Gray code is a special bit pattern used encoder displacement in binary. The special feature provided by Gray code is that between any two adjacent states only one bit in the binary output changes. This allows the device reading the Gray code output to check for errors.
 
@@ -56,13 +56,13 @@ binary ^= (binary >> 1)
 binary ^= (binary >> 2)
 ```
 
-# Incremental Quadrature Encoders
+## Incremental Quadrature Encoders
 
 Incremental encoders do not have a fixed datum. Instead they output increments of displacement using quadrature signals: two square-wave channels, 90° out of phase, provide information about displacement. That is, the phase shift between the two waveforms encodes direction - if A leads B, the encoder is moving one direction and if B leads A, it is moving the other direction.
 
 ![Quadrature channel A and B waveforms that are 90 degrees out of phase with A leading B.|700](images/quadrature_signals.svg)
 
-## Optical Encoders
+### Optical Encoders
 
 Many high-performance (high resolution) encoders use optics to produce edges. In the figure below are two varieties:
 * Transmissive encoders shine light, usually from an LED, through a spoked disk. As the disk rotates the spokes break the line of site between the LED and a pair of photodetectors. If the two detectors are placed carefully the resulting output will have the appropriate 90° phase shift.
@@ -71,13 +71,13 @@ Many high-performance (high resolution) encoders use optics to produce edges. In
 ![Transmissive optical encoder example.](images/encoder/optical_transmissive.svg)
 ![Reflective optical encoder example.](images/encoder/optical_reflective.svg)
 
-## Magnetic Quadrature Encoders
+### Magnetic Quadrature Encoders
 
 While optical encoders offer very high density in the form of many spokes they are more costly to produce than other varieties of incremental encoder. Most low-cost incremental encoders are made with multi-pole magnets and hall effect sensors. These work on the same principle as the optical encoders, but instead of detecting light the hall effect sensors detect north vs. south magnetic poles. The animation below shows a 3 pole-pair magnetic encoder.
 
 ![Magnetic quadrature encoder with Hall sensors and output waveforms.](images/magnetic_encoder_animation.gif)
 
-## Encoder Resolution
+### Encoder Resolution
 
 Every quadrature encoder has a specific resolution defined by the smallest increment of change that the encoder can detect. Unfortunately this is one of the areas in engineering where notation and naming conventions lack standardization.
 
@@ -88,7 +88,7 @@ Every quadrature encoder has a specific resolution defined by the smallest incre
 | PPR  | Pulses per revolution - usually defined the same as counts per revolution, representing the total number of individual transitions. |
 Due to the ambiguity in convention it is important for designers to read the documentation for a given encoder in detail to understand if the provided resolution already accounts for the $4\times$ factor.
 
-# Decoding Quadrature
+## Decoding Quadrature
 
 The encoder is responsible for encoding the physical displacement as a pair of electrical signals. However the signals must be decoded back into numbers to be practically useful. Two approaches are common which mirror a common dichotomy in embedded systems: interrupts vs polling.
 * With an interrupt based strategy, on each individual edge, code or hardware checks the state of the signals and increments a counter up or down depending on the direction.
@@ -98,7 +98,7 @@ Up until the mid 2000s, quadrature decoding required specialized components in a
 
 Most modern microcontrollers now have built in hardware to decode quadrature signals. For the STM32 series, the quadrature decoding is part of the timer peripheral. The timer implements a polling based strategy at the system clock frequency, typically in the tens or hundreds of MHz.
 
-## Edge Decoding
+### Edge Decoding
 
 Direction can be decoded at every edge if we know both:
 1.  The edge direction.
@@ -118,7 +118,7 @@ From this information, a lookup table, like the one shown below, can be used to 
 | L     | ↓     | Up (Forward)   |
 **Note**: the arrows (↑ and ↓) shown in the table refer to rising and falling edges.
 
-### Example 1
+#### Example 1
 
 In this example a basic case of decoding will be covered for an encoder rotating with constant velocity.
 
@@ -128,7 +128,7 @@ Examine the figure above and notice the highlighted edge on Channel A. In this f
 
 All edges in the waveform below will produce the same direction using the lookup table because the waveforms correspond to constant velocity rotation. It's easy to see this visually by noticing that Channel A leads Channel B for the entire duration shown.
 
-## Polling Decoder
+### Polling Decoder
 
 STM32 timer hardware compares the current AB state against the previous state instead of explicitly detecting edges. This comparison occurs rapidly, once per edge on the clock source for the timer. On the Nucleo L476RG all timers run directly off the system clock at 80MHz, so the polling occurs 80 million times per second. Built into the microcontroller is a lookup table, similar to the one shown below, that shows the count direction based on the present and previous AB states.
 
@@ -136,7 +136,7 @@ STM32 timer hardware compares the current AB state against the previous state in
 
 The timer can also XOR the two channels to generate a square wave whose frequency represents speed.
 
-### Example 2
+#### Example 2
 
 In this example a more complicated motion will be decoded in which the encoder changes direction.
 
@@ -151,11 +151,11 @@ There are four plots shown in the figure above:
 
 From this example we can conclude that the hardware can effectively count encoder increments, but is unable to count arbitrarily high or low. In the example a reload while counting down, which may loosely be referred to as **underflow**, but the counter can also reload while counting up, which may loosely be referred to as **overflow**.
 
-# Correcting Encoder Reload
+## Correcting Encoder Reload
 
 To correct for the counter reloading during active operation we must read from the counter at a regular interval and detect overflow or underflow when it occurs.
 
-## Example 3
+### Example 3
 
 The diagram below depicts an encoder that has been rotating with constant velocity for long enough that the counter was forced to overflow.
 
@@ -205,7 +205,7 @@ or about one update every 5.4 seconds.
 
 **Bonus Insight**: The criteria above, when considered in the context of the encoder count waveform, can be reinterpreted intuitively. To guarantee that every underflow and overflow is detected the update must run at least twice per period. Any readers familiar with signal processing will recognize this as the Nyquist sampling criteria. The Nyquist sampling criteria states that the frequency of a signal can be measured only if the signal is sampled at a frequency at least twice that of the signal.
 
-## Summary
+### Summary
 
 * Encoders measure displacement.
 * Quadrature provides direction.

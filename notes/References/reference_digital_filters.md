@@ -13,13 +13,13 @@ source:
 status: draft
 ---
 
-# Motivation
+## Motivation
 
 In an ideal world sensors would return perfect, noise-free measurements that precisely match physical quantities being measured. Real sensors include many kinds of noise on top of their measurement such as quantization noise, electrical noise, vibration, and random variation in their outputs. One strategy to reduce unwanted measurement noise is to use a digital filter, such as an FIR or IIR filter. The engineering tradeoff is that filtering usually makes the signal smoother but also adds delay or reduces responsiveness.
 
 Digital filters can be designed directly in discrete time, or some filters can be designed first as continuous-time transfer functions and then converted to discrete time. See [[reference_continuous_to_discrete|Continuous to Discrete Conversion]] for multiple conversion techniques.
 
-# Finite impulse response (FIR) filters
+## Finite impulse response (FIR) filters
 
 A finite impulse response (FIR) filter only depends on a recent history of inputs, or measurements. It does not depend on past filter outputs. Let $x_k$ be the sampled measurement entering the filter, and let $y_k$ be the filtered output.
 $$
@@ -40,7 +40,7 @@ $$
 
 FIR filters with finite coefficients are inherently stable because their response to any single input sample ends after a finite number of steps.
 
-# Infinite impulse response (IIR) filters
+## Infinite impulse response (IIR) filters
 
 An infinite impulse response (IIR) filter depends on a recent history of inputs and also feedback from a recent history of past filter outputs.
 
@@ -75,6 +75,6 @@ $$
 
 Because an IIR filter uses feedback from past outputs, its denominator coefficients must be chosen so the filter is stable; in z-domain terms, the poles must lie inside the unit circle.
 
-# Summary
+## Summary
 
 In firmware, both FIR and IIR filters are implemented as update equations that run once per sample period, just like discrete-time controllers and observers.

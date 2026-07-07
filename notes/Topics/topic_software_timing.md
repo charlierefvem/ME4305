@@ -11,11 +11,11 @@ source:
 status: draft
 ---
 
-# Motivation
+## Motivation
 
 In ME 4305 we primarily focus on embedded firmware, which almost always means code running in real-time interacting with the world through sensors and actuators. Consequently, the code you write needs a way of keeping track of time accurately. Some of this is handled by the scheduler, but you will inevitably need to do some timekeeping on your own to timestamp data collection or interface with hardware.
 
-# Using the `utime` Module
+## Using the `utime` Module
 
 The MicroPython `utime` module aims to reproduce the core functionality of CPython's `time` module. Most of the useful timekeeping functions are provided in this library. The following six functions are ones that all students should be aware of.
 
@@ -31,7 +31,7 @@ The two sleep functions should be used with caution, as blocking code is general
 
 Cooperative timekeeping utilizes the ticks functions which return time values in either milli- or microseconds. These functions return the amount of elapsed time since some unknown datum; consequently, the output of the functions cannot be used in an absolute sense, but only in a differential sense. Additionally, the internal counters used by the ticks functions may overflow so it is unsafe to do standard arithmetic on the output of the ticks functions. Instead, you must use either `ticks_diff()` for subtraction or `ticks_add()` for addition to avoid errors.
 
-## Example 1
+### Example 1
 
 The following example shows how you might handle timing inside a task if you were not using a scheduler. Similar techniques can be used within states of scheduled tasks to measure time asynchronously with respect to the task period.
 
@@ -57,7 +57,7 @@ Notice that the next deadline is computed from the previous deadline rather than
 
 **Note**: if even you use the microsecond ticks function you should *not* expect microsecond precision with this timing method. For lower latency timing at the cost of additional overhead and additional coding restrictions you may consider timer callbacks instead.
 
-# Summary
+## Summary
 * The MicroPython `utime` module implements some of the features of CPython's `time` module.
 * To delay, use the functions `sleep_ms()` and `sleep_us()`.
 * Avoid long delays in cooperative tasks.

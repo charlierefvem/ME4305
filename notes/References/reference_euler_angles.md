@@ -12,7 +12,7 @@ source:
 status: draft
 ---
 
-# Motivation
+## Motivation
 
 Euler angles describe a set of three sequenced rotations that can be used to define an arbitrary orientation for an object in 3D space. Euler angles come in many different conventions because the sequence of rotations can be selected in many different ways. The common convention, sometimes called the aerospace convention, is the ZYX or 321 convention. Each rotation transforms between a set of coordinate frames.
 
@@ -30,8 +30,8 @@ $$
 \quad \xrightarrow{\beta} \quad
 (x_3, y_3, z_3)
 $$
-# Rotations
-## Example 1
+## Rotations
+### Example 1
 
 In this example a rotation matrix will be derived that performs rotation on basis vectors. For the common ZYX convention, the first rotation is yaw / heading by $\psi$ about the global $z_1$ axis.
 
@@ -89,13 +89,13 @@ $$
 when writing the new basis vectors in terms of the old basis vectors.
 
 **Note**: similar analysis can be performed for the $\phi$ and $\beta$ rotations to get two additional rotation matrices.
-### Rotation Matrix Sign Convention
+#### Rotation Matrix Sign Convention
 
 The matrix in this example is for transforming basis vectors. The next section uses matrices that act on vector components, which have the opposite sign convention for the $z$ rotation. The matrix that acts on vector components is the transpose of the matrix acting on basis vectors.
 
 This difference is because vector components and bases are *contravariant*: for the geometric object that a vector represents to remain invariant under change of basis the components of the vector must change in an opposite manner as the basis vectors. For example, if you are standing on a rotating frame, like a merry-go-round, watching the world around you, it may appear as you are stationary and instead the world is rotating around you the opposite direction.
 
-## Example 2:
+### Example 2:
 
 This example shows how to use rotation matrices to rotate components of a vector. When rotating vector components, the elementary rotation matrices are
 
@@ -173,7 +173,7 @@ $$
 
 **Insight**:  *You must put your socks on before your shoes, but you must take your shoes off before your socks.* That is, when undoing a sequence of transformations, not only does each transformation invert but the sequence reverses as well.
 
-## Gimbal Lock and Singular Matrices
+### Gimbal Lock and Singular Matrices
 
 One of the shortcomings of Euler angles is a phenomenon called gimbal lock. Gimbal lock occurs both physically, in gimbal systems, but also occurs mathematically. The phenomenon occurs when the second of the three sequenced rotations causes the axis of the first rotation and the third rotation to become collinear. For the ZYX convention this occurs when the pitch angle is $\phi = \pm 90^\circ$ because these conditions cause the $x_3$ axis to be aligned with the positive or negative extension of the $z_1$ axis.
 
@@ -183,6 +183,6 @@ Gimbal lock is an issue in systems that undergo arbitrary 3D rotations; however,
 
 Another strategy for avoiding gimbal is to use a [[reference_quaternions|Quaternion]] to represent the rotation instead of Euler angles.
 
-# Insights
+## Insights
 
 Euler angles are intuitive because yaw, pitch, and roll are easy to visualize, but they depend heavily on convention and rotation order. The same three angle values can mean different things under different conventions.

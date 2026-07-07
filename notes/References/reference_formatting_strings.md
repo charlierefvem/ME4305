@@ -10,7 +10,7 @@ source:
 status: draft
 ---
 
-# String Formatting
+## String Formatting
 
 Python provides two common ways to create formatted strings:
 
@@ -21,7 +21,7 @@ Both use the same **format specifiers**, so once you learn the specifiers you ca
 
 Formatting strings is especially useful for telemetry, debugging, logging sensor data, generating CSV output, displaying values with units, and creating clear user interfaces.
 
-## Format Specifiers
+### Format Specifiers
 
 A **format specifier** appears after a colon (`:`) inside the braces and controls **how a value is displayed** without changing the value itself. You can think of a specifier as a small set of building blocks. A useful beginner pattern is:
 
@@ -42,7 +42,7 @@ Each part (enclosed by square brackets in the string above) is optional, so most
 
 The **width** before the dot is the minimum field width, while the **precision** after the dot represents the number of digits to include after the decimal point for floating-point values. If the formatted value is wider than the requested width, Python automatically expands the field.
 
-## Example 1
+### Example 1
 
 For this example, `{:8.2f}` combines width `8`, precision `.2`, and type `f`.
 
@@ -59,7 +59,7 @@ The output includes four leading spaces to pad the string to a width of eight, a
 
 Note that the function `repr()` used in the example makes the output display as a string representation (with apostrophes shown) rather than as text.
 
-## Example 2
+### Example 2
 
 This next example will show a few common string formats using the `.format()` method.
 
@@ -92,7 +92,7 @@ print(repr("I = {:.2f} A".format(current)))
 'I = 1.52 A'
 ```
 
-## Example 3
+### Example 3
 
 This example is the same as Example 2, but uses f-strings instead of `.format`.
 
@@ -123,7 +123,7 @@ print(repr(f"I = {current:.2f} A"))
 'I = 1.52 A'
 ```
 
-### Example 4
+#### Example 4
 
 This final example is more practical and shows how you might create a set of data and print that data in a comma separated format. Note the use of list comprehensions to compactly create time and data values.
 
@@ -151,7 +151,7 @@ for time, val in zip(times, vals):
 1.00,-0.0000
 ```
 
-# Summary
+## Summary
 
 Both **f-strings** and **`.format()`** use the same format specifiers. In modern Python, f-strings are generally preferred because they are concise and easy to read, but `.format()` is still common in existing code. Sometimes `.format()` is still preferred because it allows you to create reusable format strings treated as constants that can be formatted during runtime.
 

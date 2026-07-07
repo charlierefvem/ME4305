@@ -12,13 +12,13 @@ source:
   lecture: 20
 status: draft
 ---
-# Motivation
+## Motivation
 
 The matrix exponential appears when solving systems of linear differential equations. It plays the same role for a state-space model that $e^{a\,t}$ plays for a scalar first-order ODE. In continuous-to-discrete conversion, the matrix exponential becomes especially important because the exact zero-input state update over one sample period is
 $$
 \underline{x}_{k+1}=e^{A\,T_s}\underline{x}_k
 $$
-# Matrix Exponential as the Solution to a Homogeneous LTI System
+## Matrix Exponential as the Solution to a Homogeneous LTI System
 
 Consider the homogeneous system defined by $\dot{\underline{x}}=A\,\underline{x}$ with initial conditions $\underline{x}(0) = \underline{x}_0$.
 
@@ -154,7 +154,7 @@ The derivation above assumes $A$ is diagonalizable. The final result, however, i
 
 **Insight**: $e^{A\,t}$ is the state-transition matrix, sometimes referred to using the symbol $\Phi(t)$. It tells how the current state moves forward in time when there is no input. For sampled implementation, $e^{A\,T_s}$​ tells how the state evolves over one control-loop update period.
 
-# Computing the Matrix Exponential
+## Computing the Matrix Exponential
 
 When computing matrix exponentials in software make sure to call the appropriate function. In MATLAB,
 ``` MATLAB
@@ -170,9 +170,9 @@ And, in Python using SciPy,
 from scipy.linalg import expm, exp
 import numpy as np
 
-# Correct matrix exponential
+## Correct matrix exponential
 Ad = expm(A * Ts)
 
-# Incorrect matrix exponential (applies element by element)
+## Incorrect matrix exponential (applies element by element)
 Ad_wrong = np.exp(A * Ts)
 ```

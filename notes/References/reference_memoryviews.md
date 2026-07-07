@@ -9,7 +9,7 @@ source:
 status: draft
 ---
 
-# Buffers
+## Buffers
 
 Various modules, including the `struct` module, have a few extra features that are useful for writing cleaner code when working with buffered data.
 
@@ -31,7 +31,7 @@ my_i2c.mem_read(buf, dev_addr, mem_addr)
 
 The first line reads data and returns it in a new `bytes` object. The bottom two lines create a reusable buffer and then read data into it directly. Optimizations like this, while small individually, can really add up, especially for code that is in the **hot path** (code that must run very often, like a control loop). Therefore, in firmware programming methods that **read into** a buffer will be preferred to methods that read and return a bytes object.
 
-# Slices
+## Slices
 
 A **slice** selects a portion of a sequence such as a string, list, tuple, or `bytearray`. Slices use the general form:
 
@@ -49,7 +49,7 @@ All three values are optional.
 
 Python uses **zero-based indexing**, so the first element has index `0`. The `stop` index is **exclusive**, meaning it is not included in the result.
 
-### Example 1
+#### Example 1
 
 ```python
 text = "Engineering"
@@ -63,11 +63,11 @@ text[::-1]    # 'gnireenignE'
 
 Negative indices count backward from the end of the sequence. For example, `text[-1]` is the last character, and `text[:-1]` returns everything except the last character.
 
-# `memoryview` Objects
+## `memoryview` Objects
 
 A `memoryview` object provides mutable access to another buffer. These fit in nicely with the philosophy to prefer "read into" functions in favor of "read" functions. A `memoryview` can also be used to grant access to certain parts of a buffer to another function.
 
-## Example 2
+### Example 2
 
 What will be the value of `buf` after the following code runs?
 
@@ -90,7 +90,7 @@ bytearray(b'\x00\x01\x02\x03\x04')
 
 If you pass standard slices of `bytearray` objects into functions and then mutate the slices, the changes will not reflect in the original `bytearray`. The slice creates a new object.
 
-## Example 3
+### Example 3
 
 A `memoryview` object can be sliced and modified, and the changes will reflect in the original buffer.
 
@@ -115,7 +115,7 @@ The slice `memoryview(buf)[:3]` views the first three elements of the original b
 
 **Insight**: This is *especially* useful in embedded code because a class can allocate one buffer and then create smaller views into that buffer as needed, rather than allocating new `bytearray` objects repeatedly. A `memoryview` object also allows API functions to place data directly into or take data directly from different portions of a buffer. This style of in-place operation can greatly benefit runtime performance by reducing dynamic memory allocation and therefore the burden on the **garbage collector**.
 
-## Example 4
+### Example 4
 
 This example shows advanced usage of the `struct` module. 
 
@@ -156,10 +156,10 @@ class BNO055:
         return (head / 16, roll / 16, pitch / 16)
 ```
 
-# Summary
+## Summary
 
 * Slices allow advanced indexing of collections.
 * `memoryview` objects are useful because they allow a function to operate on a selected part of a buffer without copying that part into a new object.
 
-# See Also:
+## See Also:
 * [[topic_collections|Collections]]

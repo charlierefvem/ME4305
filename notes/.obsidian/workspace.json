@@ -14,12 +14,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Topics/topic_path_planning.md",
+                "file": "References/reference_switch_bounce.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "topic_path_planning"
+              "title": "reference_switch_bounce"
             },
             "group": "81a883605a27edf8"
           }
@@ -36,13 +36,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Topics/topic_path_planning.md",
+                "file": "References/reference_switch_bounce.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of topic_path_planning"
+              "title": "Outline of reference_switch_bounce"
             },
             "group": "81a883605a27edf8"
           }
@@ -211,8 +211,8 @@
   },
   "active": "d00085b673c0d565",
   "lastOpenFiles": [
-    "Topics/topic_philosophy_of_mechatronics.md",
     "Topics/topic_path_planning.md",
+    "Topics/topic_philosophy_of_mechatronics.md",
     "Images/romi/thought_experiment.svg",
     "Images/romi/thought_experiment_thought_experiment.svg",
     "Images/romi/isometric.svg",

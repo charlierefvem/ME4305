@@ -13,7 +13,7 @@ source:
 status: draft
 ---
 
-# Motivation
+## Motivation
 
 Physical signals and many physical systems are naturally continuous in time, but measurements on a microcontroller are sampled at discrete time intervals. Once a signal is sampled, filters and controllers are usually implemented as difference equations rather than continuous-time differential equations.
 
@@ -21,7 +21,7 @@ We can apply the Laplace transform to ODEs in continuous-time to develop transfe
 
 Understanding the z-domain is necessary even if controllers and filters are designed in continuous-time because the final implementation must be handled digitally by a microcontroller.
 
-# Discrete signals and the z-domain
+## Discrete signals and the z-domain
 
 In mechanical engineering courses, focus is usually spent on the s-domain, which allows modeling of continuous systems. Many continuous systems are modeled using ordinary differential equations, and through the Laplace transform these differential equations can be rewritten as transfer functions in the s-domain.
 
@@ -61,7 +61,7 @@ Rather than requiring poles to be in the left half-plane, a stable discrete-time
 
 ![The z-domain stability diagram shows a circle centered at the origin. The inside of the circle is shaded and labeled "stable region," emphasizing that discrete-time poles must lie inside the unit circle. The source drawing labels the axes similarly to the s-domain sketch.](images/discrete_systems/stability_z_plane.svg)
 
-## Unit delay and continuous-to-discrete transforms
+### Unit delay and continuous-to-discrete transforms
 
 The unit delay links intuition about the s-domain to intuition about the z-domain, including the way the continuous-time stability region in the s-plane maps into the discrete-time stability region in the z-plane. It is possible to convert between the s-domain and the z-domain. Converting from continuous time to discrete time is called [[reference_continuous_to_discrete|Continuous to Discrete Conversion]]. It is also possible to convert back from discrete time to continuous time.
 
@@ -131,7 +131,7 @@ Several methods approximate the relationship between $z$ and $s$ based on the Ta
 | $z= \frac{1}{e^{-s\,T_s}}$              | $s \approx \frac{z-1}{z\,T_s}$           | $z \approx \frac{1}{1-s\,T_s}$            | Backward Difference Method                                    |
 | $z= \frac{e^{s\,T_s/2}}{e^{-s\,T_s/2}}$ | $s \approx \frac{2}{T_s}\frac{z-1}{z+1}$ | $z \approx \frac{1+s\,T_s/2}{1-s\,T_s/2}$ | Trapezoid Method (aka Tustin's Method aka Bilinear Transform) |
 
-## Example 1
+### Example 1
 
 This example shows a derivation of the continuous to discrete transform based on the forward difference method and then motivates its interpretation through a simple example transformation.
 
@@ -185,7 +185,7 @@ According to this transformation, the derivative is approximated by looking forw
 
 As written, the forward difference estimates the derivative at step $k$ using $x_{k+1}$​, so it is not directly causal as a real-time differentiator. In a state-update equation, however, it is causal because the purpose of the update is to compute $x_{k+1}$​ from known values at step $k$. This can also be concluded by noticing that $\frac{z-1}{T_s}$ is an improper transfer function.
 
-## Example 2
+### Example 2
 
 This example shows a derivation of the continuous to discrete transform based on the backward difference method and then motivates its interpretation through a simple example transformation.
 
@@ -228,7 +228,7 @@ $$
 y_k = \frac{1}{T_s}\left(x_k-x_{k-1}\right).
 $$
 
-## Example 3
+### Example 3
 
 This example shows a derivation of the continuous to discrete transform based on the trapezoidal method, also called Tustin's method or the bilinear transform, and then motivates its interpretation through a simple example transformation.
 
@@ -264,7 +264,7 @@ The diagram below makes geometric sense of this definition for $\frac{1}{2}(y_{k
 
 According to this transformation, the average of the derivative at the next sample and the current sample is approximated by looking at the finite difference between those two samples. This method is essentially the average of the forward and backward difference methods, which is equivalent to a trapezoidal difference method.
 
-# Summary
+## Summary
 1) Continuous-time stable poles satisfy $\text{Re}⁡(s)<0$.
 2) Discrete-time stable poles satisfy $\lvert z \rvert < 0$.
 3) Exact sampled exponentials obey $z=e^{s\,T_s}$​.

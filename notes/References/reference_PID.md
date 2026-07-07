@@ -11,7 +11,7 @@ source:
 status: draft
 ---
 
-# PID Control Basics
+## PID Control Basics
 
 Typical control laws are of the form P, PI, PD, or PID, where "P" stands for proportional, "I" stands for integral, and "D" stands for derivative. A proportional-integral-derivative (PID) controller is shown below in a typical feedback loop. These three aspects each apply to how the error signal is converted into an actuation signal.
 
@@ -41,11 +41,11 @@ Intuitive understanding of PID controllers comes from experience and practice wo
 | Integral     | $K_i$ | The integral action is the component that keeps the system at or near the target value and helps to reduce the system error. Depending on the system type and the reference profile, integral control can lead to very low steady-state error.                                                                                                                                                                                                                                                                       | Integral control can also lead to instability issues for larger gains. Other issues such as integral windup and reset windup are very common drawbacks, but each can be handled easily with a few tweaks to the algorithm.<br><br>Integral action can also lead to issues for systems that require a large amount of effort to reach the target refence in comparison to the effort required to overcome disturbances, as the same gain will not handle both cases equally. |
 | Derivative   | $K_d$ | The derivative action is the component that allows the controller to aggressively command the system as it approaches the target value while mitigating large overshoot. In other words, as the system approaches the target value the derivative action will help slow down the approach.<br><br>Controllers with derivative action can have higher proportional and integral gains for the same amount of overshoot. Derivative control also makes the system respond faster to changes in the reference setpoint. | Derivative control has the effect of amplifying noise greatly, as most noise is of relatively high frequency but low amplitude. For some systems with low performing sensors, the derivative control is made useless by the amount of noise produced by the sensors. <br><br>Additionally, derivatives are challenging to compute accurately using numerical methods, such as with the finite difference method, which may lead to further numerical instability.           |
 
-# Control Loop Modifications
+## Control Loop Modifications
 
 In many cases controls engineers will modify the control structure from the standard PID implementation in order to improve controller performance.
 
-## Actuator Saturation
+### Actuator Saturation
 
 One of the most important limitations of real world hardware is saturation. Actuators can only output so much power before they hit limits or fail. In some cases this has little effect on controller performance, but in general actuator saturation can have large ramifications.
 
@@ -58,7 +58,7 @@ A modified control loop with actuator saturation is shown in the diagram below. 
 In battery-powered systems, the actuator limits may themselves change over time. For example, as the battery voltage decreases, the maximum achievable motor voltage decreases proportionally. Consequently, it is often preferable to compute saturation limits dynamically from the measured battery voltage rather than assuming fixed limits.
 
 **Insight**: almost all real-world PID implementations implement saturation, so it should be considered a standard feature in practice.
-## Anti-Windup
+### Anti-Windup
 
 One of the unintended consequences of actuator saturation occurs in systems with integral control and is known as integrator windup, saturation windup, or reset windup.
 
@@ -82,7 +82,7 @@ An important concept in anti-windup construction is that once the saturation dis
 
 **Insight**: Adding anti-windup is essential for any controller implementing integral action when actuator saturation is expected.
 
-## IP and IPD Controllers
+### IP and IPD Controllers
 
 Another common modification to the standard PID controller is meant to mitigate sensitivity to abrupt changes in setpoint. With a standard PID controller and a step input in setpoint, the system actuation includes a step change, from the proportional term, and an impulse, from the derivative term. These large spikes in actuation value can sometimes cause problems in implementation and in general they are unkind to the actuators in the system.
 
@@ -96,7 +96,7 @@ It should be noted that, partially through intentional design, the system will n
 
 **Insight**: IP and IPD controllers are used when the setpoint changes abruptly and actuator stress is a concern.
 
-## Feedforward Control
+### Feedforward Control
 
 Yet another example modification that improves performance is the addition of a feedforward controller in parallel with the feedback controller. An example control loop is shown below as a block diagram.
 
@@ -115,7 +115,7 @@ The feedback controller therefore only needs to work on the small error between 
 
 **Insight**: Feedforward is useful when the plant is reasonably predictable and the required steady-state effort is known.
 
-## Pseudo-derivative Feedback
+### Pseudo-derivative Feedback
 
 It has been argued, above, that differentiation is often more problematic than helpful. The IPD controller mitigates this somewhat, by only differentiating the measured feedback signal instead of the system error, but noise in the measurement is still amplified through differentiation.
 
@@ -133,7 +133,7 @@ Pseudo-derivative feedback is an early example of a broader design philosophy th
 
 **Insight**: Pseudo-derivative feedback is used when a direct measurement of the derivative is available through an additional sensor.
 
-# Candidate static references
+## Candidate static references
 * \[\[State Feedback\]\]
 * \[\[Observers\]\]
 * \[\[Finite Difference Method\]\]

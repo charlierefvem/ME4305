@@ -14,7 +14,7 @@ source:
 status: draft
 ---
 
-# Motivation
+## Motivation
 
 When working with sensors and embedded hardware, the data we read is usually stored as raw bytes. The hardware does not send us "the number -77" in decimal notation. Instead, it sends a sequence of bits, and our code must interpret those bits correctly.
 
@@ -26,7 +26,7 @@ This lecture reviews several tools that matter when reading binary sensor data:
 * The `struct` module for packing and unpacking binary data
 These topics show up naturally when working with- I2C sensors such as the BNO055 IMU used in lab.
 
-# Signed Numbers in Binary
+## Signed Numbers in Binary
 
 In decimal notation, we usually write negative numbers using a **signed magnitude** format. For example, in the number `-23`, the minus sign represents the sign and the digits `23` represent the magnitude.
 
@@ -37,7 +37,7 @@ For an 8-bit signed number:
 * `MSB = 0` means the number is positive.
 * `MSB = 1` means the number is negative.
 
-## The Two's Complement Operation
+### The Two's Complement Operation
 
 The two's complement of a binary number can be found in two steps:
 
@@ -46,7 +46,7 @@ The two's complement of a binary number can be found in two steps:
 
 For example, to negate an 8-bit value, first flip each bit and then add one. This is not just a visual trick; it is the operation that makes addition and subtraction work consistently for signed binary integers.
 
-## Interpreting Two's Complement Values
+### Interpreting Two's Complement Values
 
 To interpret a two's complement number, first look at the MSB. If the MSB is `0`, the value is positive and can be interpreted like an ordinary unsigned binary number. If the MSB is `1`, the value is negative.
 
@@ -77,7 +77,7 @@ $$
 $$
 when interpreted as an 8-bit signed integer.
 
-## Two's Complement Ranges
+### Two's Complement Ranges
 
 The range of a two's complement signed integer depends on the number of bits used.
 
@@ -101,7 +101,7 @@ For a 16-bit signed integer:
 
 This is why the number of bits matters. The same pattern of bits can represent a different number depending on whether it is treated as an 8-bit, 16-bit, or 32-bit signed integer.
 
-# Sign Extension
+## Sign Extension
 
 The hardware has no idea whether a collection of bits represents an 8-bit, 16-bit, or 32-bit number. That interpretation is entirely determined by the software. The application of two's complement depends on the number of bits used to represent an integer because the MSB is the sign bit. The operation of extending the number of bits used to represent a number without changing its value is called **sign extension**.
 
@@ -127,7 +127,7 @@ This is just the original 16-bit value with 16 extra zeros in front. However, th
 0b1111 1111 1111 1111 1100 1001 0010 1110
 ```
 
-## Method One: Logic
+### Method One: Logic
 
 In Python, one direct way to sign-extend a 16-bit value is to check whether it is in the range that represents negative numbers before sign extension:
 
@@ -142,7 +142,7 @@ $$
 2^{16} = 65536
 $$
 
-## Method Two: Bit Manipulation
+### Method Two: Bit Manipulation
 
 A more C-style approach uses bit manipulation:
 
@@ -156,7 +156,7 @@ The XOR of the value and the mask toggles bit 15.
 * If the number was originally negative, bit 15 toggles from `1` to `0`; subtracting the mask then causes a borrow from bit 16. Since bit 16 is `0`, the borrow propagates upward through the higher bits, giving the correct negative value.
 
 In a previous topic on I2C, `struct.unpack("<hhh", buf)` converted six bytes into three signed 16-bit integers. This lecture topic explains why those integers have the correct positive and negative values and why sign extension preserves those values when larger integer types are used.
-# Summary
+## Summary
 
 In this lecture, we reviewed signed numbers in binary and focused on how two's complement encodes negative values. We then used that idea to motivate sign extension, where the sign bit must be copied when a signed integer is widened from one bit-width to another.
 
@@ -164,7 +164,7 @@ Two's complement is not just a way of writing negative numbers. It is the conven
 
 Sign extension is the operation that preserves the value of a signed integer when increasing the number of bits used to represent it. For a positive value, this means extending with zeros. For a negative value, this means extending with ones.
 
-# See Also:
+## See Also:
 * [[topic_collections|Collections]]
 * [[topic_inertial_measurement_units|Introduction to IMUs]]
 * [[reference_memoryviews|Buffers and memoryview Objects]]

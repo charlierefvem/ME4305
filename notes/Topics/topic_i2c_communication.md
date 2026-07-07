@@ -12,13 +12,13 @@ source:
 status: draft
 ---
 
-# Motivation
+## Motivation
 
 Many sensors used in embedded systems are not connected through a single analog voltage or a simple digital signal. Instead, they communicate with the microcontroller using a digital communication protocol. I2C is one of the most common protocols for this kind of sensor communication because it allows many peripheral devices to share the same two communication lines.
 
 This note introduces I2C as a bus protocol, explains how data moves across the bus, and connects the protocol-level ideas to the `pyb.I2C` interface used on the STM32-based lab hardware.
 
-# Names for I2C
+## Names for I2C
 
 The protocol is commonly referred to by a few closely related names:
 * IIC, I$^2$C, or I2C: Inter-Integrated Circuit
@@ -26,7 +26,7 @@ The protocol is commonly referred to by a few closely related names:
 
 The name Two-Wire Interface comes from the physical layer: each bus uses two communication lines, plus power and ground.
 
-# Basic Features of I2C
+## Basic Features of I2C
 
 I2C is a synchronous serial communication protocol. Data is sent in binary, bit by bit, in a sequential pattern. The bus uses two communication signals:
 * `SDA`: serial data
@@ -44,13 +44,13 @@ Several features define the protocol:
 
 ![I2C bus overview. Device 1 is the controller and connects to two shared communication lines labeled SCL and SDA. Device 2 and Device 3 are peripherals connected to the same SCL and SDA bus. Both lines are pulled up through resistors, illustrating the open-drain wired-or physical layer used by I2C.](images/iic/physical_layer.svg)
 
-## Comparison to SPI
+### Comparison to SPI
 
 The most comparable protocol is SPI, the Serial Peripheral Interface. SPI typically uses four or more communication lines per bus instead of two. It can also be full-duplex, depending on how it is configured.
 
 SPI is usually simpler to use and supports much faster clock speeds. The speed advantage comes partly from the use of actively driven tri-state outputs rather than open-drain outputs. I2C gives up some speed in exchange for a smaller number of communication wires and an addressable shared bus.
 
-# How I2C Sends Data
+## How I2C Sends Data
 
 I2C transfers data using the `SDA` line, while the `SCL` line synchronizes the sending and receiving devices. The clock line acts like a drum beat: it sets the pace of communication and helps guarantee that the receiving device samples the data line after the sending device has updated it.
 
@@ -60,7 +60,7 @@ All data transfers begin when the controller performs a start condition on the b
 
 ![Open-drain I2C physical layer. Two devices share the SDA and SCL lines. Each device contains switches or transistor-like outputs that can pull the line down to ground, while external pull-up resistors return the lines to 3.3 V when no device is pulling them low. This illustrates why no device actively drives a logic high on an I2C bus.](images/iic/physical_layer_wired_or.svg)
 
-# Device Addresses and the Read/Write Bit
+## Device Addresses and the Read/Write Bit
 
 To distinguish between devices on a shared bus, each I2C peripheral must have a unique address. In the common 7-bit addressing mode, the device address is written as
 
@@ -74,7 +74,7 @@ An additional bit, called the `R/W` bit, is concatenated with the 7-bit address 
 a6 a5 a4 a3 a2 a1 a0 R/W
 ```
 
-# Read and Write Transactions
+## Read and Write Transactions
 
 A read transaction begins with a start condition, followed by the address byte (the 7-bit address concatenated with the read bit). The addressed peripheral then returns one or more data bytes. After each byte, the receiver sends an acknowledge (ACK) bit until the last byte is received then the receiver sends a negative acknowledge (NACK) bit to tell the peripheral to stop sending. The transaction ends with a stop condition.
 
@@ -86,7 +86,7 @@ A write transaction also begins with a start condition, followed by the 7-bit ad
 
 External figure source for timing diagrams: Analog Devices, I2C primer, https://www.analog.com/en/technical-articles/i2c-primer-what-is-i2c-part-1.html
 
-# Register-Based Devices
+## Register-Based Devices
 
 Almost all I2C devices use a register-style interface. A register is a specific address inside the peripheral device. The controller uses the register address to choose which internal value it wants to read or write. Extremely simple sensors may omit this kind of register map, but most useful sensors have many different values and configuration options, so a register map is the normal interface.
 
@@ -101,7 +101,7 @@ To write data to a register, the process still has two logical steps, but it can
 2. Before ending the transfer, the controller sends one or more data bytes. Those bytes should be written into the peripheral registers starting at the specified address.
 
 Notice that the I2C peripheral driver forms another abstraction layer. User tasks should request measurements from the driver rather than directly implementing I2C transactions throughout the application.
-## Example 1
+### Example 1
 
 The BNO055 IMU is an example of a register-based I2C device that we will use in ME 4305. The portion of the register map that holds accelerometer data is shown below.
 
@@ -115,7 +115,7 @@ The BNO055 IMU is an example of a register-based I2C device that we will use in 
 | `0x0D` | `ACC_DATA_Z_MSB` |
 The important pattern is that each accelerometer axis is stored as two bytes: a least-significant byte and a most-significant byte. Reading six bytes beginning at address `0x08` gives the raw X, Y, and Z accelerometer values.
 
-# `pyb.I2C` Transfer Functions
+## `pyb.I2C` Transfer Functions
 
 The STM32 hardware has built-in support for simple I2C read and write transfers. The MicroPython API provides the `pyb.I2C` class with functions for both simple transfers and register-based interaction.
 
@@ -124,25 +124,25 @@ The STM32 hardware has built-in support for simple I2C read and write transfers.
 | Simple        | `pyb.I2C.recv()`               | `pyb.I2C.send()`                |
 | Register      | `pyb.I2C.mem_read()`           | `pyb.I2C.mem_write()`           |
 
-## Example 2
+### Example 2
 
 This example reads six bytes from the BNO055 IMU starting at the first accelerometer data register as indicated by the register map snippet in Example 1.
 
 ```python
 import pyb
 
-# Device and memory/register addresses from the IMU register map.
+## Device and memory/register addresses from the IMU register map.
 dev_addr = 0x28  # IMU address
 mem_addr = 0x08  # ACC_DATA_X_LSB
 
-# Create a six-byte mutable buffer to hold the returned data.
+## Create a six-byte mutable buffer to hold the returned data.
 buf = bytearray(0 for _ in range(6))
 
-# TODO (Instructor Review): Confirm the bus number and initialization mode
-# used for the specific STM32 board and MicroPython version in lab.
+## TODO (Instructor Review): Confirm the bus number and initialization mode
+## used for the specific STM32 board and MicroPython version in lab.
 my_i2c = pyb.I2C(1, pyb.I2C.MASTER)
 
-# Read six bytes from the peripheral, starting at the selected register.
+## Read six bytes from the peripheral, starting at the selected register.
 my_i2c.mem_read(buf, dev_addr, mem_addr)
 ```
 
@@ -153,7 +153,7 @@ In the call to `mem_read()`, the arguments play three different roles:
 
 **Insight**: returning to the bank or post office analogy, one could say that `mem_read()` first drives to the correct building using the device address, then walks inside and opens the requested lock box using the register address. However, each lock box contains only **one byte** of information. In this example, a complete accelerometer measurement spans six consecutive lock boxes, so `mem_read()` opens six adjacent lock boxes and returns all six bytes together.
 
-## Example 3:
+### Example 3:
 
 After reading the six accelerometer bytes, the byte data still needs to be interpreted. The `struct` module can unpack those six bytes into three signed 16-bit integer values. This example is assumed to run after Example 2.
 
@@ -185,7 +185,7 @@ The first character in the format string is the endianness specifier, or byte-or
 
 **Note:** it is also allowed to use format strings like `'<3h'` to refer to three signed 16-bit integers in little-endian format. This style can be convenient in scenarios that require production of format strings programmatically.
 
-# Insights
+## Insights
 
 I2C is easy to describe at a high level but has several layers that matter in practice:
 * At the physical layer, open-drain outputs and pull-up resistors allow many devices to share the same lines without fighting each other.
@@ -195,7 +195,7 @@ I2C is easy to describe at a high level but has several layers that matter in pr
 
 The most important engineering habit is to keep these layers separate. The device address tells the bus which chip should respond. The register address tells that chip which internal data should be accessed. The buffer contains the raw bytes returned by the chip. The unpacking step converts those raw bytes into useful variables.
 
-# Summary
+## Summary
 
 I2C is a synchronous, half-duplex serial bus protocol that uses two communication lines: `SDA` for data and `SCL` for the clock. The bus uses open-drain outputs with pull-up resistors, allowing multiple devices to share the same wires.
 

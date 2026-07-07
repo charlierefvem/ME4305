@@ -11,14 +11,14 @@ source:
 status: draft
 ---
 
-# Motivation
+## Motivation
 
 Embedded firmware must be deterministic and robust. Throughout this course we will build firmware as a collection of cooperative tasks dispatched by a priority scheduler.
 
 > **Candidate static notes**
 > -  \[\[Scheduler Profiler\]\]
 
-## Embedded Multitasking
+### Embedded Multitasking
 
 In this course, *embedded* refers to firmware executing on hardware permanently or semi-permanently embedded within a product, almost always a microcontroller.
 
@@ -28,7 +28,7 @@ On a single-core microcontroller only one task executes at any instant. Multitas
 
 ------------------------------------------------------------------------
 
-# Cooperative Scheduling
+## Cooperative Scheduling
 
 In previous courses you may have implemented a task based system without any additional tools to help with task timing. For example, a simple way to implement cooperative multitasking is to run each task within an unbounded loop with each task internally handling its own timing.
 
@@ -78,11 +78,11 @@ A *critical* detail in the implementation of the priority scheduler is that, unl
 
 If all tasks are assigned the same priority then the priority scheduler essentially behaves as a round-robin scheduler. Consequently, round-robin scheduling may be viewed as the degenerate case of priority scheduling. 
 
-## Scheduling Examples
+### Scheduling Examples
 
 In this section you will see examples of cooperative round-robin and cooperative priority scheduling shown as informal timing diagrams. These timing diagrams are conceptual illustrations intended to demonstrate scheduler decision-making. They are not exact execution traces. Scheduler overhead, queue maintenance, and other implementation details have been simplified so that the scheduling policy can be understood more clearly.
 
-### Round-Robin Scheduling
+#### Round-Robin Scheduling
 
 Round-robin scheduling dispatches each task sequentially in a repeating pattern.
 
@@ -90,7 +90,7 @@ Round-robin scheduling dispatches each task sequentially in a repeating pattern.
 
 The lecture compares three cases with different task periods and execution times to illustrate how timing margin decreases as execution time increases.
 
-### Priority Scheduling
+#### Priority Scheduling
 
 Priority scheduling dispatches whichever ready task has the highest assigned priority.
 
@@ -98,7 +98,7 @@ Priority scheduling dispatches whichever ready task has the highest assigned pri
 
 Compared with round-robin scheduling, priority scheduling generally provides improved latency for critical tasks but introduces additional scheduling complexity.
 
-## Processor Utilization
+### Processor Utilization
 
 One clear lesson that can be learned from the preceding timing diagrams is that attempting to schedule tasks too quickly can overrun the scheduler. A processor only has so many available computation cycles and once those are used tasks are either skipped or run late.
 
@@ -124,21 +124,21 @@ where $U_{ISR}$ accounts for utilization by interrupt service routines and $U_{s
 
 Depending on the number of tasks scheduled and their individual periods the scheduler utilization may either be inconsequential or very significant.
 
-## Profiling
+### Profiling
 Due to the practical difficulties in accurately computing the total system utilization it is greatly preferred to *measure* the utilization rather than to simply approximate its value. Most schedulers come equipped with a profiler that can measure the task duration and latency and in some cases perform basic statistical analysis on each.
 
 A good designer should always monitor the output of the profiler and verify that there is overhead or safety margin in the total system utilization.
 
 ------------------------------------------------------------------------
 
-# Summary
+## Summary
 
 -   Embedded firmware must be deterministic.
 -   ME 4305 uses cooperative multitasking.
 -   Tasks are dispatched by the scheduler.
 -   Scheduling policy directly affects task latency and determinism.
 
-# See Also:
+## See Also:
 * [[topic_priority_schedulers|Cooperative Multitasking and the Scheduler]]
 * [[topic_scheduling_tasks|Using the Scheduler]]
 * [[topic_software_timing|Software Timing]]

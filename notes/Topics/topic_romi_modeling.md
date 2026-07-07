@@ -14,7 +14,7 @@ source:
 status: draft
 ---
 
-# Motivation
+## Motivation
 
 The goal of this topic is to build a usable dynamic model for the \[\[Romi\]\] robot platform without making the model more complicated than it needs to be. In principle, Romi could be modeled using either a kinetic model or a kinematic model, but those two approaches emphasize different kinds of information.
 
@@ -33,9 +33,9 @@ Due to the simplifications needed for kinematic models, it tends to be the case 
 
 In the context of Romi in ME 4305, it is probably best to keep the model as simple as reasonably possible by considering mostly kinematics while minimizing kinetic effects. In some cases it is possible to split the difference. For example, the Romi chassis kinematics can be merged with a simplified actuator model of the DC motors driving Romi's wheels.
 
-# Kinematics
+## Kinematics
 
-## Modeling Assumptions
+### Modeling Assumptions
 
 For the Romi model developed here, the main simplifying assumption is that each wheel rolls without slipping. This makes it possible to relate wheel angular velocity directly to wheel-center translational velocity.
 
@@ -43,7 +43,7 @@ This assumption does not mean that real tires never slip. It means that the mode
 
 A secondary assumption is that the DC motors driving Romi's wheels behave like ideal first-order systems. This implies that the inductance in the DC motor has little effect on the overall system dynamics and that nonlinearities are either not present or do not have a dominating effect on the model.
 
-## Wheel kinematics
+### Wheel kinematics
 
 Start by considering a side view of Romi. If each wheel is assumed to roll without slip, the velocity at the center of each wheel is related to that wheel's angular velocity by the wheel radius $r$.
 
@@ -62,7 +62,7 @@ $$
 
 Here $v_R$ and $v_L$ are the translational velocities at the centers of the right and left wheels, while $\Omega_R$ and $\Omega_L$ are the angular velocities of the right and left wheels.
 
-## Chassis kinematics
+### Chassis kinematics
 
 Next, relate the wheel-center velocities to the chassis longitudinal velocity $v$ and yaw rate $\dot\psi$. Let $w$ be the wheelbase, or distance between the left and right wheel contact lines.
 
@@ -105,7 +105,7 @@ $$
 v = \frac{r}{2}\left(\Omega_L+\Omega_R\right).
 $$
 
-## Absolute motion of the chassis
+### Absolute motion of the chassis
 
 The previous relationships describe Romi's motion in a local, body-fixed reference frame. To track Romi's position on the lab table, we also need to express the chassis velocity in a global, inertial reference frame.
 
@@ -163,7 +163,7 @@ $$
 \dot{Y} = v\,\sin\psi.
 $$
 
-# Nonlinear State-Space Model
+## Nonlinear State-Space Model
 
 Now that the kinematics have been determined, the next step is to put together a nonlinear state-space model using the equations from the previous steps.
 
@@ -208,7 +208,7 @@ The new variables $u_L$ and $u_R$ are the input voltages for the left and right 
 
 Similarly, $s_L$ and $s_R$ are the arc lengths traced out by the centers of the left and right wheels. These can be measured by the wheel encoders.
 
-## First-order motor model reminder
+### First-order motor model reminder
 
 It may help to recall that a DC motor can be modeled as a linear first-order system. For example, the system model for the right motor can be represented by the following differential equation:
 $$
@@ -220,7 +220,7 @@ $$
 \dot{\Omega}_L = \frac{1}{\tau}\left(K_m\,u_L-\Omega_L\right).
 $$
 
-## Model Construction
+### Model Construction
 
 It will be the student's responsibility to complete assembly of the state-space model to use in homework for simulation. Specifically, student's will need to consider the derivation shown above, add in any missing relationships, and then formulate state and output equations. The state equations must be represented by
 $$
@@ -235,7 +235,7 @@ $$
 
 The preceding wheel, chassis, and absolute-motion kinematics provide the relationships needed to assemble these equations.
 
-# Insights
+## Insights
 
 The main modeling decision in this lecture is to keep Romi's chassis motion mostly kinematic while keeping a simple first-order dynamic model for each wheel motor. This avoids requiring a full tire-force or chassis-inertia model while still giving the system enough dynamics to be useful for simulation and control.
 

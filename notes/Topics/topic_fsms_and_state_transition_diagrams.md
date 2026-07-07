@@ -11,17 +11,17 @@ source:
   lecture: 4
 status: draft
 ---
-# Motivation
+## Motivation
 
 Embedded firmware must be deterministic and robust. One way to promote determinism and robustness is to *design* firmware before implementing. Separating the design phase from the implementation phase, or even better iterating between the two, allows the designer to focus on each part with full attention and limited distraction.
 
 One of the primary design tools you will use in ME 4305 is the finite state machine.
 
-# Tasks and Finite State Machines
+## Tasks and Finite State Machines
 
 In ME 4305 every cooperative task should be designed as a finite state machine (FSM).
 
-## Definitions
+### Definitions
 
 **Finite State Machine**: A mathematical model or abstraction of a deterministic system.
 * A finite state machine can be viewed as a discrete abstraction of the broader class of state-determined systems encountered in dynamics and mathematics.
@@ -40,7 +40,7 @@ In ME 4305 every cooperative task should be designed as a finite state machine (
 
 Programmers should remember that the finite state machine is not the code itself, but rather an abstraction or concept implemented by the code. To aid in development of the finite state machine designers use state transition diagrams. Again, the diagram is not the FSM, but a depiction or projection of the FSM to make the abstract concept concretely defined. It is then the programmer's choice how the code implements the logic depicted on the state transition diagram.
 
-## State Transition Diagrams
+### State Transition Diagrams
 
 A state transition diagram is a visual depiction of the abstract finite state machine. Each state should be drawn as an ellipse with the state's name and/or number labelling the ellipse.
 ![A state represented by an ellipse. In the center is the label S0 followed by the state name INIT.](state_ellipse.png)
@@ -60,7 +60,7 @@ A state transition diagram is the graphical representation of a finite state mac
 
 In ME4305 you will likely use state transition diagrams to design your finite state machines and therefore the architecture for your Micropython code. However, tools do exist that let you program graphically by designing the finite state machine directly. Stateflow (part of Simulink) is an example of software capable of implementing programs directly from state transition diagrams.
 
-## States versus Transitions
+### States versus Transitions
 
 One of the most common design questions is deciding whether behavior belongs inside a **state** or on a **transition**.
 
@@ -70,7 +70,7 @@ Recall:
 
 Consequently, transition actions should be "one-shot" operations. In other words, the system should not spend any significant amount of time on the transition. The definition of significant greatly depends on the timing characteristics of the system being modeled or controlled.
 
-### Door Example
+#### Door Example
 A simple model might contain only:
 * Open
 * Closed
@@ -85,12 +85,12 @@ A higher-fidelity model might instead define four states:
 
 The appropriate level of detail depends on the goals of the design.
 
-## Self-transitions
+### Self-transitions
 Self-transitions are transitions from one state back to the same state and are optional to show on the diagram. It is implied by convention that when no state transitions have applicable conditions the state does not transition. Include self-transitions only when they improve clarity; omit them when they merely clutter the diagram.
 
 ------------------------------------------------------------------------
 
-# Programming Example
+## Programming Example
 The following example shows both the transition diagram and a Python implementation for an extremely simple FSM with three states.
 
 ![A state transition diagram with three states. State 0, the initialization state, always transitions to state 1, the run state. State 1 always transitions to state 2, the run thrice state. State 2 transitions to state 1 after it self-transitions enough times to increment count to 2.](images/state_transition_diagram.png)
@@ -152,8 +152,8 @@ def main():
     # Once the program is over, do any sort of cleanup as needed
     print('Program terminated')
 
-# THe following block prevents main() from running when the file
-# is imported instead of run as a main program
+## THe following block prevents main() from running when the file
+## is imported instead of run as a main program
 if __name__ == '__main__':
     main()
 ```
@@ -163,14 +163,14 @@ if __name__ == '__main__':
 
 ------------------------------------------------------------------------
 
-# Summary
+## Summary
 
 -   Embedded firmware must be deterministic.
 -   ME 4305 uses finite state machines to design and/or implement tasks.
 -   State transition diagrams communicate FSM behavior visually.
 -   Keep transition actions instantaneous.
 
-# See Also:
+## See Also:
 * [[topic_task_diagrams|Task Diagrams]]
 * [[topic_priority_schedulers|Cooperative Multitasking and the Scheduler]]
 * [[topic_scheduling_tasks|Using the Scheduler]]

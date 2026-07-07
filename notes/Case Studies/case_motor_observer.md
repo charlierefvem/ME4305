@@ -16,7 +16,7 @@ source:
 status: draft
 ---
 
-# Motivation
+## Motivation
 
 This case study outlines the control and estimation theory needed to achieve accurate control of the permanent magnet DC (PMDC) motors that are part of the Romi robot platform used in ME 4305. Nonetheless, the topics covered are applicable to motor control in general.
 
@@ -25,11 +25,11 @@ This case study covers:
 * Velocity-estimation techniques, including finite differences and moving averages.
 * An [[reference_disturbance_observer|augmented disturbance observer]] for estimating motor velocity from encoder measurements in the presence of quantization noise and an unknown disturbance in acceleration.
 
-# Discrete Control
+## Discrete Control
 
 In this section, the basics of discrete controls are presented primarily in the context of a [[reference_discrete_PID|Discrete PI Implementation]]. Refer to [[reference_z_domain|Discrete Time Systems]] for background on discrete signals, the z-domain, and difference equations.
 
-## PI Control
+### PI Control
 
 Readers of this document should have passing familiarity with [[reference_PID|PID Controllers]] from study in this and other courses. For the remainder of this document, it will be assumed that the following standard form of a PI controller is well understood:
 $$
@@ -53,13 +53,13 @@ $$
 
 In firmware the actuation effort produced by the control law is saturated based on the available actuation limits. Anti-windup is also added in firmware using conditional-integration techniques. These nuances will be covered in greater detail at the end of this case study. For more information on anti-windup techniques see the pertinent section in [[reference_PID|PID Controllers]].
 
-## Velocity estimation using encoders
+### Velocity estimation using encoders
 
 Encoders directly measure displacement, $\theta$, rather than velocity, $\Omega = \dot{\theta}$, so an estimate of velocity must be obtained numerically before the control law can be applied. The next sections compare simple methods of velocity estimation from an encoder assumed to be low resolution. Here low resolution refers to the CPR, or counts per revolution, of the encoder.
 
 In general, encoders provide information at insufficient update rates when operating at slow velocities to provide much useful velocity resolution. The lower the resolution, the worse the velocity measurement becomes.
 
-### Finite-difference approximation
+#### Finite-difference approximation
 
 The simplest solution to numerical differentiation is the finite-difference method, which can be explained as the reverse of Euler's method, equivalent to the backward-difference method covered in [[reference_continuous_to_discrete|Continuous to Discrete Conversion]]. 
 
@@ -80,7 +80,7 @@ where $CPR$ is the encoder resolution in counts per revolution.
 
 In this extreme case, the velocity is low enough that, for a sample period $T_s$, the quantization may cause no change to occur in displacement between samples. To handle speeds this low using a finite-difference approach, the sample time $T_s$ must increase, which may conflict with the intentions for controller design.
 
-### Moving average
+#### Moving average
 
 One simple method for reducing quantization noise is to average multiple finite-difference estimates, or equivalently, to apply the finite difference to the first and last values from a window of multiple measurements.
 
@@ -102,21 +102,21 @@ This averaged estimate represents motion over a window of length $N\, T_s$​, s
 
 As the number of samples, $N$, gets large, the delay becomes large and may cause the measurement to lag enough to damage controller performance. Consequently, moving-average filtering represents a tradeoff between noise reduction and responsiveness. For very low resolution encoders it may be impossible to use a large enough window to provide sufficient smoothing without introducing enough lag to damage control performance.
 
-### Velocity-measurement conclusions
+#### Velocity-measurement conclusions
 
 The previous two sections show the shortcomings of direct numerical differentiation of encoder data to compute angular velocity. The finite-difference method has low delay but high noise, while the moving average has larger delay and lower noise.
 
 A more effective solution for the Romi hardware, covered in the next section, is to use additional information accessible from the system itself to help "extrapolate", in a loose sense of the word, between measurement changes from the encoder so that velocity estimates remain accurate at low speeds.
 
-# Motor Observer Design
+## Motor Observer Design
 
-## Observer-Based Velocity Estimation
+### Observer-Based Velocity Estimation
 
 Both finite-difference and moving-average approaches estimate velocity using only encoder measurements. Neither method directly incorporates knowledge of the motor dynamics. An [[reference_observer_design|observer]] provides an alternative approach by combining a mathematical model of the motor with encoder measurements and knowledge of the applied voltage to estimate the system state. This method allows the observer to reject measurement noise while maintaining a responsive estimate of velocity.
 
 The purpose of this section is to build the augmented disturbance-observer model used for the lab implementation. The observer model is intended to estimate the internal state of a simple first-order model of a PMDC motor with robustness against inaccuracies in the plant model, such as an incorrect back-EMF constant or an inaccurate time constant.
 
-### The plant model
+#### The plant model
 
 We will focus on the DC motor model for this observer design, not the entire Romi model. The model will be based on a linear first-order representation of a DC motor; that is, it will be assumed that the motor behaves as a simple first-order low-pass filter defined by a gain, $K_m$, and a time constant, $\tau$. These parameters can be found experimentally or derived from physical properties of the motor like the terminal resistance, the back-emf coefficient, etc.
 
@@ -167,7 +167,7 @@ u
 \end{aligned}
 $$
 
-### Modeling for uncertainty
+#### Modeling for uncertainty
 
 The linearized model derived in the previous section assumes that the parameter $K_m$ is known exactly. In practice, however, the value of $K_m$ varies from motor to motor and may also change due to unmodeled behavior. Additionally, the preceding model has relatively high sensitivity to the parameter $K_m$ because it directly relates the input $u$ to the state $\Omega$ once the system has reached constant velocity. Therefore, even modest parameter error in $K_m$ will manifest as significant steady-state velocity bias.
 
@@ -277,7 +277,7 @@ u
 \end{aligned}
 $$
 
-### Observer design
+#### Observer design
 
 We can now collect matrices and begin the observer design:
 $$
@@ -421,7 +421,7 @@ $$
 
 In conclusion, the resulting observer estimates velocity, displacement, and disturbance in acceleration while requiring only displacement measurements from the encoder. Only the estimated velocity is returned for control purposes. The disturbance state allows the observer to compensate for moderate model mismatch, improving robustness relative to a conventional second-order observer.
 
-## Implementation Sequence
+### Implementation Sequence
 
 In the sections above, a discrete-time PI controller was developed to control the velocity of a PMDC motor. To overcome significant quantization noise in the control variable, a disturbance observer was developed to estimate angular velocity accurately even at low speeds.
 
@@ -446,7 +446,7 @@ The implementation sequence obeys the following rules:
 | 8    | $\underline{w}_k = \begin{bmatrix} u_k \\ \theta_k \end{bmatrix}$                | Builds the vector of known information from the post-saturation actuation value and a new displacement measurement from the encoder.                                                                                                                                      |
 | 9    | $\hat{\underline{x}}_{k+1} = A_o\,\hat{\underline{x}}_k + B_o\, \underline{w}_k$ | Updates the observer estimate using the known-information vector.                                                                                                                                                                                                         |
 
-# Insights
+## Insights
 
 The finite-difference velocity estimate is responsive but noisy. The moving-average estimate is smoother but delayed. The disturbance observer provides a middle path: it uses the motor model to "extrapolate" between encoder measurement changes while using measurement feedback to correct model error.
 
@@ -454,7 +454,7 @@ Adding the disturbance state makes the observer more robust to moderate mismatch
 
 The firmware implementation order matters as much as the mathematical model. A correct observer-controller design can still fail in software if the update sequence accidentally uses future information or creates circular dependencies.
 
-# Summary
+## Summary
 
 This case study developed a discrete-time PI controller and an augmented disturbance observer for PMDC motor velocity control. The controller uses a discrete integrator, while the observer estimates angular velocity from encoder displacement measurements and a first-order motor model.
 

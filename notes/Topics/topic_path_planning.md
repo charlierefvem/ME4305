@@ -11,7 +11,7 @@ tags:
 status: draft
 ---
 
-# Point-Wise Transformation and Path Planning
+## Point-Wise Transformation and Path Planning
 
 Consider a thought experiment where Romi drives along two very similar paths, starting from the same beginning location with the same original orientation.
 1) Romi drives forward for one unit, turns left in an arc of unit radius, then drives forward for three units.
@@ -29,7 +29,7 @@ In both scenarios Romi has driven in an L-shaped path; what information can we c
 * If, instead, you know the initial and final location and orientation of Romi can you determine the change in displacement at each wheel? What if you know a time-history of the location and orientation?
   > [!spoiler]-
   > With only information about the starting and final states it is possible to determine the *difference* between left and right wheel displacements, but not the value of either, as long as the heading is known as an *unwrapped* value. If the heading is only known between $0$ and $2\,\pi$ then the difference in wheel displacements can only be known mod $2\,\pi\,w$ where $w$ is the track-width. If a full time-history is known then both wheel displacements can be determined explicitly.
-## Configuration-Dependent Transformation
+### Configuration-Dependent Transformation
 
 In conclusion, it appears that there is some information lost when transforming between local states, known in Romi's body frame, and global states, known in the global frame.
 
@@ -41,7 +41,7 @@ Therefore, the transformation into the global frame must be applied increment by
 
 This is similar to the distinction between conservative and non-conservative fields in vector calculus and physics. If a differential relationship is conservative, the accumulated change depends only on the endpoints. But the differential-drive robot’s global position is obtained by integrating local motion through a changing heading. Those differential relationships are path dependent, so the endpoint values of $s_L$ and $s_R$ are not enough to determine $X$ and $Y$.
 
-## Constant-Heading Special Case
+### Constant-Heading Special Case
 
 If the robot drives without turning, the body frame remains aligned with a fixed direction in the global frame. The transformation from body displacement to global displacement is constant in this special case, so the net body-frame displacement can be transformed directly into net global displacement. Once the robot turns, however, the transformation changes with $\psi$. The same total distance traveled can produce different global displacements depending on when that distance was traveled relative to the heading changes.
 
@@ -124,7 +124,7 @@ In summary,
 2. If heading changes, the transformation changes during the path.
 3. Therefore, the transformation must be applied increment-by-increment.
 
-# Local Approximation and Waypoint Construction
+## Local Approximation and Waypoint Construction
 
 This suggests a practical approximation. Although the transformation from local robot motion to global motion changes with heading, over a sufficiently short interval the heading can be treated as approximately constant. During that interval, the robot’s forward displacement maps to a short straight-line displacement in the global frame. A longer trajectory can then be represented as a sequence of these short local motions connected at waypoints. As the waypoint spacing becomes smaller, this piecewise-straight construction approaches the continuous integral model of the robot’s motion.
 
@@ -230,13 +230,13 @@ $$
 
 The constant-heading example is the path-independent special case. The changing-heading case is the path-dependent general case.
 
-## Path versus Trajectory
+### Path versus Trajectory
 
 A path specifies where the robot should go in the plane. A trajectory specifies how the robot moves through that path over time, including heading, velocity, and wheel motion. For a non-holonomic robot, the trajectory matters because not every geometric path can be followed with arbitrary orientation and timing.
 
 A path with sharp corners is geometrically valid, but it is not smoothly traversable by a differential-drive robot unless the robot stops and pivots in place at the corner. If we want the robot to move continuously, the path should provide at least tangent continuity. Cubic splines are useful because they can enforce position and tangent (velocity) constraints. Quintic splines can also constrain endpoint accelerations. For a planar trajectory, those second-derivative constraints can be used to influence or match curvature, which is important because curvature determines the required relationship between the left and right wheel speeds.
 
-## Curvature and Differential-Drive Motion
+### Curvature and Differential-Drive Motion
 
 For a differential drive, curvature connects directly to wheel velocity difference. If the path is parameterized by arc length $s$,
 $$
@@ -277,7 +277,7 @@ $$
 
 That gives a strong reason why matched curvature matters: discontinuous curvature implies a discontinuous required ratio between left and right wheel velocities. A real robot can approximate that, but not instantaneously.
 
-## Splines as the Practical Response to Non-Holonomic Kinematics
+### Splines as the Practical Response to Non-Holonomic Kinematics
 
 The differential-drive model shows that global position cannot be recovered from endpoint wheel displacements alone. The robot’s local motion must be accumulated along the path using the current heading. This motivates representing paths as sequences of local geometric constraints rather than as one large endpoint-to-endpoint transformation. At coarse resolution, those constraints might be waypoints connected by straight segments. At higher resolution, we want smooth curves whose tangent direction changes continuously. This leads naturally to spline-based path generation.
 
@@ -285,7 +285,7 @@ The non-holonomic constraint does not prevent the robot from reaching arbitrary 
 
 ![A diagram showing multiple paths Romi can take to travel between two points. Four paths are shown: the first is a straight line between the points, requiring Romi to pivot at the start and end; the second is a smooth s-curve that is tangent to Romi's heading at the start and end, requiring no pivoting; the third is a curve that is tangent to Romi's heading at the start, but not at the end, requiring Romi to pivot at the end of its path; finally, the fourth is a curve similar to the third, but the pivot is required at the start instead of the end of the path.](images/romi/path_comparison.svg)
 
-# Cubic and Quintic Splines
+## Cubic and Quintic Splines
 
 Splines are curves generated from endpoint constraints. A trajectory can be created using a spline by using geometric and kinematic constraints at the start and end of the trajectory to define the spline. Consider the table below which outlines kinematic constraints at two points in time, $t_0$ and $t_f$. Note that, in the table, the parameter $q(t)$ refers to any geometric coordinate.
 
@@ -297,7 +297,7 @@ Splines are curves generated from endpoint constraints. A trajectory can be crea
 
 The rows of this table can be used to develop cubic or quintic splines. Cubic splines allow the position and velocity to be constrained at the endpoints; a quintic spline can also constrain the acceleration at the endpoints. Each of these splines can be defined using a sufficiently-high-order polynomial. A cubic spline has four tunable parameters, allowing the four constraints mentioned above while a quintic spline has six tunable parameters, allowing the additional two acceleration constraints.
 
-## Computing Splines with Linear Algebra
+### Computing Splines with Linear Algebra
 
 Now a cubic spline will be determined for an arbitrary coordinate $q(t)$. A third-order (cubic) polynomial can be written as
 $$
@@ -416,7 +416,7 @@ This nonholonomic constraint can be written as
 $$
 -\sin\psi\dot{X} + \cos\psi \dot{Y}=0.
 $$
-## Transforming a Spline
+### Transforming a Spline
 
 Suppose that trajectories have been found for $X(t)$ and $Y(t)$ using cubic splines:
 $$
@@ -524,7 +524,7 @@ $$
 
 **Insight**: if the trajectory is known ahead of time, the conversion from global coordinates to local coordinates does not need to be computed live during runtime, but it does need to be computed via integration. When paths are generated dynamically, this integration may need to be performed online or repeated over each planning horizon.
 
-# Look-Ahead Horizon and Local Trajectory Generation
+## Look-Ahead Horizon and Local Trajectory Generation
 
 An advanced method for live trajectory planning is to use either a cubic or quintic spline to iteratively produce short intermediate trajectories that converge to a predetermined path. The path describes the geometry we want the robot to approach. At each update, the robot uses its current pose and a look-ahead point or look-ahead segment to generate a local curve. That local curve is chosen to match the robot’s current pose while also matching the desired path at the horizon. With a cubic curve, we can match position and tangency. With a quintic curve, we can also match curvature. Repeating this process at each update produces a sequence of feasible local trajectories that converge toward the desired path.
 
@@ -539,7 +539,7 @@ Note: for simplicity, the animation follows the algorithm presented just above, 
 
 ![An animation showing the iteratively computed local trajectory generated from a look-ahead horizon. Many local trajectories are shown connecting waypoints to the desired path.|700](images/romi/path_animation.gif)
 
-# Summary
+## Summary
 
 1. Encoder and wheel motion are local.
 2. Global motion requires accumulating local transformations.

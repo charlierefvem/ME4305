@@ -16,7 +16,7 @@ source:
 status: draft
 ---
 
-# Motivation
+## Motivation
 
 In a previous lecture topic, the [[topic_intro_to_feedback_and_controls|PID]] controller was presented along with several modifications to tailor the controller to a specific application. A PID controller is an example of a *classical* single-input-single-output (SISO) controller. Now, *modern* controls will be introduced through state-feedback, a multi-input-multi-output (MIMO) controller.
 
@@ -24,13 +24,13 @@ State-space models describe how the internal state of a system changes over time
 
 The central concept is that, for controllable systems, full state feedback allows the closed-loop poles of the system to be placed intentionally. Since the poles determine the dynamics of the system response, pole placement gives a direct way to design the system response from performance criteria such as settling time and overshoot.
 
-# State Feedback
+## State Feedback
 
 A system implements **state feedback** when the control law defines the system input, $\underline{u}$, as a function of the system state, $\underline{x}$.
 
 If only some states are used, the controller implements **partial state feedback**. If all states are used, the controller implements **full state feedback**. Full state feedback provides a lot of freedom in controller design because the controller can act on every state in the model.
 
-## Controllability
+### Controllability
 
 A system is **controllable** if a finite input, $\underline{u}$, can steer the system to any finite state, $\underline{x}$, in finite time.
 
@@ -50,11 +50,11 @@ has rank $n$, where $n$ is the system order. That is, if $\mathcal{C}$ is full r
 
 If an LTI system is controllable, then it is mathematically possible to place the poles of the system arbitrarily using full state feedback. The exception is that complex poles must appear in complex-conjugate pairs. Otherwise, individual complex poles would make the system model itself complex, which is not valid for a real physical system.
 
-## Pole Placement
+### Pole Placement
 
 **Pole placement** is the process of choosing feedback gains so that the closed-loop system has desired poles. It is desirable to have full control over pole placement because the system poles determine the overall dynamics of the system response. By placing those poles with careful intention, we can force the system dynamics to behave in a desired way.
 
-## State Feedback Regulators
+### State Feedback Regulators
 
 A standard full state feedback controller solves the **regulation problem**: steering all states to zero. Regulator-type controllers are designed to drive all states in the state vector, $\underline{x}$, to zero, or equivalently, to drive the state vector to the origin of the state space.
 
@@ -89,7 +89,7 @@ $$
 
 The poles of $A_c$ can be placed by choosing appropriate values for the elements of the $K$ matrix.
 
-## Characteristic Polynomial Matching
+### Characteristic Polynomial Matching
 
 Recall that
 $$
@@ -133,7 +133,7 @@ $$
 For systems with more than one input, there may be multiple possible solutions.
 
 
-## Example 1
+### Example 1
 
 In this example, a regulator will be designed for a PMDC motor.
 
@@ -273,7 +273,7 @@ $$
 
 As expected, the characteristic polynomial is second order because the PMDC motor model has two states. The coefficients $a_1$ and $a_0$ depend on $K_1$ and $K_2$.
 
-## Example 2
+### Example 2
 In this example, the characteristic polynomial found in Example 1 will be matched to a characteristic polynomial designed from desired performance criteria. To perform polynomial matching, we start with criteria such as settling time and overshoot, then reverse-engineer the desired characteristic polynomial.
 
 For example, we can start with the approximate second-order relationships of
@@ -308,7 +308,7 @@ $$
 
 Finally, we can resolve $K_1$ and $K_2$ in terms of $a_0$ and $a_1$. This algebra is in general tedious to do by hand so a symbolic solver can help expedite the procedure and allow rapid retuning.
 
-## Example 3
+### Example 3
 
 The regulation controller designed in Example 1 and Example 2 is an important foundation, but not very useful in practice. A regulator drives the states to zero, but for a system like a PDC motor, we often want the system to be driven to a specific location in the state space, not always the origin.
 
@@ -419,7 +419,7 @@ Because the integral state is defined using the conventional tracking error, $e=
 
 **Insight**: the preceding setup is designed so that with $\underline{r}$ set to zero the system behaves like a regulator, driving the system state to zero. When $\underline{r}$ is nonzero it acts as a deliberate disturbance on the state-space system. In this scenario the regulator will still attempt to drive the states to zero, but it will be unable to do so because a steady value of $x_2 = \Omega_J = 0$ would cause unbounded growth in $x_3 = \int r - \Omega_J\,dt$. Instead, the system will settle on a new location in the state-space in which all states are bounded; this requires $x_3 = \int r - \Omega_J\,dt$ to be constant at steady-state which is only the case for $\Omega_J = r$.
 
-## Example 4
+### Example 4
 
 In Example 3, the system state was augmented to include an integral state, converting the regulator into a setpoint controller. Consequently the system increased from second- to third-order, requiring now three pole locations and three gains.
 
@@ -458,7 +458,7 @@ which can be matched to the three poles from the augmented system derived in Exa
 
 **Insight**: the dominant pole approximation is a useful design heuristic, not a design rule. Additional poles should be placed according to the purpose of the additional states. Fast poles are common in controller design because they have little influence on the visible response, but other applications, such as disturbance modeling and observer design, may intentionally use slower poles to represent slowly changing dynamics.
 
-# Practical Strategies for Gain Determination
+## Practical Strategies for Gain Determination
 
 As mentioned in Example 2, the algebra needed to compute gains from performance criteria involves main steps, each of which depends on the previous step. This process can be tedious and error prone if done by hand. One strategy suggested above is to use a symbolic tool, like the MATLAB Symbolic Math Toolbox to perform the polynomial matching.
 
@@ -469,7 +469,7 @@ However, in practice, the most common approach is to use a fully featured tool l
 **Insight**: after practicing with characteristic polynomial matching to understand the design process, it is generally preferable to use software tools such as MATLAB's `place()` function or SciPy's `place_poles()` for practical controller design. These routines use numerically robust algorithms that are generally less sensitive to roundoff and conditioning issues than direct coefficient matching. For multi-input systems, they can also exploit the fact that multiple feedback matrices may produce the same pole locations, allowing solutions with improved numerical properties to be selected.
 
 
-# Practical Limitations
+## Practical Limitations
 
 State-feedback is an approach with tradeoffs like any other tool. One tradeoff was presented above already: state-feedback is best suited for regulation so setpoint or tracking controllers must use an augmented or modified implementation.
 
@@ -477,7 +477,7 @@ Another limitation is the assumption that all states are accessible to use for f
 
 In a future lecture topic on [[reference_observer_design|Observer Design]] the concepts of observability and state estimation will be covered; these are the missing pieces needed to feed back the entire system state even when measurements are limited to a subset of the system state.
 
-# Summary
+## Summary
 
 This lecture introduced full state feedback as a regulation control law where the input is computed from the full state vector. For an LTI system, substituting the control law $\underline{u}=-K\underline{x}$ produces the closed-loop matrix $A_c=A-BK$. If the system is controllable, the poles of $A_c$ can be placed by choosing the gains in $K$.
 
@@ -491,7 +491,7 @@ The dominant pole approximation is a practical design shortcut. It lets a higher
 
 Finally, the lecture extended the regulator idea to tracking control by augmenting the state vector with an integrated error state. This creates a controller that behaves like an IPD controller, where the feedback gains act on current, velocity, and accumulated error.
 
-# Candidate Static Notes
+## Candidate Static Notes
 * \[\[State Feedback\]\]
 * \[\[State-Space Models\]\]
 * \[\[Controllability\]\]

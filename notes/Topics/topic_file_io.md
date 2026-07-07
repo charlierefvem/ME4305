@@ -11,7 +11,7 @@ source:
 status: draft
 ---
 
-# Motivation
+## Motivation
 
 This lecture introduces Python's basic file I/O. These tools form the foundation for later labs involving data logging.
 
@@ -20,11 +20,11 @@ This lecture introduces Python's basic file I/O. These tools form the foundation
 > -   \[\[Python File I/O\]\]
 > -   \[\[Exception Handling\]\]
 
-# The `with` Statement
+## The `with` Statement
 
 Python files should almost always be opened using a `with` block. This guarantees that the file is automatically closed when execution leaves the block, even if an exception occurs.
 
-## Example 1
+### Example 1
 
 The traditional approach to reading a file is to open the file, keep the file stored in an object, and then close the file after processing. This approach may be unsafe as the file will remain open if an exception (an error) occurs before the file is closed.
 
@@ -40,7 +40,7 @@ for line in file:
 file.close()
 ```
 
-## Example 2
+### Example 2
 
 The modern, preferred approach to reading a file is to use the `with` construct. Using the `with` statement means that Python is responsible for managing the file, not your code. Therefore when things go wrong, like when an exception is raised, Python can automatically clean up safely by closing the file.
 
@@ -53,7 +53,7 @@ with open(filename, "r") as file:
         pass
 ```
 
-## Example 3
+### Example 3
 
 The preceding two examples show that a file is an iterable. That is, it is possible to iterate through the file directly, line by line, using a for loop or other iterator.
 
@@ -73,7 +73,7 @@ Both of these characters are legacy artifacts from the transition from typewrite
 
 ------------------------------------------------------------------------
 
-# Reading and Processing a File
+## Reading and Processing a File
 
 You may have noticed in the preceding examples that the files were opened with `"r"` as a second input parameter, following the filename. Python can open files in a variety of modes, but the modes you are likely to use in ME 4305 include `"r"`, for read, `"w"`, for write, and `"a"` for append. In this section we will look at some common methods for parsing text in a file. You will get practice with this in homework and in lab.
 
@@ -82,7 +82,7 @@ You may have noticed in the preceding examples that the files were opened with `
 2) The purpose of this example is to demonstrate direct file I/O and basic text parsing.
 3) You will have to read a CSV in homework for practice without using the `CSV` module either.
 
-## Example 4
+### Example 4
 
 In this example, a CSV (comma separated value) file will be opened and the contents will be converted from text to lists. A CSV file is a plaintext file in which data is stored in a tabular format with commas separating columns and line-endings separating rows. A CSV file can be thought of as an extremely simple version of a spreadsheet.
 
@@ -125,11 +125,11 @@ with open(filename, "r") as file:
 
 ------------------------------------------------------------------------
 
-# Writing to a File
+## Writing to a File
 
 In ME 4305 you will likely not be producing files actively while your code runs on hardware, for many reasons. First, file IO is slow, as it involves writing to flash instead of RAM, and second, the filesystem management can become opaque when writing to a file from MicroPython firmware while the same file is visible to your operating system (like Windows).
 
-## Example 5
+### Example 5
 
 This example is the inverse of Example 4; that is, instead of reading data from a CSV file and producing Python list objects, data from Python list objects will be written to a CSV file.
 
@@ -154,9 +154,9 @@ This example uses two techniques that we may have not covered yet:
 	* `.format(t,d)` designates *what* data to place in the formatted string.
 
 ------------------------------------------------------------------------
-# Summary
+## Summary
 
 * Prefer `with` when opening files.
 
-# See Also:
+## See Also:
 * [[topic_collections|Collections]]

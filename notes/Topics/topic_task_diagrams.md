@@ -11,11 +11,11 @@ source:
 status: draft
 ---
 
-# Motivation
+## Motivation
 
 In many past lectures we have motivated deliberately splitting the design phase from the implementation phase. In this lecture you will learn a powerful design and documentation tool called a Task Diagram that should be used as a high level (zoomed out) plan for your entire application.
 
-# Task Diagrams
+## Task Diagrams
 
 Task diagrams show task periods, priorities, and perhaps most importantly, the shared data exchanged by tasks. Shared data can come in many forms
 * Standard Python Objects
@@ -29,7 +29,7 @@ Task diagrams show task periods, priorities, and perhaps most importantly, the s
     * Stream data without loss.
     * Can safely share numeric data between ISRs and tasks.
 
-## Diagram Syntax
+### Diagram Syntax
 
 A task diagram is a graph that represents individual tasks with nodes and data shared between tasks as edges.
 
@@ -49,7 +49,7 @@ A task diagram is a graph that represents individual tasks with nodes and data s
 * Each piece of shared data should have a clear owner responsible for creating and maintaining it, even if other tasks may later read or modify its contents.
 
 **Note**: while task diagrams are extremely valuable documentation and design tools, they provide abstraction like anything else. Therefore it is often useful to include a pair of tables along with your diagram that outline what each task does and what each piece of shared data represents.
-## Example
+### Example
 
 In this example a task diagram is presented for a simple data collection scheme. The application is meant to wait for input from a button and then collection data from an ADC for 10 seconds at 100Hz before finally printing the data back to the user.
 
@@ -70,12 +70,12 @@ The diagram depicts three tasks and three shared data. The tables below describe
 | `adc_values`  | `uint16` | 1000   | A typical ADC has a resolution between 10 and 16 bits, with most being 12 bits. Any of these resolutions fit within an unsigned 16 bit integer.<br><br>As the ADC Task reads data it will fill up the buffer until it is full and then stop collecting data.<br><br>The User Task can check when the ADC Task has filled the buffer and start emptying it one item per iteration to remain cooperative.<br><br>Once the buffer is empty again the ADC Task may finally lower the button flag mentioned above to prep for the next cycle.                                                                                              |
 **Bonus Insight**: Several of the shared data serve multiple purposes. The buffer used to send ADC also acts as a pair of flags, because the buffer provides information about whether it is full, empty, or somewhere in between.
 
-# Summary
+## Summary
 * Use task diagrams during design.
 * Share standard Python objects when you don't need thread safety.
 * If you need thread safety use `share` objects for single values and `queue` objects for FIFO communication.
 
-# See Also:
+## See Also:
 * [[topic_fsms_and_state_transition_diagrams|Finite State Machines and State Transition Diagrams]]
 * [[topic_priority_schedulers|Cooperative Multitasking and the Scheduler]]
 * [[topic_scheduling_tasks|Using the Scheduler]]
