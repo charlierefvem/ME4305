@@ -49,72 +49,58 @@ Start by considering a side view of Romi. If each wheel is assumed to roll witho
 
 ![An isometric view of the Romi robot chassis.](images/romi/isometric.svg)
 
-![An isometric view of the right wheel attached to the Romi robot.](images/romi/wheel.svg)
+![An right view of the right wheel attached to the Romi robot.](images/romi/wheel.svg)
 
 The no-slip rolling relationships are
-
 $$
-v_R = r\Omega_R
+v_R = r\,\Omega_R
 $$
-
 and
-
 $$
-v_L = r\Omega_L.
+v_L = r\,\Omega_L.
 $$
 
 Here $v_R$ and $v_L$ are the translational velocities at the centers of the right and left wheels, while $\Omega_R$ and $\Omega_L$ are the angular velocities of the right and left wheels.
 
 ## Chassis kinematics
 
-Next, relate the wheel-center velocities to the chassis longitudinal velocity $v$ and yaw rate $\Omega$. Let $w$ be the wheelbase, or distance between the left and right wheel contact lines.
-
-![Annotated chassis-kinematics figure showing a top-view circle with left wheel speed v_L i-hat, center speed v i-hat, right wheel speed v_R i-hat, wheelbase w split into w/2 on each side, and yaw rate omega k-hat. The annotations derive omega = (v_R - v_L)/w = (r/w)(omega_R - omega_L) and v = (v_L + v_R)/2 = (r/2)(omega_L + omega_R).](figures/lecture-11-chassis-kinematics.png)
+Next, relate the wheel-center velocities to the chassis longitudinal velocity $v$ and yaw rate $\dot\psi$. Let $w$ be the wheelbase, or distance between the left and right wheel contact lines.
 
 Using the relative velocity relationship from the left wheel to the right wheel,
-
 $$
-v_R\hat{\imath} = v_L\hat{\imath} + \Omega\hat{k}\times\left(-w\hat{\jmath}\right).
+v_R\,\hat{\imath} = v_L\,\hat{\imath} + \dot\psi\,\hat{k}\times\left(-w\,\hat{\jmath}\right).
 $$
 
 This gives
-
 $$
-\left(v_R-v_L\right)\hat{\imath} = w\Omega\hat{\imath},
+\left(v_R-v_L\right)\,\hat{\imath} = w\,\dot\psi\,\hat{\imath},
 $$
-
 so the yaw rate is
-
 $$
-\Omega = \frac{v_R-v_L}{w}.
+\dot\psi = \frac{v_R-v_L}{w}.
 $$
 
 Substituting the wheel rolling relationships gives
-
 $$
-\Omega = \frac{r}{w}\left(\Omega_R-\Omega_L\right).
+\dot\psi = \frac{r}{w}\left(\Omega_R-\Omega_L\right).
 $$
 
 The center velocity can be found using a similar relative velocity relationship from the left wheel to the center of the chassis:
-
 $$
-v\hat{\imath} = v_L\hat{\imath} + \Omega\hat{k}\times\left(-\frac{w}{2}\hat{\jmath}\right).
+v\hat{\imath} = v_L\,\hat{\imath} + \dot\psi\,\hat{k}\times\left(-\frac{w}{2}\,\hat{\jmath}\right).
 $$
 
 This gives
-
 $$
-v\hat{\imath} = \left(v_L+\frac{w}{2}\Omega\right)\hat{\imath}.
+v\,\hat{\imath} = \left(v_L+\frac{w}{2}\dot\psi\right)\,\hat{\imath}.
 $$
 
-Combining this with the expression for $\Omega$ gives
-
+Combining this with the expression for $\dot\psi$ gives
 $$
 v = \frac{v_L+v_R}{2}.
 $$
 
 In terms of the wheel angular velocities,
-
 $$
 v = \frac{r}{2}\left(\Omega_L+\Omega_R\right).
 $$
@@ -124,27 +110,23 @@ $$
 The previous relationships describe Romi's motion in a local, body-fixed reference frame. To track Romi's position on the lab table, we also need to express the chassis velocity in a global, inertial reference frame.
 
 Let $X$ and $Y$ be Romi's position coordinates in the global frame, and let $\psi$ be Romi's yaw angle. Romi's absolute velocity can be written as
-
 $$
-\dot{X}\hat{I} + \dot{Y}\hat{J}.
+\dot{X}\,\hat{I} + \dot{Y}\,\hat{J}.
 $$
 
 ![Annotated absolute-motion figure showing a global X-Y inertial frame and a Romi chassis with local x-y axes rotated by heading angle psi. The annotations show i-hat = cos(psi) I-hat + sin(psi) J-hat, j-hat = -sin(psi) I-hat + cos(psi) J-hat, dot X = v cos(psi), dot Y = v sin(psi), and dot psi = omega.](figures/lecture-11-absolute-motion.png)
 
 The local basis vector $\hat{\imath}$ can be written in terms of the global basis vectors as
-
 $$
 \hat{\imath} = \cos\psi\,\hat{I} + \sin\psi\,\hat{J}.
 $$
 
 The local lateral basis vector is
-
 $$
 \hat{\jmath} = -\sin\psi\,\hat{I} + \cos\psi\,\hat{J}.
 $$
 
 Equivalently,
-
 $$
 \begin{bmatrix}
 \hat{\imath} \\
@@ -161,45 +143,31 @@ $$
 \end{bmatrix}.
 $$
 
-Since the chassis velocity is $v\hat{\imath}$,
-
+Since the chassis velocity is $v\,\hat{\imath}$,
 $$
-\dot{X}\hat{I} + \dot{Y}\hat{J} = v\hat{\imath}.
+\dot{X}\,\hat{I} + \dot{Y}\,\hat{J} = v\,\hat{\imath}.
 $$
 
 Substituting the basis-vector relationship gives
-
 $$
 \dot{X}\hat{I} + \dot{Y}\hat{J}
 = v\left(\cos\psi\,\hat{I} + \sin\psi\,\hat{J}\right).
 $$
 
 Therefore,
-
 $$
-\dot{X} = v\cos\psi
+\dot{X} = v\,\cos\psi
 $$
-
 and
-
 $$
-\dot{Y} = v\sin\psi.
-$$
-
-The yaw angle evolves according to
-
-$$
-\dot{\psi}=\Omega.
+\dot{Y} = v\,\sin\psi.
 $$
 
-# Examples
+# Nonlinear State-Space Model
 
-## Setting up the nonlinear state-space model
-
-Now that the kinematics have been determined, the next step is to put together a nonlinear [[State-space model|state-space model]] using the equations from the previous steps.
+Now that the kinematics have been determined, the next step is to put together a nonlinear state-space model using the equations from the previous steps.
 
 Use the following definitions for the state variables, input variables, and output variables:
-
 $$
 \underline{x}
 =
@@ -225,18 +193,15 @@ u_R
 s_L \\
 s_R \\
 \psi \\
-\Omega \\
+\dot\psi \\
 X \\
 Y
 \end{bmatrix}.
 $$
 
-The handwritten annotations identify $\underline{x}$ as the **state vector**, which is hidden by the system, and $\underline{y}$ as the **output vector**, which consists of measurements.
-
 In the output vector:
-
-- $s_L$ and $s_R$ are associated with the wheel [[Encoder|encoders]].
-- $\psi$ and $\Omega$ are associated with the [[Inertial measurement unit|IMU]].
+- $s_L$ and $s_R$ are associated with the wheel [[topic_encoders|encoders]].
+- $\psi$ and $\Omega$ are associated with the [[topic_inertial_measurement_units|IMU]].
 - $X$ and $Y$ would come from GPS if available.
 
 The new variables $u_L$ and $u_R$ are the input voltages for the left and right motors. The new variable $s$ is the total arc length traveled by Romi's center. This arc length can be considered similar to an odometer reading; it tells us how far along a path Romi has traveled.
@@ -246,32 +211,29 @@ Similarly, $s_L$ and $s_R$ are the arc lengths traced out by the centers of the 
 ## First-order motor model reminder
 
 It may help to recall that a DC motor can be modeled as a linear first-order system. For example, the system model for the right motor can be represented by the following differential equation:
-
 $$
-\dot{\Omega}_R = \frac{1}{\tau}\left(Ku_R-\Omega_R\right).
+\dot{\Omega}_R = \frac{1}{\tau}\left(K_m\,u_R-\Omega_R\right).
 $$
 
-Here $K$ is the motor gain and $\tau$ is the motor time constant.
+Here $K_m$ is the motor gain and $\tau$ is the motor time constant. Likewise, the left motor can be represented by
+$$
+\dot{\Omega}_L = \frac{1}{\tau}\left(K_m\,u_L-\Omega_L\right).
+$$
 
-> Editorial Note: The slide explicitly writes the right-motor equation only. The left-motor equation is presumably analogous, but the original lecture note only shows the right side as the example.
+## Model Construction
 
-## HW 0x03 model construction prompt
-
-For HW 0x03, find the state equations
-
+It will be the student's responsibility to complete assembly of the state-space model to use in homework for simulation. Specifically, student's will need to consider the derivation shown above, add in any missing relationships, and then formulate state and output equations. The state equations must be represented by
 $$
 \dot{\underline{x}} = \underline{f}\left(\underline{x},\underline{u}\right)
 $$
-
-and the output equations
-
+and the output equations by
 $$
 \underline{y} = \underline{g}\left(\underline{x},\underline{u}\right).
 $$
 
-The preceding wheel, chassis, and absolute-motion kinematics provide the relationships needed to assemble these equations.
+**Note**: due to the few trigonometric expressions in the preceding kinematics, the state and output equations are not linear equations, so the standard matrix form for LTI systems that students are familiar with, $\dot{\underline{x}}=A\underline{x}+B\underline{u}$, cannot be used in this context.
 
-> TODO (Instructor Review): Decide whether the published note should include the completed $\underline{f}(\underline{x},\underline{u})$ and $\underline{g}(\underline{x},\underline{u})$ expressions, or whether those should remain omitted because the slide frames them as the HW 0x03 task.
+The preceding wheel, chassis, and absolute-motion kinematics provide the relationships needed to assemble these equations.
 
 # Insights
 
@@ -280,95 +242,3 @@ The main modeling decision in this lecture is to keep Romi's chassis motion most
 The kinematic relationships also show why a differential-drive robot is naturally nonlinear once absolute position is included. The velocity components $\dot{X}$ and $\dot{Y}$ depend on $\cos\psi$ and $\sin\psi$, so the state equations are nonlinear even though the motor model is linear.
 
 The output vector is also a reminder that the variables we care about are not necessarily the same as the variables we can measure directly. Encoders, IMUs, and external position sensors each provide different pieces of information about the robot's motion.
-
-# Summary
-
-This lecture develops the geometry needed to model Romi as a differential-drive robot. Under the no-slip assumption,
-
-$$
-v_L = r\Omega_L
-$$
-
-and
-
-$$
-v_R = r\Omega_R.
-$$
-
-The yaw rate and chassis speed are
-
-$$
-\Omega = \frac{v_R-v_L}{w}
-= \frac{r}{w}\left(\Omega_R-\Omega_L\right)
-$$
-
-and
-
-$$
-v = \frac{v_L+v_R}{2}
-= \frac{r}{2}\left(\Omega_L+\Omega_R\right).
-$$
-
-The absolute motion in the lab-frame coordinates is
-
-$$
-\dot{X}=v\cos\psi,
-\qquad
-\dot{Y}=v\sin\psi,
-\qquad
-\dot{\psi}=\Omega.
-$$
-
-These relationships, combined with a first-order motor model, are the ingredients for the nonlinear state-space model requested in HW 0x03.
-
-# Related Topics
-
-- [[Differential-drive robot]]
-- [[Kinematic model]]
-- [[Kinetic model]]
-- [[No-slip condition]]
-- [[State-space model]]
-- [[DC motor]]
-- [[Encoder]]
-- [[Odometry]]
-- [[Inertial reference frame]]
-- [[Body-fixed reference frame]]
-
-# Candidate Static Notes
-
-## Candidate static note: Differential-drive kinematics
-
-A reusable note on differential-drive kinematics could collect the no-slip wheel relationships, chassis speed and yaw-rate equations, and the transformation from body-frame velocity to inertial-frame position rates.
-
-Suggested sections:
-
-- Overview
-- Assumptions
-- Wheel rolling relationships
-- Chassis velocity and yaw rate
-- Inertial-frame position update
-- Related topics
-
-## Candidate static note: Kinematic vs kinetic models
-
-A reusable note could compare kinematic and kinetic modeling assumptions, emphasizing when geometric constraints are enough and when force, mass, and energy modeling are required.
-
-Suggested sections:
-
-- Overview
-- Kinematic models
-- Kinetic models
-- Tradeoffs in model fidelity
-- Examples in mechatronics
-
-## Candidate static note: Odometry and arc length
-
-A short note on odometry could define $s$, $s_L$, and $s_R$ and connect encoder measurements to distance traveled for differential-drive robots.
-
-Suggested sections:
-
-- Overview
-- Encoder-based arc length
-- Centerline arc length
-- Differential-drive interpretation
-- Limitations due to slip

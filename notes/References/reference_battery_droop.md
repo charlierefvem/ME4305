@@ -52,7 +52,7 @@ With this new gain included, the dynamic values of $V_{bat}$ cancel with each ot
 
 The block diagram below shows a simple modification to a standard feedback control loop that includes an additional gain in between the controller and the actuator. This gain can be used for unit conversion or, as previously mentioned, for compensating for a drooping battery.
 
-![A block diagram representation of a closed loop controller with an extra dynamic gain on the controller output.](images/ControlLoopDiagrams_Battery_Compensation.svg)
+![A block diagram representation of a closed loop controller with an extra dynamic gain on the controller output.](images/pid/Battery_Compensation.svg)
 
 This output gain should generally remain outside of the controller itself. The controller should operate in physical units, while the output gain converts those units into whatever representation the actuator requires.
 ## Example 2

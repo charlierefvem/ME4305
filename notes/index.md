@@ -44,7 +44,7 @@ title: ME 405 Course Outline
             * [[topic_intro_to_feedback_and_controls|Introduction to Feedback and Controls]]
     * Lecture 11 - Dynamics of the Romi Robot Platform
         * Topics
-            * \[\[Romi Dynamics\]\]
+            * [[topic_romi_modeling|Romi Dynamic Modeling]]
     * Lecture 12 - Virtual Communication Ports and String Processing
         * Topics
             * [[topic_virtual_com_ports|Virtual Communication Ports]]
