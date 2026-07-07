@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Topics/topic_virtual_com_ports.md",
+                "file": "References/reference_PID.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "topic_virtual_com_ports"
+              "title": "reference_PID"
             }
           }
         ]
@@ -186,6 +186,18 @@
   },
   "active": "d00085b673c0d565",
   "lastOpenFiles": [
+    "Topics/topic_virtual_com_ports.md",
+    "Images/pid/Standard_PID.svg",
+    "Images/pid/Saturation.svg",
+    "Images/pid/PDF.svg",
+    "Images/pid/IPD.svg",
+    "Images/pid/Feedforward.svg",
+    "Images/pid/Cascaded_Loops.svg",
+    "Images/pid/Battery_Compensation.svg",
+    "Images/pid/Anti_Windup_Feedback_Method.svg",
+    "Images/pid/Anti_Windup_Clamping.svg",
+    "Images/pid/Anti_Windup_Advanced_Clamping.svg",
+    "Images/pid",
     "Topics/topic_task_diagrams.md",
     "Topics/topic_software_timing.md",
     "Topics/topic_serial_communication.md",
@@ -194,11 +206,6 @@
     "Topics/topic_review_of_signed_numbers.md",
     "Topics/topic_python_fundamentals.md",
     "Topics/topic_priority_schedulers.md",
-    "Images/encoder/quadrature_decoding_simple.svg",
-    "Images/encoder/optical_transmissive.svg",
-    "Images/encoder/optical_reflective.svg",
-    "Images/encoder/gray_code_disk.svg",
-    "Images/multitasking/round_robin_scheduling.svg",
     "Topics/topic_philosophy_of_mechatronics.md",
     "Topics/topic_intro_to_state_feedback.md",
     "Topics/topic_intro_to_generators.md",
@@ -214,23 +221,16 @@
     "Topics/topic_coop_user_io.md",
     "Topics/topic_collections.md",
     "Topics/topic_classes_and_objects.md",
-    "Images/oop/class_diagram.svg",
     "Images/oop",
     "Images/New folder",
     "References/reference_z_domain.md",
     "References/reference_switch_bounce.md",
-    "References/reference_state_feedback.md",
-    "Images/ControlLoopDiagrams_Anti_Windup_Clamping.svg",
-    "Images/ControlLoopDiagrams_Anti_Windup_Advanced_Clamping.svg",
-    "Images/ControlLoopDiagrams_Standard_PID.svg",
-    "Images/ControlLoopDiagrams_Saturation.svg",
     "Images/timer_counter",
     "Images/state_feedback",
     "Images/philosophy",
     "Images/multitasking",
     "Images/links",
     "Images/imu",
-    "Images/iic",
-    "Images/hardware_toolchain"
+    "Images/iic"
   ]
 }
