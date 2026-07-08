@@ -6,7 +6,7 @@
       {
         "id": "0796ddb22585e79f",
         "type": "tabs",
-        "dimension": 80.54878048780488,
+        "dimension": 67.10526315789474,
         "children": [
           {
             "id": "d00085b673c0d565",
@@ -14,12 +14,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "References/reference_switch_bounce.md",
+                "file": "index.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "reference_switch_bounce"
+              "title": "index"
             },
             "group": "81a883605a27edf8"
           }
@@ -28,7 +28,7 @@
       {
         "id": "2b27a9d0f3af60ce",
         "type": "tabs",
-        "dimension": 19.451219512195124,
+        "dimension": 32.89473684210527,
         "children": [
           {
             "id": "771872355042e3b6",
@@ -36,13 +36,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "References/reference_switch_bounce.md",
+                "file": "index.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of reference_switch_bounce"
+              "title": "Outline of index"
             },
             "group": "81a883605a27edf8"
           }
@@ -103,7 +103,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 399.5069465637207
   },
   "right": {
     "id": "43db80c1abec9147",
@@ -211,42 +211,43 @@
   },
   "active": "d00085b673c0d565",
   "lastOpenFiles": [
+    "References/reference_state_feedback.md",
+    "References/reference_mutability.md",
     "Topics/topic_path_planning.md",
-    "Topics/topic_philosophy_of_mechatronics.md",
-    "Images/romi/thought_experiment.svg",
-    "Images/romi/thought_experiment_thought_experiment.svg",
-    "Images/romi/isometric.svg",
-    "Images/romi/path_animation.gif",
-    "Images/romi/path_comparison.svg",
-    "Images/localization.svg",
-    "Images/romi/Path_animation.gif",
-    "index.md",
-    "Topics/topic_romi_modeling.md",
-    "References/reference_bit_manipulation.md",
-    "References/reference_continuous_to_discrete.md",
-    "References/reference_battery_droop.md",
-    "References/reference_PID.md",
     "Topics/topic_virtual_com_ports.md",
-    "Images/pid/Standard_PID.svg",
-    "Images/pid/Saturation.svg",
-    "Images/pid/PDF.svg",
-    "Images/pid",
     "Topics/topic_task_diagrams.md",
     "Topics/topic_software_timing.md",
     "Topics/topic_serial_communication.md",
-    "Topics/topic_scheduling_tasks.md",
+    "Topics/topic_romi_modeling.md",
     "Topics/topic_review_of_signed_numbers.md",
     "Topics/topic_python_fundamentals.md",
     "Topics/topic_priority_schedulers.md",
+    "Topics/topic_philosophy_of_mechatronics.md",
     "Topics/topic_intro_to_state_feedback.md",
-    "Topics/topic_intro_to_generators.md",
     "Topics/topic_intro_to_feedback_and_controls.md",
     "Topics/topic_inertial_measurement_units.md",
-    "Topics/topic_i2c_communication.md",
     "Topics/topic_hardware_overview.md",
     "Topics/topic_gpio.md",
-    "Topics/topic_fsms_and_state_transition_diagrams.md",
     "Topics/topic_file_io.md",
+    "Topics/topic_encoders.md",
+    "Topics/topic_crystals_timers_and_counters.md",
+    "Topics/topic_coop_user_io.md",
+    "References/reference_z_domain.md",
+    "References/reference_quaternions.md",
+    "References/reference_PID.md",
+    "References/reference_observer_design.md",
+    "References/reference_memoryviews.md",
+    "Images/romi/localization.svg",
+    "Images/links/romi_LaTeX2AI_ff5af5c65b5b02b5.svg",
+    "Images/links/romi_LaTeX2AI_e44674efa5c65b13.svg",
+    "Images/links/romi_LaTeX2AI_e1e4a5d3e6d235e2.svg",
+    "Images/links/romi_LaTeX2AI_a23c0781568ac334.svg",
+    "Images/links/romi_LaTeX2AI_5c5637a4c8fd53d4.svg",
+    "Images/links/romi_LaTeX2AI_4217adc5cff79e06.svg",
+    "Images/romi/thought_experiment.svg",
+    "Images/romi/thought_experiment_thought_experiment.svg",
+    "Images/romi/isometric.svg",
+    "Images/pid",
     "Images/oop",
     "Images/New folder",
     "Images/timer_counter",

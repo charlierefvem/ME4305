@@ -73,8 +73,8 @@ With this approach, the MCU will be unable to run any other code after `wait_for
 
 **Approach 2**:
 ``` python
-## This function will cooperatively wait for a specific character to be entered
-## in PuTTY and then echo that character once it is received.
+# This function will cooperatively wait for a specific character to be entered
+# in PuTTY and then echo that character once it is received.
 def wait_for_character_coop(token, ser):
     while True:
         # Check for pending characters and only once one is ready read the
@@ -114,7 +114,7 @@ $$
 We can implement this sequence very elegantly using a generator function.
 
 ``` python
-## A generator function for producing elements in the Collatz sequence
+# A generator function for producing elements in the Collatz sequence
 def collatz(n):
     # Check for invalid seeds first
     if type(n) is not int:
@@ -138,7 +138,7 @@ def collatz(n):
         # Yield the general case
         yield n
 
-## The following block of code runs when this file is executed as a script, but not when the file is imported as a module in another file
+# The following block of code runs when this file is executed as a script, but not when the file is imported as a module in another file
 if __name__ == "__main__":
     # This first example shows how to convert the generator to a list
     # which will run the generator as many times as needed until the generator

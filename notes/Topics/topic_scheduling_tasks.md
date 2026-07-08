@@ -47,12 +47,12 @@ The task implements the same trivial finite state machine covered in a previous 
 ``` python
 import time
 
-## The states of the FSM
+# The states of the FSM
 S0_INIT = 0
 S1_RUN = 1
 S2_RUN_THRICE = 2
 
-## Task implemented as its own generator function
+# Task implemented as its own generator function
 def task_gen_fcn():
     
     # A variable to indicate what state the FSM is about to run
@@ -201,12 +201,12 @@ In this third example the code is refactored into two files. In `taskexample.py`
 
 `taskexample.py`
 ``` python
-## The states of the FSM
+# The states of the FSM
 S0_INIT = 0
 S1_RUN = 1
 S2_RUN_THRICE = 2
 
-## Task implemented as a method of a task class
+# Task implemented as a method of a task class
 class TaskExample:
         
     def __init__(self, task_label):

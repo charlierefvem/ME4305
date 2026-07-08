@@ -41,10 +41,10 @@ BIT1 = 0x02
 BIT2 = 1 << 2
 
 value |= BIT1      # Set bit 1
-## value == 0b0111
+# value == 0b0111
 
 value &= ~BIT2     # Clear bit 2
-## value == 0b0011
+# value == 0b0011
 ```
 
 A mask has **1s** wherever you want an operation to occur and **0s** everywhere else. The `|=` operator leaves existing 1s unchanged while turning the masked bits on. To clear bits, the `~` operator inverts the mask so that `&=` preserves every bit except those selected by the original mask.
@@ -69,7 +69,7 @@ The following MicroPython implementation splits reads from the register and divi
 ```python
 buf = bytearray(1)
 
-## Read one byte from the BNO055 calibration status register.
+# Read one byte from the BNO055 calibration status register.
 my_i2c.mem_read(buf, dev_addr, mem_addr)
 
 mag_stat = buf[0] & 0b11

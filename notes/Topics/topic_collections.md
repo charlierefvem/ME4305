@@ -116,10 +116,10 @@ def getAccelXYZ():
 	# Query sensor
     return (x, y, z)
 
-## Assign output to a new tuple
+# Assign output to a new tuple
 accel = getAccelXYZ()
 
-## Unpack the tuple into separate variables
+# Unpack the tuple into separate variables
 x, y, z = getAccelXYZ()
 ```
 
@@ -148,7 +148,7 @@ my_dict = {
     "three": 3,
 }
 
-## Append to the dictionary
+# Append to the dictionary
 my_dict["four"] = 4
 ```
 
@@ -207,15 +207,15 @@ The following example reads a single character from a serial port and then shows
 ``` python
 char = ser.read(1)
 
-## Check by decoding bytes object to str object
+# Check by decoding bytes object to str object
 if char.decode() == "G":
     ...
 
-## Check by indexing bytes object to retrieve numerical value of the character
+# Check by indexing bytes object to retrieve numerical value of the character
 if char[0] == 71:
     ...
 
-## Check by comparing directly to another bytes object
+# Check by comparing directly to another bytes object
 if char == b"G":
     ...
 ```

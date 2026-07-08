@@ -152,8 +152,8 @@ def main():
     # Once the program is over, do any sort of cleanup as needed
     print('Program terminated')
 
-## THe following block prevents main() from running when the file
-## is imported instead of run as a main program
+# THe following block prevents main() from running when the file
+# is imported instead of run as a main program
 if __name__ == '__main__':
     main()
 ```

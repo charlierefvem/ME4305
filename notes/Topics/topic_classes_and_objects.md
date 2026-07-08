@@ -124,7 +124,7 @@ Implementation of a class in Python is quite simple as it is a core feature of t
 
 ``` python
 class MyClass:
-## Class defined here
+# Class defined here
 ```
 
 Inside the indented block defining the class you can write your methods. Every class must start with an initializer method that runs when a user creates an instance of your class and the method *must* be named exactly `__init__()`, including two underscores as a prefix and again as a suffix. 
@@ -183,7 +183,7 @@ from pyb import Pin, Timer
             # This function has bugs that you must fix
             self._pwm_chan.pulse_width_percent(effort)
 
-## Code in the following block will run when this file is run as a script, but not when used as a module in other files.
+# Code in the following block will run when this file is run as a script, but not when used as a module in other files.
 if __name__ == "__main__":
     # Both motors can use the same timer but different channels
     pwm_tim = Timer(4, freq=20_000)
@@ -206,7 +206,7 @@ One way to eliminate global variables in a callback is to use a class method, in
 Consider the following two examples for collecting data inside a timer callback. The first uses global variables.
 
 ``` python
-## Example 1 - Using global variables
+# Example 1 - Using global variables
 from array import array
 from time import ticks_ms
 from encoder import Encoder
@@ -236,7 +236,7 @@ tim = Timer(7, freq=100, callback=tim_cb)
 The second uses a lightweight class to encapsulate the variables that would otherwise be global.
 
 ``` python
-## Example 2 - Using a class
+# Example 2 - Using a class
 from array import array
 from time import ticks_ms
 from encoder import Encoder

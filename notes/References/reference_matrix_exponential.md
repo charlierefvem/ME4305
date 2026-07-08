@@ -170,9 +170,9 @@ And, in Python using SciPy,
 from scipy.linalg import expm, exp
 import numpy as np
 
-## Correct matrix exponential
+# Correct matrix exponential
 Ad = expm(A * Ts)
 
-## Incorrect matrix exponential (applies element by element)
+# Incorrect matrix exponential (applies element by element)
 Ad_wrong = np.exp(A * Ts)
 ```

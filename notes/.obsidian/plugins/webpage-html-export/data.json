@@ -12,7 +12,11 @@
     "inlineHTML": false,
     "exportPath": "D:\\Repositories\\Sites\\ME4305\\build",
     "filesToExport": [
-      "all"
+      "Case Studies",
+      "Insights",
+      "References",
+      "Topics",
+      "index.md"
     ],
     "useFallbackRenderer": false,
     "addBodyClasses": true,

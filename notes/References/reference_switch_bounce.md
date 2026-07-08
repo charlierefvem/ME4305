@@ -156,8 +156,8 @@ The code block below shows a task that disables an external interrupt after a sw
 from pyb import ExtInt, Pin, enable_irq, disable_irq
 from array import array
 
-## A task compatible with cotask.py that handles debounce for up to 16 switches
-## connected to different ExtInt ISR lines.
+# A task compatible with cotask.py that handles debounce for up to 16 switches
+# connected to different ExtInt ISR lines.
 class task_switch:
 
     # Create a task object using a defined set of switch pins and a queue

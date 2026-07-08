@@ -131,18 +131,17 @@ This example reads six bytes from the BNO055 IMU starting at the first accelerom
 ```python
 import pyb
 
-## Device and memory/register addresses from the IMU register map.
+# Device and memory/register addresses from the IMU register map.
 dev_addr = 0x28  # IMU address
 mem_addr = 0x08  # ACC_DATA_X_LSB
 
-## Create a six-byte mutable buffer to hold the returned data.
+# Create a six-byte mutable buffer to hold the returned data.
 buf = bytearray(0 for _ in range(6))
 
-## TODO (Instructor Review): Confirm the bus number and initialization mode
-## used for the specific STM32 board and MicroPython version in lab.
+# used for the specific STM32 board and MicroPython version in lab.
 my_i2c = pyb.I2C(1, pyb.I2C.MASTER)
 
-## Read six bytes from the peripheral, starting at the selected register.
+# Read six bytes from the peripheral, starting at the selected register.
 my_i2c.mem_read(buf, dev_addr, mem_addr)
 ```
 
