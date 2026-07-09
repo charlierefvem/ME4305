@@ -23,7 +23,7 @@ All the firmware that you write this quarter will run on a development board cal
 ### STM32 Nucleo-L476 Development Board
 
 The primary development board for this course is the **STM32 Nucleo-L476RG**.
-![A top-down view of the Nucleo L476RG development board from ST Microelectronics.](nucleo.png)
+![A top-down view of the Nucleo L476RG development board from ST Microelectronics.](images/hardware_toolchain/nucleo.png)
 
 Important components include:
 * **U5:** Main STM32L476RG microcontroller
@@ -43,7 +43,7 @@ See more: [Nucleo 64 User Manual](https://www.st.com/resource/en/user_manual/um1
 ------------------------------------------------------------------------
 
 ### "Shoe of Brian"
-![A top-down view of the Shoe of Brian accessory board that plugs into the bottom of the Nucleo L476RG.](shoe_of_brian.png)
+![A top-down view of the Shoe of Brian accessory board that plugs into the bottom of the Nucleo L476RG.](images/hardware_toolchain/shoe_of_brian.png)
 
 The Shoe of Brian expansion board provides a native USB connection for MicroPython which unlocks several quality of life features that improve the workflow considerably.
 * Flashing code is done by saving to the enumerated USB storage drive `PYBFLASH`.
@@ -58,11 +58,11 @@ Although this course uses the Nucleo platform, MicroPython also supports many ot
 
 Examples shown in lecture include:
 -   Official **PyBoard** (STM32F405)
-    ![A top-down view of the pyboard, from the creators of Micropython.](pyboard.png)
+    ![A top-down view of the pyboard, from the creators of Micropython.](images/hardware_toolchain/pyboard.png)
     -   Native USB
     -   SD card slot
 -   STM32 **Black Pill** (STM32F411)
-    ![A top-down view of the STM32 Blackpill.](blackpill.png)
+    ![A top-down view of the STM32 Blackpill.](images/hardware_toolchain/blackpill.png)
     * The "lightest weight" MicroPython compatible development board.
     * Available for only a few dollars per board when bought from overseas.
 

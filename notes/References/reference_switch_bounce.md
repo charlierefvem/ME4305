@@ -73,11 +73,11 @@ Another technique for reading many switches with few GPIO pins is to use a devic
 
 An ideal mechanical switch would change cleanly from off to on, and then cleanly from on back to off as shown in the waveform below.
 
-![Ideal switching behavior. The ideal switching plot shows one clean transition from OFF to ON and one clean transition back to OFF.](images/switch_ideal_waveform.png)
+![Ideal switching behavior. The ideal switching plot shows one clean transition from OFF to ON and one clean transition back to OFF.](images/switch_bounce/switch_ideal_waveform.png)
 
 A real mechanical switch does not usually behave that way. When the contacts first touch, they can physically bounce off one another mechanically. This produces several rapid transitions before the signal settles. The same thing can happen when the switch opens. An example waveform is shown below.
 
-![Real-world switching behavior. The real-world plot shows several rapid transitions during the bounce time at both the rising and falling edges before the signal settles.](images/switch_bounce_waveform.png)
+![Real-world switching behavior. The real-world plot shows several rapid transitions during the bounce time at both the rising and falling edges before the signal settles.](images/switch_bounce/switch_bounce_waveform.png)
 
 The practical firmware problem is that one physical switch press may produce multiple rising and falling edges. If the input is connected to an interrupt, each of those edges may trigger an ISR.
 
@@ -91,7 +91,7 @@ There are hardware-based approaches to switch debounce. The DigiKey article link
 
 A simple RC debounce circuit uses a resistor-capacitor filter to slow the transition seen by the GPIO input.
 
-![Simple RC debounce circuit. The circuit shows a pull-up resistor R1 to plus 5 volts, a switch to ground, and a simple RC filter made from R2 and C1 feeding the port input.](images/switch_rc_debounce.png)
+![Simple RC debounce circuit. The circuit shows a pull-up resistor R1 to plus 5 volts, a switch to ground, and a simple RC filter made from R2 and C1 feeding the port input.](images/switch_bounce/switch_rc_debounce.png)
 
 For the simple RC filter shown above, the approximate time constants are
 $$
@@ -106,7 +106,7 @@ $$
 
 A modified hardware debounce circuit can add a diode so that the rise and fall times can be tuned independently.
 
-![Modified RC debounce circuit. The circuit shows a pull-up resistor R1, a switch to ground, a diode D1, a resistor R2, a capacitor C1 to ground, and a Schmitt trigger before the port input. Handwritten notes identify the rise time constant as R1C1 and the fall time constant as R2C1.](images/switch_rc_diode_debounce.png)
+![Modified RC debounce circuit. The circuit shows a pull-up resistor R1, a switch to ground, a diode D1, a resistor R2, a capacitor C1 to ground, and a Schmitt trigger before the port input. Handwritten notes identify the rise time constant as R1C1 and the fall time constant as R2C1.](images/switch_bounce/switch_rc_diode_debounce.png)
 
 For the modified RC filter shown in the figure above, the approximate time constants are
 $$
@@ -243,7 +243,7 @@ class task_switch:
             # Check which channels have pending debounce by examining the
             # remembered mask representing debounce states. Reenable any
             # channels that are due.
-            for isr_src in range(16):  
+            for isr_src in self._callbacks:  
                 if reenable_mask & (1 << isr_src):  
                     self._callbacks[isr_src].enable()
             
@@ -281,14 +281,12 @@ enable_irq(irq_state)
  
  After the critical section, the task checks the remembered previous debounce mask. Any line that was in the current mask during the previous task cycle is now due to be re-enabled:
 ```python
-for ISR_src in range(16):
+for ISR_src in self._callbacks:
     if reenable_mask & (1 << ISR_src):
         self._callbacks[ISR_src].enable()
 ```
 
 The critical section prevents an ISR from modifying the mask at the same time the task is shifting and clearing it.
-
-**Note**: the code assumes that every `ISR_src` bit that becomes set corresponds to a key in `self._callbacks`. This is consistent with the callback only setting bits from configured pins, but the loop still scans all 16 possible ISR lines.
 
 ## Insights
 

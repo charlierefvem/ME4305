@@ -78,11 +78,11 @@ a6 a5 a4 a3 a2 a1 a0 R/W
 
 A read transaction begins with a start condition, followed by the address byte (the 7-bit address concatenated with the read bit). The addressed peripheral then returns one or more data bytes. After each byte, the receiver sends an acknowledge (ACK) bit until the last byte is received then the receiver sends a negative acknowledge (NACK) bit to tell the peripheral to stop sending. The transaction ends with a stop condition.
 
-![I2C read timing diagram from Analog Devices. The controller starts the transfer, sends the 7-bit peripheral address with the read bit set to 1, and receives data bytes from the peripheral.|700](images/i2c_read_timing.png)
+![I2C read timing diagram from Analog Devices. The controller starts the transfer, sends the 7-bit peripheral address with the read bit set to 1, and receives data bytes from the peripheral.](images/iic/i2c_read_timing.png)
 
 A write transaction also begins with a start condition, followed by the 7-bit address and a write bit. The controller then sends one or more data bytes to the peripheral. During the high portions of the SCL pulses, the data on SDA stays stable so the receiver can sample it.
 
-![I2C write timing diagram from Analog Devices. The controller starts the transfer, sends the 7-bit peripheral address with the write bit set to 0, then sends a data byte to the peripheral.|700](images/i2c_write_timing.png)
+![I2C write timing diagram from Analog Devices. The controller starts the transfer, sends the 7-bit peripheral address with the write bit set to 0, then sends a data byte to the peripheral.](images/iic/i2c_write_timing.png)
 
 External figure source for timing diagrams: Analog Devices, I2C primer, https://www.analog.com/en/technical-articles/i2c-primer-what-is-i2c-part-1.html
 

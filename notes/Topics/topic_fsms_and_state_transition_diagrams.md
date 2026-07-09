@@ -43,7 +43,8 @@ Programmers should remember that the finite state machine is not the code itself
 ### State Transition Diagrams
 
 A state transition diagram is a visual depiction of the abstract finite state machine. Each state should be drawn as an ellipse with the state's name and/or number labelling the ellipse.
-![A state represented by an ellipse. In the center is the label S0 followed by the state name INIT.](state_ellipse.png)
+
+![A state represented by an ellipse. In the center is the label S0 followed by the state name INIT.](images/multitasking/state_ellipse.svg)
 
 Transitions between states are shown as arrows. Each arrow must begin and end in exactly one state; branching arrows are not allowed. The transitions are labelled by placing the condition and action inside square brackets separated by a forward slash.
 * In most cases the transition should include one condition and one action: `[CONDITION / ACTION]`.
@@ -52,11 +53,14 @@ Transitions between states are shown as arrows. Each arrow must begin and end in
 * If multiple conditions must simultaneously apply to trigger the transition a logical expression can also be used: `[CONDITION_1 and CONDITION_2 / ACTION]`.
 * If multiple actions are to be performed they may be separated by semicolons: `[CONDITION / ACTION_1; ACTION_2]`.
 Each of these cases may be mixed and matched as long as the conventions are followed.
-![A transition is labeled with its triggering condition and optional action.](images/state_transition.png)
+
+![A transition is labeled with its triggering condition and optional action.](images/multitasking/state_transition.svg)
+
 Some students incorrectly assume that the conditions and actions must be valid executable lines of code. While in some cases this may be appealing, it is not a requirement that your state transition diagram matches the exact syntax used to implement the logic encoded by the diagram. For example, it is common to use the condition `ALWAYS` to represent immediate transitions that occur every time the state runs.
 
 A state transition diagram is the graphical representation of a finite state machine and is made by stitching together many states with transitions. Ever state transition diagram must have an explicit start transition, shown with an unlabeled arrow going from a `START` box. Without a start condition it can be ambiguous which state a task is in immediately upon startup.
-![State transition diagram showing states drawn as ellipses connected by directed transitions. Each transition is labeled with its triggering condition and optional action, and the diagram includes a designated start transition.](images/state_transition_start.png)
+
+![State transition diagram showing states drawn as ellipses connected by directed transitions. Each transition is labeled with its triggering condition and optional action, and the diagram includes a designated start transition.](images/multitasking/start_transition.svg)
 
 In ME4305 you will likely use state transition diagrams to design your finite state machines and therefore the architecture for your Micropython code. However, tools do exist that let you program graphically by designing the finite state machine directly. Stateflow (part of Simulink) is an example of software capable of implementing programs directly from state transition diagrams.
 
@@ -86,14 +90,16 @@ A higher-fidelity model might instead define four states:
 The appropriate level of detail depends on the goals of the design.
 
 ### Self-transitions
-Self-transitions are transitions from one state back to the same state and are optional to show on the diagram. It is implied by convention that when no state transitions have applicable conditions the state does not transition. Include self-transitions only when they improve clarity; omit them when they merely clutter the diagram.
+
+Self-transitions are transitions from one state back to the same state and are optional to show on the diagram. It is implied by convention that, when no state transitions have applicable conditions, the state does not transition. Include self-transitions only when they improve clarity; omit them when they merely clutter the diagram.
 
 ------------------------------------------------------------------------
 
 ## Programming Example
+
 The following example shows both the transition diagram and a Python implementation for an extremely simple FSM with three states.
 
-![A state transition diagram with three states. State 0, the initialization state, always transitions to state 1, the run state. State 1 always transitions to state 2, the run thrice state. State 2 transitions to state 1 after it self-transitions enough times to increment count to 2.](images/state_transition_diagram.png)
+![A state transition diagram with three states. State 0, the initialization state, always transitions to state 1, the run state. State 1 always transitions to state 2, the run thrice state. State 2 transitions to state 1 after it self-transitions enough times to increment count to 2.](images/multitasking/example_transition_diagram.svg)
 
 The following Python script implements the preceding example in executable code.
 
@@ -124,6 +130,7 @@ def main():
             elif (state == S1_RUN):
                 # Run state one code
                 print("The state is ", state)
+                count = 0
                 state = S2_RUN_THRICE
                 
             elif (state == S2_RUN_THRICE):
@@ -131,7 +138,6 @@ def main():
                 print("The state is ", state)
                 if (count == 2):
                     state = S1_RUN
-                    count = 0
                 else:
                     count += 1 # Increment count
                 

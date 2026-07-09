@@ -132,11 +132,11 @@ The \[\[BNO055\]\] from Bosch is a 9 DOF IMU. It combines an accelerometer, gyro
 
 The breakout board used in lab exposes power, ground, and I2C connections. The IMU chip itself is the small sensor IC on the board.
 
-![A photograph of the BNO055 breakout board. Match the dot on the sensor to the dot in the coordinate diagram to find the axes.](bno055_breakout_board.png)
+![A photograph of the BNO055 breakout board. Match the dot on the sensor to the dot in the coordinate diagram to find the axes.](images/imu/bno055_breakout_board.png)
 
 When using the BNO055, pay attention to the sensor coordinate axes. The axis definition depends on the physical orientation of the chip. The dot on the sensor package can be matched to the dot in the reference diagram to determine the sensor axes.
 
-![Annotated BNO055  coordinate definition. Match the dot on the sensor to the dot in the diagram to find the axes.](bno055_axes.png)
+![Annotated BNO055  coordinate definition. Match the dot on the sensor to the dot in the diagram to find the axes.](images/imu/bno055_axes.png)
 
 Image sources from the slide:
 * Adafruit: https://learn.adafruit.com/assets/24585

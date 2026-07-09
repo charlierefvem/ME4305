@@ -88,7 +88,7 @@ Pin(Pin.cpu.B11, mode=Pin.ALT, alt=7)  # Configure new RX pin
 
 The alternate function table shows that `B10` and `B11` can access UART3 through alternate function 7.
 
-![An excerpt from the STM34L476 datasheet from the alternate function table. |700](images/af_table_page_2.png)
+![An excerpt from the STM34L476 datasheet from the alternate function table. ](images/vcp/af_table_page_2.png)
 
 ## Using pyserial on the PC
 

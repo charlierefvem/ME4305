@@ -83,7 +83,7 @@ cssclasses:
             * [[reference_z_domain|Discrete Time Systems]]
             * [[reference_continuous_to_discrete|Continuous to Discrete Conversion]]
         2. Topics
-            * \[\[Discretization Techniques\]\]
+            * [[topic_discrete_PID|Discrete PID Implementation]]
     3. Lecture 20 - Observer Fundamentals
         1. Reading
             * [[reference_observer_design|Observer Design]]

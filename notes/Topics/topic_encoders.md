@@ -75,7 +75,7 @@ Many high-performance (high resolution) encoders use optics to produce edges. In
 
 While optical encoders offer very high density in the form of many spokes they are more costly to produce than other varieties of incremental encoder. Most low-cost incremental encoders are made with multi-pole magnets and hall effect sensors. These work on the same principle as the optical encoders, but instead of detecting light the hall effect sensors detect north vs. south magnetic poles. The animation below shows a 3 pole-pair magnetic encoder.
 
-![Magnetic quadrature encoder with Hall sensors and output waveforms.](images/magnetic_encoder_animation.gif)
+![Magnetic quadrature encoder with Hall sensors and output waveforms.](images/encoder/magnetic_encoder_animation.gif)
 
 ### Encoder Resolution
 
@@ -132,7 +132,7 @@ All edges in the waveform below will produce the same direction using the lookup
 
 STM32 timer hardware compares the current AB state against the previous state instead of explicitly detecting edges. This comparison occurs rapidly, once per edge on the clock source for the timer. On the Nucleo L476RG all timers run directly off the system clock at 80MHz, so the polling occurs 80 million times per second. Built into the microcontroller is a lookup table, similar to the one shown below, that shows the count direction based on the present and previous AB states.
 
-![Sixteen-state quadrature polling transition table.|700](images/quadrature_polling_table.png)
+![Sixteen-state quadrature polling transition table.](images/encoder/quadrature_polling_table.png)
 
 The timer can also XOR the two channels to generate a square wave whose frequency represents speed.
 

@@ -15,7 +15,7 @@ status: draft
 
 Quaternions are a type of four-dimensional number that extends the behavior of complex numbers from the plane to three dimensions. Quaternions are what motivates the cross product often used in rigid body mechanics and other areas of engineering.
 
-![A plaque that reads "Here as he walked by on the 16th of October 1843 Sir William Rowan Hamilton in a flash of genius discovered the fundamental formula for quaternion multiplication i^2=j^2+k^2+ijk=-1 and cut it on a stone of this bridge.](images/hamilton_plaque.png)
+![A plaque that reads "Here as he walked by on the 16th of October 1843 Sir William Rowan Hamilton in a flash of genius discovered the fundamental formula for quaternion multiplication i^2=j^2+k^2+ijk=-1 and cut it on a stone of this bridge.](images/imu/hamilton_plaque.png)
 
 ### Fundamentals
 
