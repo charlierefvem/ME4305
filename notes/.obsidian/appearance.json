@@ -3,7 +3,12 @@
   "baseFontSizeAction": false,
   "enabledCssSnippets": [
     "font_fix",
-    "center_figures",
-    "white_image_backgrounds"
+    "white_image_backgrounds",
+    "wide_tables",
+    "CleanSyllabus",
+    "clean_syllabus",
+    "lecture_list",
+    "colorful_graph_nodes",
+    "true_sized_images"
   ]
 }

@@ -60,7 +60,7 @@ binary ^= (binary >> 2)
 
 Incremental encoders do not have a fixed datum. Instead they output increments of displacement using quadrature signals: two square-wave channels, 90° out of phase, provide information about displacement. That is, the phase shift between the two waveforms encodes direction - if A leads B, the encoder is moving one direction and if B leads A, it is moving the other direction.
 
-![Quadrature channel A and B waveforms that are 90 degrees out of phase with A leading B.|700](images/quadrature_signals.svg)
+![Quadrature channel A and B waveforms that are 90 degrees out of phase with A leading B.](images/encoder/quadrature_waveform.svg)
 
 ### Optical Encoders
 

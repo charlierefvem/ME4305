@@ -100,12 +100,12 @@ $$
 so the changes in displacement simplify to 
 $$
 \begin{aligned}
-\Delta X &= \cos\psi_0\,\Delta s_L, \\
-\Delta Y &= \sin\psi_0\,\Delta s_L.
+\Delta X &= \cos\psi_0\,\Delta s, \\
+\Delta Y &= \sin\psi_0\,\Delta s.
 \end{aligned}
 $$
 
-So, in the special case of fixed heading, the endpoint value $\Delta s$ is enough to determine global displacement:
+Therefore, in the special case of fixed heading, the endpoint value $\Delta s$ is enough to determine global displacement:
 $$
 \begin{bmatrix}
 \Delta X\\

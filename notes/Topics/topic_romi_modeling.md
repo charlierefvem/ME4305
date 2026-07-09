@@ -114,7 +114,7 @@ $$
 \dot{X}\,\hat{I} + \dot{Y}\,\hat{J}.
 $$
 
-![Annotated absolute-motion figure showing a global X-Y inertial frame and a Romi chassis with local x-y axes rotated by heading angle psi. The annotations show i-hat = cos(psi) I-hat + sin(psi) J-hat, j-hat = -sin(psi) I-hat + cos(psi) J-hat, dot X = v cos(psi), dot Y = v sin(psi), and dot psi = omega.](figures/lecture-11-absolute-motion.png)
+![Annotated absolute-motion figure showing a global X-Y inertial frame and a Romi chassis with local x-y axes rotated by heading angle psi. The annotations show i-hat = cos(psi) I-hat + sin(psi) J-hat, j-hat = -sin(psi) I-hat + cos(psi) J-hat, dot X = v cos(psi), dot Y = v sin(psi), and dot psi = omega.](images/romi/localization.svg)
 
 The local basis vector $\hat{\imath}$ can be written in terms of the global basis vectors as
 $$

@@ -1,0 +1,15 @@
+/* 1. Force the parent container block to break out of the 700px limit */
+.markdown-rendered div:has(.wide-table-container),
+.cm-embed-block:has(.wide-table-container) {
+    max-width: 100% !important;
+    width: 100% !important;
+}
+
+/* 2. Force Obsidian's built-in table wrappers to fill the expanded container */
+.wide-table-container,
+.wide-table-container table,
+.wide-table-container .table-wrapper {
+    width: 100% !important;
+    max-width: 100% !important;
+    display: table !important;
+}

@@ -1,0 +1,9 @@
+/* 1. Kill the bullet points in Obsidian's Live Preview/Editing view */
+.clean-syllabus .cm-formatting-list-ol{
+    display: none !important;
+}
+
+/* 2. Kill the bullet points in Reading view and Web HTML Export outputs */
+.clean-syllabus ol > li::marker{
+    content: "" !important;
+}

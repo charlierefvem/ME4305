@@ -446,7 +446,7 @@ $$
 
 The second-order pole pair remains dominant because the additional pole is much farther left in the complex plane and decays faster.
 
-![Dominant pole approximation diagram. The complex plane shows a second-order dominant pole pair near the imaginary axis and an additional real pole placed farther left on the real axis. A note says the extra pole should be about 10 times faster, with a equals 10 omega_n.|700](images/state_feedback_dominant_poles.svg)
+![Dominant pole approximation diagram. The complex plane shows a second-order dominant pole pair near the imaginary axis and an additional real pole placed farther left on the real axis. A note says the extra pole should be about 10 times faster, with a equals 10 omega_n.](images/state_feedback/second_order_dominant_pole_map.svg)
 
 Expanding gives
 $$

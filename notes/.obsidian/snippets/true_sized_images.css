@@ -1,0 +1,73 @@
+/* ==========================================
+   1. REGULATE VAULT TEXT & TABLE SIZES
+   ========================================== */
+:root, 
+body, 
+.markdown-rendered, 
+.markdown-preview-view, 
+.cm-content,
+table,
+.table-wrapper {
+    /* Downscale standard body font size to match 12pt figures */
+    --font-text-size: 12px !important; 
+    font-size: 12px !important;
+
+    /* CRITICAL FIX: Force Obsidian's independent table variables to scale down */
+    --table-text-size: 12px !important;
+    --table-header-size: 12px !important;
+    
+    /* Add this line to make dense paragraphs much easier to read */
+    line-height: 1.55 !important; 
+}
+
+/* Force table cells and header elements to match layout sizes uniformly */
+.markdown-rendered td,
+.markdown-rendered th,
+table th,
+table td {
+    font-size: 12px !important;
+}
+
+/* Scale headers down proportionally so they match the compact scale */
+h1 { font-size: 1.8rem !important; }
+h2 { font-size: 1.5rem !important; }
+h3 { font-size: 1.2rem !important; }
+
+/* ==========================================
+   2. IMAGE RESET & CENTER ALIGNMENT (READING VIEW)
+   ========================================== */
+.markdown-preview-view img, 
+.markdown-rendered img,
+.table-wrapper img,
+.markdown-rendered canvas {
+    /* Reset visual scale back to 100% natural pixel size */
+    zoom: 1 !important;
+    transform: none !important;
+    max-width: 100% !important;
+    height: auto !important;
+    
+    /* Center images cleanly */
+    display: block !important; 
+    margin-inline: auto !important;
+}
+
+/* ==========================================
+   3. CENTER ALIGNMENT & SIZING (LIVE PREVIEW / EDIT MODE)
+   ========================================== */
+.markdown-source-view.mod-cm6 .cm-content .image-embed img {
+    /* Reset scale in editor engine layout */
+    zoom: 1 !important;
+    transform: none !important;
+}
+
+.markdown-source-view.mod-cm6 .cm-content .image-embed {
+    /* Center container block in editor canvas */
+    display: block !important;
+    margin-inline: auto !important;
+    width: max-content !important;
+}
+
+/* Ensure block-level vector wrappers don't force left-alignment */
+.markdown-source-view.mod-cm6 .cm-embed-block {
+    margin-inline: auto !important;
+}
