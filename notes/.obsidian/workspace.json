@@ -103,7 +103,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 298.5069465637207
+    "width": 298.5069465637207,
+    "collapsed": true
   },
   "right": {
     "id": "43db80c1abec9147",
@@ -209,7 +210,7 @@
       "webpage-html-export:Export as HTML": false
     }
   },
-  "active": "d00085b673c0d565",
+  "active": "771872355042e3b6",
   "lastOpenFiles": [
     "Topics/topic_task_diagrams.md",
     "References/reference_quaternions.md",
