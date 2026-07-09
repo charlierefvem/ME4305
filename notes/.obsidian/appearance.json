@@ -9,6 +9,8 @@
     "clean_syllabus",
     "lecture_list",
     "colorful_graph_nodes",
-    "true_sized_images"
+    "true_sized_images",
+    "center_tables",
+    "center_images"
   ]
 }

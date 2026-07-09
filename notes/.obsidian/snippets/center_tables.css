@@ -1,0 +1,20 @@
+/*
+   Center tables without changing their natural width.
+   wide_tables.css can still be enabled for explicitly wide containers.
+*/
+
+.markdown-rendered table,
+.markdown-preview-view table,
+.markdown-source-view.mod-cm6 .cm-html-embed table,
+body.publish .obsidian-document table {
+    margin-inline: auto !important;
+}
+
+.markdown-rendered .table-wrapper,
+.markdown-preview-view .table-wrapper,
+.markdown-rendered div:has(> table),
+.markdown-preview-view div:has(> table),
+body.publish .obsidian-document .table-wrapper,
+body.publish .obsidian-document div:has(> table) {
+    margin-inline: auto !important;
+}

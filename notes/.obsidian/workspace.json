@@ -14,12 +14,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "index.md",
+                "file": "Topics/topic_fsms_and_state_transition_diagrams.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "index"
+              "title": "topic_fsms_and_state_transition_diagrams"
             },
             "group": "81a883605a27edf8"
           }
@@ -36,13 +36,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "index.md",
+                "file": "Topics/topic_fsms_and_state_transition_diagrams.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of index"
+              "title": "Outline of topic_fsms_and_state_transition_diagrams"
             },
             "group": "81a883605a27edf8"
           }
@@ -211,16 +211,13 @@
   },
   "active": "d00085b673c0d565",
   "lastOpenFiles": [
-    "index.md",
-    "References/reference_euler_angles.md",
-    "References/reference_formatting_strings.md",
+    "Topics/topic_task_diagrams.md",
     "References/reference_quaternions.md",
     "Topics/topic_romi_modeling.md",
     "Topics/topic_path_planning.md",
     "Topics/topic_virtual_com_ports.md",
     "Topics/topic_serial_communication.md",
     "Topics/topic_software_timing.md",
-    "Topics/topic_task_diagrams.md",
     "Topics/topic_review_of_signed_numbers.md",
     "Topics/topic_scheduling_tasks.md",
     "Topics/topic_philosophy_of_mechatronics.md",
@@ -237,6 +234,9 @@
     "Topics/topic_collections.md",
     "Topics/topic_coop_user_io.md",
     "Topics/topic_crystals_timers_and_counters.md",
+    "References/reference_z_domain.md",
+    "References/reference_switch_bounce.md",
+    "Topics/topic_classes_and_objects.md",
     "Images/state_feedback/second_order_dominant_pole_map.svg",
     "Images/romi/localization.svg",
     "Images/links/romi_LaTeX2AI_ff5af5c65b5b02b5.svg",
