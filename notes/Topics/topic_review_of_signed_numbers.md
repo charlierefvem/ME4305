@@ -164,7 +164,7 @@ Two's complement is not just a way of writing negative numbers. It is the conven
 
 Sign extension is the operation that preserves the value of a signed integer when increasing the number of bits used to represent it. For a positive value, this means extending with zeros. For a negative value, this means extending with ones.
 
-## See Also:
+## See Also
 * [[topic_collections|Collections]]
 * [[topic_inertial_measurement_units|Introduction to IMUs]]
 * [[reference_memoryviews|Buffers and memoryview Objects]]

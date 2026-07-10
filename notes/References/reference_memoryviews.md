@@ -160,6 +160,3 @@ class BNO055:
 
 * Slices allow advanced indexing of collections.
 * `memoryview` objects are useful because they allow a function to operate on a selected part of a buffer without copying that part into a new object.
-
-## See Also:
-* [[topic_collections|Collections]]

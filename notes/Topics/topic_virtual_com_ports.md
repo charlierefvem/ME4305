@@ -150,7 +150,7 @@ Many serial APIs also accept normal Python strings directly when writing.
 * Serial communication exchanges bytes rather than strings.
 * `encode()` and `decode()` convert between strings and bytes.
 
-## See Also:
+## See Also
 * [[topic_hardware_overview|Hardware and Software Toolchain]]
 * [[topic_serial_communication|Serial Communication]]
 * [[reference_formatting_strings|Formatting Strings]]

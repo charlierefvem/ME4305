@@ -174,5 +174,5 @@ GPIO circuitry is considerably more sophisticated than simply connecting a proce
 * \[\[Switch Bounce\]\]
 * \[\[Debouncing\]\]
 
-## See Also:
+## See Also
 * [[topic_hardware_overview|Hardware and Software Toolchain]]

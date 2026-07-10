@@ -73,7 +73,7 @@ Many USB devices, including the ST-LINK and many Bluetooth devices, present them
 * Distinguish between UART, COM ports, and Virtual COM Ports.
 * Recognize that the board exposes two different USB communication paths.
 
-## See Also:
+## See Also
 * [[topic_hardware_overview|Hardware and Software Toolchain]]
 * [[topic_virtual_com_ports|Virtual Communication Ports]]
 * [[reference_memoryviews|Buffers and memoryview Objects]]

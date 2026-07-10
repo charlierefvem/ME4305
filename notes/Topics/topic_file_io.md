@@ -158,5 +158,5 @@ This example uses two techniques that we may have not covered yet:
 
 * Prefer `with` when opening files.
 
-## See Also:
+## See Also
 * [[topic_collections|Collections]]

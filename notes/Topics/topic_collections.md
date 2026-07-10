@@ -264,6 +264,6 @@ Type code `"H"` creates an unsigned 16-bit integer array.
 * Binary communication in embedded systems frequently uses `bytes` and `bytearray` objects.
 * Arrays (`array.array` objects) are preferable to lists when storing large homogeneous numeric datasets.
 
-## See Also:
+## See Also
 * [[topic_file_io|File I/O]]
 * [[reference_memoryviews|Buffers and memoryview Objects]]

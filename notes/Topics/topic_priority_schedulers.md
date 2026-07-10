@@ -138,7 +138,7 @@ A good designer should always monitor the output of the profiler and verify that
 -   Tasks are dispatched by the scheduler.
 -   Scheduling policy directly affects task latency and determinism.
 
-## See Also:
+## See Also
 * [[topic_priority_schedulers|Cooperative Multitasking and the Scheduler]]
 * [[topic_scheduling_tasks|Using the Scheduler]]
 * [[topic_software_timing|Software Timing]]

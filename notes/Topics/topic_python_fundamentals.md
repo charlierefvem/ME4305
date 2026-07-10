@@ -394,7 +394,7 @@ The most important Python ideas introduced in this lecture were:
 - `break`
 - `continue`
 
-## See Also:
+## See Also
 * [[topic_collections|Collections]]
 * [[topic_classes_and_objects|Classes and Objects]]
 * [[reference_mutability|Mutability]]

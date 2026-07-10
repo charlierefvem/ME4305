@@ -152,7 +152,7 @@ In the call to `mem_read()`, the arguments play three different roles:
 
 **Insight**: returning to the bank or post office analogy, one could say that `mem_read()` first drives to the correct building using the device address, then walks inside and opens the requested lock box using the register address. However, each lock box contains only **one byte** of information. In this example, a complete accelerometer measurement spans six consecutive lock boxes, so `mem_read()` opens six adjacent lock boxes and returns all six bytes together.
 
-### Example 3:
+### Example 3
 
 After reading the six accelerometer bytes, the byte data still needs to be interpreted. The `struct` module can unpack those six bytes into three signed 16-bit integer values. This example is assumed to run after Example 2.
 

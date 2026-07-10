@@ -85,5 +85,5 @@ It will be left as an exercise for the reader to convert the flowchart into work
 
 Serial port interaction can be slow and therefore result in blocking code. Efforts should be made to write cooperative code instead of blocking code by polling for input before reading and by subdividing large blocks of output into multiple smaller chunks before printing.
 
-## See Also:
+## See Also
 * [[reference_formatting_strings|Formatting Strings]]

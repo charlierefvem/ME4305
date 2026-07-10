@@ -176,7 +176,7 @@ if __name__ == '__main__':
 -   State transition diagrams communicate FSM behavior visually.
 -   Keep transition actions instantaneous.
 
-## See Also:
+## See Also
 * [[topic_task_diagrams|Task Diagrams]]
 * [[topic_priority_schedulers|Cooperative Multitasking and the Scheduler]]
 * [[topic_scheduling_tasks|Using the Scheduler]]

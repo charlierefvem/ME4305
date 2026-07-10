@@ -136,5 +136,5 @@ Frequencies in the hundreds of Hz to low kHz range will produce noticeable audib
 -   PWM duty cycle is controlled with the compare register.
 -   Motors primarily respond to the average value of PWM.
 
-## See Also:
+## See Also
 * [[topic_hardware_overview|Hardware and Software Toolchain]]

@@ -95,7 +95,7 @@ u(z) &= K_p\, e(z)
 $$
 where $K_i^\prime= K_i\,T_s$ is the new integral gain, $K_d^\prime=\frac{K_d}{T_s}$ is the new derivative gain, and $\alpha = N\,T_s$ and $\beta=1-N\,T_s$ are coefficients used in the differentiator.
 
-With this method of forward-difference discretization a discrete pole is located at $z = \beta = 1-N\,T_s$. Using the discrete-time stability condition of $\lvert z \rvert < 1$, we can conclude that the derivative filter is stable only if $0 < N\,T_s < 2$. This is one reason Tustin or other discretization methods are often preferred for filtered derivative terms.
+With this method of forward-difference discretization, a discrete pole is located at $z = \beta = 1-N\,T_s$. Using the discrete-time stability condition of $\lvert z \rvert < 1$, we can conclude that the derivative filter is stable only if $0 < N\,T_s < 2$. This is one reason Tustin or other discretization methods are often preferred for filtered derivative terms.
 
 The actuation signal can be broken up into three parts:
 $$
@@ -207,15 +207,15 @@ In firmware, $e_{-1}$​ is often initialized to the first measured error value 
 
 Then, during runtime, apply the following steps in the following explicit sequence:
 
-| Step | Operation                                                         | Purpose                                                                                                                                  |
-| ---- | ----------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
-| 1    | $e_k = x_{ref}(t_k) - x_{meas,k}$                                 | Measure the control parameter and then compute the control error using the present setpoint and the measurement.                         |
-| 2    | $D_k = \alpha\,(e_k  - e_{k-1}) + \beta\, D_{k-1}$                | Update the filtered derivative using the present and previous control error.                                                             |
-| 3    | $u_{req,k} = K_p\, e_k + K_i^\prime\, I_k + K_d^\prime\, D_k$     | Compute the linear controller output before saturation is applied.                                                                       |
-| 4    | $u_{sat,k} = \operatorname{sat}_{[u_{\min},u_{\max}]}(u_{req,k})$ | Saturate the value based on the minimum and maximum actuation values. This post-saturation value should then be applied to the actuator. |
-| 5    | $r_k = (u_{req,k} - u_{sat,k})$                                   | Find the saturation residual to check for saturation.                                                                                    |
-| 6    | $\gamma_k = \mathbb{1}_{\le0} \left( e_k\,r_k \right)$            | Compute the integration-gate for the anti-windup method.                                                                                 |
-| 7    | $I_{k+1} = I_k + \gamma_k\,e_k$                                   | Update the integrator taking into the integration gate into account.                                                                     |
+| Step | Operation                                                         | Purpose                                                                                                                               |
+| ---- | ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
+| 1    | $e_k = x_{ref}(t_k) - x_{meas,k}$                                 | Measures the control parameter and then computes the control error using the present setpoint and the measurement.                    |
+| 2    | $D_k = \alpha\,(e_k  - e_{k-1}) + \beta\, D_{k-1}$                | Updates the filtered derivative using the present and previous control error.                                                         |
+| 3    | $u_{req,k} = K_p\, e_k + K_i^\prime\, I_k + K_d^\prime\, D_k$     | Computes the linear controller output before saturation is applied.                                                                   |
+| 4    | $u_{sat,k} = \operatorname{sat}_{[u_{\min},u_{\max}]}(u_{req,k})$ | Saturates the value based on the minimum and maximum actuation values. This post-saturation value is then be applied to the actuator. |
+| 5    | $r_k = (u_{req,k} - u_{sat,k})$                                   | Finds the saturation residual to use for anti-windup..                                                                                |
+| 6    | $\gamma_k = \mathbb{1}_{\le0} \left( e_k\,r_k \right)$            | Computes the integration-gate to use for integral clamping.                                                                           |
+| 7    | $I_{k+1} = I_k + \gamma_k\,e_k$                                   | Updates the integrator taking the integration gate into account.                                                                      |
 In firmware, $I_k$, $D_{k-1}$, and $e_{k-1}$ must persist between control updates. The integrator and derivative-filter values are updated directly by their recurrence equations, while the previous error must be updated explicitly after the derivative calculation.
 
 The preceding algorithm, when implemented in firmware, forms a suitable baseline for real-world implementation of a filtered PID with anti-windup. This baseline implementation should be adjusted and adapted as needed for the particular system being controlled.
