@@ -1,5 +1,7 @@
 ---
-title: ME 405 Course Outline
+title: ME 4305 Course Outline
+type: outline
+status: draft
 cssclasses:
   - clean-syllabus
 ---

@@ -6,7 +6,7 @@
       {
         "id": "0796ddb22585e79f",
         "type": "tabs",
-        "dimension": 65.68627450980392,
+        "dimension": 70.09009009009009,
         "children": [
           {
             "id": "d00085b673c0d565",
@@ -14,12 +14,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Topics/topic_discrete_PID.md",
+                "file": "index.md",
                 "mode": "source",
-                "source": false
+                "source": true
               },
               "icon": "lucide-file",
-              "title": "topic_discrete_PID"
+              "title": "index"
             },
             "group": "81a883605a27edf8"
           }
@@ -28,7 +28,7 @@
       {
         "id": "2b27a9d0f3af60ce",
         "type": "tabs",
-        "dimension": 34.313725490196084,
+        "dimension": 29.90990990990991,
         "children": [
           {
             "id": "771872355042e3b6",
@@ -36,13 +36,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Topics/topic_discrete_PID.md",
-                "followCursor": false,
+                "file": "index.md",
+                "followCursor": true,
                 "showSearch": true,
-                "searchQuery": "li"
+                "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of topic_discrete_PID"
+              "title": "Outline of index"
             },
             "group": "81a883605a27edf8"
           }
@@ -211,32 +211,34 @@
   },
   "active": "d00085b673c0d565",
   "lastOpenFiles": [
-    "References/reference_continuous_to_discrete.md",
-    "Case Studies/case_motor_observer.md",
-    "Case Studies/case_romi_observer.md",
-    "References/reference_battery_droop.md",
-    "References/reference_bit_manipulation.md",
+    "Topics/topic_romi_modeling.md",
+    "Topics/topic_path_planning.md",
+    "Topics/topic_software_timing.md",
+    "Topics/topic_scheduling_tasks.md",
+    "Topics/topic_philosophy_of_mechatronics.md",
+    "Topics/topic_intro_to_feedback_and_controls.md",
+    "Topics/topic_intro_to_generators.md",
+    "References/reference_z_domain.md",
+    "References/reference_observer_design.md",
+    "References/reference_formatting_strings.md",
+    "References/reference_matrix_exponential.md",
     "References/reference_digital_filters.md",
     "References/reference_disturbance_observer.md",
     "References/reference_euler_angles.md",
-    "References/reference_formatting_strings.md",
-    "References/reference_matrix_exponential.md",
-    "References/reference_memoryviews.md",
-    "References/reference_mutability.md",
-    "References/reference_observer_design.md",
+    "References/reference_bit_manipulation.md",
+    "References/reference_continuous_to_discrete.md",
     "References/reference_PID.md",
+    "Topics/topic_intro_to_state_feedback.md",
+    "Topics/topic_hardware_overview.md",
     "References/reference_quaternions.md",
-    "References/reference_state_feedback.md",
+    "Case Studies/case_motor_observer.md",
     "References/reference_switch_bounce.md",
-    "References/reference_z_domain.md",
-    "Topics/topic_collections.md",
-    "Topics/topic_classes_and_objects.md",
-    "Topics/topic_coop_user_io.md",
-    "Topics/topic_crystals_timers_and_counters.md",
-    "Topics/topic_discrete_PID.md",
-    "Topics/topic_encoders.md",
-    "Topics/topic_file_io.md",
     "Topics/topic_fsms_and_state_transition_diagrams.md",
+    "Topics/topic_virtual_com_ports.md",
+    "Topics/topic_task_diagrams.md",
+    "Topics/topic_serial_communication.md",
+    "Images/encoder/quadrature_waveform.svg",
+    "Images/encoder/reload_algorithm.svg",
     "Images/switch_bounce/switch_rc_diode_debounce.png",
     "Images/switch_bounce/switch_rc_debounce.png",
     "Images/switch_bounce/switch_ideal_waveform.png",
@@ -247,8 +249,6 @@
     "Images/iic/i2c_write_timing.png",
     "Images/iic/i2c_read_timing.png",
     "Images/imu/hamilton_plaque.png",
-    "Images/imu/bno055_breakout_board.png",
-    "Images/imu/bno055_axes.png",
     "Images/vcp",
     "Images/pid",
     "Images/oop",

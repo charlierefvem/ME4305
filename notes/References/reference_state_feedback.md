@@ -9,7 +9,7 @@ source:
   term: June 2026
   file: observer_case_study.tex
   author: Charlie Refvem
-status: draft
+status: dirty
 ---
 
 TODO:

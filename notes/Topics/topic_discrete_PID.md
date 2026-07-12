@@ -7,6 +7,10 @@ tags:
   - PID-control
   - anti-windup
   - firmware
+source:
+  couse: ME4305
+  term: 2268
+status: draft
 ---
 
 ## Motivation
@@ -84,9 +88,9 @@ u(z) &= K_p\, e(z)
     + K_i\,T_s\,\frac{z^{-1}}{1-z^{-1}} e(z)
     + \frac{K_d}{T_s}\, \frac{N\,T_s(1-z^{-1})}{1+(N\,T_s-1)z^{-1}} e(z), \\[2pt]
 %
-u(z) &= K_p\, e(z)
-    + K_i^\prime\,\frac{z^{-1}}{1-z^{-1}} e(z)
-    + K_d^\prime\, \frac{N\,T_s(1-z^{-1})}{1+(N\,T_s-1)z^{-1}} e(z), \\[2pt]
+%u(z) &= K_p\, e(z)
+%    + K_i^\prime\,\frac{z^{-1}}{1-z^{-1}} e(z)
+%    + K_d^\prime\, \frac{N\,T_s(1-z^{-1})}{1+(N\,T_s-1)z^{-1}} e(z), \\[2pt]
 %
 u(z) &= K_p\, e(z)
     + K_i^\prime\,\frac{z^{-1}}{1-z^{-1}} e(z)
@@ -112,7 +116,7 @@ where $I(z)$ is the discretely computed integral of $e(z)$ and $D(z)$ is the dis
 
 **Insight**: the primed gains are *firmware* gains. They include the effect of the sample period. This means that changing the sample period without recomputing $K_i^\prime$  and $K_d^\prime$​ changes the behavior of the controller, so these should be converted as part of controller initialization and each time the gains are updated. In other words, continuous-time gains and discrete implementation gains should not be mixed casually. If $K_i$​ and $K_d$​ are tuned in continuous-time units, the primed gains must be recomputed whenever $T_s$​ changes.
 
-To find $I_k$ we can convert the discrete-time transfer function for $I(z)$ to a difference equation:
+To find $I_k$ we can convert the discrete-time transfer function relating $I(z)$ and $e(z)$ to a difference equation:
 $$
 \begin{aligned}
 I(z) &= \frac{z^{-1}}{1-z^{-1}} e(z), \\[2pt]
@@ -126,7 +130,7 @@ $$
 I_{k+1} = I_k + e_k.
 $$
 
-To find $D_k$ we can convert the discrete-time transfer function for $D(z)$ to a difference equation:
+To find $D_k$ we can convert the discrete-time transfer function relating $D(z)$ and $e(z)$ to a difference equation:
 $$
 \begin{aligned}
 D(z) &= \frac{\alpha\,(1-z^{-1})}{1-\beta\,z^{-1}} e(z), \\[2pt]
@@ -149,7 +153,7 @@ u_{sat,k} &= \operatorname{sat}_{[u_{\min},u_{\max}]}(u_{req,k}).
 \end{aligned}
 $$
 
-Although the combined controller transfer function is second order, this separated implementation stores three persistent quantities: the integral accumulator $I_k$​, the stored filtered derivative value $D_{k-1}$​, and the previous error $e_{k-1}$​. This is not a minimal realization, but it is more transparent for firmware implementation because the integral accumulator and derivative filter remain separate. This separation makes debugging easier and allows anti-windup to be applied directly to the integral term.
+**Insight**: although the combined controller transfer function is second order, this separated implementation stores three persistent quantities: the integral accumulator $I_k$​, the stored filtered derivative value $D_{k-1}$​, and the previous error $e_{k-1}$​. This is not a minimal realization, but it is more transparent for firmware implementation because the integral accumulator and derivative filter remain separate. This separation makes debugging easier and allows anti-windup to be applied directly to the integral term.
 
 ### Anti-windup
 

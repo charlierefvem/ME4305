@@ -1,6 +1,7 @@
 ---
-title: Observer Intuition
-type: insight
+title: General Observer Intuition
+type: perspective
+status: dirty
 ---
 ## Disturbance Observers vs Integral Action — Key Insights
 

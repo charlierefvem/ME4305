@@ -128,11 +128,11 @@ Examine the figure above and notice the highlighted edge on Channel A. In this f
 
 All edges in the waveform below will produce the same direction using the lookup table because the waveforms correspond to constant velocity rotation. It's easy to see this visually by noticing that Channel A leads Channel B for the entire duration shown.
 
-### Polling Decoder
+### Poll Decoding
 
 STM32 timer hardware compares the current AB state against the previous state instead of explicitly detecting edges. This comparison occurs rapidly, once per edge on the clock source for the timer. On the Nucleo L476RG all timers run directly off the system clock at 80MHz, so the polling occurs 80 million times per second. Built into the microcontroller is a lookup table, similar to the one shown below, that shows the count direction based on the present and previous AB states.
 
-![Sixteen-state quadrature polling transition table.](images/encoder/quadrature_polling_table.png)
+![Sixteen-state quadrature polling transition table.](images/encoder/quadrature_polling_table.svg)
 
 The timer can also XOR the two channels to generate a square wave whose frequency represents speed.
 
@@ -163,9 +163,9 @@ One approach to detecting overflow is to frequently compute the change in count 
 
 ![Timer rollover compensation example illustrating overflow and underflow correction.](images/encoder/reload_algorithm.svg)
 
-In the example waveform in the figure above, overflow occurs between update #4 and update #5. The change in count *should* be a small positive change, as indicated by the black-colored $\Delta45$ but the computed value will actually be a larger negative change, as indicated by the $\Delta45$ shown in red.
+In the example waveform in the figure above, overflow occurs between update #4 and update #5. The change in count *should* be a small positive change, as indicated by $\Delta45$ but the computed value will actually be a larger negative change, as indicated by $\Delta45-AR$.
 
-Two observations can be made about the incorrect  $\Delta45$ , it is both the wrong sign and the wrong magnitude. Instead of being small and positive the change is large and negative. If the encoder were rotating the opposite direction and underflowed a similar effect occurs: instead of a small negative change the underflow would cause the count to change to be a larger positive amount.
+Two observations can be made about the incorrect  $\Delta45-AR$ , it is both the wrong sign and the wrong magnitude. Instead of being small and positive the change is large and negative. If the encoder were rotating the opposite direction and underflowed a similar effect occurs: instead of a small negative change the underflow would cause the count to change to be a larger positive amount.
 
 Therefore, to detect when overflow occurs we check both the sign and magnitude of the change, and if the magnitude is greater than a certain threshold we identify the delta as incorrect, and offset appropriately to compensate for the overflow.
 
