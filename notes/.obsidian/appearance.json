@@ -11,7 +11,9 @@
     "listing_callout",
     "minimal_callout",
     "true_sized_images",
-    "white_image_backgrounds"
+    "white_image_backgrounds",
+    "image_layout",
+    "table_layout"
   ],
   "theme": "system"
 }

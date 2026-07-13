@@ -1,6 +1,6 @@
 /*
    Give transparent images a white backing in dark mode.
-   Image sizing and centering live in center_images.css.
+   Image sizing and centering live in image_layout.css.
 */
 
 .theme-dark .markdown-rendered img,

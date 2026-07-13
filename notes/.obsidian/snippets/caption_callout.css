@@ -1,35 +1,37 @@
-/* 8. INITIALIZE CAPTION COUNTERS */
-.markdown-preview-view, 
+/*
+   Numbered figure and table captions.
+   Handles Obsidian reading mode, editing mode, and Webpage HTML Export.
+*/
+
+.markdown-preview-view,
 .markdown-rendered,
-.markdown-preview-sizer { 
-  counter-reset: figure-counter table-counter; 
+.markdown-preview-sizer {
+  counter-reset: figure-counter table-counter;
   --caption-readable-width: var(
     --file-line-width,
     var(--line-width, var(--line-width-adaptive, 100%))
   );
-} 
+}
 
-/* 9. BASE CONTAINER STRIPPING */
+/* Strip default callout chrome. */
 .callout[data-callout="figure"],
 .callout[data-callout="table"] {
   background-color: transparent !important;
   border: none !important;
   padding: 0 !important;
-  display: table; /* Shrinks container to match asset width perfectly */
-  margin: 1.5em auto; /* Centers the block on the page */
+  display: table;
+  margin: 1.5em auto;
 }
 
 .callout[data-callout="figure"] {
   max-width: min(100%, var(--caption-readable-width)) !important;
 }
 
-/* Hide default icon/title bars completely */
 .callout[data-callout="figure"] .callout-title,
 .callout[data-callout="table"] .callout-title {
   display: none !important;
 }
 
-/* Standardize content alignment */
 .callout[data-callout="figure"] .callout-content,
 .callout[data-callout="table"] .callout-content {
   padding: 0 !important;
@@ -37,7 +39,6 @@
   flex-direction: column;
 }
 
-/* Ensure assets and caption text blocks are centered */
 .callout[data-callout="figure"] .callout-content > *,
 .callout[data-callout="table"] .callout-content > * {
   margin-left: auto;
@@ -45,7 +46,7 @@
   text-align: center;
 }
 
-/* Styling the raw text string rules */
+/* Style caption text. */
 .callout[data-callout="figure"] .callout-content > p:not(:has(img)),
 .callout[data-callout="table"] .callout-content > p:not(:has(table)) {
   font-size: 0.85em;
@@ -55,8 +56,7 @@
   max-width: 90%;
 }
 
-
-/* 10. FIGURE LAYOUT (Caption BELOW Image) */
+/* Figure layout: caption below image. */
 .callout[data-callout="figure"] {
   counter-increment: figure-counter;
 }
@@ -71,19 +71,16 @@
   counter-increment: none;
 }
 
-/* Adds a small gap above the caption text */
 .callout[data-callout="figure"] .callout-content > p:not(:has(img)) {
   margin-top: 8px !important;
   margin-bottom: 0 !important;
 }
 
-/* Injects the "Figure N — " Prefix */
 .callout[data-callout="figure"] .callout-content > p:not(:has(img))::before {
   content: "Figure " counter(figure-counter) " - ";
   font-weight: bold;
-  font-style: normal; /* Keeps prefix upright even if caption is italic */
+  font-style: normal;
 }
-
 
 /* Webpage HTML Export may place the image, a <br>, and caption text in
    one paragraph. Put the prefix after the image embed and before the text. */
@@ -124,7 +121,7 @@
   font-style: normal;
 }
 
-/* 11. TABLE LAYOUT (Caption ABOVE Table) */
+/* Table layout: caption above table. */
 .callout[data-callout="table"] {
   counter-increment: table-counter;
 }
@@ -139,14 +136,12 @@
   counter-increment: none;
 }
 
-/* Force the caption paragraph to sit at the top of the flex stack */
 .callout[data-callout="table"] .callout-content > p:not(:has(table)) {
-  order: -1; /* Pushes text line to the very top */
+  order: -1;
   margin-top: 0 !important;
-  margin-bottom: 8px !important; /* Adds visual space before data grid starts */
+  margin-bottom: 8px !important;
 }
 
-/* Injects the "Table N — " Prefix */
 .callout[data-callout="table"] .callout-content > p:not(:has(table))::before {
   content: "Table " counter(table-counter) " - ";
   font-weight: bold;

@@ -1,5 +1,6 @@
 /*
-   Center note images at natural size, shrinking only when they exceed
+   General image layout.
+   Centers images at natural size and shrinks them only when they exceed
    the readable text width.
 */
 

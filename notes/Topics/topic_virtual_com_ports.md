@@ -117,11 +117,13 @@ These serial objects behave similarly to Python file streams and support methods
 
 The table below summarizes the three types of serial communication port covered above. It is important to understand which one to use in the right context.
 
-| Tool     | Platform    | Class Name      | Usage                                                                                                                                                                                                                                 |
-| -------- | ----------- | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| VCP      | MicroPython | `pyb.USB_VCP`   | Primary tool for accessing serial port on the STM32 microcontroller. Should be used for access to the Python REPL, a UI, or for basic data transfer.                                                                                  |
-| UART     | MicroPython | `pyb.UART`      | Secondary tool for accessing serial ports on the microcontroller to use for data transfer, debugging, etc. Should likely not be used unless the VCP is already in use or you need UART specifically for another piece of<br>hardware. |
-| pyserial | CPython     | `serial.Serial` | Primary tool for accessing serial ports on any computer running Python. Any serial interaction done on a computer, through USB, Bluetooth, or a true serial port, can be done using this module.                                      |
+>[!table]
+>| Tool     | Platform    | Class Name      | Usage                                                                                                                                                                                                                                 |
+>| -------- | ----------- | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+>| VCP      | MicroPython | `pyb.USB_VCP`   | Primary tool for accessing serial port on the STM32 microcontroller. Should be used for access to the Python REPL, a UI, or for basic data transfer.                                                                                  |
+>| UART     | MicroPython | `pyb.UART`      | Secondary tool for accessing serial ports on the microcontroller to use for data transfer, debugging, etc. Should likely not be used unless the VCP is already in use or you need UART specifically for another piece of<br>hardware. |
+>| pyserial | CPython     | `serial.Serial` | Primary tool for accessing serial ports on any computer running Python. Any serial interaction done on a computer, through USB, Bluetooth, or a true serial port, can be done using this module.                                      |
+>Caption here
 
 ## Bytes versus Strings
 
