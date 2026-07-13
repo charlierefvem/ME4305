@@ -126,6 +126,15 @@
   counter-increment: table-counter;
 }
 
+.callout[data-callout="table"] table,
+.callout[data-callout="table"] thead,
+.callout[data-callout="table"] tbody,
+.callout[data-callout="table"] tr,
+.callout[data-callout="table"] th,
+.callout[data-callout="table"] td {
+  border-color: var(--background-modifier-border) !important;
+}
+
 /* Webpage HTML Export wraps each callout in an .el-div. Increment the
    wrapper so the counter value is visible throughout the exported block. */
 .markdown-preview-sizer > div:has(> .callout[data-callout="table"]) {
