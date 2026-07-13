@@ -1,6 +1,7 @@
 /* 1. INITIALIZE COUNTER (Scoped safely for app & web export) */ 
 .markdown-preview-view, 
-.markdown-rendered { 
+.markdown-rendered,
+.markdown-preview-sizer { 
   counter-reset: listing-counter; 
 } 
 
@@ -8,6 +9,18 @@
 .callout[data-callout="block_listing"], 
 .callout[data-callout="file_listing"] { 
   counter-increment: listing-counter; 
+}
+
+/* Webpage HTML Export wraps each callout in an .el-div. Increment the
+   wrapper so the value is visible to following sibling output callouts. */
+.markdown-preview-sizer > div:has(> .callout[data-callout="block_listing"]),
+.markdown-preview-sizer > div:has(> .callout[data-callout="file_listing"]) {
+  counter-increment: listing-counter;
+}
+
+.markdown-preview-sizer > div > .callout[data-callout="block_listing"],
+.markdown-preview-sizer > div > .callout[data-callout="file_listing"] {
+  counter-increment: none;
 }
 
 .callout[data-callout="block_listing"], 
