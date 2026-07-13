@@ -49,7 +49,8 @@ u_k = K_p\,e_k + K_i\,I_k.
 \end{aligned}
 $$
 
-**Note**: in this convention the value of $K_i$ already accounts for the sample period, $T_s$.
+>[!note] 
+>In this convention the value of $K_i$ already accounts for the sample period, $T_s$.
 
 In firmware the actuation effort produced by the control law is saturated based on the available actuation limits. Anti-windup is also added in firmware using conditional-integration techniques. These nuances will be covered in greater detail at the end of this case study. For more information on anti-windup techniques see the pertinent section in [[reference_PID|PID Controllers]].
 
@@ -218,7 +219,8 @@ d
 \end{aligned}
 $$
 
-**Note**: the state vector, $\underline{x}$ is a different variable than the control variable $x$ presented in the controller section above.
+>[!note] 
+> The state vector, $\underline{x}$ is a different variable than the control variable $x$ presented in the controller section above.
 
 The state-space representation of the system now has order three:
 $$

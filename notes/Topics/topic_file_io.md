@@ -28,30 +28,32 @@ Python files should almost always be opened using a `with` block. This guarantee
 
 The traditional approach to reading a file is to open the file, keep the file stored in an object, and then close the file after processing. This approach may be unsafe as the file will remain open if an exception (an error) occurs before the file is closed.
 
-``` python
-filename = "data.csv"
-
-file = open(filename, "r")
-
-for line in file:
-    # Process one line at a time
-    pass
-
-file.close()
-```
+>[!inline_listing] Traditional Approach
+>``` python
+>filename = "data.csv"
+>
+>file = open(filename, "r")
+>
+>for line in file:
+>     # Process one line at a time
+>     pass
+>
+>file.close()
+>```
 
 ### Example 2
 
 The modern, preferred approach to reading a file is to use the `with` construct. Using the `with` statement means that Python is responsible for managing the file, not your code. Therefore when things go wrong, like when an exception is raised, Python can automatically clean up safely by closing the file.
 
-``` python
-filename = "data.csv"
-
-with open(filename, "r") as file:
-    for line in file:
-        # Process one line at a time
-        pass
-```
+>[!inline_listing] Modern Approach
+>``` python
+>filename = "data.csv"
+>
+>with open(filename, "r") as file:
+>     for line in file:
+>         # Process one line at a time
+>         pass
+>```
 
 ### Example 3
 

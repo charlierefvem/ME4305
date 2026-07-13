@@ -57,7 +57,8 @@ A modified control loop with actuator saturation is shown in the diagram below. 
 
 In battery-powered systems, the actuator limits may themselves change over time. For example, as the battery voltage decreases, the maximum achievable motor voltage decreases proportionally. Consequently, it is often preferable to compute saturation limits dynamically from the measured battery voltage rather than assuming fixed limits.
 
-**Insight**: almost all real-world PID implementations implement saturation, so it should be considered a standard feature in practice.
+>[!insight]
+>Almost all real-world PID implementations implement saturation, so it should be considered a standard feature in practice.
 ### Anti-Windup
 
 One of the unintended consequences of actuator saturation occurs in systems with integral control and is known as integrator windup, saturation windup, or reset windup.
@@ -80,7 +81,8 @@ Other anti-windup techniques use feedback to reduce the integrator value dynamic
 
 An important concept in anti-windup construction is that once the saturation disappears the anti-windup mechanism must also disappear so that it is invisible during linear operation.
 
-**Insight**: Adding anti-windup is essential for any controller implementing integral action when actuator saturation is expected.
+>[!insight]
+>Adding anti-windup is essential for any controller implementing integral action when actuator saturation is expected.
 
 ### IP and IPD Controllers
 
@@ -94,7 +96,8 @@ It should be noted that, partially through intentional design, the system will n
 
 ![A block diagram representation of an IPD feedback controller.](images/pid/IPD.svg)
 
-**Insight**: IP and IPD controllers are used when the setpoint changes abruptly and actuator stress is a concern.
+>[!insight]
+>IP and IPD controllers are used when the setpoint changes abruptly and actuator stress is a concern.
 
 ### Feedforward Control
 
@@ -113,7 +116,8 @@ The feedback controller therefore only needs to work on the small error between 
 
 ![A block diagram representation of a feedback controller with an additional feedforward path.](images/pid/Feedforward.svg)
 
-**Insight**: Feedforward is useful when the plant is reasonably predictable and the required steady-state effort is known.
+>[!insight]
+>Feedforward is useful when the plant is reasonably predictable and the required steady-state effort is known.
 
 ### Pseudo-derivative Feedback
 
@@ -131,7 +135,8 @@ where $\hat{v}$ represents a measurement of the derivative of $x$.
 
 Pseudo-derivative feedback is an early example of a broader design philosophy that uses more information about the system in addition to the output measurement. Rather than computing additional information numerically (such as a derivative), it is often preferable to measure that information directly whenever practical. Later in the course we will extend this idea further using state feedback and observers.
 
-**Insight**: Pseudo-derivative feedback is used when a direct measurement of the derivative is available through an additional sensor.
+>[!insight]
+>Pseudo-derivative feedback is used when a direct measurement of the derivative is available through an additional sensor.
 
 ## Candidate static references
 * \[\[State Feedback\]\]

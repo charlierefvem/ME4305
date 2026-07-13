@@ -1,0 +1,86 @@
+/* 8. INITIALIZE CAPTION COUNTERS */
+.markdown-preview-view, 
+.markdown-rendered { 
+  counter-reset: figure-counter table-counter; 
+} 
+
+/* 9. BASE CONTAINER STRIPPING */
+.callout[data-callout="figure"],
+.callout[data-callout="table"] {
+  background-color: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  display: table; /* Shrinks container to match asset width perfectly */
+  margin: 1.5em auto; /* Centers the block on the page */
+}
+
+/* Hide default icon/title bars completely */
+.callout[data-callout="figure"] .callout-title,
+.callout[data-callout="table"] .callout-title {
+  display: none !important;
+}
+
+/* Standardize content alignment */
+.callout[data-callout="figure"] .callout-content,
+.callout[data-callout="table"] .callout-content {
+  padding: 0 !important;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Ensure assets and caption text blocks are centered */
+.callout[data-callout="figure"] .callout-content > *,
+.callout[data-callout="table"] .callout-content > * {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+/* Styling the raw text string rules */
+.callout[data-callout="figure"] .callout-content > p:not(:has(img)),
+.callout[data-callout="table"] .callout-content > p:not(:has(table)) {
+  font-size: 0.85em;
+  color: var(--text-muted);
+  font-style: italic;
+  line-height: 1.4;
+  max-width: 90%;
+}
+
+
+/* 10. FIGURE LAYOUT (Caption BELOW Image) */
+.callout[data-callout="figure"] {
+  counter-increment: figure-counter;
+}
+
+/* Adds a small gap above the caption text */
+.callout[data-callout="figure"] .callout-content > p:not(:has(img)) {
+  margin-top: 8px !important;
+  margin-bottom: 0 !important;
+}
+
+/* Injects the "Figure N — " Prefix */
+.callout[data-callout="figure"] .callout-content > p:not(:has(img))::before {
+  content: "Figure " counter(figure-counter) " — ";
+  font-weight: bold;
+  font-style: normal; /* Keeps prefix upright even if caption is italic */
+}
+
+
+/* 11. TABLE LAYOUT (Caption ABOVE Table) */
+.callout[data-callout="table"] {
+  counter-increment: table-counter;
+}
+
+/* Force the caption paragraph to sit at the top of the flex stack */
+.callout[data-callout="table"] .callout-content > p:not(:has(table)) {
+  order: -1; /* Pushes text line to the very top */
+  margin-top: 0 !important;
+  margin-bottom: 8px !important; /* Adds visual space before data grid starts */
+}
+
+/* Injects the "Table N — " Prefix */
+.callout[data-callout="table"] .callout-content > p:not(:has(table))::before {
+  content: "Table " counter(table-counter) " — ";
+  font-weight: bold;
+  font-style: normal;
+}

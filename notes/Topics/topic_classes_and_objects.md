@@ -151,7 +151,8 @@ class str:
 
 To call the split method using the long form syntax you are passing in the name of the object, `my_string`, to the parameter `self` so that when the method runs it is able to interact with `my_string`.
 
-**Reminder:** the mentioned long-form syntax is not often utilized so you should prefer the standard `object.method()` style of syntax in your own code.
+>[!note]
+>The mentioned long-form syntax is not often utilized so you should prefer the standard `object.method()` style of syntax in your own code.
 
 ### Example 5
 
@@ -197,7 +198,9 @@ if __name__ == "__main__":
     right_motor.set_effort(-42)
 ```
 
-**Note**: if you ever want to create an indented block, but you don't want to write code inside of it yet use `pass`. This keyword tells the interpreter that you've deliberately left an indented block empty. Pass should not appear anywhere else in your code.
+>[!note]
+>If you ever want to create an indented block, but you don't want to write code inside of it yet use `pass`. This keyword tells the interpreter that you've deliberately left an indented block empty. Pass should not appear anywhere else in your code.
+
 ### Example 6
 Many programmers (including your instructor) consider the use of global variables to be poor coding practice. In some cases, they seem necessary, like in interrupt callbacks, but almost always they can be avoided.
 

@@ -19,7 +19,8 @@ Mechanical systems evolve continuously over time, however it is uncommon to appl
 
 This topic focuses on development of a full generic PID controller with filtered derivative and anti-windup, implemented discretely, that can act on a mechanical system. Some of the material in this topic relies on understanding of the [[reference_z_domain|z-Domain]] and [[reference_continuous_to_discrete|Continuous to Discrete Conversion]]. It is also assumed that the reader has familiarity with the standard [[reference_PID|PID Controller]] in continuous time.
 
-**Note**: we are not deriving the only correct digital PID. We are deriving one clean, inspectable, firmware-ready discrete PID implementation from a familiar continuous-time PID form.
+>[!note]
+>We are not deriving the only correct digital PID. We are deriving one clean, inspectable, firmware-ready discrete PID implementation from a familiar continuous-time PID form.
 ## Discrete Integration and Differentiation
 
 The structure of the discrete PID will be found by considering a continuous-time PID controller and then applying a continuous-to-discrete conversion.
@@ -114,7 +115,8 @@ u_d(z) &= K_d^\prime\, \frac{\alpha\,(1-z^{-1})}{1-\beta\,z^{-1}} e(z) &
 $$
 where $I(z)$ is the discretely computed integral of $e(z)$ and $D(z)$ is the discretely computed derivative of $e(z)$.
 
-**Insight**: the primed gains are *firmware* gains. They include the effect of the sample period. This means that changing the sample period without recomputing $K_i^\prime$  and $K_d^\prime$​ changes the behavior of the controller, so these should be converted as part of controller initialization and each time the gains are updated. In other words, continuous-time gains and discrete implementation gains should not be mixed casually. If $K_i$​ and $K_d$​ are tuned in continuous-time units, the primed gains must be recomputed whenever $T_s$​ changes.
+>[!insight]
+>The primed gains are *firmware* gains. They include the effect of the sample period. This means that changing the sample period without recomputing $K_i^\prime$  and $K_d^\prime$​ changes the behavior of the controller, so these should be converted as part of controller initialization and each time the gains are updated. In other words, continuous-time gains and discrete implementation gains should not be mixed casually. If $K_i$​ and $K_d$​ are tuned in continuous-time units, the primed gains must be recomputed whenever $T_s$​ changes.
 
 To find $I_k$ we can convert the discrete-time transfer function relating $I(z)$ and $e(z)$ to a difference equation:
 $$
@@ -153,7 +155,8 @@ u_{sat,k} &= \operatorname{sat}_{[u_{\min},u_{\max}]}(u_{req,k}).
 \end{aligned}
 $$
 
-**Insight**: although the combined controller transfer function is second order, this separated implementation stores three persistent quantities: the integral accumulator $I_k$​, the stored filtered derivative value $D_{k-1}$​, and the previous error $e_{k-1}$​. This is not a minimal realization, but it is more transparent for firmware implementation because the integral accumulator and derivative filter remain separate. This separation makes debugging easier and allows anti-windup to be applied directly to the integral term.
+>[!insight]
+>Although the combined controller transfer function is second order, this separated implementation stores three persistent quantities: the integral accumulator $I_k$​, the stored filtered derivative value $D_{k-1}$​, and the previous error $e_{k-1}$​. This is not a minimal realization, but it is more transparent for firmware implementation because the integral accumulator and derivative filter remain separate. This separation makes debugging easier and allows anti-windup to be applied directly to the integral term.
 
 ### Anti-windup
 

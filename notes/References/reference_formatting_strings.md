@@ -46,15 +46,18 @@ The **width** before the dot is the minimum field width, while the **precision**
 
 For this example, `{:8.2f}` combines width `8`, precision `.2`, and type `f`.
 
-``` python
-my_pi = 3.14159
+>[!block_listing] Example f-string
+>``` python
+>my_pi = 3.14159
+>
+>print(repr(f"{my_pi:8.2f}"))
+>```
 
-print(repr(f"{my_pi:8.2f}"))
-```
-`Output`:
-``` text
-'    3.14'
-```
+>[!output]
+>``` text
+>'    3.14'
+>```
+
 The output includes four leading spaces to pad the string to a width of eight, as specified.
 
 Note that the function `repr()` used in the example makes the output display as a string representation (with apostrophes shown) rather than as text.
@@ -63,19 +66,21 @@ Note that the function `repr()` used in the example makes the output display as 
 
 This next example will show a few common string formats using the `.format()` method.
 
-``` python
-x = 3.14159
+>[!block_listing] Example use of .format()
+>``` python
+>x = 3.14159
+>
+>print(repr("{:.2f}".format(x)))
+>print(repr("{:,}".format(12345)))
+>print(repr("{:.1%}".format(0.875)))
+>```
 
-print(repr("{:.2f}".format(x)))
-print(repr("{:,}".format(12345)))
-print(repr("{:.1%}".format(0.875)))
-```
-`Output`:
-```text
-'3.14'
-'12,345'
-'87.5%'
-```
+>[!output]
+>```text
+>'3.14'
+>'12,345'
+>'87.5%'
+>```
 
 It is possible to mix fixed string data with formatted values.
 
@@ -127,7 +132,7 @@ print(repr(f"I = {current:.2f} A"))
 
 This final example is more practical and shows how you might create a set of data and print that data in a comma separated format. Note the use of list comprehensions to compactly create time and data values.
 
-``` python
+```python
 from math import pi, sin
 
 times = [t * 0.1 for t in range(11)]
@@ -136,7 +141,8 @@ vals = [sin(2*pi * t) for t in times]
 for time, val in zip(times, vals):
     print(f"{time:.2f},{val:.4f}")
 ```
-`Output`:
+
+Output:
 ``` text
 0.00,0.0000
 0.10,0.5878

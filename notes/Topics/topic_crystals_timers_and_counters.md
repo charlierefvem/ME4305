@@ -124,7 +124,8 @@ For a DC motor to spin smoothly the PWM frequency must be large enough that the 
 
 ![Frequency-domain illustration showing PWM spectrum, motor low-pass response, and motor output spectrum dominated by the DC component.](images/timer_counter/motor_frequency_response.svg)
 
-**Note:** in practice the floor for PWM frequency may actually be much higher than what satisfies the conditions shown above because it is common to choose ultrasonic PWM frequencies.
+>[!note]
+>In practice the floor for PWM frequency may actually be much higher than what satisfies the conditions shown above because it is common to choose ultrasonic PWM frequencies.
 
 Frequencies in the hundreds of Hz to low kHz range will produce noticeable audible tones from the motor which are often undesirable, especially in a busy lab environment with many motors running simultaneously. Selecting PWM frequencies of 20 kHz or higher will guarantee that any produced tones are outside the audible spectrum of human hearing.
 

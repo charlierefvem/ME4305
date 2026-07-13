@@ -80,7 +80,8 @@ It will be left as an exercise for the reader to convert the flowchart into work
 
 ![A detailed flowchart outlining an algorithm for multicharacter numeric data entry.](images/coop_io/multichar_flowchart.svg)
 
-**Insight**: later in the course, this style of user interface will be used to automate a tuning and data collection interface that will eventually interact with a Python script running on a PC.
+>[!insight]
+>Later in the course, this style of user interface will be used to automate a tuning and data collection interface that will eventually interact with a Python script running on a PC.
 ## Summary
 
 Serial port interaction can be slow and therefore result in blocking code. Efforts should be made to write cooperative code instead of blocking code by polling for input before reading and by subdividing large blocks of output into multiple smaller chunks before printing.

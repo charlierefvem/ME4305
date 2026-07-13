@@ -1,6 +1,6 @@
 ---
 title: Scheduling Tasks
-type: lecture
+type: topic
 tags:
   - tasks
   - multitasking
@@ -42,7 +42,9 @@ This preliminary example shows how to write a FSM based task using a generator. 
 
 The task implements the same trivial finite state machine covered in a previous lecture, reproduced below.
 
-![A state transition diagram with three states. State 0, the initialization state, always transitions to state 1, the run state. State 1 always transitions to state 2, the run thrice state. State 2 transitions to state 1 after it self-transitions enough times to increment count to 2.](images/state_transition_diagram.png)
+>[!figure] figure_name
+>![A state transition diagram with three states. State 0, the initialization state, always transitions to state 1, the run state. State 1 always transitions to state 2, the run thrice state. State 2 transitions to state 1 after it self-transitions enough times to increment count to 2.](images/multitasking/example_transition_diagram.svg)
+>Caption Goes Here
 
 ``` python
 import time
@@ -199,61 +201,61 @@ if __name__ == '__main__':
 
 In this third example the code is refactored into two files. In `taskexample.py` a class is defined that implements the finite state machine and in `main.py` an object of the class is instantiated and the task is run.
 
-`taskexample.py`
-``` python
-# The states of the FSM
-S0_INIT = 0
-S1_RUN = 1
-S2_RUN_THRICE = 2
-
-# Task implemented as a method of a task class
-class TaskExample:
-        
-    def __init__(self, task_label):
-        # A variable to indicate what state the FSM
-        # is about to run
-        self.state = S0_INIT
-        
-        # A counter variable used to track runs through
-        # state 2
-        self.count = 0
-        
-        # A label for the task to distinguish it's print statements
-        self.task_label = task_label
-        
-    def run(self): 
-        # Attempt to run infinite iterations of the state machine
-        while True:
-            # Implement FSM inside while loop
-            if (self.state == self.S0_INIT):
-                # Run state zero code
-                print(self.task_label, ":")
-                print("\tThe state is ", self.state)
-                self.state = self.S1_RUN
-                
-            elif (self.state == self.S1_RUN):
-                # Run state one code
-                print(self.task_label, ":")
-                print("\tThe state is ", self.state)
-                self.state = self.S2_RUN_THRICE
-                
-            elif (self.state == self.S2_RUN_THRICE):
-                # Run state two code
-                print(self.task_label, ":")
-                print("\tThe state is ", self.state)
-                if (self.count == 2):
-                    self.state = self.S1_RUN
-                    self.count = 0
-                else:
-                    self.count += 1
-                
-            else:
-                # If the state isnt 0, 1, or 2 we have an invalid state
-                raise ValueError('Invalid state')
-        
-            # Yield the value of the next state to run
-            yield self.state
-```
+>[!file_listing] task_example.py
+>```Python
+># The states of the FSM
+>S0_INIT = 0
+>S1_RUN = 1
+>S2_RUN_THRICE = 2
+>
+># Task implemented as a method of a task class
+>class TaskExample:
+>        
+>    def __init__(self, task_label):
+>        # A variable to indicate what state the FSM
+>        # is about to run
+>        self.state = S0_INIT
+>        
+>        # A counter variable used to track runs through
+>        # state 2
+>        self.count = 0
+>        
+>        # A label for the task to distinguish it's print statements
+>        self.task_label = task_label
+>        
+>    def run(self): 
+>        # Attempt to run infinite iterations of the state machine
+>        while True:
+>            # Implement FSM inside while loop
+>            if (self.state == self.S0_INIT):
+>                # Run state zero code
+>                print(self.task_label, ":")
+>                print("\tThe state is ", self.state)
+>                self.state = self.S1_RUN
+>                
+>            elif (self.state == self.S1_RUN):
+>                # Run state one code
+>                print(self.task_label, ":")
+>                print("\tThe state is ", self.state)
+>                self.state = self.S2_RUN_THRICE
+>                
+>            elif (self.state == self.S2_RUN_THRICE):
+>                # Run state two code
+>                print(self.task_label, ":")
+>                print("\tThe state is ", self.state)
+>                if (self.count == 2):
+>                    self.state = self.S1_RUN
+>                    self.count = 0
+>                else:
+>                    self.count += 1
+>                
+>            else:
+>                # If the state isnt 0, 1, or 2 we have an invalid state
+>                raise ValueError('Invalid state')
+>        
+>            # Yield the value of the next state to run
+>            yield self.state
+>```
 
 `main.py`
 ``` python

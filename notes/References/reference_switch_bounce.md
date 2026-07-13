@@ -63,7 +63,8 @@ For a $4\times4$ array of switches, like the hexadecimal keypad shown below, the
 
 ![A schematic snippet for a 4x4 switch matrix. Rows are labeled Y1 through Y4 and columns are labeled X1 through X4.](images/gpio/hexadecimal_keypad_matrix.svg)
 
-**Note**: the above schematic is simplified from how these types of matrices are typically constructed. As shown, the matrix will create false readings if multiple buttons are pressed simultaneously. More robust circuits add series diodes to each switch. By allowing current to flow only one way through each switch the false readings can be prevented.
+>[!note]
+>The above schematic is simplified from how these types of matrices are typically constructed. As shown, the matrix will create false readings if multiple buttons are pressed simultaneously. More robust circuits add series diodes to each switch. By allowing current to flow only one way through each switch the false readings can be prevented.
 
 ### Shift Registers and Port Expanders
 
@@ -130,6 +131,7 @@ A software debounce strategy is:
 In this approach, the ISR responds quickly to the first detected edge, but additional edges caused by bounce are ignored until the debounce interval has passed.
 
 The debounce interval should be chosen to be longer than the expected mechanical bounce time but shorter than the shortest intentional switch activation expected by the application. Choosing the debounce interval is an engineering tradeoff. The interval should be long enough to reject mechanical bounce but short enough that intentional switch transitions are not suppressed.
+
 #### Example 2
 
 This example will illustrate one method for implementing debounce using a combination of a scheduled task and an interrupt service routine.
@@ -148,6 +150,7 @@ This example will illustrate one method for implementing debounce using a combin
         3) If needed, set a flag so that other code can re-enable IRQs later.
 3) A Scheduled Task for Re-Enabling IRQs
     1) A task should run at a regular debounce interval. Its job is to re-enable IRQs after the debounce period expires.
+
 ##### Debounce Task
 
 The code block below shows a task that disables an external interrupt after a switch event, then re-enables it after the debounce interval has passed.
@@ -267,7 +270,8 @@ self._db_mask[0] |= 1 << ISR_src
 
 The callback then disables the interrupt source so that bounce edges on the same line do not keep generating interrupts. 
 
-**Insight**: notice that the callback performs only a few simple operations before returning. This keeps the ISR execution time short while deferring less time-critical work to the scheduled task.
+>[!note]
+>Notice that the callback performs only a few simple operations before returning. This keeps the ISR execution time short while deferring less time-critical work to the scheduled task.
 
 Each time the task runs, the first thing it does is start a critical section, that is, a section in which ISR callbacks are temporarily disabled. During this critical section, a copy of the previous mask is stored to remember which callbacks must be reenabled. The current mask is then shifted into the previous mask and the current mask is cleared:
 ```python

@@ -21,13 +21,13 @@ Consider a thought experiment where Romi drives along two very similar paths, st
 
 In both scenarios Romi has driven in an L-shaped path; what information can we conclude by comparing the state before and after the path? Consider the following conceptual questions regarding this thought experiment:
 * Is it possible to determine the final orientation or location of Romi, $\begin{bmatrix}X(t_f) & Y(t_f) & \psi(t_f)\end{bmatrix}^T$, after it has driven on a path by exclusively comparing the final values for the two wheel displacements, $\begin{bmatrix}s_L(t_f) & s_R(t_f)\end{bmatrix}^T$, to the initial wheel displacements, $\begin{bmatrix}s_L(t_0) & s_R(t_0)\end{bmatrix}^T$?
-  > [!spoiler]-
+  > [!answer]-
   > It is possible to determine the final orientation of Romi, but not the final location.
 * If not, would it be possible to determine the final orientation or location of Romi using a time-history of wheel displacements, $\begin{bmatrix}s_L(t) & s_R(t)\end{bmatrix}^T$?
-  > [!spoiler]-
+  > [!answer]-
   > With a time-history it is possible to determine both the final location and orientation of Romi.
 * If, instead, you know the initial and final location and orientation of Romi can you determine the change in displacement at each wheel? What if you know a time-history of the location and orientation?
-  > [!spoiler]-
+  > [!answer]-
   > With only information about the starting and final states it is possible to determine the *difference* between left and right wheel displacements, but not the value of either, as long as the heading is known as an *unwrapped* value. If the heading is only known between $0$ and $2\,\pi$ then the difference in wheel displacements can only be known mod $2\,\pi\,w$ where $w$ is the track-width. If a full time-history is known then both wheel displacements can be determined explicitly.
 ### Configuration-Dependent Transformation
 

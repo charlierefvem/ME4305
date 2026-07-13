@@ -81,4 +81,3 @@ Additionally, the sum of the two resistor values should be large enough to mitig
 
 ## See Also
 * [[reference_PID|PID Controllers]]
-* [[topic_discrete_PID|Discrete PI Implementation]]

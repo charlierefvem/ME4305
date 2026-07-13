@@ -1,6 +1,6 @@
 ---
 title: Romi Localization with an Extended Kalman Filter
-type: reference
+type: case-study
 tags:
   - batteries
   - ADC

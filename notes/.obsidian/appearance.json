@@ -11,6 +11,9 @@
     "colorful_graph_nodes",
     "true_sized_images",
     "center_tables",
-    "center_images"
-  ]
+    "listing_callout",
+    "minimal_callout",
+    "caption_callout"
+  ],
+  "theme": "system"
 }

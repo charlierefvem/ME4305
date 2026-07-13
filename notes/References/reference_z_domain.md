@@ -43,7 +43,8 @@ For difference equations, the z-transform replaces the Laplace transform, result
 
 ---
 
-**Insight:** why do we care about $z^k$? As derived below, we will find that $z = e^{s\,T_s}$. Plugging this into the stability condition of decaying $e^{s\,t}$ while letting $t=k\,T_s$ we find
+>[!insight]
+>Why do we care about $z^k$? As derived below, we will find that $z = e^{s\,T_s}$. Plugging this into the stability condition of decaying $e^{s\,t}$ while letting $t=k\,T_s$ we find
 $$
 \begin{aligned}
 e^{st} &= e^{st}, \\
@@ -103,7 +104,8 @@ Strictly speaking, the complex logarithm is multivalued, so converting from $z$ 
 
 ---
 
-**Insight:** from $z = e^{s\,T}$ it is easy to show that the left half plane is mapped to the unit disk by applying Euler's formula after splitting $s$ into real and imaginary components.
+>[!insight]
+>From $z = e^{s\,T}$ it is easy to show that the left half plane is mapped to the unit disk by applying Euler's formula after splitting $s$ into real and imaginary components.
 
 $$
 \begin{aligned}

@@ -40,7 +40,8 @@ A collection is any Python object that stores multiple pieces of data in a singl
   `array.array` |      ✓  |      ✓   |    Uniform numeric data
 \*Insertion ordered in modern Python (3.7+).
 
-**Note:** mutability is a nuanced concept in Python we will return to several times in the term. For this early point in the term, you should think of *immutable* variables as read-only and *mutable* variables as modifiable. A more precise definition will come shortly in future notes.
+>[!note]
+>Mutability is a nuanced concept in Python we will return to several times in the term. For this early point in the term, you should think of *immutable* variables as read-only and *mutable* variables as modifiable. A more precise definition will come shortly in future notes.
 
 ### Lists (`list` Objects)
 

@@ -169,12 +169,12 @@ Two observations can be made about the incorrect  $\Delta45-AR$ , it is both the
 
 Therefore, to detect when overflow occurs we check both the sign and magnitude of the change, and if the magnitude is greater than a certain threshold we identify the delta as incorrect, and offset appropriately to compensate for the overflow.
 
-**Algorithm:**
-1.  Sample the timer count periodically and compute $\Delta$, the change in count since the last update: `delta = count - last_count`
-2.  Validate $\Delta$ (check for reload):
-    * Overflow: `delta < -(AR+1)/2` → `delta += AR+1`
-    * Underflow: `delta > (AR+1)/2` → `delta -= AR+1`
-3.  Accumulate the validated $\Delta$ values: `position += delta`
+>[!algorithm]
+>1.  Sample the timer count periodically and compute $\Delta$, the change in count since the last update: `delta = count - last_count`
+>2.  Validate $\Delta$ (check for reload):
+>     * Overflow: `delta < -(AR+1)/2` → `delta += AR+1`
+>     * Underflow: `delta > (AR+1)/2` → `delta -= AR+1`
+>3.  Accumulate the validated $\Delta$ values: `position += delta`
 
 Astute readers will ask "how do we know that the overflow or underflow occurred and that the encoder didn't actually change direction rapidly when we flag an incorrect change in count?". To answer this question we need to determine the sample rate at which we apply the correction algorithm.
 
@@ -186,10 +186,11 @@ f_{update}\left[\frac{1}{sec}\right] \ge \frac{
 \frac{1\,[min]}{60\,[sec]} \cdot
 \frac{4\cdot CPR\,[ticks]}{1 [rev]}}{\frac{AR+1}{2}\,[ticks]}
 $$
-**Note:** when running the calculation above it is critical that you use the maximum angular velocity of the encoder disk itself, not the output velocity of the motor the encoder is attached to if the motor includes gear reduction. Otherwise the computed frequency will be off by a factor of the gear ratio.
+
+>[!note]
+>When running the calculation above it is critical that you use the maximum angular velocity of the encoder disk itself, not the output velocity of the motor the encoder is attached to if the motor includes gear reduction. Otherwise the computed frequency will be off by a factor of the gear ratio.
 
 In ME 4305, the maximum rotation rate for the 3 pole-pair magnetic encoder (before the gear reduction) will be approximately $\omega_{max} = 30,000\,[RPM]$. Using the maximum for a 16-bit timer, the autoreload is AR=65,535. With these numbers the update rate comes out to:
-
 $$
 \begin{aligned}
 f_{update}\left[\frac{1}{sec}\right] &\ge \frac{
@@ -199,11 +200,10 @@ f_{update}\left[\frac{1}{sec}\right] &\ge \frac{
 & \ge 0.183\,[Hz]
 \end{aligned}
 $$
-or about one update every 5.4 seconds.
+or about one update every 5.4 seconds. This result should not be assumed to be universal. The extremely low minimum update rate is a direct result of the low resolution encoder: 3 CPR is an extremely low resolution. Most encoders used in industry have thousands of cycles per revolution, and will need a significantly faster update rate.
 
-**Caution**: This result should not be assumed to be universal. The extremely low minimum update rate is a direct result of the low resolution encoder: 3 CPR is an extremely low resolution. Most encoders used in industry have thousands of cycles per revolution, and will need a significantly faster update rate.
-
-**Bonus Insight**: The criteria above, when considered in the context of the encoder count waveform, can be reinterpreted intuitively. To guarantee that every underflow and overflow is detected the update must run at least twice per period. Any readers familiar with signal processing will recognize this as the Nyquist sampling criteria. The Nyquist sampling criteria states that the frequency of a signal can be measured only if the signal is sampled at a frequency at least twice that of the signal.
+>[!insight]
+>The criteria above, when considered in the context of the encoder count waveform, can be reinterpreted intuitively. To guarantee that every underflow and overflow is detected the update must run at least twice per period. Any readers familiar with signal processing will recognize this as the Nyquist sampling criteria. The Nyquist sampling criteria states that the frequency of a signal can be measured only if the signal is sampled at a frequency at least twice that of the signal.
 
 ### Summary
 
