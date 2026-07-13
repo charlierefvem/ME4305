@@ -3,6 +3,10 @@
 .markdown-rendered,
 .markdown-preview-sizer { 
   counter-reset: figure-counter table-counter; 
+  --caption-readable-width: var(
+    --file-line-width,
+    var(--line-width, var(--line-width-adaptive, 100%))
+  );
 } 
 
 /* 9. BASE CONTAINER STRIPPING */
@@ -13,6 +17,10 @@
   padding: 0 !important;
   display: table; /* Shrinks container to match asset width perfectly */
   margin: 1.5em auto; /* Centers the block on the page */
+}
+
+.callout[data-callout="figure"] {
+  max-width: min(100%, var(--caption-readable-width)) !important;
 }
 
 /* Hide default icon/title bars completely */
@@ -86,7 +94,7 @@
   color: var(--text-muted);
   font-style: italic;
   line-height: 1.4;
-  max-width: 90%;
+  max-width: 100%;
   text-align: center;
 }
 
@@ -96,8 +104,13 @@
 
 .callout[data-callout="figure"] .callout-content > p:has(img) > .image-embed img {
   display: block !important;
+  width: auto !important;
+  max-width: min(100%, var(--caption-readable-width)) !important;
+  height: auto !important;
   margin-inline: auto !important;
   margin-bottom: 8px !important;
+  zoom: 1 !important;
+  transform: none !important;
 }
 
 .callout[data-callout="figure"] .callout-content > p:has(img) > br {

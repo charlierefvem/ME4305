@@ -14,12 +14,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Topics/topic_scheduling_tasks.md",
+                "file": "Topics/topic_virtual_com_ports.md",
                 "mode": "preview",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "topic_scheduling_tasks"
+              "title": "topic_virtual_com_ports"
             },
             "group": "81a883605a27edf8"
           }
@@ -36,13 +36,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Topics/topic_scheduling_tasks.md",
+                "file": "Topics/topic_virtual_com_ports.md",
                 "followCursor": true,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of topic_scheduling_tasks"
+              "title": "Outline of topic_virtual_com_ports"
             },
             "group": "81a883605a27edf8"
           }
@@ -211,6 +211,10 @@
   },
   "active": "d00085b673c0d565",
   "lastOpenFiles": [
+    "Topics/topic_task_diagrams.md",
+    "Topics/topic_virtual_com_ports.md",
+    "References/reference_quaternions.md",
+    "References/reference_PID.md",
     "Topics/topic_scheduling_tasks.md",
     "References/reference_formatting_strings.md",
     "Topics/topic_serial_communication.md",
@@ -226,7 +230,6 @@
     "Case Studies/case_motor_observer.md",
     "References/reference_observer_design.md",
     "Topics/topic_path_planning.md",
-    "References/reference_PID.md",
     "References/reference_switch_bounce.md",
     "References/reference_z_domain.md",
     "Topics/topic_classes_and_objects.md",
@@ -234,9 +237,6 @@
     "Topics/topic_coop_user_io.md",
     "Topics/topic_crystals_timers_and_counters.md",
     "Topics/topic_discrete_PID.md",
-    "Topics/topic_encoders.md",
-    "Topics/topic_file_io.md",
-    "Topics/topic_software_timing.md",
     "Images/encoder/quadrature_waveform.svg",
     "Images/encoder/reload_algorithm.svg",
     "Images/switch_bounce/switch_rc_diode_debounce.png",

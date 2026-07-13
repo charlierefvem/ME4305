@@ -73,11 +73,15 @@ The most common method of handling integrator windup is to "turn off" the integr
 
 This method is not robust however, as it does not allow the integrator to wind back down when the error becomes negative unless the saturation is removed by the proportional term (or the derivative term if it is used). A more robust method uses slightly more complex logic to stop integrating. Using the robust method, the integrator is only switched off when the saturation occurs and the sign of the error matches the sign of the actuation value.
 
-![A block diagram representation of a PI controller with anti-windup implemented using robust conditional integration.](images/pid/Anti_Windup_Advanced_Clamping.svg)
+>[!figure]
+>![A block diagram representation of a PI controller with anti-windup implemented using robust conditional integration.](images/pid/Anti_Windup_Advanced_Clamping.svg)
+> Figure Caption
 
 Other anti-windup techniques use feedback to reduce the integrator value dynamically depending on the amount of saturation that is occurring.
 
-![A block diagram representation of a closed-loop PI controller with anti-windup implemented using feedback.](images/pid/Anti_Windup_Feedback_Method.svg)
+>[!figure]
+>![A block diagram representation of a closed-loop PI controller with anti-windup implemented using feedback.](images/pid/Anti_Windup_Feedback_Method.svg)
+> Figure Caption
 
 An important concept in anti-windup construction is that once the saturation disappears the anti-windup mechanism must also disappear so that it is invisible during linear operation.
 
