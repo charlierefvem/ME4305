@@ -1,6 +1,7 @@
 /* 8. INITIALIZE CAPTION COUNTERS */
 .markdown-preview-view, 
-.markdown-rendered { 
+.markdown-rendered,
+.markdown-preview-sizer { 
   counter-reset: figure-counter table-counter; 
 } 
 
@@ -52,6 +53,16 @@
   counter-increment: figure-counter;
 }
 
+/* Webpage HTML Export wraps each callout in an .el-div. Increment the
+   wrapper so the counter value is visible throughout the exported block. */
+.markdown-preview-sizer > div:has(> .callout[data-callout="figure"]) {
+  counter-increment: figure-counter;
+}
+
+.markdown-preview-sizer > div > .callout[data-callout="figure"] {
+  counter-increment: none;
+}
+
 /* Adds a small gap above the caption text */
 .callout[data-callout="figure"] .callout-content > p:not(:has(img)) {
   margin-top: 8px !important;
@@ -60,15 +71,59 @@
 
 /* Injects the "Figure N — " Prefix */
 .callout[data-callout="figure"] .callout-content > p:not(:has(img))::before {
-  content: "Figure " counter(figure-counter) " — ";
+  content: "Figure " counter(figure-counter) " - ";
   font-weight: bold;
   font-style: normal; /* Keeps prefix upright even if caption is italic */
 }
 
 
+/* Webpage HTML Export may place the image, a <br>, and caption text in
+   one paragraph. Put the prefix after the image embed and before the text. */
+.callout[data-callout="figure"] .callout-content > p:has(img) {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  font-size: 0.85em;
+  color: var(--text-muted);
+  font-style: italic;
+  line-height: 1.4;
+  max-width: 90%;
+  text-align: center;
+}
+
+.callout[data-callout="figure"] .callout-content > p:has(img) > .image-embed {
+  display: inline !important;
+}
+
+.callout[data-callout="figure"] .callout-content > p:has(img) > .image-embed img {
+  display: block !important;
+  margin-inline: auto !important;
+  margin-bottom: 8px !important;
+}
+
+.callout[data-callout="figure"] .callout-content > p:has(img) > br {
+  display: none !important;
+}
+
+.callout[data-callout="figure"] .callout-content > p:has(img) > .image-embed::after {
+  content: "Figure " counter(figure-counter) " - ";
+  display: inline;
+  font-weight: bold;
+  font-style: normal;
+}
+
 /* 11. TABLE LAYOUT (Caption ABOVE Table) */
 .callout[data-callout="table"] {
   counter-increment: table-counter;
+}
+
+/* Webpage HTML Export wraps each callout in an .el-div. Increment the
+   wrapper so the counter value is visible throughout the exported block. */
+.markdown-preview-sizer > div:has(> .callout[data-callout="table"]) {
+  counter-increment: table-counter;
+}
+
+.markdown-preview-sizer > div > .callout[data-callout="table"] {
+  counter-increment: none;
 }
 
 /* Force the caption paragraph to sit at the top of the flex stack */
@@ -80,7 +135,7 @@
 
 /* Injects the "Table N — " Prefix */
 .callout[data-callout="table"] .callout-content > p:not(:has(table))::before {
-  content: "Table " counter(table-counter) " — ";
+  content: "Table " counter(table-counter) " - ";
   font-weight: bold;
   font-style: normal;
 }
