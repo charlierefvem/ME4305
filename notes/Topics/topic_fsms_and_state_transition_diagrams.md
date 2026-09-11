@@ -101,68 +101,70 @@ The following example shows both the transition diagram and a Python implementat
 
 ![A state transition diagram with three states. State 0, the initialization state, always transitions to state 1, the run state. State 1 always transitions to state 2, the run thrice state. State 2 transitions to state 1 after it self-transitions enough times to increment count to 2.](images/multitasking/example_transition_diagram.svg)
 
-The following Python script implements the preceding example in executable code.
 
-``` python
-import time
 
-S0_INIT = 0
-S1_RUN = 1
-S2_RUN_THRICE = 2
-
-def main():
-    # A variable to indicate what state the FSM
-    # is about to run
-    state = 0
-    
-    # A counter variable used to track runs through
-    # state 2
-    count = 0
-    
-    while(True):
-        try:
-            # Implement FSM inside while loop
-            if (state == S0_INIT):
-                # Run state zero code
-                print("The state is ", state)
-                state = S1_RUN
-                
-            elif (state == S1_RUN):
-                # Run state one code
-                print("The state is ", state)
-                count = 0
-                state = S2_RUN_THRICE
-                
-            elif (state == S2_RUN_THRICE):
-                # Run state zero code
-                print("The state is ", state)
-                if (count == 2):
-                    state = S1_RUN
-                else:
-                    count += 1 # Increment count
-                
-            else:
-                # If the state isnt 0, 1, or 2 we have an
-                # invalid state
-                raise ValueError('Invalid state')
-            
-            # Sleeping (delaying) for 1/2 second to slow down
-            # the printing
-            time.sleep(0.5)
-        
-        # Trying to catch the "Ctrl-C" keystroke to break out
-        # of the program cleanly
-        except KeyboardInterrupt:
-            break
-    
-    # Once the program is over, do any sort of cleanup as needed
-    print('Program terminated')
-
-# THe following block prevents main() from running when the file
-# is imported instead of run as a main program
-if __name__ == '__main__':
-    main()
-```
+> [!block_listing]- Example FSM Implementation
+> The following Python script implements the preceding example in executable code.
+> ``` python
+> import time
+> 
+> S0_INIT = 0
+> S1_RUN = 1
+> S2_RUN_THRICE = 2
+> 
+> def main():
+>     # A variable to indicate what state the FSM
+>     # is about to run
+>     state = 0
+>     
+>     # A counter variable used to track runs through
+>     # state 2
+>     count = 0
+>     
+>     while(True):
+>         try:
+>             # Implement FSM inside while loop
+>             if (state == S0_INIT):
+>                 # Run state zero code
+>                 print("The state is ", state)
+>                 state = S1_RUN
+>                 
+>             elif (state == S1_RUN):
+>                 # Run state one code
+>                 print("The state is ", state)
+>                 count = 0
+>                 state = S2_RUN_THRICE
+>                 
+>             elif (state == S2_RUN_THRICE):
+>                 # Run state zero code
+>                 print("The state is ", state)
+>                 if (count == 2):
+>                     state = S1_RUN
+>                 else:
+>                     count += 1 # Increment count
+>                 
+>             else:
+>                 # If the state isnt 0, 1, or 2 we have an
+>                 # invalid state
+>                 raise ValueError('Invalid state')
+>             
+>             # Sleeping (delaying) for 1/2 second to slow down
+>             # the printing
+>             time.sleep(0.5)
+>         
+>         # Trying to catch the "Ctrl-C" keystroke to break out
+>         # of the program cleanly
+>         except KeyboardInterrupt:
+>             break
+>     
+>     # Once the program is over, do any sort of cleanup as needed
+>     print('Program terminated')
+> 
+> # THe following block prevents main() from running when the file
+> # is imported instead of run as a main program
+> if __name__ == '__main__':
+>     main()
+> ```
 
 **Run in your browser:** https://onlinegdb.com/xsR2ikth3
 

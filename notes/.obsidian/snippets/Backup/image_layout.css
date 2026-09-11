@@ -2,13 +2,6 @@
    General image layout.
    Centers images at natural size and shrinks them only when they exceed
    the readable text width.
-
-   USAGE
-   Passive: enable this CSS snippet and embed images normally, for example:
-
-     ![[example.png]]
-
-   No note-level class or special embed syntax is required.
 */
 
 .markdown-rendered,

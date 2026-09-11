@@ -1,13 +1,6 @@
 /*
    Give transparent images a white backing in dark mode.
    Image sizing and centering live in image_layout.css.
-
-   USAGE
-   Passive: enable this snippet and embed images normally. In dark mode, image
-   elements receive a white background, which is useful for transparent plots,
-   diagrams, and figures designed for a light page.
-
-     ![[transparent-figure.png]]
 */
 
 .theme-dark .markdown-rendered img,

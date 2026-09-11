@@ -33,10 +33,11 @@ Before you learn to write your own classes you should fully understand the conte
 
 The Python `str` class is something you've used often so far in lab and in homework. Consider the simple example below:
 
-``` python
-my_string = "Hello, world!"
-my_string.split(",")
-```
+> [!block_listing] Splitting strings in Python
+> ``` python
+> my_string = "Hello, world!"
+> my_string.split(",")
+> ```
 
 In this example the **object** `my_string` of **class** `str` is created on line 1. The string type is one of many built-in types in Python, and is automatically created when the programmer uses quotation marks, `"`, or apostrophes, `'`, to enclose a sequence of characters.
 
@@ -54,41 +55,48 @@ In this snippet the "string split function", `str.split`(), is applied to the pa
 
 To create objects that aren't of one of the built-in types, you must call the initializer for the class defining the object. Consider the example below, similar to code you've used in lab, that defines a GPIO pin, **PB6**, specifically, in output mode.
 
-``` python
-import pyb
-my_pin = pyb.Pin(pyb.Pin.cpu.B6, mode=pyb.Pin.OUT_PP)
-```
+> [!block_listing] Creating a `pyb.Pin` object
+> ``` python
+> import pyb
+> my_pin = pyb.Pin(pyb.Pin.cpu.B6, mode=pyb.Pin.OUT_PP)
+> ```
 
 There are several details to consider in this short example.
 
-| Instance           | Description                                                                                                                                                                     |
-| ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `pyb`              | An external module (library) that has been imported. Modules are containers for artifacts defined in other files.                                                               |
-| `pyb.Pin` or `Pin` | A class belonging to the module `pyb`. Think of the class like a blueprint or recipe to use when creating an object. Classes will be covered below in more detail.              |
-| `my_pin`           | An object (instance) of class `Pin`. This object matches the "recipe" defined by the class and retains access to all methods defined in the class as well.                      |
-| `pyb.Pin.cpu.B6`   | Within the `Pin` class there exists an inner (nested) class called `cpu` that is used as a container for constants representing each port pin, such as `B6`.                    |
-| `pyb.Pin.OUT_PP`   | Similar to `pyb.Pin.cpu.B6`, `OUT_PP` is a constant belonging to the `Pin` class that represents output mode for a pin. Other options include `Pin.ANALOG`, `Pin.IN`, and more. |
+> [!table]
+> | Instance           | Description                                                                                                                                                                     |
+> | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+> | `pyb`              | An external module (library) that has been imported. Modules are containers for artifacts defined in other files.                                                               |
+> | `pyb.Pin` or `Pin` | A class belonging to the module `pyb`. Think of the class like a blueprint or recipe to use when creating an object. Classes will be covered below in more detail.              |
+> | `my_pin`           | An object (instance) of class `Pin`. This object matches the "recipe" defined by the class and retains access to all methods defined in the class as well.                      |
+> | `pyb.Pin.cpu.B6`   | Within the `Pin` class there exists an inner (nested) class called `cpu` that is used as a container for constants representing each port pin, such as `B6`.                    |
+> | `pyb.Pin.OUT_PP`   | Similar to `pyb.Pin.cpu.B6`, `OUT_PP` is a constant belonging to the `Pin` class that represents output mode for a pin. Other options include `Pin.ANALOG`, `Pin.IN`, and more. |
+> Explanation of functions and objects used to build a `pyb.Pin` object
+
 Now that an object has to be created it is simple to interact with the pin. To set it high, simply call `my_pin.high()` and to set it low, use `my_pin.low()`. In this example, the abstraction layer has provided the convenience to temporarily forget about things like GPIO and **PB6** and instead focus on what you need to do with `my_pin` to achieve your objective.
 
 ### Example 3
 
 Another class you've used in lab is the class that abstracts usage of hardware timers. Without this class you would be forced to write potentially dozens of lines of code, directly interacting with special function registers, to do something as simple as generate PWM. The abstraction layer allows you to only worry about the minimal set of parameters needed for you to tell the class what timer to use and how you'd like it to be configured.
 
-``` python
-from pyb import Timer
-my_tim = Timer(tim_num, freq=...)
-my_chan = my_tim.channel(chan_num, mode=...)
-```
+> [!block_listing] Creating a `pyb.Timer` object
+> ``` python
+> from pyb import Timer
+> my_tim = Timer(tim_num, freq=...)
+> my_chan = my_tim.channel(chan_num, mode=...)
+> ```
 
 This example is slightly more subtle than for the pin, because two objects are created.
 
-| Instance           | Description                                                                                                                                                                                                                                                                                |
-| ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `Timer`            | A specific class imported from the `pyb` module so that unused classes do not get imported.                                                                                                                                                                                                |
-| `Timer()`          | The initializer for the `Timer` class used to create and initialize instances of the class.                                                                                                                                                                                                |
-| `my_tim`           | An object of class `Timer`.                                                                                                                                                                                                                                                                |
-| `my_tim.channel()` | A method belonging to class `Timer` that creates objects of class `TimerChannel`. Functions that create objects of another class are often called factories.                                                                                                                               |
-| `my_chan`          | An object of class `TimerChannel`. Note that it is impossible to directly instantiate objects from class `TimerChannel`. Due to the inherent relationship between timers and timer channels it just doesn't make sense to have a channel that is not associated, or created from, a timer. |
+> [!table]
+> | Instance           | Description                                                                                                                                                                                                                                                                                |
+> | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+> | `Timer`            | A specific class imported from the `pyb` module so that unused classes do not get imported.                                                                                                                                                                                                |
+> | `Timer()`          | The initializer for the `Timer` class used to create and initialize instances of the class.                                                                                                                                                                                                |
+> | `my_tim`           | An object of class `Timer`.                                                                                                                                                                                                                                                                |
+> | `my_tim.channel()` | A method belonging to class `Timer` that creates objects of class `TimerChannel`. Functions that create objects of another class are often called factories.                                                                                                                               |
+> | `my_chan`          | An object of class `TimerChannel`. Note that it is impossible to directly instantiate objects from class `TimerChannel`. Due to the inherent relationship between timers and timer channels it just doesn't make sense to have a channel that is not associated, or created from, a timer. |
+> Explanation of functions and objects used to build a `pyb.Timer` object
 
 ## Defining Your Own Classes
 
@@ -151,52 +159,57 @@ class str:
 
 To call the split method using the long form syntax you are passing in the name of the object, `my_string`, to the parameter `self` so that when the method runs it is able to interact with `my_string`.
 
->[!note]
->The mentioned long-form syntax is not often utilized so you should prefer the standard `object.method()` style of syntax in your own code.
+> [!note]
+> The mentioned long-form syntax is not often utilized so you should prefer the standard `object.method()` style of syntax in your own code.
 
 ### Example 5
 
 In this example, a partially complete class definition will be presented that corresponds to the class diagram in Example 4. You may use this in lab as a starter template when the time comes but know that it is not complete. You will also be expected to go through and annotate the file with comments which will help you familiarize yourself with the code.
 
-``` python
-from pyb import Pin, Timer
-
-    class motor_driver:
-
-        def __init__(self, pwm_pin: Pin, dir_pin: Pin,
-                     nslp_Pin: Pin, tim: Timer, chan: int):
-
-            # Store a copy of each input parameter as an attribute
-            self._dir_pin = Pin(dir_pin, mode=Pin.OUT_PP)
-            self._nslp_pin = Pin(nslp_pin, mode=Pin.OUT_PP)
-            self._pwm_chan = tim.channel(chan,
-                                         pin=pwm_pin,
-                                         mode=Timer.PWM,
-                                         pulse_width_percent=0)
-                                          
-        def enable(self):
-            pass
-            
-        def disable(self):
-            self._nslp_pin.low()
-            
-        def set_effort(self, effort: float):
-            # This function has bugs that you must fix
-            self._pwm_chan.pulse_width_percent(effort)
-
-# Code in the following block will run when this file is run as a script, but not when used as a module in other files.
-if __name__ == "__main__":
-    # Both motors can use the same timer but different channels
-    pwm_tim = Timer(4, freq=20_000)
-    left_motor = MotorDriver(Pin.cpu.B6, Pin.cpu.C0, Pin.cpu.C1, pwm_tim, 1)
-    right_motor = MotorDriver(Pin.cpu.B7, Pin.cpu.C2, Pin.cpu.C3, pwm_tim, 2)
-    
-    left_motor.enable()
-    right_motor.enable()
-    
-    left_motor.set_effort(42)
-    right_motor.set_effort(-42)
-```
+> [!file_listing] motor_driver.py
+> ``` python
+> from pyb import Pin, Timer
+> 
+> 
+> class MotorDriver:
+> 
+>     def __init__(self, pwm_pin: Pin, dir_pin: Pin,
+>                  nslp_pin: Pin, tim: Timer, chan: int):
+> 
+>         # Store a copy of each input parameter as an attribute
+>         self._dir_pin = Pin(dir_pin, mode=Pin.OUT_PP)
+>         self._nslp_pin = Pin(nslp_pin, mode=Pin.OUT_PP)
+>         self._pwm_chan = tim.channel(chan,
+>                                      pin=pwm_pin,
+>                                      mode=Timer.PWM,
+>                                      pulse_width_percent=0)
+> 
+>     def enable(self):
+>         pass
+> 
+>     def disable(self):
+>         self._nslp_pin.low()
+> 
+>     def set_effort(self, effort: float):
+>         # This function has bugs that you must fix
+>         self._pwm_chan.pulse_width_percent(effort)
+> 
+> 
+> # Code in the following block will run when this file is run as a script, but
+> # not when used as a module in other files.
+> if __name__ == "__main__":
+>     # Both motors can use the same timer but different channels
+>     pwm_tim = Timer(4, freq=20_000)
+>     left_motor = MotorDriver(Pin.cpu.B6, Pin.cpu.C0, Pin.cpu.C1, pwm_tim, 1)
+>     right_motor = MotorDriver(Pin.cpu.B7, Pin.cpu.C2, Pin.cpu.C3, pwm_tim, 2)
+> 
+>     left_motor.enable()
+>     right_motor.enable()
+> 
+>     left_motor.set_effort(42)
+>     right_motor.set_effort(-42)
+> 
+> ```
 
 >[!note]
 >If you ever want to create an indented block, but you don't want to write code inside of it yet use `pass`. This keyword tells the interpreter that you've deliberately left an indented block empty. Pass should not appear anywhere else in your code.
@@ -208,66 +221,67 @@ One way to eliminate global variables in a callback is to use a class method, in
 
 Consider the following two examples for collecting data inside a timer callback. The first uses global variables.
 
-``` python
-# Example 1 - Using global variables
-from array import array
-from time import ticks_ms
-from encoder import Encoder
-from pyb import Timer
-
-t_buf = array('L',(0 for n in range(1000)))
-p_buf = array('L',(0 for n in range(1000)))
-d_buf = array('L',(0 for n in range(1000)))
-idx = 0
-
-enc_A = Encoder()
-
-def tim_cb(cb_src):
-    global t_buf, p_buf, d_buf, idx
-    
-    enc_A.update()
-    
-    t_buf[idx] = ticks_ms()
-    p_buf[idx] = enc_A.get_position()
-    d_buf[idx] = enc_A.get_delta()
-    
-    idx += 1
-    
-tim = Timer(7, freq=100, callback=tim_cb)
-```
+> [!block_listing] Using global variables to collect data in an interrupt callback
+> ``` python
+> from array import array
+> from time import ticks_ms
+> from encoder import Encoder
+> from pyb import Timer
+> 
+> 
+> t_buf = array('L',(0 for n in range(1000)))
+> p_buf = array('L',(0 for n in range(1000)))
+> d_buf = array('L',(0 for n in range(1000)))
+> idx = 0
+> 
+> enc_A = Encoder()
+> 
+> def tim_cb(cb_src):
+>     global t_buf, p_buf, d_buf, idx
+>     
+>     enc_A.update()
+>     
+>     t_buf[idx] = ticks_ms()
+>     p_buf[idx] = enc_A.get_position()
+>     d_buf[idx] = enc_A.get_delta()
+>     
+>     idx += 1
+>     
+> tim = Timer(7, freq=100, callback=tim_cb)
+> ```
 
 The second uses a lightweight class to encapsulate the variables that would otherwise be global.
 
-``` python
-# Example 2 - Using a class
-from array import array
-from time import ticks_ms
-from encoder import Encoder
-from pyb import Timer
-
-
-class Collector:
-
-    def __init__(self, tim, enc):
-        self.tim = tim
-        self.enc = enc
-        
-        self.t_buf = array('L',(0 for n in range(1000)))
-        self.p_buf = array('L',(0 for n in range(1000)))
-        self.d_buf = array('L',(0 for n in range(1000)))
-        self.idx = 0
-        
-        self.tim.callback(self.tim_cb)
-        
-    def tim_cb(self, cb_src):
-        self.enc.update()
-        self.t_buf[self.idx] = ticks_ms()
-        self.p_buf[self.idx] = self.enc.get_position()
-        self.d_buf[self.idx] = self.enc.get_delta()
-        self.idx += 1
-
-col = Collector(Timer(7, freq=100), Encoder())
-```
+> [!block_listing] Using a class method and class attributes to collect data in an interrupt callback
+> ``` python
+> from array import array
+> from time import ticks_ms
+> from encoder import Encoder
+> from pyb import Timer
+> 
+> 
+> class Collector:
+> 
+>     def __init__(self, tim, enc):
+>         self.tim = tim
+>         self.enc = enc
+>         
+>         self.t_buf = array('L',(0 for n in range(1000)))
+>         self.p_buf = array('L',(0 for n in range(1000)))
+>         self.d_buf = array('L',(0 for n in range(1000)))
+>         self.idx = 0
+>         
+>         self.tim.callback(self.tim_cb)
+>         
+>     def tim_cb(self, cb_src):
+>         self.enc.update()
+>         self.t_buf[self.idx] = ticks_ms()
+>         self.p_buf[self.idx] = self.enc.get_position()
+>         self.d_buf[self.idx] = self.enc.get_delta()
+>         self.idx += 1
+> 
+> col = Collector(Timer(7, freq=100), Encoder())
+> ```
 
 
 ## Object-Oriented Programming
@@ -294,8 +308,10 @@ Just as a free-body diagram, transfer function, electrical schematic, or state m
 * Design first, implement second.
 * Prefer encapsulation over global variables.
 
+%%
 ## Candidate Static Notes
 * \[\[Exceptions\]\]
+%%
 
 ## See Also
 * [[topic_python_fundamentals|Python Fundamentals]]

@@ -1,6 +1,8 @@
-# Artboards
-
-Use a width in multiples of 72 px
+## Artboards
+ 
+Notes:
+* Use a width in multiples of 72 px
+* Use a height in multiples of 36 px
 
 | Major | Minor | Pixels |
 | ----- | ----- | ------ |
@@ -13,13 +15,13 @@ Use a width in multiples of 72 px
 |     3 |    24 |    216 |
 |     2 |    16 |    144 |
 
-Use a height in multiples of 36 px
 
-# Lineweights
+## Lineweights
 
 Notes:
 * All strokes set to round cap and round join
 * Use z-axis instead of opacity to place callout boxes around features
+* Use grayscale only.
 
 | Line Type           | Stroke Width  | Stroke Color | Stroke Style           | Fill Color | Opacity | z-Axis   | Arrowhead | Arrow Scale |
 | ------------------- | ------------- | ------------ | ---------------------- | ---------- | ------- | -------- | --------- | ----------- |
@@ -30,7 +32,7 @@ Notes:
 | Axes                |       0.75 px | #333333      | Plain                  | -          |   100 % | Bottom   | Arrow 2   |       100 % |
 
 
-# Fonts
+## Fonts
 
 | Text Placement                 | Size | Font                               |
 | ------------------------------ | ---- | ---------------------------------- |
@@ -40,3 +42,8 @@ Notes:
 | Variables / Math Symbols       |   12 | CMU Serif (Italic)                 |
 | Annotations                    |   12 | CMU Bright (Regular)               |
 | Small Annotations / Tick Marks |   10 | CMU Bright (Regular)               |
+
+
+## Additional Notes:
+
+* Make sure to handle Adobe Illustrators px/pt spec properly. That is, 12pt = 16px in web content, but by default in illustrator 1pt = 1px.

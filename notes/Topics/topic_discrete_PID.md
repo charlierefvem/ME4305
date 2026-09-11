@@ -19,8 +19,9 @@ Mechanical systems evolve continuously over time, however it is uncommon to appl
 
 This topic focuses on development of a full generic PID controller with filtered derivative and anti-windup, implemented discretely, that can act on a mechanical system. Some of the material in this topic relies on understanding of the [[reference_z_domain|z-Domain]] and [[reference_continuous_to_discrete|Continuous to Discrete Conversion]]. It is also assumed that the reader has familiarity with the standard [[reference_PID|PID Controller]] in continuous time.
 
->[!note]
->We are not deriving the only correct digital PID. We are deriving one clean, inspectable, firmware-ready discrete PID implementation from a familiar continuous-time PID form.
+> [!note]
+> We are not deriving the only correct digital PID. We are deriving one clean, inspectable, firmware-ready discrete PID implementation from a familiar continuous-time PID form.
+
 ## Discrete Integration and Differentiation
 
 The structure of the discrete PID will be found by considering a continuous-time PID controller and then applying a continuous-to-discrete conversion.
@@ -115,8 +116,8 @@ u_d(z) &= K_d^\prime\, \frac{\alpha\,(1-z^{-1})}{1-\beta\,z^{-1}} e(z) &
 $$
 where $I(z)$ is the discretely computed integral of $e(z)$ and $D(z)$ is the discretely computed derivative of $e(z)$.
 
->[!insight]
->The primed gains are *firmware* gains. They include the effect of the sample period. This means that changing the sample period without recomputing $K_i^\prime$  and $K_d^\prime$​ changes the behavior of the controller, so these should be converted as part of controller initialization and each time the gains are updated. In other words, continuous-time gains and discrete implementation gains should not be mixed casually. If $K_i$​ and $K_d$​ are tuned in continuous-time units, the primed gains must be recomputed whenever $T_s$​ changes.
+> [!note]
+> The primed gains are *firmware* gains. They include the effect of the sample period. This means that changing the sample period without recomputing $K_i^\prime$  and $K_d^\prime$​ changes the behavior of the controller, so these should be converted as part of controller initialization and each time the gains are updated. In other words, continuous-time gains and discrete implementation gains should not be mixed casually. If $K_i$​ and $K_d$​ are tuned in continuous-time units, the primed gains must be recomputed whenever $T_s$​ changes.
 
 To find $I_k$ we can convert the discrete-time transfer function relating $I(z)$ and $e(z)$ to a difference equation:
 $$
@@ -155,14 +156,14 @@ u_{sat,k} &= \operatorname{sat}_{[u_{\min},u_{\max}]}(u_{req,k}).
 \end{aligned}
 $$
 
->[!insight]
->Although the combined controller transfer function is second order, this separated implementation stores three persistent quantities: the integral accumulator $I_k$​, the stored filtered derivative value $D_{k-1}$​, and the previous error $e_{k-1}$​. This is not a minimal realization, but it is more transparent for firmware implementation because the integral accumulator and derivative filter remain separate. This separation makes debugging easier and allows anti-windup to be applied directly to the integral term.
+> [!insight]
+> Although the combined controller transfer function is second order, this separated implementation stores three persistent quantities: the integral accumulator $I_k$​, the stored filtered derivative value $D_{k-1}$​, and the previous error $e_{k-1}$​. This is not a minimal realization, but it is more transparent for firmware implementation because the integral accumulator and derivative filter remain separate. This separation makes debugging easier and allows anti-windup to be applied directly to the integral term.
 
 ### Anti-windup
 
 Since this controller uses integral action an anti-windup mechanism needs to be incorporated so that the integrator stops accumulating during actuator saturation. The clamping method presented in [[reference_PID|PID Controllers]] will be applied here. Consider the circumstances in which the integrator should stop integrating; both of the following conditions must apply:
-1. The actuator has saturated
-2. The error has the same sign as the saturation
+ 1. The actuator has saturated
+ 2. The error has the same sign as the saturation
 
 The preceding two conditions, considered together, indicate that not only is the actuator saturated, but the integrator is accumulating error in a manner that increases the level of saturation. The two conditions can be handled simultaneously by interpreting the sign of
 $$
@@ -175,9 +176,9 @@ $$
 is the saturation residual.
 
 The sign of $e_k\,r_k$ can be interpreted to check if integration should be clamped:
-* If the expression is negative, it implies that the sign of the error, $e_k$, is opposite that of the saturation residual, $r_k$, which indicates that the integrator is *unwinding* and should not be clamped.
-* If the expression is zero, then there is either zero error, or $u_{req,k} = u_{sat,k}$, indicating that no saturation has occurred. In either case the integrator does not need to be clamped.
-* Finally, if the expression is positive, it means that the sign of  $e_k$ matches that of $r_k$, which means that the integrator would wind up unless it is clamped.
+ * If the expression is negative, it implies that the sign of the error, $e_k$, is opposite that of the saturation residual, $r_k$, which indicates that the integrator is *unwinding* and should not be clamped.
+ * If the expression is zero, then there is either zero error, or $u_{req,k} = u_{sat,k}$, indicating that no saturation has occurred. In either case the integrator does not need to be clamped.
+ * Finally, if the expression is positive, it means that the sign of  $e_k$ matches that of $r_k$, which means that the integrator would wind up unless it is clamped.
 
 The expression can be used as an integration gate by using the indicator function, often expressed as $\mathbb{1}_{A}(x)$. This function returns a value of 1 for inputs $x$ within a certain range $A$ and returns a value of 0 for inputs $x$ outside of range $A$.  Therefore, the integration gate is
 $$
@@ -214,15 +215,18 @@ In firmware, $e_{-1}$​ is often initialized to the first measured error value 
 
 Then, during runtime, apply the following steps in the following explicit sequence:
 
-| Step | Operation                                                         | Purpose                                                                                                                               |
-| ---- | ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
-| 1    | $e_k = x_{ref}(t_k) - x_{meas,k}$                                 | Measures the control parameter and then computes the control error using the present setpoint and the measurement.                    |
-| 2    | $D_k = \alpha\,(e_k  - e_{k-1}) + \beta\, D_{k-1}$                | Updates the filtered derivative using the present and previous control error.                                                         |
-| 3    | $u_{req,k} = K_p\, e_k + K_i^\prime\, I_k + K_d^\prime\, D_k$     | Computes the linear controller output before saturation is applied.                                                                   |
-| 4    | $u_{sat,k} = \operatorname{sat}_{[u_{\min},u_{\max}]}(u_{req,k})$ | Saturates the value based on the minimum and maximum actuation values. This post-saturation value is then be applied to the actuator. |
-| 5    | $r_k = (u_{req,k} - u_{sat,k})$                                   | Finds the saturation residual to use for anti-windup..                                                                                |
-| 6    | $\gamma_k = \mathbb{1}_{\le0} \left( e_k\,r_k \right)$            | Computes the integration-gate to use for integral clamping.                                                                           |
-| 7    | $I_{k+1} = I_k + \gamma_k\,e_k$                                   | Updates the integrator taking the integration gate into account.                                                                      |
+> [!table]
+> | Step | Operation                                                         | Purpose                                                                                                                               |
+> | ---- | ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
+> | 1    | $e_k = x_{ref}(t_k) - x_{meas,k}$                                 | Measures the control parameter and then computes the control error using the present setpoint and the measurement.                    |
+> | 2    | $D_k = \alpha\,(e_k  - e_{k-1}) + \beta\, D_{k-1}$                | Updates the filtered derivative using the present and previous control error.                                                         |
+> | 3    | $u_{req,k} = K_p\, e_k + K_i^\prime\, I_k + K_d^\prime\, D_k$     | Computes the linear controller output before saturation is applied.                                                                   |
+> | 4    | $u_{sat,k} = \operatorname{sat}_{[u_{\min},u_{\max}]}(u_{req,k})$ | Saturates the value based on the minimum and maximum actuation values. This post-saturation value is then be applied to the actuator. |
+> | 5    | $r_k = (u_{req,k} - u_{sat,k})$                                   | Finds the saturation residual to use for anti-windup..                                                                                |
+> | 6    | $\gamma_k = \mathbb{1}_{\le0} \left( e_k\,r_k \right)$            | Computes the integration-gate to use for integral clamping.                                                                           |
+> | 7    | $I_{k+1} = I_k + \gamma_k\,e_k$                                   | Updates the integrator taking the integration gate into account.                                                                      |
+> A summary of the steps needed to implement a discrete PID controller with output saturation and anti-windup
+
 In firmware, $I_k$, $D_{k-1}$, and $e_{k-1}$ must persist between control updates. The integrator and derivative-filter values are updated directly by their recurrence equations, while the previous error must be updated explicitly after the derivative calculation.
 
 The preceding algorithm, when implemented in firmware, forms a suitable baseline for real-world implementation of a filtered PID with anti-windup. This baseline implementation should be adjusted and adapted as needed for the particular system being controlled.
@@ -230,7 +234,7 @@ The preceding algorithm, when implemented in firmware, forms a suitable baseline
 ## Practical Notes and Common Variants
 
 As mentioned above, this PID is one of many implementations and the final implementation should be modified to handle specific nuances appropriately:
-1. The discretization performed here used the forward-difference method for concision as it leads to simple update equations. Using the bilinear transform (Tustin method) is an alternative choice that may lead to a controller with better stability or numerical behavior for the filtered derivative.
-2. Derivative control is, in general, something to be handled carefully. Systems with significant measurement noise may not benefit from derivative control even with a filtered derivative. The derivative action can be turned off simply by setting $K_d=0$ or the architecture may be refined to eliminate the differentiator entirely.
-3. Derivative action also amplifies changes in the reference since the reference appears in the error term being differentiated; consequently, abrupt changes in setpoint cause "derivative kick", large spikes in actuation effort, which can be harmful to actuators. A suitable method to eliminate the derivative kick is to use a PI-D structure or an IPD structure like introduced in [[reference_PID|PID Controllers]]. Switching to a PI-D structure is as simple as revising the update equation for the derivative to $D_k = \alpha\,(x_{k-1}  - x_k) + \beta\, D_{k-1}$ so that the derivative is computed from only the measurement and not the system error.
-4. The primed gains and differentiator coefficients depend on the sample time, $T_s$, and must be recomputed any time the sample time is changed.
+ 1. The discretization performed here used the forward-difference method for concision as it leads to simple update equations. Using the bilinear transform (Tustin method) is an alternative choice that may lead to a controller with better stability or numerical behavior for the filtered derivative.
+ 2. Derivative control is, in general, something to be handled carefully. Systems with significant measurement noise may not benefit from derivative control even with a filtered derivative. The derivative action can be turned off simply by setting $K_d=0$ or the architecture may be refined to eliminate the differentiator entirely.
+ 3. Derivative action also amplifies changes in the reference since the reference appears in the error term being differentiated; consequently, abrupt changes in setpoint cause "derivative kick", large spikes in actuation effort, which can be harmful to actuators. A suitable method to eliminate the derivative kick is to use a PI-D structure or an IPD structure like introduced in [[reference_PID|PID Controllers]]. Switching to a PI-D structure is as simple as revising the update equation for the derivative to $D_k = \alpha\,(x_{k-1}  - x_k) + \beta\, D_{k-1}$ so that the derivative is computed from only the measurement and not the system error.
+ 4. The primed gains and differentiator coefficients depend on the sample time, $T_s$, and must be recomputed any time the sample time is changed.

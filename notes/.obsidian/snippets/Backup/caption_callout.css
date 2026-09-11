@@ -1,27 +1,6 @@
 /*
    Numbered figure and table captions.
    Handles Obsidian reading mode, editing mode, and Webpage HTML Export.
-
-   USAGE
-   Use Obsidian callouts named "figure" or "table". Numbering is automatic
-   within each note.
-
-   Figure (caption appears below the image):
-
-     > [!figure]
-     > ![[example.png]]
-     > Short description of the figure.
-
-   Table (caption appears above the table):
-
-     > [!table]
-     > Short description of the table.
-     >
-     > | Column A | Column B |
-     > | --- | --- |
-     > | Value 1 | Value 2 |
-
-   For an extra-wide table inside a [!table] callout, see table_layout.css.
 */
 
 .markdown-preview-view,

@@ -15,6 +15,7 @@ status: draft
 
 This lecture introduces Python's built-in collection types. These tools form the foundation for future work.
 
+%%
 > **Candidate static notes**
 > -   \[\[Python Lists\]\]
 > -   \[\[Python Tuples\]\]
@@ -24,24 +25,34 @@ This lecture introduces Python's built-in collection types. These tools form the
 > -   \[\[Python Arrays\]\]
 > -   \[\[Mutability\]\]
 > -  \[\[Comprehensions\]\]
+%%
 
 ## Python Collection Types
 
 A collection is any Python object that stores multiple pieces of data in a single variable.
 
-  Type          | Mutable | Ordered | Typical Contents
-  --------------|---------|---------| ----------------------
-  `list`        |      ✓  |   ✓     |   Mixed data
-  `tuple`       |      ✗  |     ✓   |   Mixed data
-  `dict`        |      ✓  |    ✓\*  |  Key/value pairs
-  `set`         |      ✓  |   ✗     |  Unique elements
-  `bytes`       |      ✗  |    ✓    |   8-bit binary data
-  `bytearray`   |      ✓  |    ✓     |    Mutable binary data
-  `array.array` |      ✓  |      ✓   |    Uniform numeric data
-\*Insertion ordered in modern Python (3.7+).
+> [!table]
+>   Type          | Mutable | Ordered | Typical Contents
+>   --------------|---------|---------| ----------------------
+>   `list`        |      ✓  |   ✓     |   Mixed data
+>   `tuple`       |      ✗  |     ✓   |   Mixed data
+>   `dict`        |      ✓  |    ✓[^1]  |  Key/value pairs
+>   `set`         |      ✓  |   ✗     |  Unique elements
+>   `bytes`       |      ✗  |    ✓    |   8-bit binary data
+>   `bytearray`   |      ✓  |    ✓     |    Mutable binary data
+>   `array.array` |      ✓  |      ✓   |    Uniform numeric data
+> Common collection types in Python
 
->[!note]
->Mutability is a nuanced concept in Python we will return to several times in the term. For this early point in the term, you should think of *immutable* variables as read-only and *mutable* variables as modifiable. A more precise definition will come shortly in future notes.
+[^1]: Insertion ordered in modern Python (3.7+).
+
+> [! insight]
+> Mutability is a nuanced concept in Python we will return to several times in the term.
+>
+> For this early point in the term, you should think of *immutable* variables as read-only and *mutable* variables as modifiable.
+>
+> Because Python variables are effectively pointers, passing a mutable collection to a function allows the function to mutate the original object in memory. However, reassigning the variable inside the function only overwrites the local pointer, leaving the caller's original data untouched.
+>
+> See [[reference_mutability|Mutability]] for additional details regarding object mutability.
 
 ### Lists (`list` Objects)
 
@@ -63,26 +74,34 @@ Common methods:
 
 #### Example 1
 
-``` python
-my_list = ["a", "b", "c", "d"]
-print(my_list[2])
-```
-Output:
-```text
-c
-```
+In this example a list object is created, or more formally, is "instantiated". Lists can be instantiated empty, or they can be populated with an initial set of items at the time of instantiation.
+
+> [!block_listing] Printing an an item from a `list` object initialized at instantiation
+> ``` python
+> my_list = ["a", "b", "c", "d"]
+> print(my_list[2])
+> ```
+
+> [!output]
+> ```text
+> c
+> ```
 
 #### Example 2
 
-``` python
-my_list = ["a", "b", "c", "d"]
-my_list.append("e")
-print(my_list)
-```
-Output:
-```text
-['a', 'b', 'c', 'd', 'e']
-```
+In this example a list object is instantiated with four items and then an additional item is appended to the end of the list.
+
+> [!block_listing] Appending new items to an existing list
+> ``` python
+> my_list = ["a", "b", "c", "d"]
+> my_list.append("e")
+> print(my_list)
+> ```
+
+> [!output]
+> ```text
+> ['a', 'b', 'c', 'd', 'e']
+> ```
 
 #### Example 3
 
@@ -112,17 +131,18 @@ Tuples are
 
 A common use-case for a tuple is returning multiple values from a function. In this example a dummy function returns the x-, y-, and z-components of an acceleration vector measured from an accelerometer.
 
-``` python
-def getAccelXYZ():
-	# Query sensor
-    return (x, y, z)
-
-# Assign output to a new tuple
-accel = getAccelXYZ()
-
-# Unpack the tuple into separate variables
-x, y, z = getAccelXYZ()
-```
+> [!block_listing] Using a tuple to return data from a function
+> ``` python
+> def getAccelXYZ():
+> 	# Query sensor
+>     return (x, y, z)
+> 
+> # Assign output to a new tuple
+> accel = getAccelXYZ()
+> 
+> # Unpack the tuple into separate variables
+> x, y, z = getAccelXYZ()
+> ```
 
 #### Example 6
 
@@ -234,16 +254,19 @@ Advantages:
 
 #### Typecodes:
 
-| Unsigned            | Signed                        | Data size       |
-| ------------------- | ----------------------------- | --------------- |
-| B (0 to 255)        | b (-128 to 127)               | byte (8 bits)   |
-| H (0 to 65535)      | h (-32768 to 32767)           | short (16 bits) |
-| I (0 to 65535)      | i (-32768 to 32767)           | int (16 bits)   |
-| L (0 to 4e9)        | l (-2e9 to 2e9)               | long (32 bits)  |
-| Q (0 to 1.8e19)     | q (-9e18 to 9e18)             | quad (64 bits)  |
-|                     | f (-inf to inf)               | float (32 bits) |
-|                     | d (-inf to inf)               | double\* (64 bits) |
-\* On most STM32 family microcontrollers there is no hardware support for double precision floating point numbers. The STM32L476RG used in ME 4305 does not support double precision floating point arithmetic. 
+> [!table]
+> | Unsigned            | Signed                        | Data size       |
+> | ------------------- | ----------------------------- | --------------- |
+> | B (0 to 255)        | b (-128 to 127)               | byte (8 bits)   |
+> | H (0 to 65535)      | h (-32768 to 32767)           | short (16 bits) |
+> | I (0 to 65535)      | i (-32768 to 32767)           | int (16 bits)   |
+> | L (0 to 4e9)        | l (-2e9 to 2e9)               | long (32 bits)  |
+> | Q (0 to 1.8e19)     | q (-9e18 to 9e18)             | quad (64 bits)  |
+> |                     | f (-inf to inf)               | float (32 bits) |
+> |                     | d (-inf to inf)               | double[^2] (64 bits) |
+> Allowable data types to use with `array.array`
+
+[^2]: On most STM32 family microcontrollers there is no hardware support for double precision floating point numbers. The STM32L476RG used in ME 4305 does not support double precision floating point arithmetic. 
 
 #### Example 11
 

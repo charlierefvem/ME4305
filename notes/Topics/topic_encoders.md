@@ -28,7 +28,9 @@ Absolute encoders output a signal representing position with respect to an absol
 
 Many modern encoders output a PWM signal in which the duty cycle or on-time represents the angular displacement of the encoder. Some are physically bounded to a single rotation, but others allow continuous rotation, causing the PWM signal to reset once per rotation.
 
-![Graph showing PWM duty cycle varying approximately linearly with shaft angle from 0 to 360 degrees.](images/encoder/absolute_pwm.svg)
+> [!figure]
+> ![Graph showing PWM duty cycle varying approximately linearly with shaft angle from 0 to 360 degrees.](images/encoder/absolute_pwm.svg)
+> Example output from an absolute encoder with PWM output shown as pulse width (or duty cycle) versus encoder angle
 
 ### Gray Code
 
@@ -36,18 +38,22 @@ While less popular in modern applications, the Gray code encoder is a classic ex
 
 The table below shows the 3-bit Gray code pattern associated with the Gray code disk shown further below. With 3 bits, there are 8 possible states, therefore the resolution of the encoder is one part in eight, or 45°. Each of the concentric rings on the Gray code disk represents one of the bits in the binary representation of the Gray code state.
 
-| State | B2    | B1    | B0    | Binary  |
-| :---: | :---: | :---: | :---: | :-----: |
-| 0     | 0     | 0     | 0     | `0b000` |
-| 1     | 0     | 0     | 1     | `0b001` |
-| 2     | 0     | 1     | 1     | `0b011` |
-| 3     | 0     | 1     | 0     | `0b010` |
-| 4     | 1     | 1     | 0     | `0b110` |
-| 5     | 1     | 1     | 1     | `0b111` |
-| 6     | 1     | 0     | 1     | `0b101` |
-| 7     | 1     | 0     | 0     | `0b100` |
+> [!table]
+> | State | B2    | B1    | B0    | Binary  |
+> | :---: | :---: | :---: | :---: | :-----: |
+> | 0     | 0     | 0     | 0     | `0b000` |
+> | 1     | 0     | 0     | 1     | `0b001` |
+> | 2     | 0     | 1     | 1     | `0b011` |
+> | 3     | 0     | 1     | 0     | `0b010` |
+> | 4     | 1     | 1     | 0     | `0b110` |
+> | 5     | 1     | 1     | 1     | `0b111` |
+> | 6     | 1     | 0     | 1     | `0b101` |
+> | 7     | 1     | 0     | 0     | `0b100` |
+> State table for a 3-bit Gray-code encoder
 
-![Circular Gray-code encoder disk with eight angular sectors.](images/encoder/gray_code_disk.svg)
+> [!figure]
+> ![Circular Gray-code encoder disk with eight angular sectors.](images/encoder/gray_code_disk.svg)
+> An example Gray-code encoder disk with eight angular sectors. The inner ring corresponds to `B0` in the state table above.
 
 The following snippet of Python code shows how to convert between 3-bit Gray code and binary. Note that for larger Gray code disks the number of cumulative XOR operations will increase as well.
 ``` python
@@ -60,7 +66,9 @@ binary ^= (binary >> 2)
 
 Incremental encoders do not have a fixed datum. Instead they output increments of displacement using quadrature signals: two square-wave channels, 90° out of phase, provide information about displacement. That is, the phase shift between the two waveforms encodes direction - if A leads B, the encoder is moving one direction and if B leads A, it is moving the other direction.
 
-![Quadrature channel A and B waveforms that are 90 degrees out of phase with A leading B.](images/encoder/quadrature_waveform.svg)
+> [!figure]
+> ![Quadrature channel A and B waveforms that are 90 degrees out of phase with A leading B.](images/encoder/quadrature_waveform.svg)
+> Example output from a quadrature encoder assuming constant velocity
 
 ### Optical Encoders
 
@@ -68,24 +76,34 @@ Many high-performance (high resolution) encoders use optics to produce edges. In
 * Transmissive encoders shine light, usually from an LED, through a spoked disk. As the disk rotates the spokes break the line of site between the LED and a pair of photodetectors. If the two detectors are placed carefully the resulting output will have the appropriate 90° phase shift.
 * Reflective encoders work on a very similar principle, but instead of having gaps in the encoder disk, there are reflective strips instead. This allows the LED and photodetectors to be on the same side of the disk, making the encoder more compact and easier to assemble.
 
-![Transmissive optical encoder example.](images/encoder/optical_transmissive.svg)
-![Reflective optical encoder example.](images/encoder/optical_reflective.svg)
+> [!figure]
+> ![Transmissive optical encoder example.](images/encoder/optical_transmissive.svg)
+> Simplified model of a transmissive optical encoder showing an LED (represented by a flashlight) and two offset photosensors (represented by two eyes). As the encoder disk rotates the detectors see a strobing pattern from the light from the LED shining through the encoder disk.
+
+> [!figure]
+> ![Reflective optical encoder example.](images/encoder/optical_reflective.svg)
+> Simplified model of a reflective optical encoder showing an LED (represented by a flashlight) and two offset photosensors (represented by two eyes). As the encoder disk rotates the detectors see a strobing pattern from the light from the LED reflecting off the encoder disk.
 
 ### Magnetic Quadrature Encoders
 
 While optical encoders offer very high density in the form of many spokes they are more costly to produce than other varieties of incremental encoder. Most low-cost incremental encoders are made with multi-pole magnets and hall effect sensors. These work on the same principle as the optical encoders, but instead of detecting light the hall effect sensors detect north vs. south magnetic poles. The animation below shows a 3 pole-pair magnetic encoder.
 
-![Magnetic quadrature encoder with Hall sensors and output waveforms.](images/encoder/magnetic_encoder_animation.gif)
+> [!figure]
+> ![Magnetic quadrature encoder with Hall sensors and output waveforms.](images/encoder/magnetic_encoder_animation.gif)
+> The animation shows a 3 pole-pair magnetic encoder, the waveforms for each hall-sensor output, and its associated state.
 
 ### Encoder Resolution
 
 Every quadrature encoder has a specific resolution defined by the smallest increment of change that the encoder can detect. Unfortunately this is one of the areas in engineering where notation and naming conventions lack standardization.
 
-| Term | Definition                                                                                                                          |
-| :--: | :---------------------------------------------------------------------------------------------------------------------------------- |
-| CPR  | Cycles per revolution - the total number of full cycles including rising and fall edges on both quadrature channels.                |
-| CPR  | Counts per revolution - the total number of individual transitions. Equal to $4\times$ the number of cycles per revolution.         |
-| PPR  | Pulses per revolution - usually defined the same as counts per revolution, representing the total number of individual transitions. |
+> [!table]
+> | Term | Definition                                                                                                                          |
+> | :--: | :---------------------------------------------------------------------------------------------------------------------------------- |
+> | CPR  | Cycles per revolution - the total number of full cycles including rising and fall edges on both quadrature channels.                |
+> | CPR  | Counts per revolution - the total number of individual transitions. Equal to $4\times$ the number of cycles per revolution.         |
+> | PPR  | Pulses per revolution - usually defined the same as counts per revolution, representing the total number of individual transitions. |
+> Ambiguous definitions for common quadrature encoder parameters
+
 Due to the ambiguity in convention it is important for designers to read the documentation for a given encoder in detail to understand if the provided resolution already accounts for the $4\times$ factor.
 
 ## Decoding Quadrature
@@ -101,28 +119,33 @@ Most modern microcontrollers now have built in hardware to decode quadrature sig
 ### Edge Decoding
 
 Direction can be decoded at every edge if we know both:
-1.  The edge direction.
-2.  The state of the opposite channel.
+ 1.  The edge direction.
+ 2.  The state of the opposite channel.
 
 From this information, a lookup table, like the one shown below, can be used to determine direction.
 
-| Ch. A | Ch. B | Direction      |
-| :---: | :---: | :------------- |
-| ↑     | H     | Down (Reverse) |
-| ↑     | L     | Up (Forward)   |
-| ↓     | H     | Up (Forward)   |
-| ↓     | L     | Down (Reverse) |
-| H     | ↑     | Up (Forward)   |
-| L     | ↑     | Down (Reverse) |
-| H     | ↓     | Down (Reverse) |
-| L     | ↓     | Up (Forward)   |
+> [!table]
+> | Ch. A | Ch. B | Direction      |
+> | :---: | :---: | :------------- |
+> | ↑     | H     | Down (Reverse) |
+> | ↑     | L     | Up (Forward)   |
+> | ↓     | H     | Up (Forward)   |
+> | ↓     | L     | Down (Reverse) |
+> | H     | ↑     | Up (Forward)   |
+> | L     | ↑     | Down (Reverse) |
+> | H     | ↓     | Down (Reverse) |
+> | L     | ↓     | Up (Forward)   |
+> Lookup table for edge-based decoding of quadrature waveforms
+
 **Note**: the arrows (↑ and ↓) shown in the table refer to rising and falling edges.
 
 #### Example 1
 
 In this example a basic case of decoding will be covered for an encoder rotating with constant velocity.
 
-![Quadrature edge decoding waveform.](images/encoder/quadrature_decoding_simple.svg)
+> [!figure]
+> ![Quadrature edge decoding waveform.](images/encoder/quadrature_decoding_simple.svg)
+> An example pair of quadrature waveforms with one particular state transition highlighted
 
 Examine the figure above and notice the highlighted edge on Channel A. In this figure the horizontal axes represent time, so reading the waveforms left-to-right makes the edge of Channel A a *rising edge*. When this rising edge occurs, the opposite channel is low. Therefore, according to row two of the table above, the encoder is rotating in the forward direction and the count should go up by one unit.
 
@@ -132,21 +155,27 @@ All edges in the waveform below will produce the same direction using the lookup
 
 STM32 timer hardware compares the current AB state against the previous state instead of explicitly detecting edges. This comparison occurs rapidly, once per edge on the clock source for the timer. On the Nucleo L476RG all timers run directly off the system clock at 80MHz, so the polling occurs 80 million times per second. Built into the microcontroller is a lookup table, similar to the one shown below, that shows the count direction based on the present and previous AB states.
 
-![Sixteen-state quadrature polling transition table.](images/encoder/quadrature_polling_table.svg)
+The timer can also XOR the two channels to generate a square wave whose frequency represents speed. The frequency can then be measured using an additional timer configured for input capture.
 
-The timer can also XOR the two channels to generate a square wave whose frequency represents speed.
+> [!figure]
+> ![Sixteen-state quadrature polling transition table.](images/encoder/quadrature_polling_table.svg)
+> Lookup table for poll-based decoding of quadrature waveforms
+
+**Note**: the arrows (↑ and ↓) shown in the table refer to up or down counting.
 
 #### Example 2
 
 In this example a more complicated motion will be decoded in which the encoder changes direction.
 
-![Worked quadrature decoding example showing channel waveforms, XOR output, and accumulated count.](images/encoder/quadrature_decoding_advanced.svg)
+> [!figure]
+> ![Worked quadrature decoding example showing channel waveforms, XOR output, and accumulated count.](images/encoder/quadrature_decoding_advanced.svg)
+> A worked example showing the quadrature waveforms and decoded displacement for an encoder changing directions from forward to backward.
 
 There are four plots shown in the figure above:
-1) The first plot shows the quadrature waveform for Channel A. Notice that it no longer has a fixed frequency; instead each low and high portion is of different length.
-2) The second plot shows the corresponding waveform for Channel B.
-3) The third plot shows the exclusive or (XOR) of Channel A with Channel B. The exclusive or, when applied to square waves, produces a new square wave with the frequency content of both input waveforms. In other words, the signal shown on the third plot includes every edge from both Channel A and Channel B. Overlaid on this plot are many marks indicating whether the edge represents an up-count or a down-count. These marks were produced by applying the AB state lookup table presented above.
-4) The final plot shows the motion of the encoder as read from the accumulated up- and down-counting. The black line shows a true (but quantized) representation of the actual displacement of the encoder. Notice that as the encoder spins backwards its displacement crosses zero and goes negative.
+ 1) The first plot shows the quadrature waveform for Channel A. Notice that it no longer has a fixed frequency; instead each low and high portion is of different length.
+ 2) The second plot shows the corresponding waveform for Channel B.
+ 3) The third plot shows the exclusive or (XOR) of Channel A with Channel B. The exclusive or, when applied to square waves, produces a new square wave with the frequency content of both input waveforms. In other words, the signal shown on the third plot includes every edge from both Channel A and Channel B. Overlaid on this plot are many marks indicating whether the edge represents an up-count or a down-count. These marks were produced by applying the AB state lookup table presented above.
+ 4) The final plot shows the motion of the encoder as read from the accumulated up- and down-counting. The black line shows a true (but quantized) representation of the actual displacement of the encoder. Notice that as the encoder spins backwards its displacement crosses zero and goes negative.
    However, the timer count can only hold positive integer values. So, instead of the count going negative, it instead reloads at the autoreload value, which is assumed to be AR=5 for the example. The encoder displacement, as seen by the timer count, is shown in red.
 
 From this example we can conclude that the hardware can effectively count encoder increments, but is unable to count arbitrarily high or low. In the example a reload while counting down, which may loosely be referred to as **underflow**, but the counter can also reload while counting up, which may loosely be referred to as **overflow**.
@@ -161,7 +190,9 @@ The diagram below depicts an encoder that has been rotating with constant veloci
 
 One approach to detecting overflow is to frequently compute the change in count between updates and then use a rule to determine whether the change in count is correct, or off due to overflow.
 
-![Timer rollover compensation example illustrating overflow and underflow correction.](images/encoder/reload_algorithm.svg)
+> [!figure]
+> ![Timer rollover compensation example illustrating overflow and underflow correction.](images/encoder/reload_algorithm.svg)
+> An example illustration showing the consequences of timer overflow while counting encoder transitions
 
 In the example waveform in the figure above, overflow occurs between update #4 and update #5. The change in count *should* be a small positive change, as indicated by $\Delta45$ but the computed value will actually be a larger negative change, as indicated by $\Delta45-AR$.
 
@@ -169,12 +200,12 @@ Two observations can be made about the incorrect  $\Delta45-AR$ , it is both the
 
 Therefore, to detect when overflow occurs we check both the sign and magnitude of the change, and if the magnitude is greater than a certain threshold we identify the delta as incorrect, and offset appropriately to compensate for the overflow.
 
->[!algorithm]
->1.  Sample the timer count periodically and compute $\Delta$, the change in count since the last update: `delta = count - last_count`
->2.  Validate $\Delta$ (check for reload):
->     * Overflow: `delta < -(AR+1)/2` → `delta += AR+1`
->     * Underflow: `delta > (AR+1)/2` → `delta -= AR+1`
->3.  Accumulate the validated $\Delta$ values: `position += delta`
+> [!algorithm]
+> 1.  Sample the timer count periodically and compute $\Delta$, the change in count since the last update: `delta = count - last_count`
+> 2.  Validate $\Delta$ (check for reload):
+>      * Overflow: `delta < -(AR+1)/2` → `delta += AR+1`
+>      * Underflow: `delta > (AR+1)/2` → `delta -= AR+1`
+> 3.  Accumulate the validated $\Delta$ values: `position += delta`
 
 Astute readers will ask "how do we know that the overflow or underflow occurred and that the encoder didn't actually change direction rapidly when we flag an incorrect change in count?". To answer this question we need to determine the sample rate at which we apply the correction algorithm.
 
@@ -188,7 +219,7 @@ f_{update}\left[\frac{1}{sec}\right] \ge \frac{
 $$
 
 >[!note]
->When running the calculation above it is critical that you use the maximum angular velocity of the encoder disk itself, not the output velocity of the motor the encoder is attached to if the motor includes gear reduction. Otherwise the computed frequency will be off by a factor of the gear ratio.
+>When running the calculation above it is critical that you use the maximum angular velocity of the encoder disk itself, not the output velocity of the motor the encoder is attached to, if the motor includes gear reduction. Otherwise the computed frequency will be off by a factor of the gear ratio.
 
 In ME 4305, the maximum rotation rate for the 3 pole-pair magnetic encoder (before the gear reduction) will be approximately $\omega_{max} = 30,000\,[RPM]$. Using the maximum for a 16-bit timer, the autoreload is AR=65,535. With these numbers the update rate comes out to:
 $$
@@ -203,7 +234,7 @@ $$
 or about one update every 5.4 seconds. This result should not be assumed to be universal. The extremely low minimum update rate is a direct result of the low resolution encoder: 3 CPR is an extremely low resolution. Most encoders used in industry have thousands of cycles per revolution, and will need a significantly faster update rate.
 
 >[!insight]
->The criteria above, when considered in the context of the encoder count waveform, can be reinterpreted intuitively. To guarantee that every underflow and overflow is detected the update must run at least twice per period. Any readers familiar with signal processing will recognize this as the Nyquist sampling criteria. The Nyquist sampling criteria states that the frequency of a signal can be measured only if the signal is sampled at a frequency at least twice that of the signal.
+>The criteria above, when considered in the context of the encoder count waveform, can be reinterpreted intuitively. To guarantee that every underflow and overflow is detected, the update must run at least twice per period. Any readers familiar with signal processing will recognize this as the Nyquist sampling criteria. The Nyquist sampling criteria states that the frequency of a signal can be measured only if the signal is sampled at a frequency at least twice that of the signal.
 
 ### Summary
 

@@ -2,24 +2,6 @@
    General table layout.
    Centers normal tables and supports opt-in wide tables when a table is
    wrapped in <div class="wide-table-container">.
-
-   USAGE
-   Passive for ordinary Markdown tables: enable the snippet and write tables
-   normally; they will be centered.
-
-   For a table that should use the full available width, wrap it in the
-   wide-table-container class, for example:
-
-     <div class="wide-table-container">
-
-     | Long heading A | Long heading B | Long heading C |
-     | --- | --- | --- |
-     | Value | Value | Value |
-
-     </div>
-
-   The same wrapper can be used inside a [!table] callout styled by
-   caption_callout.css.
 */
 
 .markdown-rendered table,

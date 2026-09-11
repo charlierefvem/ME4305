@@ -15,28 +15,36 @@ status: draft
 
 Modern microcontrollers derive timing from accurate hardware clocks. This lecture introduces crystal oscillators, PLLs, timers, counters, prescalers, and pulse width modulation (PWM).
 
->Candidate static notes:
->* \[\[Crystal Oscillator\]\]
->* \[\[Phase-Locked Loop\]\] 
->*  \[\[Hardware Timers\]\]
->* \[\[Pulse Width Modulation\]\]
+%%
+> Candidate static notes:
+> * \[\[Crystal Oscillator\]\]
+> * \[\[Phase-Locked Loop\]\] 
+> *  \[\[Hardware Timers\]\]
+> * \[\[Pulse Width Modulation\]\]
+%%
 
 ## Crystal Oscillators
 
 The STM32 Nucleo uses an 8 MHz crystal in a Pierce oscillator circuit to generate a clock for the system. Depending on the Nucleo variant, this may be part of the application MCU circuit on the main portion of the Nucleo or the application MCU may get its clock from the oscillator on the ST-Link as is the case for the Nucleo L476RG used in ME 4305. The image below shows a closeup of the Nucleo.
 
-![Annotated Nucleo board highlighting the crystal oscillator components.](images/nucleo.png)
+> [!figure]
+> ![A photograph of the Nucleo L476RG development board.](images/hardware_toolchain/nucleo.png)
+> The Nucleo L476RG development board is used in ME 4305
 
 The Pierce oscillator circuit on the Nucleo L476RG is made up of the following components located on the ST-Link:
 * **X1**: 8 MHz crystal sets the frequency of oscillation.
 * **C3**, **C8**: Load capacitors stabilize the oscillation.
 * **U2**: The inverter gate causing the oscillation is part of the ST-Link MCU.
 
-The figure below shows how these components make up the Pierce oscillator circuit along with a simple RC oscillator circuit. A typical RC oscillator has accuracy on the order of 1% to 10% which correlates to a drift of minutes to hours per day. A typical crystal oscillator has an accuracy of 10 to 50 ppm which correlates to a drift of only a couple seconds per day.
+The figure below shows how these components make up the Pierce oscillator circuit beside a simpler oscillator circuit constructed with a resistor and capacitor acting as an RC filter. Both oscillators work by adding a delay element to the feedback path of an inverting logic gate. Connecting the input and output of the inverting gate causes unstable oscillation that is stabilized by the delay element in the feedback path.
+
+A typical RC oscillator has accuracy on the order of 1% to 10% which correlates to a drift of minutes to hours per day. A typical crystal oscillator has an accuracy of 10 to 50 ppm which correlates to a drift of only a couple seconds per day.
 
 ![Schematic snippets for an RC oscillator and a Pierce oscillator. Also shown is a graph of the typical output from an oscillator.](images/timer_counter/oscillator.svg)
 
-Notice that the oscillator does not output a digital waveform; that is, the signal produced is not a perfect square wave. The waveform is typically offset by $\frac{1}{2}V_{DD}$ (half of the MCU supply voltage) and only has an amplitude of about 1 V.
+> [!note]
+> Notice that the oscillator does not output a digital waveform; that is, the signal produced is not a perfect square wave. The waveform is typically offset by $\frac{1}{2}V_{DD}$ (half of the MCU supply voltage) and only has an amplitude of about 1 V.
+
 ### Phase-Locked Loop
 
 PLLs multiply and divide the crystal frequency to generate a derived system clock that is either faster or slower than the crystal oscillator frequency by some rational factor. Typically, PLLs are used to increase the clock speed so that the microcontroller can run at a higher speed.
@@ -124,8 +132,8 @@ For a DC motor to spin smoothly the PWM frequency must be large enough that the 
 
 ![Frequency-domain illustration showing PWM spectrum, motor low-pass response, and motor output spectrum dominated by the DC component.](images/timer_counter/motor_frequency_response.svg)
 
->[!note]
->In practice the floor for PWM frequency may actually be much higher than what satisfies the conditions shown above because it is common to choose ultrasonic PWM frequencies.
+> [!insight]
+> In practice the floor for PWM frequency may actually be much higher than what satisfies the conditions shown above because it is common to choose ultrasonic PWM frequencies.
 
 Frequencies in the hundreds of Hz to low kHz range will produce noticeable audible tones from the motor which are often undesirable, especially in a busy lab environment with many motors running simultaneously. Selecting PWM frequencies of 20 kHz or higher will guarantee that any produced tones are outside the audible spectrum of human hearing.
 

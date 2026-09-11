@@ -1,14 +1,6 @@
 /*
    Compact note typography.
    This compensates for figures whose 12 pt text was rendered as 12 px.
-
-   USAGE
-   Passive: enable this snippet for notes/exports that should use the compact
-   12 px text scale and approximately 700 px readable line width. No note-level
-   class or special Markdown syntax is required.
-
-   Despite the filename, this snippet changes note typography and readable
-   width; image sizing itself is handled by image_layout.css.
 */
 
 .markdown-rendered,

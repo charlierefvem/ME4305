@@ -31,16 +31,16 @@ A **format specifier** appears after a colon (`:`) inside the braces and control
 
 Each part (enclosed by square brackets in the string above) is optional, so most specifiers use only the pieces they need.
 
->[!table] my_table
->| Component    | Position in the specifier | Meaning                                       | Common values                   |
->| ------------ | ------------------------- | --------------------------------------------- | ------------------------------- |
->| `fill`       | Before `align`            | Character used to pad extra space             | space, `0`, `.`                 |
->| `align`      | Near the beginning        | How the value is positioned in the field      | `<` left, `>` right, `^` center |
->| `width`      | Before precision and type | Minimum number of characters to display       | `8`, `10`, `12`                 |
->| `,`          | Before precision and type | Add thousands separators                      | `,`                             |
->| `.precision` | Before type               | Number of digits after the decimal for floats | `.2`, `.3`, `.4`                |
->| `type`       | Last                      | The display style for the value               | `f`, `e`, `d`, `%`, `s`         |
->Table Caption Goes Here
+> [!table]
+> | Component    | Position in the specifier | Meaning                                       | Common values                   |
+> | ------------ | ------------------------- | --------------------------------------------- | ------------------------------- |
+> | `fill`       | Before `align`            | Character used to pad extra space             | space, `0`, `.`                 |
+> | `align`      | Near the beginning        | How the value is positioned in the field      | `<` left, `>` right, `^` center |
+> | `width`      | Before precision and type | Minimum number of characters to display       | `8`, `10`, `12`                 |
+> | `,`          | Before precision and type | Add thousands separators                      | `,`                             |
+> | `.precision` | Before type               | Number of digits after the decimal for floats | `.2`, `.3`, `.4`                |
+> | `type`       | Last                      | The display style for the value               | `f`, `e`, `d`, `%`, `s`         |
+> Table Caption Goes Here
 
 The **width** before the dot is the minimum field width, while the **precision** after the dot represents the number of digits to include after the decimal point for floating-point values. If the formatted value is wider than the requested width, Python automatically expands the field.
 

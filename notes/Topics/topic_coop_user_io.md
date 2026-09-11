@@ -26,49 +26,55 @@ Printing or writing to a serial port is relatively slow, so large blocks of outp
 
 In this example it will be assumed that data has been collected in a pair of lists, `times`, and `values`, that are of equal length. The contents of the example would likely be placed within a state of a "user interface" task.
 
-```python
-...
-elif state == DUMP_DATA_STATE:
-    if len(times) > 0:
-        t = times.pop(0)
-        v = values.pop(0)
-        ser.write(f"{t},{v}\r\n")
-    else:
-        state = WAIT_FOR_CMD_STATE
-...
-yield
-```
+> [!block_listing] Cooperatively printing data from a pair of lists
+> ```python
+> ...
+> elif state == DUMP_DATA_STATE:
+>     if len(times) > 0:
+>         t = times.pop(0)
+>         v = values.pop(0)
+>         ser.write(f"{t},{v}\r\n")
+>     else:
+>         state = WAIT_FOR_CMD_STATE
+> ...
+> yield
+> ```
+
+Note that each instance of `...` shown in the listing is a placeholder for other states part of the same user interface task.
 
 ### Reading Characters
 
 To cooperatively read characters, try to observe the following workflow:
-1. Check whether data is available.
-2. Read available characters.
-3. Accumulate characters into a buffer.
-4. Detect end-of-line.
-5. Process the completed command.
-6. Return immediately to allow other scheduled tasks to execute.
+ 1. Check whether data is available.
+ 2. Read available characters.
+ 3. Accumulate characters into a buffer.
+ 4. Detect end-of-line.
+ 5. Process the completed command.
+ 6. Return immediately to allow other scheduled tasks to execute.
 
 #### Example 2
 
 In this example a task will wait for a single character input command (cooperatively) and only retrieve the command once a character is available, as indicated by the `.any()` method belonging to the serial port.
 
-```python
-...
-elif state == WAIT_FOR_CMD_STATE:
-    # Check if at least one character is pending
-    if ser.any():
-        # Read the character when ready and decode into a string
-        char_in = ser.read(1).decode()
-        # Process each character appropriately after a state transition
-        if char_in == "h":
-            state = PRINT_HELP_MENU
-        elif char_in in {"L", "l}:
-            state = LEFT_MOTOR_PROMPT
-        elif ...
-...
-yield
-```
+> [!block_listing] Cooperatively reading data from a serial port
+> ```python
+> ...
+> elif state == WAIT_FOR_CMD_STATE:
+>     # Check if at least one character is pending
+>     if ser.any():
+>         # Read the character when ready and decode into a string
+>         char_in = ser.read(1).decode()
+>         # Process each character appropriately after a state transition
+>         if char_in == "h":
+>             state = PRINT_HELP_MENU
+>         elif char_in in {"L", "l}:
+>             state = LEFT_MOTOR_PROMPT
+>         elif ...
+> ...
+> yield
+> ```
+
+Note that each instance of `...` shown in the listing is a placeholder for other states part of the same user interface task.
 
 #### Example 3
 
@@ -80,7 +86,7 @@ It will be left as an exercise for the reader to convert the flowchart into work
 
 ![A detailed flowchart outlining an algorithm for multicharacter numeric data entry.](images/coop_io/multichar_flowchart.svg)
 
->[!insight]
+>[!note]
 >Later in the course, this style of user interface will be used to automate a tuning and data collection interface that will eventually interact with a Python script running on a PC.
 ## Summary
 

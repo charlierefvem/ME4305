@@ -1,32 +1,4 @@
-/*
-   Numbered code listings and optional output blocks.
-   Supports Obsidian and Webpage HTML Export.
-
-   USAGE
-   Use block_listing for a general code example, or file_listing when the
-   title should be treated as a filename. Listings are numbered automatically.
-
-     > [!block_listing] Example description
-     > ```python
-     > print("Hello")
-     > ```
-
-     > [!file_listing] example.py
-     > ```python
-     > print("Hello")
-     > ```
-
-   To label output as belonging to a listing, put an output callout immediately
-   after that listing (with no intervening block):
-
-     > [!output]
-     > ```text
-     > Hello
-     > ```
-
-   The output title is rewritten as "Output from Listing N" when it directly
-   follows a block_listing or file_listing callout.
-*/ 
+/* 1. INITIALIZE COUNTER (Scoped safely for app & web export) */ 
 .markdown-preview-view, 
 .markdown-rendered,
 .markdown-preview-sizer { 
@@ -61,7 +33,7 @@
   --callout-color: 140, 140, 140; 
 }
 
-/* 3. ICON ASSIGNMENTS */
+/* 3. ICON ASIGNMENTS */
 .callout[data-callout="block_listing"] { --callout-icon: lucide-code; } 
 .callout[data-callout="file_listing"] { --callout-icon: lucide-file-code; } 
 .callout[data-callout="output"] { --callout-icon: lucide-square-terminal; } 
