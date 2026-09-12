@@ -4,9 +4,22 @@ These instructions apply to the entire repository. More specific `AGENTS.md` fil
 
 ## Project Purpose
 
-This repository supports ME4305, Mechatronics II, at Cal Poly San Luis Obispo. ME4305 follows ME3305 and precedes ME5305. Its central artifact is an Obsidian-compatible collection of course notes for senior-level mechanical engineering students, many of whom have limited programming experience.
+This repository supports ME4305, Mechatronics II, at Cal Poly San Luis Obispo. ME4305 follows ME3305 and precedes ME5305. Its central artifact is an Obsidian-compatible collection of course notes for primarily fourth-year mechanical engineering students concentrating in mechatronics.
 
 Treat mechatronics as an integrated engineering practice. Connect mechanics, electronics, programming, sensing, actuation, controls, timing, and system limitations instead of presenting them as isolated subjects. The Romi differential-drive robot is a recurring instructional anchor, not the identity of the course.
+
+## Audience and Complexity
+
+Most students have some preliminary programming experience, but do not assume that they know Python. The majority should have encountered MATLAB and S12X assembly in prior coursework. Treat that background as useful exposure rather than guaranteed mastery, and introduce Python-specific behavior and terminology before relying on it.
+
+- Aim for **medium-low to medium complexity** in both prose and code.
+- Assume students recognize basic ideas such as variables, conditionals, loops, functions, and arrays, but may need help transferring those ideas between MATLAB, assembly, and Python.
+- Introduce unfamiliar concepts in a concrete progression: define the term, give a usable mental model, show a small example, and explain the practical consequence.
+- Use MATLAB or assembly comparisons selectively when they clarify an important distinction. Do not require students to translate every explanation through another language.
+- Prefer precise, approachable explanations over simplified slogans that create misconceptions. Reduce complexity through structure, examples, and plain language rather than by sacrificing technical correctness.
+- Include more advanced detail when it prevents a common bug, supports an implementation students will encounter, or provides a worthwhile opportunity for growth. Keep the core idea visible when doing so.
+
+Use `notes/References/reference_mutability.md` as an approximate upper-bound benchmark for depth and conceptual difficulty. Its deepest material may slightly exceed what some students understand on a first reading, which is acceptable when the main explanation remains accessible and the additional detail encourages growth. Most notes should remain at or below this level unless the subject genuinely requires greater depth.
 
 ## Authorship and Authority
 
