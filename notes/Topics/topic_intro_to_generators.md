@@ -49,53 +49,55 @@ In the preceding example it should be noted that the values of `param_1` and `pa
 In this example, we will contrast two techniques you might use to wait for character input. The first technique will use blocking code that prevents other code from executing, and the second approach will refactor the code using a generator function to make the approach cooperative.
 
 **Approach 1**:
-``` python
-## This function will block until a specific character is entered in PuTTY and
-## then echo that character once it is received.
-def wait_for_character_blocking(token, ser):
-    while True:
-        # Read a character when one is ready (this line may block on its own)
-        char_in = ser.read(1).decode()
-        # If the token matches, echo the character back to the user and 
-        # exit the generator
-        if char_in == token:
-            print(f"You pressed {token}!")
-            return
-
-if __name__ == "__main__":
-    ser = pyb.USB_VCP()
-    print("Press g to continue: ")
-    wait_for_character_blocking("g", ser)
-    # Code here runs after "g" is pressed
-```
+> [!block_listing] Blocking serial-input function
+> ``` python
+> ## This function will block until a specific character is entered in PuTTY and
+> ## then echo that character once it is received.
+> def wait_for_character_blocking(token, ser):
+>     while True:
+>         # Read a character when one is ready (this line may block on its own)
+>         char_in = ser.read(1).decode()
+>         # If the token matches, echo the character back to the user and 
+>         # exit the generator
+>         if char_in == token:
+>             print(f"You pressed {token}!")
+>             return
+>
+> if __name__ == "__main__":
+>     ser = pyb.USB_VCP()
+>     print("Press g to continue: ")
+>     wait_for_character_blocking("g", ser)
+>     # Code here runs after "g" is pressed
+> ```
 
 With this approach, the MCU will be unable to run any other code after `wait_for_character_blocking()` is called until the requested token is received. If this occurred in a real-time system, such as one performing motor control, the control loop would stop running which may cause serious problems.
 
 **Approach 2**:
-``` python
-# This function will cooperatively wait for a specific character to be entered
-# in PuTTY and then echo that character once it is received.
-def wait_for_character_coop(token, ser):
-    while True:
-        # Check for pending characters and only once one is ready read the
-        # character
-        if ser.any():
-            char_in = ser.read(1).decode()
-            # If the token matches, echo the character back to the user and 
-            # exit the generator
-            if char_in == token:
-                print(f"You pressed {token}!")
-                return
-        yield
-        
-if __name__ == "__main__":
-    ser = pyb.USB_VCP()
-    print("Press g to continue: ")
-    for _ in wait_for_character_coop("g", ser):
-        # Run other code while waiting for input
-        pass
-    # Code here runs after "g" is pressed
-```
+> [!block_listing] Cooperative serial-input generator
+> ``` python
+> # This function will cooperatively wait for a specific character to be entered
+> # in PuTTY and then echo that character once it is received.
+> def wait_for_character_coop(token, ser):
+>     while True:
+>         # Check for pending characters and only once one is ready read the
+>         # character
+>         if ser.any():
+>             char_in = ser.read(1).decode()
+>             # If the token matches, echo the character back to the user and 
+>             # exit the generator
+>             if char_in == token:
+>                 print(f"You pressed {token}!")
+>                 return
+>         yield
+>         
+> if __name__ == "__main__":
+>     ser = pyb.USB_VCP()
+>     print("Press g to continue: ")
+>     for _ in wait_for_character_coop("g", ser):
+>         # Run other code while waiting for input
+>         pass
+>     # Code here runs after "g" is pressed
+> ```
 
 The `for` loop is repeatedly calling `next()` on the generator object created by `wait_for_character_coop("g", ser)` behind the scenes. On each iteration, the generator function continues until it reaches a `yield` statement. The `yield` statement marks a point where execution pauses, giving the body of the `for` loop (represented by `pass` in the example) opportunity to run. When the generator is iterated again, execution resumes immediately after the most recent `yield` statement with all local variables preserved.
 
@@ -113,53 +115,54 @@ $$
 
 We can implement this sequence very elegantly using a generator function.
 
-``` python
-# A generator function for producing elements in the Collatz sequence
-def collatz(n):
-    # Check for invalid seeds first
-    if type(n) is not int:
-        raise TypeError('Input must be an integer')
-    if n < 1:
-        raise ValueError('Input must be positive')
-    
-    # Start by yielding the initial seed value
-    yield n
-    
-    # Apply the collatz "function" until hitting the stopping condition
-    while n != 1:
-
-        # Even values of n
-        if n % 2 == 0:
-            n //= 2
-        # Odd Values of n
-        else:
-            n = 3*n + 1      
-        
-        # Yield the general case
-        yield n
-
-# The following block of code runs when this file is executed as a script, but not when the file is imported as a module in another file
-if __name__ == "__main__":
-    # This first example shows how to convert the generator to a list
-    # which will run the generator as many times as needed until the generator
-    # function exists (the while loop ends)
-    print(list(collatz(39)))
-    
-    # This next example shows how to loop through the numbers in the generator
-    # using a for loop similar to how we iterate through lists
-    for num in collatz(39):
-        print("The num is", num)
-    
-    # You can also call next() manually, but the above methods are generally
-    # more useful
-    seq = collatz(8)
-    print(next(seq))
-    print(next(seq))
-    print(next(seq))
-    print(next(seq))
-    print(next(seq))  #<---- notice that this line reaches the end of the
-                      #      while loop causing a StopIteration exception
-```
+> [!block_listing] Collatz-sequence generator
+> ``` python
+> # A generator function for producing elements in the Collatz sequence
+> def collatz(n):
+>     # Check for invalid seeds first
+>     if type(n) is not int:
+>         raise TypeError('Input must be an integer')
+>     if n < 1:
+>         raise ValueError('Input must be positive')
+>     
+>     # Start by yielding the initial seed value
+>     yield n
+>     
+>     # Apply the collatz "function" until hitting the stopping condition
+>     while n != 1:
+>
+>         # Even values of n
+>         if n % 2 == 0:
+>             n //= 2
+>         # Odd Values of n
+>         else:
+>             n = 3*n + 1      
+>         
+>         # Yield the general case
+>         yield n
+>
+> # The following block of code runs when this file is executed as a script, but not when the file is imported as a module in another file
+> if __name__ == "__main__":
+>     # This first example shows how to convert the generator to a list
+>     # which will run the generator as many times as needed until the generator
+>     # function exists (the while loop ends)
+>     print(list(collatz(39)))
+>     
+>     # This next example shows how to loop through the numbers in the generator
+>     # using a for loop similar to how we iterate through lists
+>     for num in collatz(39):
+>         print("The num is", num)
+>     
+>     # You can also call next() manually, but the above methods are generally
+>     # more useful
+>     seq = collatz(8)
+>     print(next(seq))
+>     print(next(seq))
+>     print(next(seq))
+>     print(next(seq))
+>     print(next(seq))  #<---- notice that this line reaches the end of the
+>                       #      while loop causing a StopIteration exception
+> ```
 
 The preceding example includes a few nuances you should pay attention to:
 * The generator function does input validation and may raise either a `TypeError` or a `ValueError` because the sequence is only well defined for integers greater than or equal to 1.

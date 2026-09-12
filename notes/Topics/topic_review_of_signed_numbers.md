@@ -83,21 +83,27 @@ The range of a two's complement signed integer depends on the number of bits use
 
 For an 8-bit signed integer:
 
-| Hex value | Signed value |
-|---:|---:|
-| `0x00` | `0` |
-| `0x7F` | `127` |
-| `0x80` | `-128` |
-| `0xFF` | `-1` |
+> [!table]
+> Representative signed 8-bit integer values.
+>
+> | Hex value | Signed value |
+> |---:|---:|
+> | `0x00` | `0` |
+> | `0x7F` | `127` |
+> | `0x80` | `-128` |
+> | `0xFF` | `-1` |
 
 For a 16-bit signed integer:
 
-| Hex value | Signed value |
-|---:|---:|
-| `0x0000` | `0` |
-| `0x7FFF` | `32767` |
-| `0x8000` | `-32768` |
-| `0xFFFF` | `-1` |
+> [!table]
+> Representative signed 16-bit integer values.
+>
+> | Hex value | Signed value |
+> |---:|---:|
+> | `0x0000` | `0` |
+> | `0x7FFF` | `32767` |
+> | `0x8000` | `-32768` |
+> | `0xFFFF` | `-1` |
 
 This is why the number of bits matters. The same pattern of bits can represent a different number depending on whether it is treated as an 8-bit, 16-bit, or 32-bit signed integer.
 

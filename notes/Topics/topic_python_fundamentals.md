@@ -87,10 +87,11 @@ print(my_num)
 ```
 
 Output:
-```text
-Enter a number: 42
-42.0
-```
+> [!output]
+> ```text
+> Enter a number: 42
+> 42.0
+> ```
 
 The value returned by `input()` is a string. If you want to treat the result as a number, convert it explicitly. In this example, `float()` converts the input text to a floating-point number.
 
@@ -117,11 +118,12 @@ print(my_list)
 ```
 
 Output:
-```text
-[1, 2, 'three', 'four']
-four
-[1, 2, 'three']
-```
+> [!output]
+> ```text
+> [1, 2, 'three', 'four']
+> four
+> [1, 2, 'three']
+> ```
 
 The method call
 
@@ -150,9 +152,10 @@ print(str1 + str2)
 
 Output:
 
-```text
-catdog
-```
+> [!output]
+> ```text
+> catdog
+> ```
 
 This is an example of an overloaded operator: the meaning of `+` depends on the types of the objects it is applied to.
 
@@ -168,9 +171,10 @@ print("-".join(my_list))
 
 Output:
 
-```text
-cat-dog
-```
+> [!output]
+> ```text
+> cat-dog
+> ```
 
 In this example, the string `"-"` is inserted between each item in `my_list`.
 
@@ -187,13 +191,14 @@ for my_num in my_list:
 
 Output:
 
-```text
-1
-2
-4
-8
-16
-```
+> [!output]
+> ```text
+> 1
+> 2
+> 4
+> 8
+> 16
+> ```
 
 In this example:
 * `my_num` is the name we give each item while iterating.
@@ -220,13 +225,14 @@ for idx, my_num in enumerate(my_list):
 
 Output:
 
-```text
-0 1
-1 2
-2 4
-3 8
-4 16
-```
+> [!output]
+> ```text
+> 0 1
+> 1 2
+> 2 4
+> 3 8
+> 4 16
+> ```
 
 The `enumerate()` function converts a list into index-value pairs.
 
@@ -240,9 +246,10 @@ print(list(enumerate(my_list)))
 
 Output:
 
-```text
-[(0, 1), (1, 2), (2, 4)]
-```
+> [!output]
+> ```text
+> [(0, 1), (1, 2), (2, 4)]
+> ```
 
 ### Example 8: iterating through a list in reverse
 
@@ -257,13 +264,14 @@ for my_num in reversed(my_list):
 
 Output:
 
-```text
-16
-8
-4
-2
-1
-```
+> [!output]
+> ```text
+> 16
+> 8
+> 4
+> 2
+> 1
+> ```
 
 ### Example 9: using `range()`
 
@@ -294,10 +302,11 @@ for my_num in range(5):
 
 Output:
 
-```text
-0
-1
-```
+> [!output]
+> ```text
+> 0
+> 1
+> ```
 
 The `break` statement exits the most local loop if loops are nested.
 
@@ -315,10 +324,11 @@ for my_num in range(3):
 
 Output:
 
-```text
-0
-2
-```
+> [!output]
+> ```text
+> 0
+> 2
+> ```
 
 The loop still runs through the full range, but the `print()` statement is skipped when `my_num` is equal to `1`.
 

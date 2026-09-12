@@ -521,6 +521,7 @@ Therefore true yaw and IMU bias cannot both be estimated from IMU yaw alone. A y
 
 The practical conclusion was:
 
+> [!insight]
 > With only encoder yaw and IMU yaw, and no independent absolute heading reference, true yaw, IMU yaw bias, and accumulated encoder slip are not all separately observable.
 
 ## The BNO055 Complication
@@ -645,6 +646,7 @@ This supports tasks such as:
 
 The design principle is:
 
+> [!insight]
 > Use line sensing for global registration; use dead reckoning for local maneuvers between registration events.
 
 ## Lines, Magnets, and Future Pseudo-GPS
@@ -653,10 +655,12 @@ Line sensors are valuable because they provide an external reference. They are n
 
 A line is a one-dimensional feature. It tells the robot something like:
 
+> [!insight]
 > You are on or near this curve.
 
 Magnets embedded at specific waypoints could provide zero-dimensional landmark events:
 
+> [!insight]
 > You just passed this point.
 
 This could support event-triggered localization without requiring vision. A single Hall sensor would mostly detect waypoint crossings, while richer magnet patterns or multiple sensors could encode more information such as lateral offset or waypoint identity.
@@ -718,6 +722,7 @@ Students first benefit from learning:
 
 The EKF is better framed as a downstream topic:
 
+> [!insight]
 > What we built here is a modular, fixed-gain version of a larger estimation architecture. With more time and better hardware, these layers could be unified into a multirate EKF.
 
 For this course, the cascaded observer and dead-reckoning discussion may be more valuable than a premature EKF implementation.
@@ -743,4 +748,3 @@ Seventh, the cascaded observer architecture remains valuable as an abstraction, 
 Eighth, for the current course, robust short-horizon dead reckoning plus frequent line or landmark registration is a better target than long-horizon observer-based localization.
 
 Finally, this journey is itself pedagogically useful. It shows that good engineering is not adding complexity until the model looks sophisticated. Good engineering is knowing what information the sensors actually provide, what the model can legitimately infer, and when a simpler architecture is more honest.
-

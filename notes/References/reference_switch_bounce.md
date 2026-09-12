@@ -36,7 +36,9 @@ For a single switch:
 
 On many microcontrollers, the pull-up resistor can be configured internally, so an external resistor may not be required.
 
-![Active-low switch circuit. The circuit shows an MCU GPIO pin connected to a node with a pull-up resistor to VDD and a switch to ground.](images/gpio/active_low_switch.svg)
+> [!figure]
+> ![Active-low switch circuit. The circuit shows an MCU GPIO pin connected to a node with a pull-up resistor to VDD and a switch to ground.](images/gpio/active_low_switch.svg)
+> Active-low MCU switch with a pull-up resistor to VDD.
 
 ## Reading Multiple Switches with Fewer GPIO Pins
 
@@ -61,10 +63,12 @@ It is possible to build a matrix of switches by arranging them into rows and col
 
 For a $4\times4$ array of switches, like the hexadecimal keypad shown below, the number of required GPIO reduces by half from 16 to 8.
 
-![A schematic snippet for a 4x4 switch matrix. Rows are labeled Y1 through Y4 and columns are labeled X1 through X4.](images/gpio/hexadecimal_keypad_matrix.svg)
+> [!figure]
+> ![A schematic snippet for a 4x4 switch matrix. Rows are labeled Y1 through Y4 and columns are labeled X1 through X4.](images/gpio/hexadecimal_keypad_matrix.svg)
+> A 4x4 switch matrix with rows Y1-Y4 and columns X1-X4.
 
->[!note]
->The above schematic is simplified from how these types of matrices are typically constructed. As shown, the matrix will create false readings if multiple buttons are pressed simultaneously. More robust circuits add series diodes to each switch. By allowing current to flow only one way through each switch the false readings can be prevented.
+> [!note]
+> The above schematic is simplified from how these types of matrices are typically constructed. As shown, the matrix will create false readings if multiple buttons are pressed simultaneously. More robust circuits add series diodes to each switch. By allowing current to flow only one way through each switch the false readings can be prevented.
 
 ### Shift Registers and Port Expanders
 
@@ -74,11 +78,15 @@ Another technique for reading many switches with few GPIO pins is to use a devic
 
 An ideal mechanical switch would change cleanly from off to on, and then cleanly from on back to off as shown in the waveform below.
 
-![Ideal switching behavior. The ideal switching plot shows one clean transition from OFF to ON and one clean transition back to OFF.](images/switch_bounce/switch_ideal_waveform.png)
+> [!figure]
+> ![Ideal switching behavior. The ideal switching plot shows one clean transition from OFF to ON and one clean transition back to OFF.](images/switch_bounce/switch_ideal_waveform.png)
+> Ideal switch waveform with clean ON and OFF transitions.
 
 A real mechanical switch does not usually behave that way. When the contacts first touch, they can physically bounce off one another mechanically. This produces several rapid transitions before the signal settles. The same thing can happen when the switch opens. An example waveform is shown below.
 
-![Real-world switching behavior. The real-world plot shows several rapid transitions during the bounce time at both the rising and falling edges before the signal settles.](images/switch_bounce/switch_bounce_waveform.png)
+> [!figure]
+> ![Real-world switching behavior. The real-world plot shows several rapid transitions during the bounce time at both the rising and falling edges before the signal settles.](images/switch_bounce/switch_bounce_waveform.png)
+> Real switch waveform showing contact bounce at both transitions.
 
 The practical firmware problem is that one physical switch press may produce multiple rising and falling edges. If the input is connected to an interrupt, each of those edges may trigger an ISR.
 
@@ -92,7 +100,9 @@ There are hardware-based approaches to switch debounce. The DigiKey article link
 
 A simple RC debounce circuit uses a resistor-capacitor filter to slow the transition seen by the GPIO input.
 
-![Simple RC debounce circuit. The circuit shows a pull-up resistor R1 to plus 5 volts, a switch to ground, and a simple RC filter made from R2 and C1 feeding the port input.](images/switch_bounce/switch_rc_debounce.png)
+> [!figure]
+> ![Simple RC debounce circuit. The circuit shows a pull-up resistor R1 to plus 5 volts, a switch to ground, and a simple RC filter made from R2 and C1 feeding the port input.](images/switch_bounce/switch_rc_debounce.png)
+> RC debounce circuit for an active-low switch.
 
 For the simple RC filter shown above, the approximate time constants are
 $$
@@ -107,7 +117,9 @@ $$
 
 A modified hardware debounce circuit can add a diode so that the rise and fall times can be tuned independently.
 
-![Modified RC debounce circuit. The circuit shows a pull-up resistor R1, a switch to ground, a diode D1, a resistor R2, a capacitor C1 to ground, and a Schmitt trigger before the port input. Handwritten notes identify the rise time constant as R1C1 and the fall time constant as R2C1.](images/switch_bounce/switch_rc_diode_debounce.png)
+> [!figure]
+> ![Modified RC debounce circuit. The circuit shows a pull-up resistor R1, a switch to ground, a diode D1, a resistor R2, a capacitor C1 to ground, and a Schmitt trigger before the port input. Handwritten notes identify the rise time constant as R1C1 and the fall time constant as R2C1.](images/switch_bounce/switch_rc_diode_debounce.png)
+> Modified RC debounce circuit with asymmetric charge and discharge time constants.
 
 For the modified RC filter shown in the figure above, the approximate time constants are
 $$
@@ -155,103 +167,104 @@ This example will illustrate one method for implementing debounce using a combin
 
 The code block below shows a task that disables an external interrupt after a switch event, then re-enables it after the debounce interval has passed.
 
-```python
-from pyb import ExtInt, Pin, enable_irq, disable_irq
-from array import array
-
-# A task compatible with cotask.py that handles debounce for up to 16 switches
-# connected to different ExtInt ISR lines.
-class task_switch:
-
-    # Create a task object using a defined set of switch pins and a queue
-    # to store edge events.
-    #
-    # Params:
-    #    event_queue A queue object used to hold switch event flags. Each
-    #                flag is represented by a byte. The lower nibble describes
-    #                the ISR line and b4 encodes the switch transition:
-    #                - b4 clear describes a falling edge (a switch press)
-    #                - b4 set describes a rising edge (a switch release)
-    #    switches A collection of pyb.Pin objects used to read the switches. All
-    #             switches must use unique ISR lines.
-    #
-    def __init__(self, event_queue, switches):
-        # A Queue used to store edge detection events
-        self._event_queue = event_queue
-        
-        # A dictionary used to map pin numbers (ISR lines) to Pin objects
-        self._pins = {switch.pin(): switch for switch in switches}
-        
-        # A dictionary used to map pin numbers (ISR lines) to ExtInt objects
-        # All ISRs use the same callback function
-        self._callbacks = {
-            switch.pin(): ExtInt(
-                switch,
-                ExtInt.IRQ_RISING_FALLING,
-                Pin.PULL_UP,
-                self._callback,
-            )
-            for switch in switches
-        }
-
-        # An array of two 16-bit integers used to store current and previous
-        # debounce states. A one in any position indicates that switch has
-        # recently been pressed or released. The previous state must be retained
-        # to guarantee that the task iterates twice before reenabling callbacks
-        # so that the debounce time is greater than the task period instead of 
-        # less than the task period.
-        #
-        #     self._db_mask[0] = current debounce state
-        #     self._db_mask[1] = previous debounce state
-        #
-        self._db_mask = array("H", [0x0000, 0x0000])
-
-    # This callback runs on the first rising or falling edge associated with a
-    # press or release on any of the switches. When the callback runs the ISR
-    # line is passed in as an integer.
-    def _callback(self, ISR_src):
-
-        # Set the debounce state to include the channel which triggered this
-        # ISR cycle.
-        self._db_mask[0] |= 1 << ISR_src
-
-        # Disable the callback on this channel so that no more interrupts
-        # occur until after the debounce period.
-        self._callbacks[ISR_src].disable()
-
-        # Put the event into the event queue so that other tasks can know
-        # a press or release occurred.
-        self._event_queue.put(ISR_src | (self._pins[ISR_src].value() << 4),
-                              in_ISR=True)
-
-    # This task should be scheduled with a period equal to or greater than
-    # the expected debounce period for the switches. A period of at least 30
-    # ms is recommended.
-    def run(self):
-        # This task has only one state
-        while True:
-            # Begin critical section
-            irq_state = disable_irq()
-
-            # Remember the mask so that appropriate lines can be reenabled
-            reenable_mask = self._db_mask[1]  
-
-            # Shift the current debounce state to previous state and reset
-            # the current state to zero.
-            self._db_mask[1], self._db_mask[0] = self._db_mask[0], 0x0000
-
-            # End critical section 
-            enable_irq(irq_state)  
-              
-            # Check which channels have pending debounce by examining the
-            # remembered mask representing debounce states. Reenable any
-            # channels that are due.
-            for isr_src in self._callbacks:  
-                if reenable_mask & (1 << isr_src):  
-                    self._callbacks[isr_src].enable()
-            
-            yield
-```
+> [!block_listing] Debounce task implementation
+> ```python
+> from pyb import ExtInt, Pin, enable_irq, disable_irq
+> from array import array
+>
+> # A task compatible with cotask.py that handles debounce for up to 16 switches
+> # connected to different ExtInt ISR lines.
+> class task_switch:
+>
+>     # Create a task object using a defined set of switch pins and a queue
+>     # to store edge events.
+>     #
+>     # Params:
+>     #    event_queue A queue object used to hold switch event flags. Each
+>     #                flag is represented by a byte. The lower nibble describes
+>     #                the ISR line and b4 encodes the switch transition:
+>     #                - b4 clear describes a falling edge (a switch press)
+>     #                - b4 set describes a rising edge (a switch release)
+>     #    switches A collection of pyb.Pin objects used to read the switches. All
+>     #             switches must use unique ISR lines.
+>     #
+>     def __init__(self, event_queue, switches):
+>         # A Queue used to store edge detection events
+>         self._event_queue = event_queue
+>         
+>         # A dictionary used to map pin numbers (ISR lines) to Pin objects
+>         self._pins = {switch.pin(): switch for switch in switches}
+>         
+>         # A dictionary used to map pin numbers (ISR lines) to ExtInt objects
+>         # All ISRs use the same callback function
+>         self._callbacks = {
+>             switch.pin(): ExtInt(
+>                 switch,
+>                 ExtInt.IRQ_RISING_FALLING,
+>                 Pin.PULL_UP,
+>                 self._callback,
+>             )
+>             for switch in switches
+>         }
+>
+>         # An array of two 16-bit integers used to store current and previous
+>         # debounce states. A one in any position indicates that switch has
+>         # recently been pressed or released. The previous state must be retained
+>         # to guarantee that the task iterates twice before reenabling callbacks
+>         # so that the debounce time is greater than the task period instead of 
+>         # less than the task period.
+>         #
+>         #     self._db_mask[0] = current debounce state
+>         #     self._db_mask[1] = previous debounce state
+>         #
+>         self._db_mask = array("H", [0x0000, 0x0000])
+>
+>     # This callback runs on the first rising or falling edge associated with a
+>     # press or release on any of the switches. When the callback runs the ISR
+>     # line is passed in as an integer.
+>     def _callback(self, ISR_src):
+>
+>         # Set the debounce state to include the channel which triggered this
+>         # ISR cycle.
+>         self._db_mask[0] |= 1 << ISR_src
+>
+>         # Disable the callback on this channel so that no more interrupts
+>         # occur until after the debounce period.
+>         self._callbacks[ISR_src].disable()
+>
+>         # Put the event into the event queue so that other tasks can know
+>         # a press or release occurred.
+>         self._event_queue.put(ISR_src | (self._pins[ISR_src].value() << 4),
+>                               in_ISR=True)
+>
+>     # This task should be scheduled with a period equal to or greater than
+>     # the expected debounce period for the switches. A period of at least 30
+>     # ms is recommended.
+>     def run(self):
+>         # This task has only one state
+>         while True:
+>             # Begin critical section
+>             irq_state = disable_irq()
+>
+>             # Remember the mask so that appropriate lines can be reenabled
+>             reenable_mask = self._db_mask[1]  
+>
+>             # Shift the current debounce state to previous state and reset
+>             # the current state to zero.
+>             self._db_mask[1], self._db_mask[0] = self._db_mask[0], 0x0000
+>
+>             # End critical section 
+>             enable_irq(irq_state)  
+>               
+>             # Check which channels have pending debounce by examining the
+>             # remembered mask representing debounce states. Reenable any
+>             # channels that are due.
+>             for isr_src in self._callbacks:  
+>                 if reenable_mask & (1 << isr_src):  
+>                     self._callbacks[isr_src].enable()
+>             
+>             yield
+> ```
 
 ##### How the Debounce Mask Works
 
@@ -270,8 +283,8 @@ self._db_mask[0] |= 1 << ISR_src
 
 The callback then disables the interrupt source so that bounce edges on the same line do not keep generating interrupts. 
 
->[!note]
->Notice that the callback performs only a few simple operations before returning. This keeps the ISR execution time short while deferring less time-critical work to the scheduled task.
+> [!note]
+> Notice that the callback performs only a few simple operations before returning. This keeps the ISR execution time short while deferring less time-critical work to the scheduled task.
 
 Each time the task runs, the first thing it does is start a critical section, that is, a section in which ISR callbacks are temporarily disabled. During this critical section, a copy of the previous mask is stored to remember which callbacks must be reenabled. The current mask is then shifted into the previous mask and the current mask is cleared:
 ```python

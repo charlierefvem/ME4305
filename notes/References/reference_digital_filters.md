@@ -51,7 +51,8 @@ D_0\,y_k
 $$
 For simplicity, this expression uses the same maximum order $n$ for the numerator and denominator. More generally, the input and feedback histories may have different lengths.
 
-**Note**: often the coefficients are normalized so that $D_0=1$. This does not reduce tuning freedom, as long as $D_0\neq 0$, because all coefficients can be divided by the same value.
+> [!note]
+> Often the coefficients are normalized so that $D_0=1$. This does not reduce tuning freedom, as long as $D_0\neq 0$, because all coefficients can be divided by the same value.
 
 Equivalently,
 $$

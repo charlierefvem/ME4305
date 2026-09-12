@@ -16,11 +16,15 @@ status: draft
 
 Euler angles describe a set of three sequenced rotations that can be used to define an arbitrary orientation for an object in 3D space. Euler angles come in many different conventions because the sequence of rotations can be selected in many different ways. The common convention, sometimes called the aerospace convention, is the ZYX or 321 convention. Each rotation transforms between a set of coordinate frames.
 
-| Euler Angle | Meaning                                   |
-| ----------- | ----------------------------------------- |
-| $\psi$      | Yaw or heading about a global $z_1$ axis. |
-| $\phi$      | Pitch about an intermediate $y_2$ axis.   |
-| $\beta$     | Roll about a local/body $x_3$.            |
+> [!table]
+> Euler angles used in the ZYX convention.
+>
+> | Euler Angle | Meaning                                   |
+> | ----------- | ----------------------------------------- |
+> | $\psi$      | Yaw or heading about a global $z_1$ axis. |
+> | $\phi$      | Pitch about an intermediate $y_2$ axis.   |
+> | $\beta$     | Roll about a local/body $x_3$.            |
+
 $$
 (x_1, y_1, z_1)
 \quad \xrightarrow{\psi} \quad
@@ -44,7 +48,9 @@ $$
 $$
 The rotation will be determined using projection in the $(x_1,y_1)$ plane.
 
-![Euler angle derivation for the ZYX convention as yaw by psi about global z1.](images/imu/euler_angle_psi_rotation.svg)
+> [!figure]
+> ![Euler angle derivation for the ZYX convention as yaw by psi about global z1.](images/imu/euler_angle_psi_rotation.svg)
+> Euler angle derivation for the ZYX convention as yaw by psi about global z1.
 
 From the diagram, the new basis vectors are
 $$
@@ -88,7 +94,8 @@ c_\psi & s_\psi & 0 \\
 $$
 when writing the new basis vectors in terms of the old basis vectors.
 
-**Note**: similar analysis can be performed for the $\phi$ and $\beta$ rotations to get two additional rotation matrices.
+> [!note]
+> Similar analysis can be performed for the $\phi$ and $\beta$ rotations to get two additional rotation matrices.
 #### Rotation Matrix Sign Convention
 
 The matrix in this example is for transforming basis vectors. The next section uses matrices that act on vector components, which have the opposite sign convention for the $z$ rotation. The matrix that acts on vector components is the transpose of the matrix acting on basis vectors.
@@ -171,7 +178,8 @@ M_{zyx}^{-1}
 M_z^{-1}M_y^{-1}M_x^{-1}.
 $$
 
-**Insight**:  *You must put your socks on before your shoes, but you must take your shoes off before your socks.* That is, when undoing a sequence of transformations, not only does each transformation invert but the sequence reverses as well.
+> [!insight]
+> *You must put your socks on before your shoes, but you must take your shoes off before your socks.* That is, when undoing a sequence of transformations, not only does each transformation invert but the sequence reverses as well.
 
 ### Gimbal Lock and Singular Matrices
 

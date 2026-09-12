@@ -53,7 +53,7 @@ The table below shows the 3-bit Gray code pattern associated with the Gray code 
 
 > [!figure]
 > ![Circular Gray-code encoder disk with eight angular sectors.](images/encoder/gray_code_disk.svg)
-> An example Gray-code encoder disk with eight angular sectors. The inner ring corresponds to `B0` in the state table above.
+> Eight-sector Gray-code encoder disk and corresponding bit ring.
 
 The following snippet of Python code shows how to convert between 3-bit Gray code and binary. Note that for larger Gray code disks the number of cumulative XOR operations will increase as well.
 ``` python
@@ -78,11 +78,11 @@ Many high-performance (high resolution) encoders use optics to produce edges. In
 
 > [!figure]
 > ![Transmissive optical encoder example.](images/encoder/optical_transmissive.svg)
-> Simplified model of a transmissive optical encoder showing an LED (represented by a flashlight) and two offset photosensors (represented by two eyes). As the encoder disk rotates the detectors see a strobing pattern from the light from the LED shining through the encoder disk.
+> Transmissive optical encoder with two offset photosensors.
 
 > [!figure]
 > ![Reflective optical encoder example.](images/encoder/optical_reflective.svg)
-> Simplified model of a reflective optical encoder showing an LED (represented by a flashlight) and two offset photosensors (represented by two eyes). As the encoder disk rotates the detectors see a strobing pattern from the light from the LED reflecting off the encoder disk.
+> Reflective optical encoder with two offset photosensors.
 
 ### Magnetic Quadrature Encoders
 
@@ -137,7 +137,8 @@ From this information, a lookup table, like the one shown below, can be used to 
 > | L     | ↓     | Up (Forward)   |
 > Lookup table for edge-based decoding of quadrature waveforms
 
-**Note**: the arrows (↑ and ↓) shown in the table refer to rising and falling edges.
+> [!note]
+> The arrows (↑ and ↓) shown in the table refer to rising and falling edges.
 
 #### Example 1
 
@@ -161,7 +162,8 @@ The timer can also XOR the two channels to generate a square wave whose frequenc
 > ![Sixteen-state quadrature polling transition table.](images/encoder/quadrature_polling_table.svg)
 > Lookup table for poll-based decoding of quadrature waveforms
 
-**Note**: the arrows (↑ and ↓) shown in the table refer to up or down counting.
+> [!note]
+> The arrows (↑ and ↓) shown in the table refer to up or down counting.
 
 #### Example 2
 
@@ -169,7 +171,7 @@ In this example a more complicated motion will be decoded in which the encoder c
 
 > [!figure]
 > ![Worked quadrature decoding example showing channel waveforms, XOR output, and accumulated count.](images/encoder/quadrature_decoding_advanced.svg)
-> A worked example showing the quadrature waveforms and decoded displacement for an encoder changing directions from forward to backward.
+> Quadrature decoding example with a reversal of direction.
 
 There are four plots shown in the figure above:
  1) The first plot shows the quadrature waveform for Channel A. Notice that it no longer has a fixed frequency; instead each low and high portion is of different length.
@@ -218,8 +220,8 @@ f_{update}\left[\frac{1}{sec}\right] \ge \frac{
 \frac{4\cdot CPR\,[ticks]}{1 [rev]}}{\frac{AR+1}{2}\,[ticks]}
 $$
 
->[!note]
->When running the calculation above it is critical that you use the maximum angular velocity of the encoder disk itself, not the output velocity of the motor the encoder is attached to, if the motor includes gear reduction. Otherwise the computed frequency will be off by a factor of the gear ratio.
+> [!note]
+> When running the calculation above it is critical that you use the maximum angular velocity of the encoder disk itself, not the output velocity of the motor the encoder is attached to, if the motor includes gear reduction. Otherwise the computed frequency will be off by a factor of the gear ratio.
 
 In ME 4305, the maximum rotation rate for the 3 pole-pair magnetic encoder (before the gear reduction) will be approximately $\omega_{max} = 30,000\,[RPM]$. Using the maximum for a 16-bit timer, the autoreload is AR=65,535. With these numbers the update rate comes out to:
 $$
@@ -233,8 +235,8 @@ f_{update}\left[\frac{1}{sec}\right] &\ge \frac{
 $$
 or about one update every 5.4 seconds. This result should not be assumed to be universal. The extremely low minimum update rate is a direct result of the low resolution encoder: 3 CPR is an extremely low resolution. Most encoders used in industry have thousands of cycles per revolution, and will need a significantly faster update rate.
 
->[!insight]
->The criteria above, when considered in the context of the encoder count waveform, can be reinterpreted intuitively. To guarantee that every underflow and overflow is detected, the update must run at least twice per period. Any readers familiar with signal processing will recognize this as the Nyquist sampling criteria. The Nyquist sampling criteria states that the frequency of a signal can be measured only if the signal is sampled at a frequency at least twice that of the signal.
+> [!insight]
+> The criteria above, when considered in the context of the encoder count waveform, can be reinterpreted intuitively. To guarantee that every underflow and overflow is detected, the update must run at least twice per period. Any readers familiar with signal processing will recognize this as the Nyquist sampling criteria. The Nyquist sampling criteria states that the frequency of a signal can be measured only if the signal is sampled at a frequency at least twice that of the signal.
 
 ### Summary
 

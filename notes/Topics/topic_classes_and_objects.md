@@ -33,11 +33,10 @@ Before you learn to write your own classes you should fully understand the conte
 
 The Python `str` class is something you've used often so far in lab and in homework. Consider the simple example below:
 
-> [!block_listing] Splitting strings in Python
-> ``` python
-> my_string = "Hello, world!"
-> my_string.split(",")
-> ```
+``` python
+my_string = "Hello, world!"
+my_string.split(",")
+```
 
 In this example the **object** `my_string` of **class** `str` is created on line 1. The string type is one of many built-in types in Python, and is automatically created when the programmer uses quotation marks, `"`, or apostrophes, `'`, to enclose a sequence of characters.
 
@@ -55,11 +54,10 @@ In this snippet the "string split function", `str.split`(), is applied to the pa
 
 To create objects that aren't of one of the built-in types, you must call the initializer for the class defining the object. Consider the example below, similar to code you've used in lab, that defines a GPIO pin, **PB6**, specifically, in output mode.
 
-> [!block_listing] Creating a `pyb.Pin` object
-> ``` python
-> import pyb
-> my_pin = pyb.Pin(pyb.Pin.cpu.B6, mode=pyb.Pin.OUT_PP)
-> ```
+``` python
+import pyb
+my_pin = pyb.Pin(pyb.Pin.cpu.B6, mode=pyb.Pin.OUT_PP)
+```
 
 There are several details to consider in this short example.
 
@@ -79,12 +77,11 @@ Now that an object has to be created it is simple to interact with the pin. To s
 
 Another class you've used in lab is the class that abstracts usage of hardware timers. Without this class you would be forced to write potentially dozens of lines of code, directly interacting with special function registers, to do something as simple as generate PWM. The abstraction layer allows you to only worry about the minimal set of parameters needed for you to tell the class what timer to use and how you'd like it to be configured.
 
-> [!block_listing] Creating a `pyb.Timer` object
-> ``` python
-> from pyb import Timer
-> my_tim = Timer(tim_num, freq=...)
-> my_chan = my_tim.channel(chan_num, mode=...)
-> ```
+``` python
+from pyb import Timer
+my_tim = Timer(tim_num, freq=...)
+my_chan = my_tim.channel(chan_num, mode=...)
+```
 
 This example is slightly more subtle than for the pin, because two objects are created.
 
@@ -123,8 +120,12 @@ There are many techniques for laying out a class before jumping in to the implem
 
 In this example a class diagram is presented for an H-bridge motor driver with a simple phase and direction interface. The class, `MotorDriver`, will abstract away details like GPIO and PWM so that the caller may run simple commands like `left_motor.enable()` and `right_motor.set_effort(42)`.
 
-![Motor driver class diagram listing attributes and methods.](images/oop/class_diagram.svg)
-**Note:** when designing a class spend a reasonable amount of time deliberating on a correct set of initializer parameters, attributes, and methods as these choices indirectly define the core structure of your implementation. In this example, exactly five parameters are needed to fully define the hardware interface between the microcontroller and the motor driver, but all five parameters don't need to be stored as attributes for the lifetime of the object. Instead, three of the parameters defining the PWM pin, timer, and channel, are combined into one timer channel attribute.
+> [!figure]
+> ![Motor driver class diagram listing attributes and methods.](images/oop/class_diagram.svg)
+> Motor driver class diagram listing attributes and methods.
+
+> [!note]
+> When designing a class spend a reasonable amount of time deliberating on a correct set of initializer parameters, attributes, and methods as these choices indirectly define the core structure of your implementation. In this example, exactly five parameters are needed to fully define the hardware interface between the microcontroller and the motor driver, but all five parameters don't need to be stored as attributes for the lifetime of the object. Instead, three of the parameters defining the PWM pin, timer, and channel, are combined into one timer channel attribute.
 
 ## Implementing a Class
 
@@ -169,13 +170,13 @@ In this example, a partially complete class definition will be presented that co
 > [!file_listing] motor_driver.py
 > ``` python
 > from pyb import Pin, Timer
-> 
-> 
+>
+>
 > class MotorDriver:
-> 
+>
 >     def __init__(self, pwm_pin: Pin, dir_pin: Pin,
 >                  nslp_pin: Pin, tim: Timer, chan: int):
-> 
+>
 >         # Store a copy of each input parameter as an attribute
 >         self._dir_pin = Pin(dir_pin, mode=Pin.OUT_PP)
 >         self._nslp_pin = Pin(nslp_pin, mode=Pin.OUT_PP)
@@ -183,18 +184,18 @@ In this example, a partially complete class definition will be presented that co
 >                                      pin=pwm_pin,
 >                                      mode=Timer.PWM,
 >                                      pulse_width_percent=0)
-> 
+>
 >     def enable(self):
 >         pass
-> 
+>
 >     def disable(self):
 >         self._nslp_pin.low()
-> 
+>
 >     def set_effort(self, effort: float):
 >         # This function has bugs that you must fix
 >         self._pwm_chan.pulse_width_percent(effort)
-> 
-> 
+>
+>
 > # Code in the following block will run when this file is run as a script, but
 > # not when used as a module in other files.
 > if __name__ == "__main__":
@@ -202,17 +203,17 @@ In this example, a partially complete class definition will be presented that co
 >     pwm_tim = Timer(4, freq=20_000)
 >     left_motor = MotorDriver(Pin.cpu.B6, Pin.cpu.C0, Pin.cpu.C1, pwm_tim, 1)
 >     right_motor = MotorDriver(Pin.cpu.B7, Pin.cpu.C2, Pin.cpu.C3, pwm_tim, 2)
-> 
+>
 >     left_motor.enable()
 >     right_motor.enable()
-> 
+>
 >     left_motor.set_effort(42)
 >     right_motor.set_effort(-42)
-> 
+>
 > ```
 
->[!note]
->If you ever want to create an indented block, but you don't want to write code inside of it yet use `pass`. This keyword tells the interpreter that you've deliberately left an indented block empty. Pass should not appear anywhere else in your code.
+> [!note]
+> If you ever want to create an indented block, but you don't want to write code inside of it yet use `pass`. This keyword tells the interpreter that you've deliberately left an indented block empty. Pass should not appear anywhere else in your code.
 
 ### Example 6
 Many programmers (including your instructor) consider the use of global variables to be poor coding practice. In some cases, they seem necessary, like in interrupt callbacks, but almost always they can be avoided.
@@ -227,15 +228,15 @@ Consider the following two examples for collecting data inside a timer callback.
 > from time import ticks_ms
 > from encoder import Encoder
 > from pyb import Timer
-> 
-> 
+>
+>
 > t_buf = array('L',(0 for n in range(1000)))
 > p_buf = array('L',(0 for n in range(1000)))
 > d_buf = array('L',(0 for n in range(1000)))
 > idx = 0
-> 
+>
 > enc_A = Encoder()
-> 
+>
 > def tim_cb(cb_src):
 >     global t_buf, p_buf, d_buf, idx
 >     
@@ -258,10 +259,10 @@ The second uses a lightweight class to encapsulate the variables that would othe
 > from time import ticks_ms
 > from encoder import Encoder
 > from pyb import Timer
-> 
-> 
+>
+>
 > class Collector:
-> 
+>
 >     def __init__(self, tim, enc):
 >         self.tim = tim
 >         self.enc = enc
@@ -279,7 +280,7 @@ The second uses a lightweight class to encapsulate the variables that would othe
 >         self.p_buf[self.idx] = self.enc.get_position()
 >         self.d_buf[self.idx] = self.enc.get_delta()
 >         self.idx += 1
-> 
+>
 > col = Collector(Timer(7, freq=100), Encoder())
 > ```
 

@@ -67,7 +67,9 @@ $$
 
 These poles can be visualized on a pole map like shown below.
 
-![Continuous pole diagram. The location of each of the third order systems poles is shown as an x on a complex plane.](discrete_systems/example_3o_poles_continuous.svg)
+> [!figure]
+> ![Continuous pole diagram. The location of each of the third order systems poles is shown as an x on a complex plane.](discrete_systems/example_3o_poles_continuous.svg)
+> Continuous pole locations for the example third-order system.
 
 Each of these can be converted to a discrete time pole with $z_n = e^{s_n\,T_s}$. For this example assume $T_s = 1[ms]=0.001[s]$.
 
@@ -82,9 +84,12 @@ $$
 
 These poles can also be visualized on a pole map like shown below.
 
-![Discrete pole diagram. The location of each of the third order systems poles is shown as an x on a complex plane.](images/discrete_systems/example_3o_poles_discrete.svg)
+> [!figure]
+> ![Discrete pole diagram. The location of each of the third order systems poles is shown as an x on a complex plane.](images/discrete_systems/example_3o_poles_discrete.svg)
+> Discrete pole locations for the example third-order system.
 
-**Insight**: notice that the location of the continuous time poles relative to the imaginary axis visually resembles the location of the discrete time poles relative to the unit circle.
+> [!insight]
+> Notice that the location of the continuous time poles relative to the imaginary axis visually resembles the location of the discrete time poles relative to the unit circle.
 
 ## Transfer Functions
 
@@ -499,13 +504,14 @@ $$
 
 This can be done in MATLAB using `c2d()` or with SciPy using `cont2discrete()`. The short snippet below shows how to do the conversion with MATLAB.
 
-``` MATLAB
-sys_c = ss(A, B, C, D);
-sys_d = c2d(sys_c, Ts, 'zoh');
-
-A_d = sys_d.A;
-B_d = sys_d.B;
-```
+> [!block_listing] Discretizing a system with MATLAB `c2d()`
+> ``` MATLAB
+> sys_c = ss(A, B, C, D);
+> sys_d = c2d(sys_c, Ts, 'zoh');
+>
+> A_d = sys_d.A;
+> B_d = sys_d.B;
+> ```
 
 ### Output Equations
 

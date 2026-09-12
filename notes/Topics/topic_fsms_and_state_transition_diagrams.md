@@ -44,7 +44,9 @@ Programmers should remember that the finite state machine is not the code itself
 
 A state transition diagram is a visual depiction of the abstract finite state machine. Each state should be drawn as an ellipse with the state's name and/or number labelling the ellipse.
 
-![A state represented by an ellipse. In the center is the label S0 followed by the state name INIT.](images/multitasking/state_ellipse.svg)
+> [!figure]
+> ![A state represented by an ellipse. In the center is the label S0 followed by the state name INIT.](images/multitasking/state_ellipse.svg)
+> Elliptical FSM state labeled S0 INIT.
 
 Transitions between states are shown as arrows. Each arrow must begin and end in exactly one state; branching arrows are not allowed. The transitions are labelled by placing the condition and action inside square brackets separated by a forward slash.
 * In most cases the transition should include one condition and one action: `[CONDITION / ACTION]`.
@@ -54,13 +56,17 @@ Transitions between states are shown as arrows. Each arrow must begin and end in
 * If multiple actions are to be performed they may be separated by semicolons: `[CONDITION / ACTION_1; ACTION_2]`.
 Each of these cases may be mixed and matched as long as the conventions are followed.
 
-![A transition is labeled with its triggering condition and optional action.](images/multitasking/state_transition.svg)
+> [!figure]
+> ![A transition is labeled with its triggering condition and optional action.](images/multitasking/state_transition.svg)
+> A transition is labeled with its triggering condition and optional action.
 
 Some students incorrectly assume that the conditions and actions must be valid executable lines of code. While in some cases this may be appealing, it is not a requirement that your state transition diagram matches the exact syntax used to implement the logic encoded by the diagram. For example, it is common to use the condition `ALWAYS` to represent immediate transitions that occur every time the state runs.
 
 A state transition diagram is the graphical representation of a finite state machine and is made by stitching together many states with transitions. Ever state transition diagram must have an explicit start transition, shown with an unlabeled arrow going from a `START` box. Without a start condition it can be ambiguous which state a task is in immediately upon startup.
 
-![State transition diagram showing states drawn as ellipses connected by directed transitions. Each transition is labeled with its triggering condition and optional action, and the diagram includes a designated start transition.](images/multitasking/start_transition.svg)
+> [!figure]
+> ![State transition diagram showing states drawn as ellipses connected by directed transitions. Each transition is labeled with its triggering condition and optional action, and the diagram includes a designated start transition.](images/multitasking/start_transition.svg)
+> State transition diagram showing conditions, actions, and the designated start.
 
 In ME4305 you will likely use state transition diagrams to design your finite state machines and therefore the architecture for your Micropython code. However, tools do exist that let you program graphically by designing the finite state machine directly. Stateflow (part of Simulink) is an example of software capable of implementing programs directly from state transition diagrams.
 
@@ -70,6 +76,7 @@ One of the most common design questions is deciding whether behavior belongs ins
 
 Recall:
 
+> [!insight]
 > Transitions are effectively instantaneous.
 
 Consequently, transition actions should be "one-shot" operations. In other words, the system should not spend any significant amount of time on the transition. The definition of significant greatly depends on the timing characteristics of the system being modeled or controlled.
@@ -99,19 +106,21 @@ Self-transitions are transitions from one state back to the same state and are o
 
 The following example shows both the transition diagram and a Python implementation for an extremely simple FSM with three states.
 
-![A state transition diagram with three states. State 0, the initialization state, always transitions to state 1, the run state. State 1 always transitions to state 2, the run thrice state. State 2 transitions to state 1 after it self-transitions enough times to increment count to 2.](images/multitasking/example_transition_diagram.svg)
+> [!figure]
+> ![A state transition diagram with three states. State 0, the initialization state, always transitions to state 1, the run state. State 1 always transitions to state 2, the run thrice state. State 2 transitions to state 1 after it self-transitions enough times to increment count to 2.](images/multitasking/example_transition_diagram.svg)
+> Three-state FSM used in the programming example.
 
 
 
-> [!block_listing]- Example FSM Implementation
+> [!block_listing] Example FSM Implementation
 > The following Python script implements the preceding example in executable code.
 > ``` python
 > import time
-> 
+>
 > S0_INIT = 0
 > S1_RUN = 1
 > S2_RUN_THRICE = 2
-> 
+>
 > def main():
 >     # A variable to indicate what state the FSM
 >     # is about to run
@@ -159,7 +168,7 @@ The following example shows both the transition diagram and a Python implementat
 >     
 >     # Once the program is over, do any sort of cleanup as needed
 >     print('Program terminated')
-> 
+>
 > # THe following block prevents main() from running when the file
 > # is imported instead of run as a main program
 > if __name__ == '__main__':

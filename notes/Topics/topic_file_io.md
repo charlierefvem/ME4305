@@ -33,13 +33,13 @@ The traditional approach to reading a file is to open the file, keep the file st
 > [!block_listing] Traditional Approach
 > ``` python
 > filename = "data.csv"
-> 
+>
 > file = open(filename, "r")
-> 
+>
 > for line in file:
 >      # Process one line at a time
 >      pass
-> 
+>
 > file.close()
 > ```
 
@@ -50,7 +50,7 @@ The modern, preferred approach to reading a file is to use the `with` construct.
 > [!block_listing] Modern Approach
 > ``` python
 > filename = "data.csv"
-> 
+>
 > with open(filename, "r") as file:
 >      for line in file:
 >          # Process one line at a time
@@ -93,20 +93,21 @@ You may have noticed in the preceding examples that the files were opened with `
 In this example, a CSV (comma separated value) file will be opened and the contents will be converted from text to lists. A CSV file is a plaintext file in which data is stored in a tabular format with commas separating columns and line-endings separating rows. A CSV file can be thought of as an extremely simple version of a spreadsheet.
 
 An example CSV could look like:
-``` text
-Time,Distance
-0.0,0.0000
-0.1,0.0998
-0.2,0.1987
-0.3,0.2955
-0.4,0.3894
-0.5,0.4794
-0.6,0.5646
-0.7,0.6442
-0.8,0.7174
-0.9,0.7833
-1.0,0.8415
-```
+> [!file_listing] data.csv
+> ``` text
+> Time,Distance
+> 0.0,0.0000
+> 0.1,0.0998
+> 0.2,0.1987
+> 0.3,0.2955
+> 0.4,0.3894
+> 0.5,0.4794
+> 0.6,0.5646
+> 0.7,0.6442
+> 0.8,0.7174
+> 0.9,0.7833
+> 1.0,0.8415
+> ```
 
 To convert each column of text into a list of numbers, each line must be stripped of special characters, split on the comma acting as a delimiter (separator), and then converted to a pair numeric values.
 
@@ -115,7 +116,7 @@ To convert each column of text into a list of numbers, each line must be strippe
 > filename = "data.csv"
 > time = []
 > distance = []
-> 
+>
 > with open(filename, "r") as file:
 >     # Extract header, strip special characters, split on comma
 >     # (This advances the file pointer by one row)
@@ -146,7 +147,7 @@ This example is the inverse of Example 4; that is, instead of reading data from 
 > filename = "data.csv"
 > time = [0.0, 0.1, 0.2, 0.3, 0.4, 0.5]
 > distance = [0.0, 0.0998, 0.1987, 0.2955, 0.3894, 0.4794]
-> 
+>
 > with open(filename, "w") as file:
 >     # Write formatted header
 >     file.write("Time,Distance\n")

@@ -117,28 +117,29 @@ $$
 
 ---
 
-**Insight**: the matrix exponential is not found by exponentiating each element of $A$. It is a matrix function defined by the series representation
-$$
-e^{A\,t} = I + A\,t + \frac{(A\,t)^2}{2!} + \dots + \frac{(A\,t)^n}{n!}.
-$$
-The Taylor series may be manipulated by plugging in the eigenvalue decomposition, $Q\,\Lambda\, Q^{-1}$, in place of $A$ on the right-hand-side.
-$$
-\begin{aligned}
-e^{A\,t} &= I + Q\,\Lambda\, Q^{-1}\,t 
-        + \frac{(Q\,\Lambda\, Q^{-1}\,t)^2}{2!} + \dots 
-        + \frac{(Q\,\Lambda\, Q^{-1}\,t)^n}{n!} + \dots \\[4pt]
-e^{A\,t} &= I + Q\,\Lambda\, Q^{-1}\,t 
-        + \frac{(Q\,\Lambda\, Q^{-1})\,(Q\,\Lambda\, Q^{-1})\,t^2}{2!} + \dots 
-        + \frac{(Q\,\Lambda\, Q^{-1})^n\,t^n}{n!} + \dots \\[4pt]
-e^{A\,t} &= Q\,I\,Q^{-1} + Q\,\Lambda\, Q^{-1}\,t 
-        + \frac{Q\,\Lambda^2\, Q^{-1}\,t^2}{2!} + \dots 
-        + \frac{Q\,\Lambda^n\, Q^{-1}\,t^n}{n!} + \dots \\[4pt]
-e^{A\,t} &= Q\,\left( I + \Lambda\,t 
-        + \frac{\Lambda^2\,t^2}{2!} + \dots 
-        + \frac{\Lambda^n\, t^n}{n!} + \dots \right)\, Q^{-1} \\[4pt]
-e^{A\,t} &= Q\,e^{\Lambda\,t}\, Q^{-1}
-\end{aligned}
-$$
+> [!insight]
+> The matrix exponential is not found by exponentiating each element of $A$. It is a matrix function defined by the series representation
+> $$
+> e^{A\,t} = I + A\,t + \frac{(A\,t)^2}{2!} + \dots + \frac{(A\,t)^n}{n!}.
+> $$
+> The Taylor series may be manipulated by plugging in the eigenvalue decomposition, $Q\,\Lambda\, Q^{-1}$, in place of $A$ on the right-hand-side.
+> $$
+> \begin{aligned}
+> e^{A\,t} &= I + Q\,\Lambda\, Q^{-1}\,t 
+>         + \frac{(Q\,\Lambda\, Q^{-1}\,t)^2}{2!} + \dots 
+>         + \frac{(Q\,\Lambda\, Q^{-1}\,t)^n}{n!} + \dots \\[4pt]
+> e^{A\,t} &= I + Q\,\Lambda\, Q^{-1}\,t 
+>         + \frac{(Q\,\Lambda\, Q^{-1})\,(Q\,\Lambda\, Q^{-1})\,t^2}{2!} + \dots 
+>         + \frac{(Q\,\Lambda\, Q^{-1})^n\,t^n}{n!} + \dots \\[4pt]
+> e^{A\,t} &= Q\,I\,Q^{-1} + Q\,\Lambda\, Q^{-1}\,t 
+>         + \frac{Q\,\Lambda^2\, Q^{-1}\,t^2}{2!} + \dots 
+>         + \frac{Q\,\Lambda^n\, Q^{-1}\,t^n}{n!} + \dots \\[4pt]
+> e^{A\,t} &= Q\,\left( I + \Lambda\,t 
+>         + \frac{\Lambda^2\,t^2}{2!} + \dots 
+>         + \frac{\Lambda^n\, t^n}{n!} + \dots \right)\, Q^{-1} \\[4pt]
+> e^{A\,t} &= Q\,e^{\Lambda\,t}\, Q^{-1}
+> \end{aligned}
+> $$
 
 For diagonalizable $A$, the derivation above shows that the matrix exponential can be computed from the Taylor series directly, or by using the eigenvector similarity transform to compute the exponential in the eigenbasis. This equivalence is referred to as the matrix exponential identity.
 
@@ -152,27 +153,30 @@ $$
 
 The derivation above assumes $A$ is diagonalizable. The final result, however, is more general, and remains valid even when $A$ cannot be diagonalized.
 
-**Insight**: $e^{A\,t}$ is the state-transition matrix, sometimes referred to using the symbol $\Phi(t)$. It tells how the current state moves forward in time when there is no input. For sampled implementation, $e^{A\,T_s}$​ tells how the state evolves over one control-loop update period.
+> [!insight]
+> $e^{A\,t}$ is the state-transition matrix, sometimes referred to using the symbol $\Phi(t)$. It tells how the current state moves forward in time when there is no input. For sampled implementation, $e^{A\,T_s}$​ tells how the state evolves over one control-loop update period.
 
 ## Computing the Matrix Exponential
 
 When computing matrix exponentials in software make sure to call the appropriate function. In MATLAB,
-``` MATLAB
-% Correct matrix exponential
-Ad = expm(A*Ts)
-
-% Incorrect matrix exponential (applies element by element)
-Ad_wrong = exp(A*Ts)
-```
+> [!block_listing] Computing the matrix exponential in MATLAB
+> ``` MATLAB
+> % Correct matrix exponential
+> Ad = expm(A*Ts)
+>
+> % Incorrect matrix exponential (applies element by element)
+> Ad_wrong = exp(A*Ts)
+> ```
 
 And, in Python using SciPy,
-``` Python
-from scipy.linalg import expm, exp
-import numpy as np
-
-# Correct matrix exponential
-Ad = expm(A * Ts)
-
-# Incorrect matrix exponential (applies element by element)
-Ad_wrong = np.exp(A * Ts)
-```
+> [!block_listing] Computing the matrix exponential in Python
+> ``` Python
+> from scipy.linalg import expm, exp
+> import numpy as np
+>
+> # Correct matrix exponential
+> Ad = expm(A * Ts)
+>
+> # Incorrect matrix exponential (applies element by element)
+> Ad_wrong = np.exp(A * Ts)
+> ```

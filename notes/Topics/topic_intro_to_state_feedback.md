@@ -417,7 +417,8 @@ Recall that an IPD controller is like a PID controller, but $K_p$ and $K_d$ appl
 
 Because the integral state is defined using the conventional tracking error, $e=r−\Omega_J$, the corresponding feedback gain, $K_3$, may be negative. This is not a problem; the overall control law is $\underline{u} = -K\underline{x}$, so changing the sign convention for a state simply changes the sign of the corresponding gain without changing the controller's behavior.
 
-**Insight**: the preceding setup is designed so that with $\underline{r}$ set to zero the system behaves like a regulator, driving the system state to zero. When $\underline{r}$ is nonzero it acts as a deliberate disturbance on the state-space system. In this scenario the regulator will still attempt to drive the states to zero, but it will be unable to do so because a steady value of $x_2 = \Omega_J = 0$ would cause unbounded growth in $x_3 = \int r - \Omega_J\,dt$. Instead, the system will settle on a new location in the state-space in which all states are bounded; this requires $x_3 = \int r - \Omega_J\,dt$ to be constant at steady-state which is only the case for $\Omega_J = r$.
+> [!insight]
+> The preceding setup is designed so that with $\underline{r}$ set to zero the system behaves like a regulator, driving the system state to zero. When $\underline{r}$ is nonzero it acts as a deliberate disturbance on the state-space system. In this scenario the regulator will still attempt to drive the states to zero, but it will be unable to do so because a steady value of $x_2 = \Omega_J = 0$ would cause unbounded growth in $x_3 = \int r - \Omega_J\,dt$. Instead, the system will settle on a new location in the state-space in which all states are bounded; this requires $x_3 = \int r - \Omega_J\,dt$ to be constant at steady-state which is only the case for $\Omega_J = r$.
 
 ### Example 4
 
@@ -446,7 +447,9 @@ $$
 
 The second-order pole pair remains dominant because the additional pole is much farther left in the complex plane and decays faster.
 
-![Dominant pole approximation diagram. The complex plane shows a second-order dominant pole pair near the imaginary axis and an additional real pole placed farther left on the real axis. A note says the extra pole should be about 10 times faster, with a equals 10 omega_n.](images/state_feedback/second_order_dominant_pole_map.svg)
+> [!figure]
+> ![Dominant pole approximation diagram. The complex plane shows a second-order dominant pole pair near the imaginary axis and an additional real pole placed farther left on the real axis. A note says the extra pole should be about 10 times faster, with a equals 10 omega_n.](images/state_feedback/second_order_dominant_pole_map.svg)
+> Dominant second-order pole pair with a faster additional pole.
 
 Expanding gives
 $$
@@ -456,7 +459,8 @@ s^3 + a_2s^2 + a_1s + a_0
 $$
 which can be matched to the three poles from the augmented system derived in Example 3.
 
-**Insight**: the dominant pole approximation is a useful design heuristic, not a design rule. Additional poles should be placed according to the purpose of the additional states. Fast poles are common in controller design because they have little influence on the visible response, but other applications, such as disturbance modeling and observer design, may intentionally use slower poles to represent slowly changing dynamics.
+> [!insight]
+> The dominant pole approximation is a useful design heuristic, not a design rule. Additional poles should be placed according to the purpose of the additional states. Fast poles are common in controller design because they have little influence on the visible response, but other applications, such as disturbance modeling and observer design, may intentionally use slower poles to represent slowly changing dynamics.
 
 ## Practical Strategies for Gain Determination
 
@@ -466,7 +470,8 @@ There are other formulae available, such as Ackermann formula, that make it easi
 
 However, in practice, the most common approach is to use a fully featured tool like MATLAB's `place()` function or the `place_poles()` method belonging to Python's SciPy package. These methods take in $A$ and $B$ matrices along with a set of pole locations and return the matrix $K$ fully computed.
 
-**Insight**: after practicing with characteristic polynomial matching to understand the design process, it is generally preferable to use software tools such as MATLAB's `place()` function or SciPy's `place_poles()` for practical controller design. These routines use numerically robust algorithms that are generally less sensitive to roundoff and conditioning issues than direct coefficient matching. For multi-input systems, they can also exploit the fact that multiple feedback matrices may produce the same pole locations, allowing solutions with improved numerical properties to be selected.
+> [!insight]
+> After practicing with characteristic polynomial matching to understand the design process, it is generally preferable to use software tools such as MATLAB's `place()` function or SciPy's `place_poles()` for practical controller design. These routines use numerically robust algorithms that are generally less sensitive to roundoff and conditioning issues than direct coefficient matching. For multi-input systems, they can also exploit the fact that multiple feedback matrices may produce the same pole locations, allowing solutions with improved numerical properties to be selected.
 
 
 ## Practical Limitations
@@ -491,6 +496,7 @@ The dominant pole approximation is a practical design shortcut. It lets a higher
 
 Finally, the lecture extended the regulator idea to tracking control by augmenting the state vector with an integrated error state. This creates a controller that behaves like an IPD controller, where the feedback gains act on current, velocity, and accumulated error.
 
+%%
 ## Candidate Static Notes
 * \[\[State Feedback\]\]
 * \[\[State-Space Models\]\]
@@ -502,3 +508,4 @@ Finally, the lecture extended the regulator idea to tracking control by augmenti
 * \[\[Tracking Control\]\]
 * \[\[PID Control\]\]
 * \[\[Integral Control\]\]
+%%

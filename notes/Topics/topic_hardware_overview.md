@@ -23,7 +23,9 @@ All the firmware that you write this quarter will run on a development board cal
 ### STM32 Nucleo-L476 Development Board
 
 The primary development board for this course is the **STM32 Nucleo-L476RG**.
-![A top-down view of the Nucleo L476RG development board from ST Microelectronics.](images/hardware_toolchain/nucleo.png)
+> [!figure]
+> ![A top-down view of the Nucleo L476RG development board from ST Microelectronics.](images/hardware_toolchain/nucleo.png)
+> A top-down view of the Nucleo L476RG development board from ST Microelectronics.
 
 Important components include:
 * **U5:** Main STM32L476RG microcontroller
@@ -43,7 +45,9 @@ See more: [Nucleo 64 User Manual](https://www.st.com/resource/en/user_manual/um1
 ------------------------------------------------------------------------
 
 ### "Shoe of Brian"
-![A top-down view of the Shoe of Brian accessory board that plugs into the bottom of the Nucleo L476RG.](images/hardware_toolchain/shoe_of_brian.png)
+> [!figure]
+> ![A top-down view of the Shoe of Brian accessory board that plugs into the bottom of the Nucleo L476RG.](images/hardware_toolchain/shoe_of_brian.png)
+> A top-down view of the Shoe of Brian accessory board that plugs into the bottom of the Nucleo L476RG.
 
 The Shoe of Brian expansion board provides a native USB connection for MicroPython which unlocks several quality of life features that improve the workflow considerably.
 * Flashing code is done by saving to the enumerated USB storage drive `PYBFLASH`.

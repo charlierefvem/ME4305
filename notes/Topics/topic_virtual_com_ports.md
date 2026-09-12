@@ -62,13 +62,16 @@ ser.write("Hello\r\n")
 
 There are several UART ports on the STM32, each with a default set of pins that will automatically be configured when the UART is instantiated. Other pins can be used but they must be configured with additional lines of code.
 
-| UART | TX    | RX   | RTS   | CTS   |
-| ---- | ----- | ---- | ----- | ----- |
-| 1    | `B6`  | `B7` | `B4`  | -     |
-| 2    | `A2`  | `A3` | `A1`  | `A0`  |
-| 3    | `C4`  | `C5` | `B14` | `B13` |
-| 4    | `A0`  | `A1` | -     | -     |
-| 5    | `C12` | `D2` | -     | -     |
+> [!table]
+> UART pin mappings on the Nucleo L476RG.
+>
+> | UART | TX    | RX   | RTS   | CTS   |
+> | ---- | ----- | ---- | ----- | ----- |
+> | 1    | `B6`  | `B7` | `B4`  | -     |
+> | 2    | `A2`  | `A3` | `A1`  | `A0`  |
+> | 3    | `C4`  | `C5` | `B14` | `B13` |
+> | 4    | `A0`  | `A1` | -     | -     |
+> | 5    | `C12` | `D2` | -     | -     |
 
 If you need to use UART on pins that are not default pins you must both configure a new set of pins and unconfigure the default set. To know which pins can access a given UART you must consult the **Alternate Function Table** in the STM32 datasheet.
 
@@ -76,19 +79,22 @@ If you need to use UART on pins that are not default pins you must both configur
 
 This example will create an object for UART 3 using non-default pins.
 
-```python
-from pyb import UART, Pin
-
-ser = UART(3, baudrate=115200)
-Pin(Pin.cpu.C4, mode=Pin.ANALOG)  # Unconfigure default TX pin
-Pin(Pin.cpu.C5, mode=Pin.ANALOG)  # Unconfigure default RX pin
-Pin(Pin.cpu.B10, mode=Pin.ALT, alt=7)  # Configure new TX pin
-Pin(Pin.cpu.B11, mode=Pin.ALT, alt=7)  # Configure new RX pin
-```
+> [!block_listing] Reconfiguring UART 3 pins
+> ```python
+> from pyb import UART, Pin
+>
+> ser = UART(3, baudrate=115200)
+> Pin(Pin.cpu.C4, mode=Pin.ANALOG)  # Unconfigure default TX pin
+> Pin(Pin.cpu.C5, mode=Pin.ANALOG)  # Unconfigure default RX pin
+> Pin(Pin.cpu.B10, mode=Pin.ALT, alt=7)  # Configure new TX pin
+> Pin(Pin.cpu.B11, mode=Pin.ALT, alt=7)  # Configure new RX pin
+> ```
 
 The alternate function table shows that `B10` and `B11` can access UART3 through alternate function 7.
 
-![An excerpt from the STM34L476 datasheet from the alternate function table. ](images/vcp/af_table_page_2.png)
+> [!figure]
+> ![An excerpt from the STM34L476 datasheet from the alternate function table. ](images/vcp/af_table_page_2.png)
+> An excerpt from the STM34L476 datasheet from the alternate function table.
 
 ## Using pyserial on the PC
 
@@ -117,13 +123,13 @@ These serial objects behave similarly to Python file streams and support methods
 
 The table below summarizes the three types of serial communication port covered above. It is important to understand which one to use in the right context.
 
->[!table]
->| Tool     | Platform    | Class Name      | Usage                                                                                                                                                                                                                                 |
->| -------- | ----------- | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
->| VCP      | MicroPython | `pyb.USB_VCP`   | Primary tool for accessing serial port on the STM32 microcontroller. Should be used for access to the Python REPL, a UI, or for basic data transfer.                                                                                  |
->| UART     | MicroPython | `pyb.UART`      | Secondary tool for accessing serial ports on the microcontroller to use for data transfer, debugging, etc. Should likely not be used unless the VCP is already in use or you need UART specifically for another piece of<br>hardware. |
->| pyserial | CPython     | `serial.Serial` | Primary tool for accessing serial ports on any computer running Python. Any serial interaction done on a computer, through USB, Bluetooth, or a true serial port, can be done using this module.                                      |
->Caption here
+> [!table]
+> | Tool     | Platform    | Class Name      | Usage                                                                                                                                                                                                                                 |
+> | -------- | ----------- | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+> | VCP      | MicroPython | `pyb.USB_VCP`   | Primary tool for accessing serial port on the STM32 microcontroller. Should be used for access to the Python REPL, a UI, or for basic data transfer.                                                                                  |
+> | UART     | MicroPython | `pyb.UART`      | Secondary tool for accessing serial ports on the microcontroller to use for data transfer, debugging, etc. Should likely not be used unless the VCP is already in use or you need UART specifically for another piece of<br>hardware. |
+> | pyserial | CPython     | `serial.Serial` | Primary tool for accessing serial ports on any computer running Python. Any serial interaction done on a computer, through USB, Bluetooth, or a true serial port, can be done using this module.                                      |
+> Common serial-terminal tools and APIs.
 
 ## Bytes versus Strings
 

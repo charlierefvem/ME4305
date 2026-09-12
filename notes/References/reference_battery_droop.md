@@ -52,24 +52,31 @@ With this new gain included, the dynamic values of $V_{bat}$ cancel with each ot
 
 The block diagram below shows a simple modification to a standard feedback control loop that includes an additional gain in between the controller and the actuator. This gain can be used for unit conversion or, as previously mentioned, for compensating for a drooping battery.
 
-![A block diagram representation of a closed loop controller with an extra dynamic gain on the controller output.](images/pid/Battery_Compensation.svg)
+> [!figure]
+> ![A block diagram representation of a closed loop controller with an extra dynamic gain on the controller output.](images/pid/Battery_Compensation.svg)
+> A block diagram representation of a closed loop controller with an extra dynamic gain on the controller output.
 
 This output gain should generally remain outside of the controller itself. The controller should operate in physical units, while the output gain converts those units into whatever representation the actuator requires.
 ### Example 2
 
 The block diagram above generalizes this method of compensation using an output gain $K$. For the battery driven H-bridge presented in Example 1, the parameters used in the diagram would be defined as shown in the table below.
 
-| Gain or Signal | Definition in H-bridge Example                                                                                                                                                                  |
-| -------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| $a$            | The requested actuation value, equal to the voltage, $V_m$, that the controller requests from the the H-bridge and applied to the actuator.                                                     |
-| $K$            | The output or actuator gain. Converts the requested voltage to an appropriate duty cycle, $D$. Depending on units for $D$, this gain may be $K=\frac{1}{V_{bat}}$ or $K=\frac{100\%}{V_{bat}}$. |
-| $a^*$          | The requested actuation value after conversion to duty cycle, $D$.                                                                                                                              |
+> [!table]
+> Signals and gains in the H-bridge battery-droop example.
+>
+> | Gain or Signal | Definition in H-bridge Example                                                                                                                                                                  |
+> | -------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+> | $a$            | The requested actuation value, equal to the voltage, $V_m$, that the controller requests from the the H-bridge and applied to the actuator.                                                     |
+> | $K$            | The output or actuator gain. Converts the requested voltage to an appropriate duty cycle, $D$. Depending on units for $D$, this gain may be $K=\frac{1}{V_{bat}}$ or $K=\frac{100\%}{V_{bat}}$. |
+> | $a^*$          | The requested actuation value after conversion to duty cycle, $D$.                                                                                                                              |
 
 ## Measuring $V_{bat}$
 
 To measure the battery voltage safely, a voltage divider is necessary. The maximum raw battery voltage may be too high to read with a microcontroller's ADC, which often has an active range of 0V to 3.3V. To reduce the battery voltage to a safe range, a divider with a suitable ratio is required.
 
-![A voltage divider circuit built from an upper resistor R1 and a lower resistor R2.](images/battery/battery_divider.svg)
+> [!figure]
+> ![A voltage divider circuit built from an upper resistor R1 and a lower resistor R2.](images/battery/battery_divider.svg)
+> A voltage divider circuit built from an upper resistor R1 and a lower resistor R2.
 
 ### Example 3
 

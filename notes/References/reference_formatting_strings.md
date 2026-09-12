@@ -40,7 +40,7 @@ Each part (enclosed by square brackets in the string above) is optional, so most
 > | `,`          | Before precision and type | Add thousands separators                      | `,`                             |
 > | `.precision` | Before type               | Number of digits after the decimal for floats | `.2`, `.3`, `.4`                |
 > | `type`       | Last                      | The display style for the value               | `f`, `e`, `d`, `%`, `s`         |
-> Table Caption Goes Here
+> Components of a Python format specifier.
 
 The **width** before the dot is the minimum field width, while the **precision** after the dot represents the number of digits to include after the decimal point for floating-point values. If the formatted value is wider than the requested width, Python automatically expands the field.
 
@@ -48,17 +48,16 @@ The **width** before the dot is the minimum field width, while the **precision**
 
 For this example, `{:8.2f}` combines width `8`, precision `.2`, and type `f`.
 
->[!block_listing] Example f-string
->``` python
->my_pi = 3.14159
->
->print(repr(f"{my_pi:8.2f}"))
->```
+``` python
+my_pi = 3.14159
 
->[!output]
->``` text
->'    3.14'
->```
+print(repr(f"{my_pi:8.2f}"))
+```
+
+> [!output]
+> ``` text
+> '    3.14'
+> ```
 
 The output includes four leading spaces to pad the string to a width of eight, as specified.
 
@@ -68,21 +67,20 @@ Note that the function `repr()` used in the example makes the output display as 
 
 This next example will show a few common string formats using the `.format()` method.
 
->[!block_listing] Example use of .format()
->``` python
->x = 3.14159
->
->print(repr("{:.2f}".format(x)))
->print(repr("{:,}".format(12345)))
->print(repr("{:.1%}".format(0.875)))
->```
+``` python
+x = 3.14159
 
->[!output]
->```text
->'3.14'
->'12,345'
->'87.5%'
->```
+print(repr("{:.2f}".format(x)))
+print(repr("{:,}".format(12345)))
+print(repr("{:.1%}".format(0.875)))
+```
+
+> [!output]
+> ```text
+> '3.14'
+> '12,345'
+> '87.5%'
+> ```
 
 It is possible to mix fixed string data with formatted values.
 
@@ -94,10 +92,11 @@ print(repr("V = {:.2f} V".format(voltage)))
 print(repr("I = {:.2f} A".format(current)))
 ```
 `Output`:
-```text
-'V = 12.37 V'
-'I = 1.52 A'
-```
+> [!output]
+> ```text
+> 'V = 12.37 V'
+> 'I = 1.52 A'
+> ```
 
 ### Example 3
 
@@ -111,11 +110,12 @@ print(repr(f"{12345:,}"))
 print(repr(f"{0.875:.1%}"))
 ```
 `Output`:
-```text
-'3.14'
-'12,345'
-'87.5%'
-```
+> [!output]
+> ```text
+> '3.14'
+> '12,345'
+> '87.5%'
+> ```
 
 ```python
 voltage = 12.37
@@ -125,39 +125,42 @@ print(repr(f"V = {voltage:.2f} V"))
 print(repr(f"I = {current:.2f} A"))
 ```
 `Output`:
-```text
-'V = 12.37 V'
-'I = 1.52 A'
-```
+> [!output]
+> ```text
+> 'V = 12.37 V'
+> 'I = 1.52 A'
+> ```
 
 #### Example 4
 
 This final example is more practical and shows how you might create a set of data and print that data in a comma separated format. Note the use of list comprehensions to compactly create time and data values.
 
-```python
-from math import pi, sin
-
-times = [t * 0.1 for t in range(11)]
-vals = [sin(2*pi * t) for t in times]
-
-for time, val in zip(times, vals):
-    print(f"{time:.2f},{val:.4f}")
-```
+> [!block_listing] Python code for Example 4
+> ```python
+> from math import pi, sin
+>
+> times = [t * 0.1 for t in range(11)]
+> vals = [sin(2*pi * t) for t in times]
+>
+> for time, val in zip(times, vals):
+>     print(f"{time:.2f},{val:.4f}")
+> ```
 
 Output:
-``` text
-0.00,0.0000
-0.10,0.5878
-0.20,0.9511
-0.30,0.9511
-0.40,0.5878
-0.50,0.0000
-0.60,-0.5878
-0.70,-0.9511
-0.80,-0.9511
-0.90,-0.5878
-1.00,-0.0000
-```
+> [!output]
+> ``` text
+> 0.00,0.0000
+> 0.10,0.5878
+> 0.20,0.9511
+> 0.30,0.9511
+> 0.40,0.5878
+> 0.50,0.0000
+> 0.60,-0.5878
+> 0.70,-0.9511
+> 0.80,-0.9511
+> 0.90,-0.5878
+> 1.00,-0.0000
+> ```
 
 ## Summary
 

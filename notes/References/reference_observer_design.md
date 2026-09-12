@@ -29,7 +29,8 @@ $$
 \underline{y} - \hat{\underline{y}}.
 $$
 
-**Note**: the derivation below will be done using a discrete-time formulation to better align the derived equations with the intended digital implementation on a microcontroller. Therefore it may be useful to review the [[reference_z_domain|z-domain]] and methods for [[reference_continuous_to_discrete|continuous-to-discrete conversion]].
+> [!note]
+> The derivation below will be done using a discrete-time formulation to better align the derived equations with the intended digital implementation on a microcontroller. Therefore it may be useful to review the [[reference_z_domain|z-domain]] and methods for [[reference_continuous_to_discrete|continuous-to-discrete conversion]].
 
 ## Open-loop state-space model
 
@@ -74,19 +75,23 @@ In the open-loop state equations above, $\underline{x}$ is the state vector, $\u
 
 To help keep all of the parameters straight, refer to the table below.
 
-| Symbol                  | Dimensionality           | Meaning                                                                                                                            |
-| ----------------------- | ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------- |
-| $\underline{x}_k$       | $\mathbb{R}^n$           | The true state vector.                                                                                                             |
-| $\underline{u}_k$       | $\mathbb{R}^m$           | The input vector.                                                                                                                  |
-| $\underline{y}_k$       | $\mathbb{R}^p$           | The true output vector.                                                                                                            |
-| $\underline{w}_k$       | $\mathbb{R}^{m+p}$       | The known-information vector used with the observer. Consists of $\underline{u}_k$ vertically concatenated with $\underline{y}_k$. |
-| $\hat{\underline{x}}_k$ | $\mathbb{R}^n$           | The estimated state vector. Tracks $\underline{x}_k$ for a working observer.                                                       |
-| $\hat{\underline{y}}_k$ | $\mathbb{R}^p$           | The estimated output vector. Tracks $\underline{y}_k$ for a working observer.                                                      |
-| $A_d$                   | $\mathbb{R}^{n\times n}$ | The discrete-time state-to-state coupling matrix.                                                                                  |
-| $B_d$                   | $\mathbb{R}^{n\times m}$ | The discrete-time input-to-state coupling matrix.                                                                                  |
-| $C_d$                   | $\mathbb{R}^{p\times n}$ | The discrete-time state-to-output coupling matrix.                                                                                 |
-| $D_d$                   | $\mathbb{R}^{p\times m}$ | The discrete-time input-to-output coupling matrix.                                                                                 |
-| $L$                     | $\mathbb{R}^{n\times p}$ | The discrete-time observer gain.                                                                                                   |
+> [!table]
+> Symbols used in the discrete-time observer equations.
+>
+> | Symbol                  | Dimensionality           | Meaning                                                                                                                            |
+> | ----------------------- | ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------- |
+> | $\underline{x}_k$       | $\mathbb{R}^n$           | The true state vector.                                                                                                             |
+> | $\underline{u}_k$       | $\mathbb{R}^m$           | The input vector.                                                                                                                  |
+> | $\underline{y}_k$       | $\mathbb{R}^p$           | The true output vector.                                                                                                            |
+> | $\underline{w}_k$       | $\mathbb{R}^{m+p}$       | The known-information vector used with the observer. Consists of $\underline{u}_k$ vertically concatenated with $\underline{y}_k$. |
+> | $\hat{\underline{x}}_k$ | $\mathbb{R}^n$           | The estimated state vector. Tracks $\underline{x}_k$ for a working observer.                                                       |
+> | $\hat{\underline{y}}_k$ | $\mathbb{R}^p$           | The estimated output vector. Tracks $\underline{y}_k$ for a working observer.                                                      |
+> | $A_d$                   | $\mathbb{R}^{n\times n}$ | The discrete-time state-to-state coupling matrix.                                                                                  |
+> | $B_d$                   | $\mathbb{R}^{n\times m}$ | The discrete-time input-to-state coupling matrix.                                                                                  |
+> | $C_d$                   | $\mathbb{R}^{p\times n}$ | The discrete-time state-to-output coupling matrix.                                                                                 |
+> | $D_d$                   | $\mathbb{R}^{p\times m}$ | The discrete-time input-to-output coupling matrix.                                                                                 |
+> | $L$                     | $\mathbb{R}^{n\times p}$ | The discrete-time observer gain.                                                                                                   |
+
 where $n$ is the system order, $m$ is the number of system inputs, and $p$ is the number of system outputs.
 
 The observer model has a similar structure to the open-loop plant model, but it also includes a feedback term based on output estimation error:
@@ -316,7 +321,8 @@ K = place(Ad, Bd, p_ctrl);
 
 Recall that for a discrete system stable poles are within the unit disk. See the "Pole Mapping" section of [[reference_continuous_to_discrete|Continuous to Discrete Conversion]] for details on mapping poles to discrete time.
 
-**Insight**: according to the separation principle, for a linear model the controller poles and observer error poles can be assigned independently. In practice, the observer still affects the implemented control signal through noise, model error, saturation, and finite sampling effects, so observer poles should be chosen with engineering judgment.
+> [!insight]
+> According to the separation principle, for a linear model the controller poles and observer error poles can be assigned independently. In practice, the observer still affects the implemented control signal through noise, model error, saturation, and finite sampling effects, so observer poles should be chosen with engineering judgment.
 
 The observer poles should be selected to be faster than any controller poles, so the state estimate converges quickly relative to the closed-loop response. In discrete time, “faster” generally means the observer poles are placed farther inside the unit disk, often closer to the origin than the dominant closed-loop controller poles. They should not be placed arbitrarily fast, because aggressive observer gains tend to amplify measurement noise and model mismatch.
 

@@ -15,7 +15,9 @@ status: draft
 
 Quaternions are a type of four-dimensional number that extends the behavior of complex numbers from the plane to three dimensions. Quaternions are what motivates the cross product often used in rigid body mechanics and other areas of engineering.
 
-![A plaque that reads "Here as he walked by on the 16th of October 1843 Sir William Rowan Hamilton in a flash of genius discovered the fundamental formula for quaternion multiplication i^2=j^2+k^2+ijk=-1 and cut it on a stone of this bridge.](images/imu/hamilton_plaque.png)
+> [!figure]
+> ![A plaque that reads "Here as he walked by on the 16th of October 1843 Sir William Rowan Hamilton in a flash of genius discovered the fundamental formula for quaternion multiplication i^2=j^2+k^2+ijk=-1 and cut it on a stone of this bridge.](images/imu/hamilton_plaque.png)
+> Plaque commemorating Hamilton's discovery of quaternion multiplication.
 
 ### Fundamentals
 
@@ -31,7 +33,8 @@ jk &= i & kj&=-i \\
 ki &= j & ik&=-j
 \end{aligned}
 $$
-**Note**: quaternions are **anti-commutative**. That is, when you exchange the sequence of factors in a product the sign must flip.
+> [!note]
+> Quaternions are **anti-commutative**. That is, when you exchange the sequence of factors in a product the sign must flip.
 
 A quaternion can be written as
 
@@ -130,7 +133,9 @@ $$
 
 The $i$ component is unchanged because the rotation axis is the $x$ axis. The $j$ component rotates into a combination of $j$ and $k$.
 
-![The example rotates w equals alpha i plus beta j by angle theta about the x-axis. A quaternion q equals cos(theta/2) plus sin(theta/2) i is written. Diagrams shows the original vector w and the rotated vector v.|700](images/imu/quaternion_rotation.svg)
+> [!figure]
+> ![The example rotates w equals alpha i plus beta j by angle theta about the x-axis. A quaternion q equals cos(theta/2) plus sin(theta/2) i is written. Diagrams shows the original vector w and the rotated vector v.|700](images/imu/quaternion_rotation.svg)
+> Quaternion rotation of a vector about the x-axis.
 
 ## Insights
 

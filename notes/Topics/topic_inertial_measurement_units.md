@@ -30,12 +30,15 @@ IMU stands for **Inertial Measurement Unit**. An IMU measures orientation with r
 
 IMUs are composed of multiple multi-DOF sensors. Common sensors include:
 
-| Sensor | Typical data | Purpose |
-|---|---:|---|
-| Accelerometer | $(a_x, a_y, a_z)$ | Measures linear acceleration; often used to estimate the direction of gravity |
-| Gyroscope | $(\omega_x, \omega_y, \omega_z)$ | Measures angular velocity, or the rate of 3D rotation |
-| Magnetometer | $(B_x, B_y, B_z)$ | Measures magnetic field strength; often used as a compass |
-| Barometer | $p_{\text{atm}}$ | Measures atmospheric pressure; often used as an altimeter |
+> [!table]
+> Sensors commonly integrated into an inertial measurement unit.
+>
+> | Sensor | Typical data | Purpose |
+> |---|---:|---|
+> | Accelerometer | $(a_x, a_y, a_z)$ | Measures linear acceleration; often used to estimate the direction of gravity |
+> | Gyroscope | $(\omega_x, \omega_y, \omega_z)$ | Measures angular velocity, or the rate of 3D rotation |
+> | Magnetometer | $(B_x, B_y, B_z)$ | Measures magnetic field strength; often used as a compass |
+> | Barometer | $p_{\text{atm}}$ | Measures atmospheric pressure; often used as an altimeter |
 
 Common shorthand labels include:
 * **6 DOF IMU**: accelerometer and gyroscope
@@ -59,7 +62,9 @@ In an IMU, accelerometers are often used to measure the direction of "down" by m
 
 Digital accelerometers commonly use MEMS technology, short for **micro-electro-mechanical systems**. A simplified MEMS accelerometer can be understood as a small moving mass attached by a spring. As the mass deflects, the spacing between fixed and moving plates changes. The sensor measures this change in capacitance.
 
-![A diagram showing the internals of an accelerometer including a moving mass supported by a spring with moving plates and fixed plates forming variable capacitors; acceleration causes the moving mass and plates to deflect relative to the fixed plates.](images/imu/accelerometer.svg)
+> [!figure]
+> ![A diagram showing the internals of an accelerometer including a moving mass supported by a spring with moving plates and fixed plates forming variable capacitors; acceleration causes the moving mass and plates to deflect relative to the fixed plates.](images/imu/accelerometer.svg)
+> Capacitive accelerometer with a spring-supported proof mass.
 
 Reference video from the slide: https://www.youtube.com/watch?v=9X4frIQo7x0
 
@@ -94,7 +99,9 @@ However, magnetometers can work poorly in dynamic environments, especially if th
 
 Many magnetometers rely on the Hall Effect. In the Hall effect, current running through a conductor causes charge separation if a magnetic field is present.
 
-![A diagram showing a conductor connected to a battery with conventional current, a magnet near the conductor, and charge separation across the conductor labeled negative on one side and positive on the other.](images/imu/hall_effect.svg)
+> [!figure]
+> ![A diagram showing a conductor connected to a battery with conventional current, a magnet near the conductor, and charge separation across the conductor labeled negative on one side and positive on the other.](images/imu/hall_effect.svg)
+> Hall-effect charge separation in a current-carrying conductor.
 
 ### Orientation Representations
 
@@ -132,11 +139,15 @@ The \[\[BNO055\]\] from Bosch is a 9 DOF IMU. It combines an accelerometer, gyro
 
 The breakout board used in lab exposes power, ground, and I2C connections. The IMU chip itself is the small sensor IC on the board.
 
-![A photograph of the BNO055 breakout board. Match the dot on the sensor to the dot in the coordinate diagram to find the axes.](images/imu/bno055_breakout_board.png)
+> [!figure]
+> ![A photograph of the BNO055 breakout board. Match the dot on the sensor to the dot in the coordinate diagram to find the axes.](images/imu/bno055_breakout_board.png)
+> BNO055 breakout board and sensor-axis reference mark.
 
 When using the BNO055, pay attention to the sensor coordinate axes. The axis definition depends on the physical orientation of the chip. The dot on the sensor package can be matched to the dot in the reference diagram to determine the sensor axes.
 
-![Annotated BNO055  coordinate definition. Match the dot on the sensor to the dot in the diagram to find the axes.](images/imu/bno055_axes.png)
+> [!figure]
+> ![Annotated BNO055  coordinate definition. Match the dot on the sensor to the dot in the diagram to find the axes.](images/imu/bno055_axes.png)
+> BNO055 coordinate definition aligned with the sensor package.
 
 Image sources from the slide:
 * Adafruit: https://learn.adafruit.com/assets/24585

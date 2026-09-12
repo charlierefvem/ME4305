@@ -49,8 +49,8 @@ u_k = K_p\,e_k + K_i\,I_k.
 \end{aligned}
 $$
 
->[!note] 
->In this convention the value of $K_i$ already accounts for the sample period, $T_s$.
+> [!note] 
+> In this convention the value of $K_i$ already accounts for the sample period, $T_s$.
 
 In firmware the actuation effort produced by the control law is saturated based on the available actuation limits. Anti-windup is also added in firmware using conditional-integration techniques. These nuances will be covered in greater detail at the end of this case study. For more information on anti-windup techniques see the pertinent section in [[reference_PID|PID Controllers]].
 
@@ -219,7 +219,7 @@ d
 \end{aligned}
 $$
 
->[!note] 
+> [!note] 
 > The state vector, $\underline{x}$ is a different variable than the control variable $x$ presented in the controller section above.
 
 The state-space representation of the system now has order three:
@@ -436,17 +436,20 @@ The implementation sequence obeys the following rules:
 - Equations avoid mixing present and future samples on the same side of an equation.
 - Circular equations are avoided.
 
-| Step | Operation                                                                        | Purpose                                                                                                                                                                                                                                                                   |
-| ---- | -------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 1    | $\hat{\Omega}_k = \begin{bmatrix}1&0&0\end{bmatrix} \,\hat{\underline{x}}_k$     | Extracts the angular velocity for this sample, from the estimate predicted by the previous observer step.                                                                                                                                                                 |
-| 2    | $e_k = \Omega_r(t_k) - \hat{\Omega}_k$                                           | Computes the control error using the angular velocity estimate, and the reference velocity at the present sample.                                                                                                                                                         |
-| 3    | $u_{req,k} = K_p e_k + K_i I_k$                                                  | Computes the requested (pre-saturation) actuation effort at the present sample using the PI control law.                                                                                                                                                                  |
-| 4    | $u_k = \text{sat}_{[u_{\min},u_{\max}]} \left( u_{req,k} \right)$                | Computes the saturated actuation effort that is applied to the system, by clipping the requested actuation effort at the saturation limits for the actuator.                                                                                                              |
-| 5    | $r_k = u_{req,k}-u_k$                                                            | Computes the saturation residual: the difference between the pre- and post-saturation actuation efforts. This residual is zero when the requested command is within the actuator limits and otherwise represents how far the requested command was clipped by saturation. |
-| 6    | $\gamma_k = \mathbb{1} \left[ r_k e_k \le 0 \right]$                             | Defines the conditional-integration gate using the indicator function written as $\mathbb{1}$.<br>    $\gamma_k=1$: the integrator is allowed to update.<br>    $\gamma_k=0$: the integrator is held constant.                                                            |
-| 7    | $I_{k+1} = I_k + \gamma_k\, e_k$                                                 | Updates the state of the integrator only when permitted by the conditional-integration gate. This prevents the integrator from accumulating error when doing so would drive the actuator command farther into saturation.                                                 |
-| 8    | $\underline{w}_k = \begin{bmatrix} u_k \\ \theta_k \end{bmatrix}$                | Builds the vector of known information from the post-saturation actuation value and a new displacement measurement from the encoder.                                                                                                                                      |
-| 9    | $\hat{\underline{x}}_{k+1} = A_o\,\hat{\underline{x}}_k + B_o\, \underline{w}_k$ | Updates the observer estimate using the known-information vector.                                                                                                                                                                                                         |
+> [!table]
+> Observer implementation sequence.
+>
+> | Step | Operation                                                                        | Purpose                                                                                                                                                                                                                                                                   |
+> | ---- | -------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+> | 1    | $\hat{\Omega}_k = \begin{bmatrix}1&0&0\end{bmatrix} \,\hat{\underline{x}}_k$     | Extracts the angular velocity for this sample, from the estimate predicted by the previous observer step.                                                                                                                                                                 |
+> | 2    | $e_k = \Omega_r(t_k) - \hat{\Omega}_k$                                           | Computes the control error using the angular velocity estimate, and the reference velocity at the present sample.                                                                                                                                                         |
+> | 3    | $u_{req,k} = K_p e_k + K_i I_k$                                                  | Computes the requested (pre-saturation) actuation effort at the present sample using the PI control law.                                                                                                                                                                  |
+> | 4    | $u_k = \text{sat}_{[u_{\min},u_{\max}]} \left( u_{req,k} \right)$                | Computes the saturated actuation effort that is applied to the system, by clipping the requested actuation effort at the saturation limits for the actuator.                                                                                                              |
+> | 5    | $r_k = u_{req,k}-u_k$                                                            | Computes the saturation residual: the difference between the pre- and post-saturation actuation efforts. This residual is zero when the requested command is within the actuator limits and otherwise represents how far the requested command was clipped by saturation. |
+> | 6    | $\gamma_k = \mathbb{1} \left[ r_k e_k \le 0 \right]$                             | Defines the conditional-integration gate using the indicator function written as $\mathbb{1}$.<br>    $\gamma_k=1$: the integrator is allowed to update.<br>    $\gamma_k=0$: the integrator is held constant.                                                            |
+> | 7    | $I_{k+1} = I_k + \gamma_k\, e_k$                                                 | Updates the state of the integrator only when permitted by the conditional-integration gate. This prevents the integrator from accumulating error when doing so would drive the actuator command farther into saturation.                                                 |
+> | 8    | $\underline{w}_k = \begin{bmatrix} u_k \\ \theta_k \end{bmatrix}$                | Builds the vector of known information from the post-saturation actuation value and a new displacement measurement from the encoder.                                                                                                                                      |
+> | 9    | $\hat{\underline{x}}_{k+1} = A_o\,\hat{\underline{x}}_k + B_o\, \underline{w}_k$ | Updates the observer estimate using the known-information vector.                                                                                                                                                                                                         |
 
 ## Insights
 

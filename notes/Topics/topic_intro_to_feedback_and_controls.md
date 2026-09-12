@@ -31,18 +31,24 @@ a = K_p (r - \hat{x})
   + K_d \frac{d}{dt}  (r - \hat{x})
 $$
 
-| Term      | Definition                                                       |
-| --------- | ---------------------------------------------------------------- |
-| $r$       | The reference or setpoint for the system output.                 |
-| $x$       | The true output of the system to be controlled.                  |
-| $\hat{x}$ | The measurement of the true system output.                       |
-| $e$       | The system error, defined as $e = r - \hat{x}$.                  |
-| $K_p$     | The proportional gain which amplifies error.                     |
-| $K_i$     | The integral gain which amplifies the integrated error.          |
-| $K_d$     | The derivative gain which amplifies the rate of change of error. |
+> [!table]
+> Terms in a PID controller.
+>
+> | Term      | Definition                                                       |
+> | --------- | ---------------------------------------------------------------- |
+> | $r$       | The reference or setpoint for the system output.                 |
+> | $x$       | The true output of the system to be controlled.                  |
+> | $\hat{x}$ | The measurement of the true system output.                       |
+> | $e$       | The system error, defined as $e = r - \hat{x}$.                  |
+> | $K_p$     | The proportional gain which amplifies error.                     |
+> | $K_i$     | The integral gain which amplifies the integrated error.          |
+> | $K_d$     | The derivative gain which amplifies the rate of change of error. |
+
 A good starting point is proportional control, adding integral and derivative action only when needed.
 
-![Annotated PID controller block diagram with actuator, plant, and feedback.](images/ControlLoopDiagrams_Standard_PID.svg)
+> [!figure]
+> ![Annotated PID controller block diagram with actuator, plant, and feedback.](images/pid/Standard_PID.svg)
+> Annotated PID controller block diagram with actuator, plant, and feedback.
 
 PID control is often taught as if integral action and derivative action should always be included. In practice, however, the nature of the system and the available sensors to measure the system output greatly determines the effectiveness of each component.
 
@@ -103,7 +109,9 @@ a = K_{ff}\, r
 $$
 A block diagram representation of this control law is shown in the figure below.
 
-![Feedforward controller block diagram.](images/ControlLoopDiagrams_Feedforward.svg)
+> [!figure]
+> ![Feedforward controller block diagram.](images/pid/Feedforward.svg)
+> Feedforward controller block diagram.
 
 In another case it may be enough to add an actuation component that is constant, but the same sign as the setpoint to compensate for deadband nonlinearities like the aforementioned static friction.
 $$
@@ -133,7 +141,9 @@ In this example the classic "servo loop" is shown that is implemented in many mo
 3) The outer loop is tuned last to control position, treating both the intermediate loop and inner loop as if they are part of the plant for the outer loop.
 With this set up, each layer can be tuned individually for performance, and may impose it's own saturation limit: the voltage saturation done in the inner loop handles the finite range of voltage from the power supply, the current saturation done in the intermediate loop protects the actuator from overheating or imposes an acceleration limit, and finally the velocity saturation done in the outer loop limits the maximum requested velocity, or slew-rate, while changing position.
 
-![Servo motor cascaded control example showing current, velocity, and position loops.](images/ControlLoopDiagrams_Cascaded_Loops.svg)
+> [!figure]
+> ![Servo motor cascaded control example showing current, velocity, and position loops.](images/pid/Cascaded_Loops.svg)
+> Servo motor cascaded control example showing current, velocity, and position loops.
 
 ### Summary
 

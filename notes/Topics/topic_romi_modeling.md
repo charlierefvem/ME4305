@@ -47,9 +47,13 @@ A secondary assumption is that the DC motors driving Romi's wheels behave like i
 
 Start by considering a side view of Romi. If each wheel is assumed to roll without slip, the velocity at the center of each wheel is related to that wheel's angular velocity by the wheel radius $r$.
 
-![An isometric view of the Romi robot chassis.](images/romi/isometric.svg)
+> [!figure]
+> ![An isometric view of the Romi robot chassis.](images/romi/isometric.svg)
+> An isometric view of the Romi robot chassis.
 
-![An right view of the right wheel attached to the Romi robot.](images/romi/wheel.svg)
+> [!figure]
+> ![An right view of the right wheel attached to the Romi robot.](images/romi/wheel.svg)
+> An right view of the right wheel attached to the Romi robot.
 
 The no-slip rolling relationships are
 $$
@@ -114,7 +118,9 @@ $$
 \dot{X}\,\hat{I} + \dot{Y}\,\hat{J}.
 $$
 
-![Annotated absolute-motion figure showing a global X-Y inertial frame and a Romi chassis with local x-y axes rotated by heading angle psi. The annotations show i-hat = cos(psi) I-hat + sin(psi) J-hat, j-hat = -sin(psi) I-hat + cos(psi) J-hat, dot X = v cos(psi), dot Y = v sin(psi), and dot psi = omega.](images/romi/localization.svg)
+> [!figure]
+> ![Annotated absolute-motion figure showing a global X-Y inertial frame and a Romi chassis with local x-y axes rotated by heading angle psi. The annotations show i-hat = cos(psi) I-hat + sin(psi) J-hat, j-hat = -sin(psi) I-hat + cos(psi) J-hat, dot X = v cos(psi), dot Y = v sin(psi), and dot psi = omega.](images/romi/localization.svg)
+> Romi chassis with body axes and global motion components.
 
 The local basis vector $\hat{\imath}$ can be written in terms of the global basis vectors as
 $$
@@ -231,7 +237,8 @@ $$
 \underline{y} = \underline{g}\left(\underline{x},\underline{u}\right).
 $$
 
-**Note**: due to the few trigonometric expressions in the preceding kinematics, the state and output equations are not linear equations, so the standard matrix form for LTI systems that students are familiar with, $\dot{\underline{x}}=A\underline{x}+B\underline{u}$, cannot be used in this context.
+> [!note]
+> Due to the few trigonometric expressions in the preceding kinematics, the state and output equations are not linear equations, so the standard matrix form for LTI systems that students are familiar with, $\dot{\underline{x}}=A\underline{x}+B\underline{u}$, cannot be used in this context.
 
 The preceding wheel, chassis, and absolute-motion kinematics provide the relationships needed to assemble these equations.
 

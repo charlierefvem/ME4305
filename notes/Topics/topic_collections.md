@@ -45,7 +45,7 @@ A collection is any Python object that stores multiple pieces of data in a singl
 
 [^1]: Insertion ordered in modern Python (3.7+).
 
-> [! insight]
+> [!insight]
 > Mutability is a nuanced concept in Python we will return to several times in the term.
 >
 > For this early point in the term, you should think of *immutable* variables as read-only and *mutable* variables as modifiable.
@@ -76,11 +76,10 @@ Common methods:
 
 In this example a list object is created, or more formally, is "instantiated". Lists can be instantiated empty, or they can be populated with an initial set of items at the time of instantiation.
 
-> [!block_listing] Printing an an item from a `list` object initialized at instantiation
-> ``` python
-> my_list = ["a", "b", "c", "d"]
-> print(my_list[2])
-> ```
+``` python
+my_list = ["a", "b", "c", "d"]
+print(my_list[2])
+```
 
 > [!output]
 > ```text
@@ -91,12 +90,11 @@ In this example a list object is created, or more formally, is "instantiated". L
 
 In this example a list object is instantiated with four items and then an additional item is appended to the end of the list.
 
-> [!block_listing] Appending new items to an existing list
-> ``` python
-> my_list = ["a", "b", "c", "d"]
-> my_list.append("e")
-> print(my_list)
-> ```
+``` python
+my_list = ["a", "b", "c", "d"]
+my_list.append("e")
+print(my_list)
+```
 
 > [!output]
 > ```text
@@ -136,10 +134,10 @@ A common use-case for a tuple is returning multiple values from a function. In t
 > def getAccelXYZ():
 > 	# Query sensor
 >     return (x, y, z)
-> 
+>
 > # Assign output to a new tuple
 > accel = getAccelXYZ()
-> 
+>
 > # Unpack the tuple into separate variables
 > x, y, z = getAccelXYZ()
 > ```
@@ -209,9 +207,10 @@ with serial.Serial("COM4", baudrate=115200) as ser:
 ```
 Output:
 
-``` python
-b"y"
-```
+> [!output]
+> ``` python
+> b"y"
+> ```
 
 The leading `b` indicates a bytes object.
 
@@ -225,21 +224,22 @@ ASCII (American Standard Code for Information Interchange) is a character encodi
 
 The following example reads a single character from a serial port and then shows three methods for checking if the received character is an upper case "G", which has an ASCII equivalent decimal value of 71.
 
-``` python
-char = ser.read(1)
-
-# Check by decoding bytes object to str object
-if char.decode() == "G":
-    ...
-
-# Check by indexing bytes object to retrieve numerical value of the character
-if char[0] == 71:
-    ...
-
-# Check by comparing directly to another bytes object
-if char == b"G":
-    ...
-```
+> [!block_listing] Comparing `bytes` values
+> ``` python
+> char = ser.read(1)
+>
+> # Check by decoding bytes object to str object
+> if char.decode() == "G":
+>     ...
+>
+> # Check by indexing bytes object to retrieve numerical value of the character
+> if char[0] == 71:
+>     ...
+>
+> # Check by comparing directly to another bytes object
+> if char == b"G":
+>     ...
+> ```
 
 All three expressions test for the same character.
 

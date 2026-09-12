@@ -15,8 +15,10 @@ status: draft
 
 Embedded firmware must be deterministic and robust. Throughout this course we will build firmware as a collection of cooperative tasks dispatched by a priority scheduler.
 
+%%
 > **Candidate static notes**
 > -  \[\[Scheduler Profiler\]\]
+%%
 
 ### Embedded Multitasking
 
@@ -41,39 +43,41 @@ Schedulers come in two main varieties
 In this course you will utilize a cooperative scheduler, specifically one that implements **Priority** scheduling. The simple scheduling method mentioned above using an unbounded loop may be called a **Round-Robin** scheduling method as each task may be dispatched to run on every cycle. 
 
 The logic flow of a round-robin scheduler is quite simple:
-```
-ALGORITHM RRScheduler(task_list)
-    WHILE TRUE DO
-        FOR EACH task IN task_list DO
-            IF task.is_ready THEN
-                Execute(task)
-            ENDIF
-        ENDFOR
-    ENDWHILE
-ENDALGORITHM
-```
+> [!algorithm] Round-robin scheduler
+> ```
+> ALGORITHM RRScheduler(task_list)
+>     WHILE TRUE DO
+>         FOR EACH task IN task_list DO
+>             IF task.is_ready THEN
+>                 Execute(task)
+>             ENDIF
+>         ENDFOR
+>     ENDWHILE
+> ENDALGORITHM
+> ```
 
 A priority scheduler extends this algorithm by using priority-based arbitration to determine which task should run first when more than one task needs to run at a time. That is, when two tasks need to be dispatched the one with the higher priority is dispatched first. If two tasks of the same priority both need to run the scheduler preserves the order in which the tasks were added to the scheduler's task list.
 
 The logic flow of a cooperative priority scheduler is only a small amount more complex than for the round-robin scheduler:
-```
-FUNCTION DispatchNextTask(priority_list)
-    FOR EACH priority IN priority_list DO
-        FOR EACH task IN priority.task_list DO
-            IF task.is_ready THEN
-                Execute(task)
-                RETURN
-            ENDIF
-        ENDFOR
-    ENDFOR
-ENDFUNCTION
-
-ALGORITHM PriScheduler(priority_list)
-    WHILE TRUE DO
-        DispatchNextTask(priority_list)
-    ENDWHILE
-ENDALGORITHM
-```
+> [!algorithm] Cooperative priority scheduler
+> ```
+> FUNCTION DispatchNextTask(priority_list)
+>     FOR EACH priority IN priority_list DO
+>         FOR EACH task IN priority.task_list DO
+>             IF task.is_ready THEN
+>                 Execute(task)
+>                 RETURN
+>             ENDIF
+>         ENDFOR
+>     ENDFOR
+> ENDFUNCTION
+>
+> ALGORITHM PriScheduler(priority_list)
+>     WHILE TRUE DO
+>         DispatchNextTask(priority_list)
+>     ENDWHILE
+> ENDALGORITHM
+> ```
 A *critical* detail in the implementation of the priority scheduler is that, unlike the round-robin scheduler, each pass only dispatches at most one task, whichever is of the highest priority, earliest in the task list, and needs to run.
 
 If all tasks are assigned the same priority then the priority scheduler essentially behaves as a round-robin scheduler. Consequently, round-robin scheduling may be viewed as the degenerate case of priority scheduling. 
@@ -86,7 +90,9 @@ In this section you will see examples of cooperative round-robin and cooperative
 
 Round-robin scheduling dispatches each task sequentially in a repeating pattern.
 
-![Three timing diagrams comparing round-robin scheduling. The diagrams show how task periods and execution durations affect processor utilization and demonstrate how long-running tasks delay later executions.](round_robin_scheduling.svg)
+> [!figure]
+> ![Three timing diagrams comparing round-robin scheduling. The diagrams show how task periods and execution durations affect processor utilization and demonstrate how long-running tasks delay later executions.](round_robin_scheduling.svg)
+> Round-robin scheduler timing under varying task loads.
 
 The lecture compares three cases with different task periods and execution times to illustrate how timing margin decreases as execution time increases.
 
@@ -94,7 +100,9 @@ The lecture compares three cases with different task periods and execution times
 
 Priority scheduling dispatches whichever ready task has the highest assigned priority.
 
-![Three timing diagrams comparing priority scheduling. The diagrams show higher-priority tasks executing with lower latency while lower-priority tasks are deferred when processor time is limited.](images/multitasking/priority_scheduling.svg)
+> [!figure]
+> ![Three timing diagrams comparing priority scheduling. The diagrams show higher-priority tasks executing with lower latency while lower-priority tasks are deferred when processor time is limited.](images/multitasking/priority_scheduling.svg)
+> Priority scheduler timing under varying task loads.
 
 Compared with round-robin scheduling, priority scheduling generally provides improved latency for critical tasks but introduces additional scheduling complexity.
 

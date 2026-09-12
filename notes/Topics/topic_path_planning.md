@@ -17,7 +17,9 @@ Consider a thought experiment where Romi drives along two very similar paths, st
 1) Romi drives forward for one unit, turns left in an arc of unit radius, then drives forward for three units.
 2) Romi drives forward for three units, turns left in an arc of unit radius, then drives forward for one unit.
 
-![A diagram showing Romi in a starting location and orientation and again in two final locations and orientations. The path Romi has taken between the start and each end are also shown as dashed lines.](images/romi/thought_experiment.svg)
+> [!figure]
+> ![A diagram showing Romi in a starting location and orientation and again in two final locations and orientations. The path Romi has taken between the start and each end are also shown as dashed lines.](images/romi/thought_experiment.svg)
+> Romi paths between a common start pose and two final poses.
 
 In both scenarios Romi has driven in an L-shaped path; what information can we conclude by comparing the state before and after the path? Consider the following conceptual questions regarding this thought experiment:
 * Is it possible to determine the final orientation or location of Romi, $\begin{bmatrix}X(t_f) & Y(t_f) & \psi(t_f)\end{bmatrix}^T$, after it has driven on a path by exclusively comparing the final values for the two wheel displacements, $\begin{bmatrix}s_L(t_f) & s_R(t_f)\end{bmatrix}^T$, to the initial wheel displacements, $\begin{bmatrix}s_L(t_0) & s_R(t_0)\end{bmatrix}^T$?
@@ -37,7 +39,8 @@ The apparent information loss does not occur because the local-to-global transfo
 
 Therefore, the transformation into the global frame must be applied increment by increment using the heading $\psi$ which is different at each increment. Applying the transformation only at the endpoints discards the sequencing information needed to reconstruct $X$ and $Y$ in the global frame. Mathematically, this appears because the transformation from increments in wheel displacement to increments in global pose depends on $\psi$.
 
-**Insight**: while it is not possible to apply the transformation once to an entire path by transforming the difference between endpoints, the transformation *can* be applied to the entire path by integrating pointwise along the path.
+> [!insight]
+> While it is not possible to apply the transformation once to an entire path by transforming the difference between endpoints, the transformation *can* be applied to the entire path by integrating pointwise along the path.
 
 This is similar to the distinction between conservative and non-conservative fields in vector calculus and physics. If a differential relationship is conservative, the accumulated change depends only on the endpoints. But the differential-drive robot’s global position is obtained by integrating local motion through a changing heading. Those differential relationships are path dependent, so the endpoint values of $s_L$ and $s_R$ are not enough to determine $X$ and $Y$.
 
@@ -283,17 +286,22 @@ The differential-drive model shows that global position cannot be recovered from
 
 The non-holonomic constraint does not prevent the robot from reaching arbitrary nearby positions, but it does mean that the path and trajectory matter. The robot cannot simply “teleport” sideways onto a desired curve. It must arrive through a sequence of forward motions and heading changes. Smooth path planning is therefore about constructing geometric instructions that are compatible with the robot’s local motion constraints and can be converted into reasonable wheel commands. The figure below shows several possible paths for Romi to travel from point A to point B; some of the paths require Romi to pivot in place at the start or end of the path.
 
-![A diagram showing multiple paths Romi can take to travel between two points. Four paths are shown: the first is a straight line between the points, requiring Romi to pivot at the start and end; the second is a smooth s-curve that is tangent to Romi's heading at the start and end, requiring no pivoting; the third is a curve that is tangent to Romi's heading at the start, but not at the end, requiring Romi to pivot at the end of its path; finally, the fourth is a curve similar to the third, but the pivot is required at the start instead of the end of the path.](images/romi/path_comparison.svg)
+> [!figure]
+> ![A diagram showing multiple paths Romi can take to travel between two points. Four paths are shown: the first is a straight line between the points, requiring Romi to pivot at the start and end; the second is a smooth s-curve that is tangent to Romi's heading at the start and end, requiring no pivoting; the third is a curve that is tangent to Romi's heading at the start, but not at the end, requiring Romi to pivot at the end of its path; finally, the fourth is a curve similar to the third, but the pivot is required at the start instead of the end of the path.](images/romi/path_comparison.svg)
+> Feasible and infeasible paths between two constrained poses.
 
 ## Cubic and Quintic Splines
 
 Splines are curves generated from endpoint constraints. A trajectory can be created using a spline by using geometric and kinematic constraints at the start and end of the trajectory to define the spline. Consider the table below which outlines kinematic constraints at two points in time, $t_0$ and $t_f$. Note that, in the table, the parameter $q(t)$ refers to any geometric coordinate.
 
-|              | Start (at $t_0$)           | Stop (at $t_f$)            |
-| ------------ | -------------------------- | -------------------------- |
-| Position     | $q_0=q(t_0)$               | $q_f=q(t_f)$               |
-| Velocity     | $\dot{q}_0=\dot{q}(t_0)$   | $\dot{q}_f=\dot{q}(t_f)$   |
-| Acceleration | $\ddot{q}_0=\ddot{q}(t_0)$ | $\ddot{q}_f=\ddot{q}(t_f)$ |
+> [!table]
+> Boundary conditions for cubic and quintic splines.
+>
+> |              | Start (at $t_0$)           | Stop (at $t_f$)            |
+> | ------------ | -------------------------- | -------------------------- |
+> | Position     | $q_0=q(t_0)$               | $q_f=q(t_f)$               |
+> | Velocity     | $\dot{q}_0=\dot{q}(t_0)$   | $\dot{q}_f=\dot{q}(t_f)$   |
+> | Acceleration | $\ddot{q}_0=\ddot{q}(t_0)$ | $\ddot{q}_f=\ddot{q}(t_f)$ |
 
 The rows of this table can be used to develop cubic or quintic splines. Cubic splines allow the position and velocity to be constrained at the endpoints; a quintic spline can also constrain the acceleration at the endpoints. Each of these splines can be defined using a sufficiently-high-order polynomial. A cubic spline has four tunable parameters, allowing the four constraints mentioned above while a quintic spline has six tunable parameters, allowing the additional two acceleration constraints.
 
@@ -410,7 +418,8 @@ $$
 
 The same procedure can be extended to multiple coordinate axes by repeating the same procedure for each axis. Fortunately, the produced matrix, $M$, is reusable since it only depends on $t_0$ and $t_f$.
 
-**Note**: while general planar motion allows three degrees of freedom, $X$, $Y$, and $\psi$. Romi’s planar pose still has three configuration variables, $X$, $Y$, and $\psi$; however, its differential-drive kinematics do not allow arbitrary instantaneous motion in all three directions. The robot cannot move sideways in its own body frame, so its velocity must satisfy a non-holonomic constraint. For forward motion, this means the heading $\psi$ must be tangent to the trajectory.
+> [!note]
+> While general planar motion allows three degrees of freedom, $X$, $Y$, and $\psi$. Romi’s planar pose still has three configuration variables, $X$, $Y$, and $\psi$; however, its differential-drive kinematics do not allow arbitrary instantaneous motion in all three directions. The robot cannot move sideways in its own body frame, so its velocity must satisfy a non-holonomic constraint. For forward motion, this means the heading $\psi$ must be tangent to the trajectory.
 
 This nonholonomic constraint can be written as
 $$
@@ -522,7 +531,8 @@ s_R(t_0)
 \end{aligned}
 $$
 
-**Insight**: if the trajectory is known ahead of time, the conversion from global coordinates to local coordinates does not need to be computed live during runtime, but it does need to be computed via integration. When paths are generated dynamically, this integration may need to be performed online or repeated over each planning horizon.
+> [!insight]
+> If the trajectory is known ahead of time, the conversion from global coordinates to local coordinates does not need to be computed live during runtime, but it does need to be computed via integration. When paths are generated dynamically, this integration may need to be performed online or repeated over each planning horizon.
 
 ## Look-Ahead Horizon and Local Trajectory Generation
 
@@ -535,9 +545,12 @@ The animation below shows a simplified simulation of this style of iterative loc
 4) Convert the local trajectory from global coordinates $X(t), Y(t)$ to state trajectories $s_L(t), s_R(t)$.
 5) Apply closed-loop control over the interval of time between $t_0$ and $t_f$.
 
-Note: for simplicity, the animation follows the algorithm presented just above, except for the final step. The animation does not use a simulation of Romi's dynamics; instead the animation assumes that Romi can successfully follow each local path.
+> [!note]
+> For simplicity, the animation follows the algorithm presented just above, except for the final step. The animation does not use a simulation of Romi's dynamics; instead the animation assumes that Romi can successfully follow each local path.
 
-![An animation showing the iteratively computed local trajectory generated from a look-ahead horizon. Many local trajectories are shown connecting waypoints to the desired path.|700](images/romi/path_animation.gif)
+> [!figure]
+> ![An animation showing the iteratively computed local trajectory generated from a look-ahead horizon. Many local trajectories are shown connecting waypoints to the desired path.|700](images/romi/path_animation.gif)
+> Iterative local trajectories generated with a look-ahead horizon.
 
 ## Summary
 
