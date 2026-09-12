@@ -262,7 +262,7 @@ In this third example the code is refactored into two files. In `taskexample.py`
 >            yield self.state
 > ```
 
-`main.py`
+
 > [!file_listing] main.py
 > ``` python
 > import time
@@ -308,7 +308,6 @@ In this final example you will see how the code changes when using the scheduler
 > [!note]
 > The following code will only run in MicroPython.
 
-`main.py`
 > [!file_listing] main.py
 > ``` python
 > import cotask
