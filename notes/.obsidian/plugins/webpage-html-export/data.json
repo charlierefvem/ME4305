@@ -12,8 +12,7 @@
     "inlineHTML": false,
     "exportPath": "D:\\Repositories\\Sites\\ME4305\\build",
     "filesToExport": [
-      "Case Studies",
-      "Perspectives",
+      "Case Studies/case_motor_observer.md",
       "References",
       "Topics",
       "index.md"
