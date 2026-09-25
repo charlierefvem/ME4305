@@ -10,17 +10,15 @@ tags:
 source:
   course: ME4305
   repository: https://github.com/charlierefvem/micropython
-  commit: fd90403415b3f8962d778ab96c0ff5427c5e1773
+  commit: c8e6f5f896349825cafbeef4037dee2dd21b93a0
   path: ports/stm32/boards/NUCLEO_L476RG/modules/runningstats.py
 status: draft
 ---
 
-[[index|← ME4305 firmware and API documentation]]
-
 The `runningstats` module accumulates summary statistics one sample at a time. It uses Welford's online algorithm, so it does not need to keep a list of all earlier samples. The `cotask` scheduler uses this class for duration and latency profiles.
 
 > [!note] Source snapshot
-> This page describes [`runningstats.py`](https://github.com/charlierefvem/micropython/blob/fd90403415b3f8962d778ab96c0ff5427c5e1773/ports/stm32/boards/NUCLEO_L476RG/modules/runningstats.py) at commit [`fd90403415b3f8962d778ab96c0ff5427c5e1773`](https://github.com/charlierefvem/micropython/commit/fd90403415b3f8962d778ab96c0ff5427c5e1773).
+> This page describes [`runningstats.py`](https://github.com/charlierefvem/micropython/blob/c8e6f5f896349825cafbeef4037dee2dd21b93a0/ports/stm32/boards/NUCLEO_L476RG/modules/runningstats.py) at commit [`c8e6f5f896349825cafbeef4037dee2dd21b93a0`](https://github.com/charlierefvem/micropython/commit/c8e6f5f896349825cafbeef4037dee2dd21b93a0).
 
 ## Standard use
 
@@ -106,9 +104,7 @@ stats.std
 stats.max
 ```
 
-**Returns:** The largest stored value according to the accumulator's current implementation.
-
-Technical Note: The stored maximum begins at `0.0` and changes only when a sample is greater than the current maximum. A data set containing only negative values therefore reports `0.0`, even though `0.0` was not observed.
+**Returns:** The largest sample seen since construction or the most recent `reset()`. Returns `0.0` when there are no samples. The first sample establishes the maximum, so streams containing only negative values are handled correctly.
 
 ---
 
@@ -124,8 +120,6 @@ Clear the sample count and restore the accumulated mean, variance state, and max
 
 ## Attribution and license
 
-Source attribution: [`runningstats.py`](https://github.com/charlierefvem/micropython/blob/fd90403415b3f8962d778ab96c0ff5427c5e1773/ports/stm32/boards/NUCLEO_L476RG/modules/runningstats.py) in the `charlierefvem/micropython` repository maintained by Charlie Refvem.
+Source: [`runningstats.py`](https://github.com/charlierefvem/micropython/blob/c8e6f5f896349825cafbeef4037dee2dd21b93a0/ports/stm32/boards/NUCLEO_L476RG/modules/runningstats.py) in the `charlierefvem/micropython` repository.
 
-The source file does not contain a copyright or license notice, and the pinned repository snapshot does not contain a root license file.
-
-TODO (Instructor Review): Confirm the authorship and license terms for `runningstats.py` before public release.
+Original work Copyright © 2026 Charlie Refvem. Licensed under the [GNU General Public License, version 3.0 only](https://github.com/charlierefvem/micropython/blob/c8e6f5f896349825cafbeef4037dee2dd21b93a0/LICENSE).

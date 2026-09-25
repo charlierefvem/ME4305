@@ -10,17 +10,15 @@ tags:
 source:
   course: ME4305
   repository: https://github.com/charlierefvem/micropython
-  commit: fd90403415b3f8962d778ab96c0ff5427c5e1773
+  commit: c8e6f5f896349825cafbeef4037dee2dd21b93a0
   path: ports/stm32/boards/NUCLEO_L476RG/modules/fsm.py
 status: draft
 ---
 
-[[index|← ME4305 firmware and API documentation]]
-
 The `fsm` module provides a small base class for cooperative tasks organized as finite-state machines. A subclass supplies its own `run()` method and uses `transition_to()` to record state changes.
 
 > [!note] Source snapshot
-> This page describes [`fsm.py`](https://github.com/charlierefvem/micropython/blob/fd90403415b3f8962d778ab96c0ff5427c5e1773/ports/stm32/boards/NUCLEO_L476RG/modules/fsm.py) at commit [`fd90403415b3f8962d778ab96c0ff5427c5e1773`](https://github.com/charlierefvem/micropython/commit/fd90403415b3f8962d778ab96c0ff5427c5e1773).
+> This page describes [`fsm.py`](https://github.com/charlierefvem/micropython/blob/c8e6f5f896349825cafbeef4037dee2dd21b93a0/ports/stm32/boards/NUCLEO_L476RG/modules/fsm.py) at commit [`c8e6f5f896349825cafbeef4037dee2dd21b93a0`](https://github.com/charlierefvem/micropython/commit/c8e6f5f896349825cafbeef4037dee2dd21b93a0).
 
 ## Standard use
 
@@ -60,7 +58,7 @@ Create the base state-machine object.
 > | Attribute | Description |
 > | --- | --- |
 > | `_state` | State that the subclass should run next. It begins as `initial_state`. |
-> | `_last_state` | State saved by the most recent successful call to `transition_to()`. It begins as `0`. |
+> | `_last_state` | State saved by the most recent successful call to `transition_to()`. Before the first transition, it is `initial_state`. |
 
 ---
 
@@ -97,8 +95,6 @@ Move the state machine to `new_state`. When `new_state` is not `None`, the metho
 
 ## Attribution and license
 
-Source attribution: [`fsm.py`](https://github.com/charlierefvem/micropython/blob/fd90403415b3f8962d778ab96c0ff5427c5e1773/ports/stm32/boards/NUCLEO_L476RG/modules/fsm.py) in the `charlierefvem/micropython` repository maintained by Charlie Refvem.
+Source: [`fsm.py`](https://github.com/charlierefvem/micropython/blob/c8e6f5f896349825cafbeef4037dee2dd21b93a0/ports/stm32/boards/NUCLEO_L476RG/modules/fsm.py) in the `charlierefvem/micropython` repository.
 
-The source file does not contain a copyright or license notice, and the pinned repository snapshot does not contain a root license file.
-
-TODO (Instructor Review): Confirm the authorship and license terms for `fsm.py` before public release.
+Original work Copyright © 2026 Charlie Refvem. Licensed under the [GNU General Public License, version 3.0 only](https://github.com/charlierefvem/micropython/blob/c8e6f5f896349825cafbeef4037dee2dd21b93a0/LICENSE).

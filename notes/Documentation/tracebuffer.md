@@ -11,17 +11,15 @@ tags:
 source:
   course: ME4305
   repository: https://github.com/charlierefvem/micropython
-  commit: fd90403415b3f8962d778ab96c0ff5427c5e1773
+  commit: c8e6f5f896349825cafbeef4037dee2dd21b93a0
   path: ports/stm32/boards/NUCLEO_L476RG/modules/tracebuffer.py
 status: draft
 ---
 
-[[index|← ME4305 firmware and API documentation]]
-
 The `tracebuffer` module records compact task and state events in a fixed-size byte buffer. Each record occupies four bytes: one byte for a task identifier, one byte for a state identifier, and an unsigned 16-bit value that may represent a timestamp, an event code, or other trace data.
 
 > [!note] Source snapshot
-> This page describes [`tracebuffer.py`](https://github.com/charlierefvem/micropython/blob/fd90403415b3f8962d778ab96c0ff5427c5e1773/ports/stm32/boards/NUCLEO_L476RG/modules/tracebuffer.py) at commit [`fd90403415b3f8962d778ab96c0ff5427c5e1773`](https://github.com/charlierefvem/micropython/commit/fd90403415b3f8962d778ab96c0ff5427c5e1773).
+> This page describes [`tracebuffer.py`](https://github.com/charlierefvem/micropython/blob/c8e6f5f896349825cafbeef4037dee2dd21b93a0/ports/stm32/boards/NUCLEO_L476RG/modules/tracebuffer.py) at commit [`c8e6f5f896349825cafbeef4037dee2dd21b93a0`](https://github.com/charlierefvem/micropython/commit/c8e6f5f896349825cafbeef4037dee2dd21b93a0).
 
 ## Standard use
 
@@ -69,7 +67,7 @@ Allocate storage for `length` records. Each record uses four bytes, so the inter
 > | --- | --- | --- |
 > | `length` | positive `int` | Maximum number of records retained by the buffer. |
 
-The implementation requires a positive length. It does not explicitly validate this argument before using it to size the byte buffer and compute wraparound offsets.
+**Raises:** `ValueError` when `length` is zero or negative.
 
 ---
 
@@ -124,8 +122,6 @@ Print `Trace:` followed by every stored record in reverse logging order. Task an
 
 ## Attribution and license
 
-Source attribution: [`tracebuffer.py`](https://github.com/charlierefvem/micropython/blob/fd90403415b3f8962d778ab96c0ff5427c5e1773/ports/stm32/boards/NUCLEO_L476RG/modules/tracebuffer.py) in the `charlierefvem/micropython` repository maintained by Charlie Refvem.
+Source: [`tracebuffer.py`](https://github.com/charlierefvem/micropython/blob/c8e6f5f896349825cafbeef4037dee2dd21b93a0/ports/stm32/boards/NUCLEO_L476RG/modules/tracebuffer.py) in the `charlierefvem/micropython` repository.
 
-The source file does not contain a copyright or license notice, and the pinned repository snapshot does not contain a root license file.
-
-TODO (Instructor Review): Confirm the authorship and license terms for `tracebuffer.py` before public release.
+Original work Copyright © 2026 Charlie Refvem. Licensed under the [GNU General Public License, version 3.0 only](https://github.com/charlierefvem/micropython/blob/c8e6f5f896349825cafbeef4037dee2dd21b93a0/LICENSE).

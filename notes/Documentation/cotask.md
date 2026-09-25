@@ -11,12 +11,10 @@ tags:
 source:
   course: ME4305
   repository: https://github.com/charlierefvem/micropython
-  commit: fd90403415b3f8962d778ab96c0ff5427c5e1773
+  commit: c8e6f5f896349825cafbeef4037dee2dd21b93a0
   path: ports/stm32/boards/NUCLEO_L476RG/modules/cotask.py
 status: draft
 ---
-
-[[index|← ME4305 firmware and API documentation]]
 
 The `cotask` module provides a small cooperative task scheduler for MicroPython. A task is implemented as a Python generator: each call to the generator performs one short, bounded portion of work and then uses `yield` to return control to the scheduler.
 
@@ -31,7 +29,7 @@ The module supports:
 > This module is intended for MicroPython. It imports MicroPython-specific modules and is normally frozen into the firmware, but application code imports it in the usual way with `import cotask`.
 
 > [!note] Source snapshot
-> This page describes [`cotask.py`](https://github.com/charlierefvem/micropython/blob/fd90403415b3f8962d778ab96c0ff5427c5e1773/ports/stm32/boards/NUCLEO_L476RG/modules/cotask.py) at commit [`fd90403415b3f8962d778ab96c0ff5427c5e1773`](https://github.com/charlierefvem/micropython/commit/fd90403415b3f8962d778ab96c0ff5427c5e1773).
+> This page describes [`cotask.py`](https://github.com/charlierefvem/micropython/blob/c8e6f5f896349825cafbeef4037dee2dd21b93a0/ports/stm32/boards/NUCLEO_L476RG/modules/cotask.py) at commit [`c8e6f5f896349825cafbeef4037dee2dd21b93a0`](https://github.com/charlierefvem/micropython/commit/c8e6f5f896349825cafbeef4037dee2dd21b93a0).
 
 ## Quick start
 
@@ -102,10 +100,13 @@ The generator should normally contain an indefinite loop and reach `yield` once 
 > | `run_fun` | generator object | required | Generator object that implements the task. Call the generator function or method, such as `task.run()`, before passing it to `Task`. |
 > | `name` | `str` | `"NoName"` | Short, descriptive name shown in diagnostic and profiling output. |
 > | `priority` | `int` | `0` | Scheduling priority. Larger numbers represent higher priorities. |
-> | `period` | number or `None` | `None` | Time in milliseconds between task runs. Use `None` to create a task that runs only after `go()` is called. |
+> | `period` | number or `None` | `None` | Time in milliseconds between task runs. Use `None` for a task triggered by `go()`, or `0` for a continuously ready idle task. |
 > | `profile` | `bool` | `False` | Set to `True` to collect task-duration and scheduling-latency statistics. |
 
-Technical Note: Use a positive value for a periodic task's `period`. The source accepts `0`, but `Task.profile()` then treats the task like a triggered task while `TaskList.profile()` treats it like a periodic task, causing incompatible report formatting.
+> [!note] Idle tasks
+> A task with `period=0` is continuously ready after its initial scheduling time. Use this only with priority scheduling, and give it a priority lower than every non-idle task so that it runs when no higher-priority task is ready.
+
+Technical Note: The constructor comment describes `priority` as a positive integer, although the default is `0` and the implementation accepts any value convertible to `int`. This page follows the implemented behavior.
 
 ### Public attributes
 
@@ -240,6 +241,9 @@ All duration and latency values are reported in milliseconds.
 
 > [!note]
 > The run counter includes every profiled run. For periodic tasks, the current implementation omits the first two runs from the duration statistics so that startup behavior does not affect those statistics.
+
+> [!note]
+> A zero-period idle task is reported as periodic. Its duration statistics remain useful, but its latency is measured against a zero-length schedule and should not be interpreted as ordinary deadline latency.
 
 ---
 
@@ -379,7 +383,7 @@ while True:
 
 ## Attribution and license
 
-Source: [`cotask.py`](https://github.com/charlierefvem/micropython/blob/fd90403415b3f8962d778ab96c0ff5427c5e1773/ports/stm32/boards/NUCLEO_L476RG/modules/cotask.py) in the `charlierefvem/micropython` repository.
+Source: [`cotask.py`](https://github.com/charlierefvem/micropython/blob/c8e6f5f896349825cafbeef4037dee2dd21b93a0/ports/stm32/boards/NUCLEO_L476RG/modules/cotask.py) in the `charlierefvem/micropython` repository.
 
 Original work:
 
@@ -394,6 +398,6 @@ Modifications:
 
 This software is intended for educational use, but its use is not limited thereto.
 
-This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 3.0.
+This program is free software: you can redistribute it and/or modify it under the terms of the [GNU General Public License, version 3.0](https://github.com/charlierefvem/micropython/blob/c8e6f5f896349825cafbeef4037dee2dd21b93a0/LICENSE).
 
 This program is distributed in the hope that it will be useful, but **without any warranty**; without even the implied warranty of **merchantability** or **fitness for a particular purpose**. See the GNU General Public License for more details.
