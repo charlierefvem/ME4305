@@ -6,6 +6,10 @@ cssclasses:
   - clean-syllabus
 ---
 
+## Documentation
+
+Refer to [[Documentation/index|ME4305 MicroPython Firmware and API Documentation]].
+
 ## Lectures
 
 1. Module 1 - Hardware Interfacing and Abstraction
