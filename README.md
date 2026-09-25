@@ -11,6 +11,7 @@ ME4305 treats mechatronics as an integrated engineering practice. The material c
   - `References/` — reusable technical explanations.
   - `Case Studies/` — worked design and implementation journeys.
   - `Perspectives/` — substantial instructor judgment, intuition, and tradeoffs.
+  - `Documentation/` — student-facing frozen-module API references and firmware entry point.
   - `Images/` — images used by the notes.
 - `figures/` — editable and publication-source figure files.
 - `.github/workflows/pdf-to-svg.yml` — automated conversion of figure PDFs to SVG.
@@ -22,6 +23,7 @@ ME4305 treats mechatronics as an integrated engineering practice. The material c
 - [AGENTS.md](AGENTS.md) contains repository-wide instructions for automated and human-assisted editing.
 - [NOTE_STYLE_GUIDE.md](NOTE_STYLE_GUIDE.md) defines note types, linking, Markdown, callouts, and editorial style.
 - [NOTE_WORKFLOWS.md](NOTE_WORKFLOWS.md) provides repeatable workflows and review checklists.
+- [API_DOCUMENTATION_WORKFLOW.md](API_DOCUMENTATION_WORKFLOW.md) defines the pinned-source and matching-firmware workflow for frozen-module API documentation.
 
 The notes are the instructor's intellectual work. Automated assistance should preserve the instructor's voice, examples, technical judgment, and teaching sequence. Substantial revisions should be treated as drafts requiring instructor review.
 

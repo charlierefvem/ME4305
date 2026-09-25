@@ -45,6 +45,7 @@ Legacy ME405 material is historical source material, not current ME4305 policy. 
 
 - `notes/` is the Obsidian vault and contains student-facing notes and published assets.
 - `notes/Topics/`, `notes/References/`, `notes/Case Studies/`, and `notes/Perspectives/` contain the four supported note families.
+- `notes/Documentation/` contains student-facing API references and a firmware/documentation entry point.
 - `notes/Images/` contains note-facing image assets.
 - `figures/` contains editable or publication-source figure files.
 - `.github/workflows/pdf-to-svg.yml` converts source PDFs under `figures/` into SVGs under `notes/Images/`.
@@ -160,6 +161,12 @@ For substantive note work:
 7. Report unresolved instructor-review items explicitly.
 
 See [NOTE_WORKFLOWS.md](NOTE_WORKFLOWS.md) for detailed checklists.
+
+## Frozen Module API Documentation
+
+Use [API_DOCUMENTATION_WORKFLOW.md](API_DOCUMENTATION_WORKFLOW.md) whenever creating or updating documentation under `notes/Documentation/`.
+
+The pinned public `charlierefvem/micropython` repository snapshot is the authoritative technical source for frozen-module documentation. Do not search unrelated local repositories, Codex projects, or Obsidian vaults for replacement source material unless the instructor explicitly identifies one. Match the documentation snapshot to the successful firmware build artifact from the same commit, and preserve exact source and build provenance in the student-facing documentation.
 
 ## Publishing Roles
 
