@@ -23,11 +23,31 @@ At the beginning of each instructor-requested documentation update:
 
 1. Resolve the head of `main` to its full commit SHA.
 2. Enumerate the tracked `.py` files in the custom-module directory at that commit.
-3. Read every source file from the same pinned commit rather than mixing mutable `main` URLs from different times.
+3. Apply the documentation exclusion list, then read every non-excluded source file from the same pinned commit rather than mixing mutable `main` URLs from different times.
 4. Inspect the firmware workflow and manifest at that commit for generated or otherwise frozen modules that are not present as tracked `.py` files.
 5. Compare the pinned sources with the existing Markdown pages before editing.
 
 If a generated student-facing module has no durable, browsable source file at the pinned commit, report it for instructor review rather than inventing documentation or silently omitting it.
+
+## Documentation Exclusions
+
+The exclusion list is an ME4305 publication policy. Excluding a file from student-facing documentation does not remove it from the firmware build or change its technical status in the source repository.
+
+Match exclusions by complete repository-relative path, not only by filename.
+
+| Excluded source path | Reason | Reinclude when |
+| --- | --- | --- |
+| `ports/stm32/boards/NUCLEO_L476RG/modules/me405.py` | Its provisional firmware metadata should be updated, ideally through automated generation in the firmware repository. | Its automated generation and student-facing API are ready for documentation. |
+
+During every documentation update:
+
+- subtract excluded paths from the discovered source inventory before generating or updating pages;
+- do not list excluded modules in the student-facing documentation index;
+- report every active exclusion in the handoff summary;
+- report an exclusion as stale if its source path no longer exists or has been renamed, without automatically retargeting it; and
+- do not automatically delete an existing documentation page when its source becomes excluded—report the page for instructor review.
+
+New source files are included by default unless the instructor adds their complete paths to this table.
 
 ## Match the Firmware Artifact
 
@@ -76,8 +96,8 @@ Maintain `notes/Documentation/index.md` as the student-facing overview for both 
 
 - a prominent link to the artifact section of the successful workflow run matched to the pinned commit;
 - the pinned source commit and a link to it;
-- an Obsidian-compatible index of all custom-module API pages;
-- a statement that the custom frozen modules are documented in the student-facing course notes;
+- an Obsidian-compatible index of all non-excluded custom-module API pages;
+- a statement that custom frozen modules intended for student use are documented in the student-facing course notes;
 - a statement that third-party frozen modules are documented by their upstream projects;
 - `ulab` as the currently included third-party frozen module, with a link to <https://micropython-ulab.readthedocs.io/en/latest/>;
 - a statement that the MicroPython interpreter is documented at <https://docs.micropython.org/en/latest/>; and
@@ -95,7 +115,7 @@ The overview should help students choose between three documentation sources:
 
 For later updates:
 
-- Create documentation for newly added source modules.
+- Create documentation for newly added, non-excluded source modules.
 - Revise pages whose pinned source files changed.
 - Update source permalinks and provenance even when API text remains unchanged.
 - Preserve stable filenames and headings so existing Obsidian links continue to resolve.
@@ -107,14 +127,15 @@ For later updates:
 
 Before handing back a documentation update:
 
-1. Confirm that every tracked source module has exactly one expected page.
+1. Confirm that every non-excluded tracked source module has exactly one expected page.
 2. Check the workflow for additional generated or frozen modules and report unresolved coverage.
-3. Confirm every source hyperlink contains the pinned commit SHA rather than `main`.
-4. Confirm the artifact run and source pages refer to the same full commit SHA.
-5. Check frontmatter, heading hierarchy, horizontal rules, tables, callouts, and code-fence balance.
-6. Check that parameter descriptions and source-provided examples have not been lost.
-7. Confirm attribution and license text appears below each module's API documentation.
-8. Review the diff for accidental replacement of instructor-authored material and unrelated files.
-9. Report created, updated, unchanged, potentially obsolete, and unresolved pages, plus the source SHA and Actions run used.
+3. Confirm every active exclusion still resolves to its exact source path and report all exclusions.
+4. Confirm every source hyperlink contains the pinned commit SHA rather than `main`.
+5. Confirm the artifact run and source pages refer to the same full commit SHA.
+6. Check frontmatter, heading hierarchy, horizontal rules, tables, callouts, and code-fence balance.
+7. Check that parameter descriptions and source-provided examples have not been lost.
+8. Confirm attribution and license text appears below each module's API documentation.
+9. Review the diff for accidental replacement of instructor-authored material and unrelated files.
+10. Report created, updated, unchanged, excluded, potentially obsolete, and unresolved pages, plus the source SHA and Actions run used.
 
 Treat the result as a draft for instructor review unless the instructor explicitly changes its status.
