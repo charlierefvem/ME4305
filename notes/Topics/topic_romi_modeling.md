@@ -175,7 +175,7 @@ Now that the kinematics have been determined, the next step is to put together a
 
 Use the following definitions for the state variables, input variables, and output variables:
 $$
-\underline{x}
+\mathbf{x}
 =
 \begin{bmatrix}
 \Omega_L \\
@@ -186,14 +186,14 @@ X \\
 Y
 \end{bmatrix},
 \qquad
-\underline{u}
+\mathbf{u}
 =
 \begin{bmatrix}
-u_L \\
-u_R
+V_L \\
+V_R
 \end{bmatrix},
 \qquad
-\underline{y}
+\mathbf{y}
 =
 \begin{bmatrix}
 s_L \\
@@ -210,7 +210,7 @@ In the output vector:
 - $\psi$ and $\Omega$ are associated with the [[topic_inertial_measurement_units|IMU]].
 - $X$ and $Y$ would come from GPS if available.
 
-The new variables $u_L$ and $u_R$ are the input voltages for the left and right motors. The new variable $s$ is the total arc length traveled by Romi's center. This arc length can be considered similar to an odometer reading; it tells us how far along a path Romi has traveled.
+The new variables $V_L$ and $V_R$ are the input voltages for the left and right motors. The new variable $s$ is the total arc length traveled by Romi's center. This arc length can be considered similar to an odometer reading; it tells us how far along a path Romi has traveled.
 
 Similarly, $s_L$ and $s_R$ are the arc lengths traced out by the centers of the left and right wheels. These can be measured by the wheel encoders.
 
@@ -218,27 +218,27 @@ Similarly, $s_L$ and $s_R$ are the arc lengths traced out by the centers of the 
 
 It may help to recall that a DC motor can be modeled as a linear first-order system. For example, the system model for the right motor can be represented by the following differential equation:
 $$
-\dot{\Omega}_R = \frac{1}{\tau}\left(K_m\,u_R-\Omega_R\right).
+\dot{\Omega}_R = \frac{1}{\tau}\left(K_m\,V_R-\Omega_R\right).
 $$
 
 Here $K_m$ is the motor gain and $\tau$ is the motor time constant. Likewise, the left motor can be represented by
 $$
-\dot{\Omega}_L = \frac{1}{\tau}\left(K_m\,u_L-\Omega_L\right).
+\dot{\Omega}_L = \frac{1}{\tau}\left(K_m\,V_L-\Omega_L\right).
 $$
 
 ### Model Construction
 
 It will be the student's responsibility to complete assembly of the state-space model to use in homework for simulation. Specifically, student's will need to consider the derivation shown above, add in any missing relationships, and then formulate state and output equations. The state equations must be represented by
 $$
-\dot{\underline{x}} = \underline{f}\left(\underline{x},\underline{u}\right)
+\dot{\mathbf{x}} = \mathbf{f}\left(\mathbf{x},\mathbf{u}\right)
 $$
 and the output equations by
 $$
-\underline{y} = \underline{g}\left(\underline{x},\underline{u}\right).
+\mathbf{y} = \mathbf{g}\left(\mathbf{x},\mathbf{u}\right).
 $$
 
 > [!note]
-> Due to the few trigonometric expressions in the preceding kinematics, the state and output equations are not linear equations, so the standard matrix form for LTI systems that students are familiar with, $\dot{\underline{x}}=A\underline{x}+B\underline{u}$, cannot be used in this context.
+> Due to the few trigonometric expressions in the preceding kinematics, the state and output equations are not linear equations, so the standard matrix form for LTI systems that students are familiar with, $\dot{\mathbf{x}}=A\mathbf{x}+B\mathbf{u}$, cannot be used in this context.
 
 The preceding wheel, chassis, and absolute-motion kinematics provide the relationships needed to assemble these equations.
 

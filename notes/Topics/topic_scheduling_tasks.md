@@ -206,7 +206,7 @@ This next example extends Example 1 to create multiple tasks from the same gener
 
 In this third example the code is refactored into two files. In `taskexample.py` a class is defined that implements the finite state machine and in `main.py` an object of the class is instantiated and the task is run.
 
-> [!file_listing] task_example.py
+> [!file_listing] taskexample.py
 > ```Python
 > # The states of the FSM
 > S0_INIT = 0
@@ -232,24 +232,24 @@ In this third example the code is refactored into two files. In `taskexample.py`
 >        # Attempt to run infinite iterations of the state machine
 >        while True:
 >            # Implement FSM inside while loop
->            if (self.state == self.S0_INIT):
+>            if (self.state == S0_INIT):
 >                # Run state zero code
 >                print(self.task_label, ":")
 >                print("\tThe state is ", self.state)
->                self.state = self.S1_RUN
+>                self.state = S1_RUN
 >                
->            elif (self.state == self.S1_RUN):
+>            elif (self.state == S1_RUN):
 >                # Run state one code
 >                print(self.task_label, ":")
 >                print("\tThe state is ", self.state)
->                self.state = self.S2_RUN_THRICE
+>                self.state = S2_RUN_THRICE
 >                
->            elif (self.state == self.S2_RUN_THRICE):
+>            elif (self.state == S2_RUN_THRICE):
 >                # Run state two code
 >                print(self.task_label, ":")
 >                print("\tThe state is ", self.state)
 >                if (self.count == 2):
->                    self.state = self.S1_RUN
+>                    self.state = S1_RUN
 >                    self.count = 0
 >                else:
 >                    self.count += 1
@@ -319,7 +319,7 @@ In this final example you will see how the code changes when using the scheduler
 >     
 >     # Add the task to the scheduler's task list so that it can be iterated.
 >     cotask.task_list.append(cotask.Task(t_example.run(), name="Example Task",
->                                         priority=1, profile=True))
+>                                         priority=1, period=100, profile=True))
 >     
 >     try:
 >         while(True):

@@ -67,7 +67,7 @@ In this example a task will wait for a single character input command (cooperati
 >         # Process each character appropriately after a state transition
 >         if char_in == "h":
 >             state = PRINT_HELP_MENU
->         elif char_in in {"L", "l}:
+>         elif char_in in {"L", "l"}:
 >             state = LEFT_MOTOR_PROMPT
 >         elif ...
 > ...

@@ -178,9 +178,11 @@ The preceding example includes a few nuances you should pay attention to:
 * Subsequent iterations of a generator will resume running line by line starting immediately after the most recently crossed `yield`.
 * In lab you will use generator functions to implement cooperative tasks.
 
+%%
 ## Candidate Static References
 * \[\[Generators\]\]
 * \[\[Coroutines\]\]
 * \[\[yield from\]\] 
 * \[\[send\]\]
 * \[\[Lazy Programming\]\]
+%%
