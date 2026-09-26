@@ -1,24 +1,20 @@
 {
   "main": {
-    "id": "82e6a46baea28cb7",
+    "id": "41aa35014df4f1b3",
     "type": "split",
     "children": [
       {
-        "id": "7230ba6f88ba7f96",
+        "id": "acc34ca8d839a3f9",
         "type": "tabs",
         "children": [
           {
-            "id": "3b9b4ab049f518a2",
+            "id": "054ee60a4991ad22",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "State Feedback.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "State Feedback"
+              "title": "New tab"
             }
           }
         ]
@@ -27,28 +23,30 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "fb4eec8e94092023",
+    "id": "6784ced743b70872",
     "type": "split",
     "children": [
       {
-        "id": "3b945cadd2e619a6",
+        "id": "9f3e913ed895ba04",
         "type": "tabs",
         "children": [
           {
-            "id": "9324d2d0a49ee3da",
+            "id": "cd33d10836e7fda1",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
               "state": {
                 "sortOrder": "alphabetical",
-                "autoReveal": false
+                "autoReveal": false,
+                "showSearch": false,
+                "searchQuery": ""
               },
               "icon": "lucide-folder-closed",
               "title": "Files"
             }
           },
           {
-            "id": "5a29aead79db5483",
+            "id": "b55b6fde0636dcc0",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -65,37 +63,38 @@
             }
           },
           {
-            "id": "87611ae2b141c3ad",
+            "id": "21ca17f748357255",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
-              "state": {},
+              "state": {
+                "showSearch": false,
+                "searchQuery": ""
+              },
               "icon": "lucide-bookmark",
               "title": "Bookmarks"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
     "width": 300
   },
   "right": {
-    "id": "d18cb4d4a57a6b93",
+    "id": "2ca7585572dddbdd",
     "type": "split",
     "children": [
       {
-        "id": "320a550ccaeb7bcb",
+        "id": "9be578286a4ba16d",
         "type": "tabs",
         "children": [
           {
-            "id": "9a29c8f10b2f857b",
+            "id": "fca105842e8b0e74",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "State Feedback.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -105,25 +104,25 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for State Feedback"
+              "title": "Backlinks"
             }
           },
           {
-            "id": "ab9b743f612080a9",
+            "id": "d003d123ba0b372b",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "State Feedback.md",
+                "file": "Topics/topic_coop_user_io.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from State Feedback"
+              "title": "Outgoing links"
             }
           },
           {
-            "id": "bbb6b12ead30be45",
+            "id": "3208878abe4b7a8a",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -138,7 +137,7 @@
             }
           },
           {
-            "id": "18fcab7bb9239668",
+            "id": "1ad78c5c069fbc13",
             "type": "leaf",
             "state": {
               "type": "all-properties",
@@ -152,25 +151,25 @@
             }
           },
           {
-            "id": "4f388342d5345ef9",
+            "id": "3444bf57e779de9e",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
-                "file": "State Feedback.md",
+                "file": "Topics/topic_coop_user_io.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of State Feedback"
+              "title": "Outline"
             }
           }
         ]
       }
     ],
     "direction": "horizontal",
-    "width": 200,
+    "width": 300,
     "collapsed": true
   },
   "left-ribbon": {
@@ -185,9 +184,33 @@
       "webpage-html-export:Export as HTML": false
     }
   },
-  "active": "3b9b4ab049f518a2",
+  "active": "054ee60a4991ad22",
   "lastOpenFiles": [
-    "Observer Intuition.md",
-    "State Feedback.md"
+    "Topics/topic_task_diagrams.md",
+    "Topics/topic_romi_modeling.md",
+    "Topics/topic_python_fundamentals.md",
+    "Topics/topic_path_planning.md",
+    "Topics/topic_intro_to_state_feedback.md",
+    "Topics/topic_intro_to_generators.md",
+    "Topics/topic_inertial_measurement_units.md",
+    "Topics/topic_fsms_and_state_transition_diagrams.md",
+    "Topics/topic_priority_schedulers.md",
+    "Topics/topic_scheduling_tasks.md",
+    "Topics/topic_serial_communication.md",
+    "Topics/topic_virtual_com_ports.md",
+    "Topics/topic_coop_user_io.md",
+    "Documentation/index.md",
+    "Documentation/cotask.md",
+    "Documentation/fsm.md",
+    "Documentation/me4305.md",
+    "Documentation/registerinterface.md",
+    "Documentation/runningstats.md",
+    "Documentation/taskgarbage.md",
+    "Documentation/tracebuffer.md",
+    "Topics/topic_review_of_signed_numbers.md",
+    "index.md",
+    "Topics/topic_gpio.md",
+    "References/reference_switch_bounce.md",
+    "References/reference_PID.md"
   ]
 }
