@@ -315,9 +315,11 @@ Interrupt-based debouncing is a good fit when the system should react quickly to
 
 For active-low switches, internal pull-ups and wired-OR grouping can reduce wiring and GPIO usage, but combining switches also reduces how much information the firmware receives about which exact switch was hit.
 
+%%
 ## Candidate Static Notes
 * \[\[Interrupts\]\]
 * \[\[External Interrupts\]\]
 * \[\[Queues\]\]
 * \[\[Critical Sections\]\]
 * \[\[Romi Robot Platform\]\]
+%%

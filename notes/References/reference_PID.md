@@ -157,9 +157,11 @@ Pseudo-derivative feedback is an early example of a broader design philosophy th
 > [!insight]
 > Pseudo-derivative feedback is used when a direct measurement of the derivative is available through an additional sensor.
 
+%%
 ## Candidate static references
 * \[\[State Feedback\]\]
 * \[\[Observers\]\]
 * \[\[Finite Difference Method\]\]
 * \[\[Filtered Derivatives\]\]
 * \[\[Gain Scheduling\]\]
+%%
