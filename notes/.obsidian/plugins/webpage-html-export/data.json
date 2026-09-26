@@ -173,7 +173,7 @@
         "selector": "head",
         "type": "end"
       },
-      "sourcePath": "",
+      "sourcePath": ".obsidian\\scripts\\copy-fix.html",
       "includePath": "site-lib/html/custom-head.html"
     },
     "documentOptions": {
