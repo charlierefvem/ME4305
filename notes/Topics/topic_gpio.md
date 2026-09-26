@@ -197,6 +197,7 @@ This example shows two configurations, active-low and active-high, for interfaci
 GPIO circuitry is considerably more sophisticated than simply connecting a processor pin directly to the outside world. Understanding the internal driver circuits, input conditioning, and protection features allows reliable interfacing with common electronic components and forms the foundation for later topics involving digital communication and robust embedded hardware design.
 
 %%
+
 ## Candidate Static Notes
 * \[\[GPIO\]\]
 * \[\[Digital Logic Levels\]\]
@@ -206,6 +207,7 @@ GPIO circuitry is considerably more sophisticated than simply connecting a proce
 * \[\[Schmitt Trigger\]\]
 * \[\[Switch Bounce\]\]
 * \[\[Debouncing\]\]
+
 %%
 
 ## See Also
