@@ -2,17 +2,17 @@
 title: Disturbance Observer Design
 type: reference
 tags:
-- observers
-- state-estimation
-- observability
-- pole-placement
-- state-space
-- disturbance
-- augmentation
+  - observers
+  - state-estimation
+  - observability
+  - pole-placement
+  - state-space
+  - disturbance
+  - augmentation
 source:
-course: ME405
-term: 2262
-lecture: 18
+    course: ME405
+    term: 2262
+    lecture: 18
 status: draft
 ---
 ## Motivation

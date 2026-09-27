@@ -196,9 +196,9 @@ One approach to detecting overflow is to frequently compute the change in count 
 > ![Timer rollover compensation example illustrating overflow and underflow correction.](images/encoder/reload_algorithm.svg)
 > An example illustration showing the consequences of timer overflow while counting encoder transitions
 
-In the example waveform in the figure above, overflow occurs between update #4 and update #5. The change in count *should* be a small positive change, as indicated by $\Delta45$ but the computed value will actually be a larger negative change, as indicated by $\Delta45-AR$.
+In the example waveform in the figure above, overflow occurs between update #4 and update #5. The change in count *should* be a small positive change, as indicated by $\Delta45$ but the computed value will actually be a larger negative change, as indicated by $\Delta45_\mathrm{Reload} = \Delta45-(AR+1)$.
 
-Two observations can be made about the incorrect  $\Delta45-AR$ , it is both the wrong sign and the wrong magnitude. Instead of being small and positive the change is large and negative. If the encoder were rotating the opposite direction and underflowed a similar effect occurs: instead of a small negative change the underflow would cause the count to change to be a larger positive amount.
+Two observations can be made about the incorrect  $\Delta45_\mathrm{Reload}$: it is both the wrong sign and the wrong magnitude. Instead of being small and positive the change is large and negative. If the encoder were rotating the opposite direction and underflowed a similar effect occurs: instead of a small negative change the underflow would cause the count to change to be a larger positive amount.
 
 Therefore, to detect when overflow occurs we check both the sign and magnitude of the change, and if the magnitude is greater than a certain threshold we identify the delta as incorrect, and offset appropriately to compensate for the overflow.
 
