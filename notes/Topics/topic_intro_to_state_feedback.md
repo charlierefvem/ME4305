@@ -464,9 +464,9 @@ which can be matched to the three poles from the augmented system derived in Exa
 
 ## Practical Strategies for Gain Determination
 
-As mentioned in Example 2, the algebra needed to compute gains from performance criteria involves main steps, each of which depends on the previous step. This process can be tedious and error prone if done by hand. One strategy suggested above is to use a symbolic tool, like the MATLAB Symbolic Math Toolbox to perform the polynomial matching.
+As mentioned in Example 2, the algebra needed to compute gains from performance criteria involves many steps, each of which depends on the previous step. This process can be tedious and error prone if done by hand. One strategy suggested above is to use a symbolic tool, like the MATLAB Symbolic Math Toolbox to perform the polynomial matching.
 
-There are other formulae available, such as Ackermann formula, that make it easier to compute gains from a set of poles.
+There are other formulae available, such as the Ackermann formula, that make it easier to compute gains from a set of poles.
 
 However, in practice, the most common approach is to use a fully featured tool like MATLAB's `place()` function or the `place_poles()` method belonging to Python's SciPy package. These methods take in $A$ and $B$ matrices along with a set of pole locations and return the matrix $K$ fully computed.
 
